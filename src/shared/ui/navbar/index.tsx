@@ -2,6 +2,7 @@
 "use client";
 
 import { Menu } from "lucide-react";
+import Image from "next/image";
 
 import { cn } from "@/shared/lib/utils";
 import {
@@ -38,8 +39,6 @@ const Navbar1 = ({
 }: Navbar1Props) => {
   const { login, logout, user } = useNavbar();
 
-  console.log("user", user);
-
   return (
     <section
       className={cn(
@@ -47,13 +46,13 @@ const Navbar1 = ({
         className,
       )}
     >
-      <div className="container mx-auto">
+      <div className="px-10">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <img
+              <Image
                 src={logo.src}
                 className="max-h-8 dark:invert"
                 alt={logo.alt}
