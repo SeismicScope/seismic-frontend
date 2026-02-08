@@ -1,0 +1,31 @@
+import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
+
+import { getImportStatus } from "@/features/earthquakes/api";
+
+export function useImportStatus() {
+  const searchParams = useSearchParams();
+  const newSearchParams = new URLSearchParams(searchParams);
+  const jobId = Number(newSearchParams.get("jobId"));
+
+  const { data: jobStatus } = useQuery({
+    queryKey: ["import-status", jobId],
+    queryFn: async () => {
+      const status = await getImportStatus(jobId!);
+
+      return status;
+    },
+    enabled: !!jobId,
+    refetchInterval: (query) => {
+      return query.state.data?.status === "processing" ||
+        query.state.data?.status === "queued"
+        ? 2000
+        : false;
+    },
+  });
+
+  return {
+    jobStatus,
+    jobId,
+  };
+}

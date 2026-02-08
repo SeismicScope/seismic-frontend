@@ -1,15 +1,45 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { api } from "@/shared/lib/axios";
+import { login, logout, me } from "../api";
 
 export function useAuth() {
-  return useQuery({
-    queryKey: ["me"],
-    queryFn: async () => {
-      const { data } = await api.get("/me");
+  const queryClient = useQueryClient();
 
-      return data;
-    },
+  const {
+    data: user,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["me"],
+    queryFn: me,
     retry: false,
+    refetchOnWindowFocus: false,
   });
+
+  console.log("isLoading", isLoading);
+
+  const loginMutation = useMutation({
+    mutationFn: login,
+    onSuccess: (userData) => {
+      queryClient.setQueryData(["me"], userData);
+    },
+  });
+
+  const logoutMutation = useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      queryClient.setQueryData(["me"], null);
+      queryClient.removeQueries({ queryKey: ["me"] });
+    },
+  });
+
+  return {
+    user,
+    isLoading,
+    isError,
+    login: loginMutation.mutateAsync,
+    logout: logoutMutation.mutate,
+    isLoggingIn: loginMutation.isPending,
+    isLoggingOut: logoutMutation.isPending,
+  };
 }
