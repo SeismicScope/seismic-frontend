@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import { useEarthquakesStats } from "../../hooks/use-earthquakes-stats";
 import EarthquakesStatsSkeleton from "./earthquakes-stats-skeleton";
 
-export function EarthquakesStats() {
+function EarthquakesStats() {
   const { data: stats, isLoading } = useEarthquakesStats();
 
   if (isLoading) return <EarthquakesStatsSkeleton />;
@@ -12,36 +12,36 @@ export function EarthquakesStats() {
   if (!isLoading && !stats) return null;
 
   return (
-    <div className="flex w-full items-center gap-4 py-4">
-      <Card className="w-full gap-2 py-3">
-        <CardHeader>
+    <div className="grid w-full grid-cols-2 gap-4 py-4">
+      <Card className="h-24 w-full gap-2 p-3">
+        <CardHeader className="px-3">
           <CardTitle className="text-center">Total events</CardTitle>
         </CardHeader>
-        <CardContent className="text-center text-2xl font-bold">
-          {stats?.totalEvents}
+        <CardContent className="px-3 text-center text-2xl font-bold">
+          {new Intl.NumberFormat("de-DE").format(stats?.totalEvents)}
         </CardContent>
       </Card>
-      <Card className="w-full gap-2 py-3">
-        <CardHeader>
+      <Card className="h-24 w-full gap-2 p-3">
+        <CardHeader className="px-3">
           <CardTitle className="text-center">Max magnitude</CardTitle>
         </CardHeader>
-        <CardContent className="text-center text-2xl font-bold">
+        <CardContent className="px-3 text-center text-2xl font-bold">
           {stats?.maxMagnitude}
         </CardContent>
       </Card>
-      <Card className="w-full gap-2 py-3">
-        <CardHeader>
+      <Card className="h-24 w-full gap-2 p-3">
+        <CardHeader className="px-3">
           <CardTitle className="text-center">Avg magnitude</CardTitle>
         </CardHeader>
-        <CardContent className="text-center text-2xl font-bold">
+        <CardContent className="px-3 text-center text-2xl font-bold">
           {stats?.avgMagnitude}
         </CardContent>
       </Card>
-      <Card className="w-full gap-2 py-3">
-        <CardHeader>
+      <Card className="h-24 w-full gap-2 p-3">
+        <CardHeader className="px-3">
           <CardTitle className="text-center">Avg depth</CardTitle>
         </CardHeader>
-        <CardContent className="text-center text-2xl font-bold">
+        <CardContent className="px-3 text-center text-2xl font-bold">
           {stats?.avgDepth}
         </CardContent>
       </Card>

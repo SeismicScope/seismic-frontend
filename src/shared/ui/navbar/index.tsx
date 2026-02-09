@@ -4,6 +4,7 @@
 import { Menu } from "lucide-react";
 import Image from "next/image";
 
+import Logo from "@/assets/logo.svg";
 import { cn } from "@/shared/lib/utils";
 import {
   Accordion,
@@ -53,7 +54,7 @@ const Navbar1 = ({
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
               <Image
-                src={logo.src}
+                src={Logo}
                 className="max-h-8 dark:invert"
                 alt={logo.alt}
               />
@@ -86,11 +87,7 @@ const Navbar1 = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <img
-                src={logo.src}
-                className="max-h-8 dark:invert"
-                alt={logo.alt}
-              />
+              <img src={Logo} className="max-h-8 dark:invert" alt={logo.alt} />
             </a>
             <Sheet>
               <SheetTrigger asChild>

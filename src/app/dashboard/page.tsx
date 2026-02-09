@@ -3,6 +3,7 @@ import { useAuth } from "@/features/auth/hooks/use-auth";
 import EarthquakesStats from "@/features/earthquakes/components/earthquakes-stats";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
 import { useEarthquakeHistogram } from "@/features/earthquakes/hooks/use-earthquakes-histogram";
+import Filters from "@/features/filters/components/filters";
 
 import JobStatus from "./job-status";
 import UploadFromCSVModal from "./upload-from-csv-modal";
@@ -24,7 +25,19 @@ export default function DashboardPage() {
         </>
       )}
 
-      <EarthquakesStats />
+      <div className="my-4 flex items-stretch gap-4">
+        <div className="w-1/4">
+          <p className="text-lg font-bold">KPI Cards</p>
+          <EarthquakesStats />
+        </div>
+        <div className="pt-15 pb-10">
+          <div className="h-full w-px bg-black/40" />
+        </div>
+        <div className="w-3/4">
+          <p className="text-lg font-bold">Filters</p>
+          <Filters />
+        </div>
+      </div>
       <EarthquakeTable />
     </div>
   );
