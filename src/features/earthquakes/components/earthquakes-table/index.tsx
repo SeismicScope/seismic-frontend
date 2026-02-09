@@ -2,41 +2,42 @@
 
 import { flexRender } from "@tanstack/react-table";
 
+import { Skeleton } from "@/shared/ui/skeleton";
 import {
-  Table,
   TableBody,
   TableCell,
+  TableHead,
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
 
+import { columns } from "./columns";
+import TableSkeleton from "./table-skeleton";
 import { useEarthquakesTable } from "./use-earthquakes-table";
 
 export function EarthquakeTable() {
   const { isLoading, table, virtualRows, parentRef, rowVirtualizer, rows } =
     useEarthquakesTable();
 
-  if (isLoading) return <div>Загрузка...</div>;
+  if (isLoading) return <TableSkeleton />;
 
   return (
-    <div
-      ref={parentRef}
-      className="relative container h-[600px] w-full overflow-auto"
-    >
-      <Table className="w-full">
-        <TableHeader className="sticky top-0 z-10 grid bg-white">
+    <div ref={parentRef} className="relative h-[400px] w-full overflow-auto">
+      <table className="w-full min-w-[700px] caption-bottom text-sm">
+        <TableHeader className="sticky top-0 z-10 bg-white">
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
+            <TableRow key={headerGroup.id} className="flex w-full">
               {headerGroup.headers.map((header) => (
-                <TableCell
+                <TableHead
                   key={header.id}
-                  style={{ width: header.getSize(), position: "relative" }}
+                  style={{ width: header.getSize(), flex: "none" }}
+                  className="text-lg font-semibold"
                 >
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext(),
                   )}
-                </TableCell>
+                </TableHead>
               ))}
             </TableRow>
           ))}
@@ -49,17 +50,32 @@ export function EarthquakeTable() {
         >
           {virtualRows.map((virtualRow) => {
             const row = rows[virtualRow.index];
-            if (!row)
+
+            if (!row) {
               return (
-                <TableRow key="loader">
-                  <TableCell>Загрузка...</TableCell>
+                <TableRow
+                  key={`loader-${virtualRow.index}`}
+                  className="absolute flex w-full"
+                  style={{
+                    transform: `translateY(${virtualRow.start}px)`,
+                  }}
+                >
+                  {columns.map((col, j) => (
+                    <TableCell
+                      key={j}
+                      style={{ width: col.size, flex: "none" }}
+                    >
+                      <Skeleton className="h-4 w-2/3" />
+                    </TableCell>
+                  ))}
                 </TableRow>
               );
+            }
 
             return (
               <TableRow
                 key={row.id}
-                className="absolute w-full"
+                className="absolute flex w-full"
                 style={{
                   transform: `translateY(${virtualRow.start}px)`,
                 }}
@@ -67,7 +83,8 @@ export function EarthquakeTable() {
                 {row.getVisibleCells().map((cell) => (
                   <TableCell
                     key={cell.id}
-                    style={{ width: cell.column.getSize() }}
+                    style={{ width: cell.column.getSize(), flex: "none" }}
+                    className="text-sm font-semibold"
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
@@ -76,7 +93,7 @@ export function EarthquakeTable() {
             );
           })}
         </TableBody>
-      </Table>
+      </table>
     </div>
   );
 }

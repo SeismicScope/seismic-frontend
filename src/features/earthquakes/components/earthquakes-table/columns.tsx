@@ -1,4 +1,5 @@
 import type { ColumnDef } from "@tanstack/react-table";
+import Link from "next/link";
 
 import type { Earthquake } from "../../api/types";
 
@@ -7,23 +8,23 @@ export const columns: ColumnDef<Earthquake>[] = [
     accessorKey: "occuredAt",
     header: "Date",
     cell: (info) => new Date(info.getValue() as string).toLocaleString(),
-    size: 180,
+    size: 200,
   },
   {
     accessorKey: "magnitude",
-    header: "Mag",
+    header: "Magnitude",
     cell: (info) => (
       <span className={Number(info.getValue()) > 5 ? "text-red-500" : ""}>
         {Number(info.getValue()).toFixed(1)}
       </span>
     ),
-    size: 80,
+    size: 200,
   },
   {
     accessorKey: "depth",
     header: "Depth",
     cell: (info) => `${info.getValue()} km`,
-    size: 100,
+    size: 200,
   },
   {
     accessorKey: "place",
@@ -34,5 +35,17 @@ export const columns: ColumnDef<Earthquake>[] = [
     header: "Coordinates",
     accessorFn: (row) => `${row.latitude}, ${row.longitude}`,
     size: 200,
+  },
+  {
+    accessorKey: "actions",
+    header: "Actions",
+    cell: (info) => (
+      <Link
+        href={`/earthquake/${info.row.original.id}`}
+        className="text-blue-500 hover:opacity-60"
+      >
+        More info
+      </Link>
+    ),
   },
 ];
