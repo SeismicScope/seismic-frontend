@@ -1,0 +1,37 @@
+export type MapRequest = {
+  west: number;
+  east: number;
+  north: number;
+  south: number;
+};
+
+export type MapPoint = {
+  id: number;
+  externalId: string | null;
+  occuredAt: string;
+  magnitude: number;
+  depth: number;
+  latitude: number;
+  longitude: number;
+  location: string | null;
+  createdAt: string;
+};
+
+export type MapResponse = MapPoint[];
+
+export type MapPointProperties = {
+  id: number;
+  magnitude: number;
+  depth: number;
+  location: string | null;
+  occuredAt: string;
+};
+
+export type WorkerOnMessageEvent = MessageEvent<
+  | { type: "clusters"; data: GeoJSON.Feature[] }
+  | { type: "expansionZoom"; data: number }
+  | {
+      type: "clusterStats";
+      data: { pointsCount: number; buildTime: number };
+    }
+>;

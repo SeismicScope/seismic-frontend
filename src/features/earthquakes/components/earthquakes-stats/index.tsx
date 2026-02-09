@@ -1,4 +1,5 @@
 "use client";
+import { formatNumber } from "@/shared/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 
 import { useEarthquakesStats } from "../../hooks/use-earthquakes-stats";
@@ -18,7 +19,7 @@ function EarthquakesStats() {
           <CardTitle className="text-center">Total events</CardTitle>
         </CardHeader>
         <CardContent className="px-3 text-center text-2xl font-bold">
-          {new Intl.NumberFormat("de-DE").format(stats?.totalEvents)}
+          {formatNumber(stats?.totalEvents)}
         </CardContent>
       </Card>
       <Card className="h-24 w-full gap-2 p-3">

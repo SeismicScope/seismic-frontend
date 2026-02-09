@@ -12,8 +12,8 @@ export const MENU = [
     url: "/dashboard",
   },
   {
-    title: "Maps",
-    url: "/maps",
+    title: "Map",
+    url: "/map",
   },
   {
     title: "About",
