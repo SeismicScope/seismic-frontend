@@ -10,14 +10,17 @@ function MagnitudeRange() {
   const { data: histogram, isLoading } = useEarthquakeHistogram();
   const { filters, setFilters } = useFilters();
 
+  const dataMin = histogram?.[0]?.magnitude ?? 2;
+  const dataMax = histogram?.[histogram.length - 1]?.magnitude ?? 9;
+
   const range = useMemo(
-    () => [filters.minMagnitude ?? 2, filters.maxMagnitude ?? 9],
-    [filters.minMagnitude, filters.maxMagnitude],
+    () => [filters.minMag ?? dataMin, filters.maxMag ?? dataMax],
+    [filters.minMag, filters.maxMag, dataMin, dataMax],
   );
 
   const handleRangeCommit = useCallback(
     (values: number[]) => {
-      setFilters({ minMagnitude: values[0], maxMagnitude: values[1] });
+      setFilters({ minMag: values[0], maxMag: values[1] });
     },
     [setFilters],
   );

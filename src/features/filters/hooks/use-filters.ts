@@ -12,8 +12,8 @@ import type { FilterType } from "../types";
 export const useFilters = () => {
   const [filters, setFilters] = useQueryStates(
     {
-      minMagnitude: parseAsFloat,
-      maxMagnitude: parseAsFloat,
+      minMag: parseAsFloat,
+      maxMag: parseAsFloat,
       minDepth: parseAsInteger,
       maxDepth: parseAsInteger,
       dateFrom: parseAsIsoDate,

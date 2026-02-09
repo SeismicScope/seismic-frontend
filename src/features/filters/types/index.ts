@@ -3,6 +3,6 @@ export type FilterType = {
   dateTo?: Date | null;
   minDepth?: number | null;
   maxDepth?: number | null;
-  minMagnitude?: number | null;
-  maxMagnitude?: number | null;
+  minMag?: number | null;
+  maxMag?: number | null;
 };

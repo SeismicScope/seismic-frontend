@@ -2,6 +2,7 @@
 
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import type { DateRange } from "react-day-picker";
 
 import { Button } from "@/shared/ui/button";
 import { Calendar } from "@/shared/ui/calendar";
@@ -12,6 +13,28 @@ import { useFilters } from "../../hooks/use-filters";
 
 function DatePickerWithRange() {
   const { filters, setFilters } = useFilters();
+
+  function formatDate(date: Date): string {
+    return format(date, "LLL dd, y");
+  }
+
+  function onDateSelect(date?: DateRange): void {
+    if (date?.from && date?.to) {
+      setFilters({
+        dateFrom: date.from,
+        dateTo: date.to,
+      });
+
+      return;
+    }
+
+    if (date?.from) {
+      setFilters({
+        dateFrom: date.from,
+        dateTo: null,
+      });
+    }
+  }
 
   return (
     <Field className="mx-auto w-full">
@@ -26,11 +49,10 @@ function DatePickerWithRange() {
             {filters.dateFrom ? (
               filters.dateTo ? (
                 <>
-                  {format(filters.dateFrom, "LLL dd, y")} -{" "}
-                  {format(filters.dateTo, "LLL dd, y")}
+                  {formatDate(filters.dateFrom)} - {formatDate(filters.dateTo)}
                 </>
               ) : (
-                format(filters.dateFrom, "LLL dd, y")
+                formatDate(filters.dateFrom)
               )
             ) : (
               <span>Pick a date</span>
@@ -45,23 +67,7 @@ function DatePickerWithRange() {
               from: filters.dateFrom || undefined,
               to: filters.dateTo || undefined,
             }}
-            onSelect={(date) => {
-              if (date?.from && date?.to) {
-                setFilters({
-                  dateFrom: date.from,
-                  dateTo: date.to,
-                });
-
-                return;
-              }
-
-              if (date?.from) {
-                setFilters({
-                  dateFrom: date.from,
-                  dateTo: null,
-                });
-              }
-            }}
+            onSelect={(date) => onDateSelect(date)}
             numberOfMonths={2}
           />
         </PopoverContent>
