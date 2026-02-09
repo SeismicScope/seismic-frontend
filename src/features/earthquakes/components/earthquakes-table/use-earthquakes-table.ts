@@ -7,11 +7,10 @@ import { useEarthquakes } from "../../hooks/use-earthquakes";
 import { columns } from "./columns";
 
 export function useEarthquakesTable() {
-  const filters = {};
   const parentRef = useRef<HTMLDivElement>(null);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
-    useEarthquakes(filters);
+    useEarthquakes();
 
   const flatData = useMemo(
     () => data?.pages.flatMap((page) => page.data) ?? [],

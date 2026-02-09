@@ -2,20 +2,26 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 
 import { useFilters } from "../../filters/hooks/use-filters";
 import { getEarthquakes } from "../api";
-import type { EarthquakeParams } from "../api/types";
 
-export function useEarthquakes(params: EarthquakeParams | undefined) {
+export function useEarthquakes() {
   const { apiFilters } = useFilters();
 
+  const filters = {
+    minMag: apiFilters.minMag,
+    maxMag: apiFilters.maxMag,
+    minDepth: apiFilters.minDepth,
+    maxDepth: apiFilters.maxDepth,
+    dateFrom: apiFilters.dateFrom?.toISOString(),
+    dateTo: apiFilters.dateTo?.toISOString(),
+  };
+
   return useInfiniteQuery({
-    queryKey: ["earthquakes", params],
-    queryFn: ({ pageParam }) => {
-      return getEarthquakes({
-        ...params,
+    queryKey: ["earthquakes", filters],
+    queryFn: ({ pageParam }) =>
+      getEarthquakes({
+        ...filters,
         cursor: pageParam,
-        ...apiFilters,
-      });
-    },
+      }),
     getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
     initialPageParam: undefined as number | undefined,
   });

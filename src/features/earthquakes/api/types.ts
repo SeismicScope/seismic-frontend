@@ -28,4 +28,10 @@ export type EarthquakesResponse = {
 export type EarthquakeParams = {
   limit?: number;
   cursor?: number;
+  minMag?: number;
+  maxMag?: number;
+  minDepth?: number;
+  maxDepth?: number;
+  dateFrom?: string;
+  dateTo?: string;
 };
