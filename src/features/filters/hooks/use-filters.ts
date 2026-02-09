@@ -7,7 +7,6 @@ import {
 } from "nuqs";
 
 import { getApiFilters } from "../lib/utils";
-import type { FilterType } from "../types";
 
 export const useFilters = () => {
   const [filters, setFilters] = useQueryStates(
@@ -28,7 +27,10 @@ export const useFilters = () => {
 
   const apiParams = getApiFilters(filters);
 
-  const setField = (field: keyof typeof filters, value: FilterType) => {
+  const setField = <K extends keyof typeof filters>(
+    field: K,
+    value: (typeof filters)[K],
+  ) => {
     setFilters({ [field]: value });
   };
 
