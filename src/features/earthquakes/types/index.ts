@@ -38,3 +38,8 @@ export type EarthquakeParams = EarthquakeFilters & {
   limit?: number;
   cursor?: number;
 };
+
+export type MagnitudeHistogram = {
+  magnitude: number;
+  count: number;
+};

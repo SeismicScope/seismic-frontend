@@ -5,7 +5,8 @@ import type {
   EarthquakeParams,
   EarthquakesResponse,
   ImportStatus,
-} from "./types";
+  MagnitudeHistogram,
+} from "../types";
 
 export async function getEarthquakes(
   params: EarthquakeParams,
@@ -17,7 +18,7 @@ export async function getEarthquakes(
 
 export async function getEarthquakesMagnitudeHistogram(
   filters: EarthquakeFilters,
-) {
+): Promise<MagnitudeHistogram[]> {
   const { data } = await api.get("/earthquakes/magnitude-histogram", {
     params: filters,
   });

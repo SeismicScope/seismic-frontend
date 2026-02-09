@@ -12,6 +12,10 @@ export const MENU = [
     url: "/dashboard",
   },
   {
+    title: "Analytics",
+    url: "/analytics",
+  },
+  {
     title: "Map",
     url: "/map",
   },
