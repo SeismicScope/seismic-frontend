@@ -26,13 +26,27 @@ export const useFilters = () => {
   );
 
   const apiParams = getApiFilters(filters);
+  const hasActiveFilters = Object.values(filters).some(
+    (value) => value !== null,
+  );
 
-  const setField = <K extends keyof typeof filters>(
+  function resetFilters(): void {
+    setFilters(Object.fromEntries(Object.keys(filters).map((k) => [k, null])));
+  }
+
+  function setField<K extends keyof typeof filters>(
     field: K,
     value: (typeof filters)[K],
-  ) => {
+  ): void {
     setFilters({ [field]: value });
-  };
+  }
 
-  return { filters, apiFilters: apiParams, setFilters, setField };
+  return {
+    filters,
+    apiFilters: apiParams,
+    hasActiveFilters,
+    setFilters,
+    setField,
+    resetFilters,
+  };
 };

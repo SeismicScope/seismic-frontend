@@ -3,11 +3,14 @@ import { useAuth } from "@/features/auth/hooks/use-auth";
 import EarthquakesStats from "@/features/earthquakes/components/earthquakes-stats";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
 import Filters from "@/features/filters/components/filters";
+import { useFilters } from "@/features/filters/hooks/use-filters";
+import { Button } from "@/shared/ui/button";
 
 import JobStatus from "./job-status";
 import UploadFromCSVModal from "./upload-from-csv-modal";
 
 export default function DashboardPage() {
+  const { hasActiveFilters, resetFilters } = useFilters();
   const { user } = useAuth();
 
   return (
@@ -30,7 +33,14 @@ export default function DashboardPage() {
           <div className="h-full w-px bg-black/40" />
         </div>
         <div className="w-3/4">
-          <p className="text-lg font-bold">Filters</p>
+          <div className="flex items-center gap-3">
+            <p className="text-lg font-bold">Filters</p>
+            {hasActiveFilters && (
+              <Button variant="destructive" size="sm" onClick={resetFilters}>
+                Reset
+              </Button>
+            )}
+          </div>
           <Filters />
         </div>
       </div>

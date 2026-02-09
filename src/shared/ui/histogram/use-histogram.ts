@@ -8,10 +8,7 @@ export function useHstogram({
   onRangeCommit,
 }: Omit<HistogramProps, "isLoading">) {
   const [localRange, setLocalRange] = useState(range);
-
-  const isDragging =
-    localRange !== range &&
-    (localRange[0] !== range[0] || localRange[1] !== range[1]);
+  const [isDragging, setIsDragging] = useState(false);
   const displayRange = isDragging ? localRange : range;
 
   const { maxCount, dataMin, dataMax } = useMemo(() => {
@@ -42,11 +39,13 @@ export function useHstogram({
 
   const handleValueChange = useCallback((values: number[]) => {
     setLocalRange(values);
+    setIsDragging(true);
   }, []);
 
   const handleValueCommit = useCallback(
     (values: number[]) => {
       setLocalRange(values);
+      setIsDragging(false);
       onRangeCommit(values);
     },
     [onRangeCommit],

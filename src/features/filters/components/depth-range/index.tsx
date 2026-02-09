@@ -10,18 +10,20 @@ const DEBOUNCE_DELAY = 500;
 
 function DepthRange() {
   const { filters, setField } = useFilters();
-  const [min, setMin] = useState(filters.minDepth);
-  const [max, setMax] = useState(filters.maxDepth);
+  const [localMin, setLocalMin] = useState<number | null>(null);
+  const [localMax, setLocalMax] = useState<number | null>(null);
+  const [editingMin, setEditingMin] = useState(false);
+  const [editingMax, setEditingMax] = useState(false);
 
-  const syncMin = useDebouncedCallback(
-    (value: number | null) => setField("minDepth", value),
-    DEBOUNCE_DELAY,
-  );
+  const syncMin = useDebouncedCallback((value: number | null) => {
+    setField("minDepth", value);
+    setEditingMin(false);
+  }, DEBOUNCE_DELAY);
 
-  const syncMax = useDebouncedCallback(
-    (value: number | null) => setField("maxDepth", value),
-    DEBOUNCE_DELAY,
-  );
+  const syncMax = useDebouncedCallback((value: number | null) => {
+    setField("maxDepth", value);
+    setEditingMax(false);
+  }, DEBOUNCE_DELAY);
 
   return (
     <div className="flex w-full items-center justify-between">
@@ -31,10 +33,11 @@ function DepthRange() {
           type="number"
           placeholder="Depth"
           className="max-w-24"
-          value={min ?? ""}
+          value={(editingMin ? localMin : filters.minDepth) ?? ""}
           onChange={(e) => {
             const value = e.target.value ? Number(e.target.value) : null;
-            setMin(value);
+            setLocalMin(value);
+            setEditingMin(true);
             syncMin(value);
           }}
         />
@@ -45,10 +48,11 @@ function DepthRange() {
           type="number"
           placeholder="Depth"
           className="max-w-24"
-          value={max ?? ""}
+          value={(editingMax ? localMax : filters.maxDepth) ?? ""}
           onChange={(e) => {
             const value = e.target.value ? Number(e.target.value) : null;
-            setMax(value);
+            setLocalMax(value);
+            setEditingMax(true);
             syncMax(value);
           }}
         />
