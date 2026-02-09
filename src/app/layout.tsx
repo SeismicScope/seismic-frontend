@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
 
 import { Providers } from "@/shared/providers";
 import { Navbar1 } from "@/shared/ui/navbar";
@@ -24,10 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} pt-20 antialiased`}>
-        <Providers>
-          <Navbar1 />
-          {children}
-        </Providers>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Providers>
+            <Navbar1 />
+            {children}
+          </Providers>
+        </Suspense>
       </body>
     </html>
   );
