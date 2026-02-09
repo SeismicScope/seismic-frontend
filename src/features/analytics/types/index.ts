@@ -1,3 +1,5 @@
+import type { EarthquakeFilters } from "@/features/earthquakes/types";
+
 export type EarthquakeStats = {
   avgDepth: number;
   avgMagnitude: number;
@@ -12,12 +14,6 @@ export type EarthquakeTimeSeries = {
 
 export type TimeInterval = "day" | "week" | "month" | "year";
 
-export type TimeSeriesParams = {
+export type TimeSeriesParams = EarthquakeFilters & {
   interval?: TimeInterval;
-  minMag?: number;
-  maxMag?: number;
-  minDepth?: number;
-  maxDepth?: number;
-  dateFrom?: string;
-  dateTo?: string;
 };
