@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { useFilters } from "../../filters/hooks/use-filters";
 import { getEarthquakesMagnitudeHistogram } from "../api";
 
 export function useEarthquakeHistogram() {
+  const { apiFilters } = useFilters();
+
   return useQuery({
-    queryKey: ["earthquakes-histogram"],
-    queryFn: getEarthquakesMagnitudeHistogram,
+    queryKey: ["earthquakes-histogram", apiFilters],
+    queryFn: () => getEarthquakesMagnitudeHistogram(apiFilters),
     staleTime: Infinity,
     gcTime: Infinity,
   });

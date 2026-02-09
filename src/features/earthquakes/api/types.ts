@@ -25,13 +25,16 @@ export type EarthquakesResponse = {
   nextCursor: number | null;
 };
 
-export type EarthquakeParams = {
-  limit?: number;
-  cursor?: number;
+export type EarthquakeFilters = {
   minMag?: number;
   maxMag?: number;
   minDepth?: number;
   maxDepth?: number;
   dateFrom?: string;
   dateTo?: string;
+};
+
+export type EarthquakeParams = EarthquakeFilters & {
+  limit?: number;
+  cursor?: number;
 };

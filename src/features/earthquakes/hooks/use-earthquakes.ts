@@ -6,20 +6,11 @@ import { getEarthquakes } from "../api";
 export function useEarthquakes() {
   const { apiFilters } = useFilters();
 
-  const filters = {
-    minMag: apiFilters.minMag,
-    maxMag: apiFilters.maxMag,
-    minDepth: apiFilters.minDepth,
-    maxDepth: apiFilters.maxDepth,
-    dateFrom: apiFilters.dateFrom?.toISOString(),
-    dateTo: apiFilters.dateTo?.toISOString(),
-  };
-
   return useInfiniteQuery({
-    queryKey: ["earthquakes", filters],
+    queryKey: ["earthquakes", apiFilters],
     queryFn: ({ pageParam }) =>
       getEarthquakes({
-        ...filters,
+        ...apiFilters,
         cursor: pageParam,
       }),
     getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,

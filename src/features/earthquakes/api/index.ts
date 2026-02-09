@@ -1,6 +1,7 @@
 import { api } from "@/shared/lib/axios";
 
 import type {
+  EarthquakeFilters,
   EarthquakeParams,
   EarthquakesResponse,
   ImportStatus,
@@ -14,14 +15,12 @@ export async function getEarthquakes(
   return data;
 }
 
-export async function getEarthquakesStats() {
-  const { data } = await api.get("/earthquakes/stats");
-
-  return data;
-}
-
-export async function getEarthquakesMagnitudeHistogram() {
-  const { data } = await api.get("/earthquakes/magnitude-histogram");
+export async function getEarthquakesMagnitudeHistogram(
+  filters: EarthquakeFilters,
+) {
+  const { data } = await api.get("/earthquakes/magnitude-histogram", {
+    params: filters,
+  });
 
   return data;
 }

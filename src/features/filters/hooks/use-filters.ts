@@ -5,6 +5,7 @@ import {
   parseAsIsoDate,
   useQueryStates,
 } from "nuqs";
+import { useMemo } from "react";
 
 import { getApiFilters } from "../lib/utils";
 
@@ -25,7 +26,16 @@ export const useFilters = () => {
     },
   );
 
-  const apiParams = getApiFilters(filters);
+  const apiParams = useMemo(() => {
+    const params = getApiFilters(filters);
+
+    return {
+      ...params,
+      dateFrom: params.dateFrom?.toISOString(),
+      dateTo: params.dateTo?.toISOString(),
+    };
+  }, [filters]);
+
   const hasActiveFilters = Object.values(filters).some(
     (value) => value !== null,
   );

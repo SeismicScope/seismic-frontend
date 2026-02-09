@@ -148,7 +148,6 @@ export function useEarthquakeMap() {
 
         const feature = features[0];
 
-        console.log("feature.properties", feature.properties);
         const popupNode = renderMapPopup(
           React.createElement(MapPopup, {
             magnitude: feature.properties?.magnitude,

@@ -1,6 +1,6 @@
 "use client";
+import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
 import { useAuth } from "@/features/auth/hooks/use-auth";
-import EarthquakesStats from "@/features/earthquakes/components/earthquakes-stats";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
 import Filters from "@/features/filters/components/filters";
 import { useFilters } from "@/features/filters/hooks/use-filters";
