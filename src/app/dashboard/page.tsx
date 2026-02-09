@@ -2,17 +2,13 @@
 import { useAuth } from "@/features/auth/hooks/use-auth";
 import EarthquakesStats from "@/features/earthquakes/components/earthquakes-stats";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
-import { useEarthquakeHistogram } from "@/features/earthquakes/hooks/use-earthquakes-histogram";
 import Filters from "@/features/filters/components/filters";
 
 import JobStatus from "./job-status";
 import UploadFromCSVModal from "./upload-from-csv-modal";
 
 export default function DashboardPage() {
-  const { data: histogram } = useEarthquakeHistogram();
   const { user } = useAuth();
-
-  console.log("histogram", histogram);
 
   return (
     <div className="mt-5 w-full px-10">

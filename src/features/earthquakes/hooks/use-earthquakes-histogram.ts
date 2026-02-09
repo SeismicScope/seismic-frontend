@@ -5,6 +5,8 @@ import { getEarthquakesMagnitudeHistogram } from "../api";
 export function useEarthquakeHistogram() {
   return useQuery({
     queryKey: ["earthquakes-histogram"],
-    queryFn: () => getEarthquakesMagnitudeHistogram(),
+    queryFn: getEarthquakesMagnitudeHistogram,
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
 }
