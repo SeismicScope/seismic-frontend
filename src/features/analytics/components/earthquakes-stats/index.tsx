@@ -19,7 +19,7 @@ function EarthquakesStats() {
           <CardTitle className="text-center">Total events</CardTitle>
         </CardHeader>
         <CardContent className="px-3 text-center text-2xl font-bold">
-          {formatNumber(stats?.totalEvents)}
+          {formatNumber(stats?.totalEvents || 0)}
         </CardContent>
       </Card>
       <Card className="h-24 w-full gap-2 p-3">

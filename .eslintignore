@@ -1,0 +1,3 @@
+types/routes.d.ts
+types/validator.ts
+types/cache-life.d.ts

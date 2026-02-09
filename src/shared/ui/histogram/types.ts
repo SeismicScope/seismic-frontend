@@ -4,7 +4,7 @@ export type HistogramEntry = {
 };
 
 export type HistogramProps = {
-  histogram: HistogramEntry[];
+  histogram?: HistogramEntry[];
   range: number[];
   onRangeCommit: (values: number[]) => void;
   isLoading: boolean;
