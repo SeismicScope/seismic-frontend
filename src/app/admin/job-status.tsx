@@ -15,17 +15,6 @@ const JobStatus = () => {
         <span>Processed: {jobStatus?.processed}</span>
       </div>
 
-      <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-100">
-        <div
-          className="h-full bg-blue-600 transition-all duration-500"
-          style={{
-            width: jobStatus?.totalRows
-              ? `${(jobStatus.processed / jobStatus.totalRows) * 100}%`
-              : "50%",
-          }}
-        />
-      </div>
-
       {jobStatus?.status === "completed" && (
         <p className="text-sm text-green-600">
           ✓ Import finished successfully!
