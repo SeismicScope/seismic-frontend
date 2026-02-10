@@ -4,14 +4,20 @@ import { useMapStatsStore } from "@/features/map/store/use-map-stats";
 import { formatNumber } from "@/shared/lib/utils";
 
 function MapStats() {
-  const { pointsCount, buildTime } = useMapStatsStore();
+  const { pointsCount, buildTime, totalInBounds, limit } = useMapStatsStore();
   const { fps, heap } = usePerformanceMetrics();
 
   return (
     <div className="mb-4 flex items-center gap-2">
       <p className="text-sm">
-        <span className="font-bold">Points from API:</span>{" "}
-        {formatNumber(100000)}
+        <span className="font-bold">In bounds:</span>{" "}
+        {formatNumber(totalInBounds)}
+        {totalInBounds > limit && (
+          <span className="text-muted-foreground">
+            {" "}
+            (limit: {formatNumber(limit)})
+          </span>
+        )}
       </p>
 
       <p className="text-sm">

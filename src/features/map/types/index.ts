@@ -1,8 +1,12 @@
-export type MapRequest = {
+export type MapBounds = {
   west: number;
   east: number;
   north: number;
   south: number;
+};
+
+export type MapRequest = MapBounds & {
+  zoom: number;
 };
 
 export type MapPoint = {
@@ -17,7 +21,11 @@ export type MapPoint = {
   createdAt: string;
 };
 
-export type MapResponse = MapPoint[];
+export type MapResponse = {
+  data: MapPoint[];
+  total: number;
+  limit: number;
+};
 
 export type MapPointProperties = {
   id: number;

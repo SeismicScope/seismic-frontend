@@ -1,7 +1,7 @@
 import type { Feature, Point } from "geojson";
 import { createRoot } from "react-dom/client";
 
-import type { MapPoint, MapPointProperties, MapRequest } from "../types";
+import type { MapBounds, MapPoint, MapPointProperties } from "../types";
 
 export function toGeoJSON(
   points: MapPoint[],
@@ -19,7 +19,7 @@ export function toGeoJSON(
   }));
 }
 
-export function getBounds(map: mapboxgl.Map): MapRequest {
+export function getBounds(map: mapboxgl.Map): MapBounds {
   const b = map.getBounds();
 
   return {

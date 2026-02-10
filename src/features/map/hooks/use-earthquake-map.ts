@@ -20,11 +20,9 @@ export function useEarthquakeMap() {
 
   const setMapStats = useMapStatsStore.getState().setMapStats;
 
-  const [requestParams, setRequestParams] = useState<
-    (MapRequest & { zoom: number }) | null
-  >(null);
+  const [requestParams, setRequestParams] = useState<MapRequest | null>(null);
 
-  const { data: points, isFetching } = useMapData(requestParams);
+  const { data: mapResponse, isFetching } = useMapData(requestParams);
 
   const debouncedUpdate = useDebouncedCallback((map: mapboxgl.Map) => {
     setRequestParams({
@@ -34,10 +32,10 @@ export function useEarthquakeMap() {
   }, 400);
 
   const geoJsonPoints = useMemo(() => {
-    if (!points?.length) return [];
+    if (!mapResponse?.data?.length) return [];
 
-    return toGeoJSON(points);
-  }, [points]);
+    return toGeoJSON(mapResponse.data);
+  }, [mapResponse]);
 
   const requestClusters = useCallback((map: mapboxgl.Map) => {
     if (!workerRef.current) return;
@@ -80,6 +78,18 @@ export function useEarthquakeMap() {
 
     return () => workerRef.current?.terminate();
   }, []);
+
+  useEffect(
+    function updateApiStats() {
+      if (!mapResponse) return;
+
+      setMapStats({
+        totalInBounds: mapResponse.total,
+        limit: mapResponse.limit,
+      });
+    },
+    [mapResponse],
+  );
 
   useEffect(
     function loadClusterData() {

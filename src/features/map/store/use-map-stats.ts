@@ -3,10 +3,12 @@ import { create } from "zustand";
 type MapStatsState = {
   pointsCount: number;
   buildTime: number;
+  totalInBounds: number;
+  limit: number;
 };
 
 type MapStatsActions = {
-  setMapStats: (stats: MapStatsState) => void;
+  setMapStats: (stats: Partial<MapStatsState>) => void;
 };
 
 type MapStatsStore = MapStatsState & MapStatsActions;
@@ -14,9 +16,7 @@ type MapStatsStore = MapStatsState & MapStatsActions;
 export const useMapStatsStore = create<MapStatsStore>((set) => ({
   pointsCount: 0,
   buildTime: 0,
-  setMapStats: (stats) =>
-    set({
-      pointsCount: stats.pointsCount,
-      buildTime: stats.buildTime,
-    }),
+  totalInBounds: 0,
+  limit: 0,
+  setMapStats: (stats) => set(stats),
 }));
