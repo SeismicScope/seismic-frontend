@@ -39,6 +39,13 @@ const Navbar1 = ({
   className,
 }: Navbar1Props) => {
   const { login, logout, user } = useNavbar();
+  const isAdmin = user?.role === "admin";
+
+  console.log("user", user);
+
+  const menuWithAdmin = isAdmin
+    ? [...menu, { title: "Admin", url: "/admin" }]
+    : menu;
 
   return (
     <section
@@ -65,7 +72,7 @@ const Navbar1 = ({
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
-                  {menu.map((item) => renderMenuItem(item))}
+                  {menuWithAdmin.map((item) => renderMenuItem(item))}
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
@@ -116,7 +123,7 @@ const Navbar1 = ({
                     collapsible
                     className="flex w-full flex-col gap-4"
                   >
-                    {menu.map((item) => renderMobileMenuItem(item))}
+                    {menuWithAdmin.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
