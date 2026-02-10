@@ -1,11 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useSearchParams } from "next/navigation";
+import { useQueryState } from "nuqs";
 
 import { uploadEarthquakes } from "@/features/earthquakes/api";
 
 export function useUploadEarthquakes() {
-  const searchParams = useSearchParams();
-  const newSearchParams = new URLSearchParams(searchParams);
+  const [, setJobId] = useQueryState("jobId", { defaultValue: "" });
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -18,7 +17,7 @@ export function useUploadEarthquakes() {
       return data;
     },
     onSuccess: (data) => {
-      newSearchParams.set("jobId", data.id.toString());
+      setJobId(data.id.toString());
       queryClient.invalidateQueries({ queryKey: ["import-status"] });
     },
   });
