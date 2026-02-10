@@ -11,14 +11,12 @@ export type MapRequest = MapBounds & {
 
 export type MapPoint = {
   id: number;
-  externalId: string | null;
   occuredAt: string;
   magnitude: number;
   depth: number;
   latitude: number;
   longitude: number;
   location: string | null;
-  createdAt: string;
 };
 
 export type MapResponse = {
