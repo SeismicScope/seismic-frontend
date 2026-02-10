@@ -54,7 +54,7 @@ const Navbar1 = ({
         className,
       )}
     >
-      <div className="px-10">
+      <div className="px-4 lg:px-10">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">

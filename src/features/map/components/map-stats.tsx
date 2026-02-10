@@ -8,8 +8,8 @@ function MapStats() {
   const { fps, heap } = usePerformanceMetrics();
 
   return (
-    <div className="mb-4 flex items-center gap-2">
-      <p className="text-sm">
+    <div className="mb-4 flex items-center gap-2 px-3">
+      <p className="text-xs lg:text-sm">
         <span className="font-bold">In bounds:</span>{" "}
         {formatNumber(totalInBounds)}
         {totalInBounds > limit && (
@@ -20,21 +20,21 @@ function MapStats() {
         )}
       </p>
 
-      <p className="text-sm">
+      <p className="text-xs lg:text-sm">
         <span className="font-bold">Points:</span>{" "}
         {pointsCount && formatNumber(pointsCount)}
       </p>
 
-      <p className="text-sm">
+      <p className="text-xs lg:text-sm">
         <span className="font-bold">Build time:</span>{" "}
         {buildTime && buildTime.toFixed(2)} ms
       </p>
 
-      <p className="text-sm">
+      <p className="text-xs lg:text-sm">
         <span className="font-bold">Heap:</span> {heap && heap.toFixed(2)} MB
       </p>
 
-      <p className="text-sm">
+      <p className="text-xs lg:text-sm">
         <span className="font-bold">FPS:</span> {fps && fps}
       </p>
     </div>

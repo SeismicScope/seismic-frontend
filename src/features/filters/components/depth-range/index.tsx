@@ -26,13 +26,13 @@ function DepthRange() {
   }, DEBOUNCE_DELAY);
 
   return (
-    <div className="flex w-full items-center justify-between">
+    <div className="flex w-full items-center justify-between gap-3">
       <div className="flex items-center gap-2">
         <p className="font-semibold">Min</p>
         <Input
           type="number"
           placeholder="Depth"
-          className="max-w-24"
+          className="max-w-48 lg:max-w-24"
           value={(editingMin ? localMin : filters.minDepth) ?? ""}
           onChange={(e) => {
             const value = e.target.value ? Number(e.target.value) : null;
@@ -47,7 +47,7 @@ function DepthRange() {
         <Input
           type="number"
           placeholder="Depth"
-          className="max-w-24"
+          className="max-w-48 lg:max-w-24"
           value={(editingMax ? localMax : filters.maxDepth) ?? ""}
           onChange={(e) => {
             const value = e.target.value ? Number(e.target.value) : null;
