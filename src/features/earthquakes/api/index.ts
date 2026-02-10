@@ -27,11 +27,7 @@ export async function getEarthquakesMagnitudeHistogram(
 }
 
 export async function uploadEarthquakes(data: FormData): Promise<ImportStatus> {
-  const { data: earthquake } = await api.post("/import/upload", data, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  const { data: earthquake } = await api.post("/import/upload", data);
 
   return earthquake;
 }
