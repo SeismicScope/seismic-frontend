@@ -29,6 +29,8 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "npm"
 
+      - run: npm install -g npm@10.9.0
+      - run: npm -v
       - run: npm ci
       - run: npm run test:coverage
 
@@ -47,6 +49,7 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "npm"
 
+      - run: npm install -g npm@10.9.0
       - run: npm ci
       - run: npx playwright install --with-deps
       - run: npm run e2e
@@ -68,6 +71,7 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "npm"
 
+      - run: npm install -g npm@10.9.0
       - run: npm ci
       - run: npm run build-storybook
 
@@ -86,6 +90,7 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "npm"
 
+      - run: npm install -g npm@10.9.0
       - run: npm ci
       - run: npm audit --audit-level=high
 
