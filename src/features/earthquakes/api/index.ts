@@ -1,6 +1,7 @@
 import { api } from "@/shared/lib/axios";
 
 import type {
+  Earthquake,
   EarthquakeFilters,
   EarthquakeParams,
   EarthquakesResponse,
@@ -15,9 +16,7 @@ export async function getEarthquakes(
   return data;
 }
 
-export async function getEarthquakeById(
-  id: string,
-): Promise<EarthquakesResponse> {
+export async function getEarthquakeById(id: string): Promise<Earthquake> {
   const { data } = await api.get(`/earthquakes/${id}`);
 
   return data;

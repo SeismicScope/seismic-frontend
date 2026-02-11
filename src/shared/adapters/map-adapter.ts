@@ -7,26 +7,54 @@ import {
   pointLayer,
 } from "./map-layers";
 
+export type MapAdapterOptions = {
+  center?: [number, number];
+  zoom?: number;
+  minZoom?: number;
+  maxZoom?: number;
+  maxBounds?: mapboxgl.LngLatBoundsLike;
+  interactive?: boolean;
+  navigationControl?: boolean;
+  attributionControl?: boolean;
+};
+
+const DEFAULT_OPTIONS: MapAdapterOptions = {
+  center: [20, 44],
+  zoom: 5,
+  minZoom: 4,
+  maxZoom: 14,
+  maxBounds: [
+    [-15, 30],
+    [45, 65],
+  ],
+  interactive: true,
+  navigationControl: true,
+  attributionControl: true,
+};
+
 export class MapAdapter {
   private map: mapboxgl.Map;
 
-  constructor(container: HTMLElement) {
+  constructor(container: HTMLElement, options?: MapAdapterOptions) {
     mapboxgl.accessToken = MAPBOX_TOKEN;
+
+    const opts = { ...DEFAULT_OPTIONS, ...options };
 
     this.map = new mapboxgl.Map({
       container,
       style: MAPBOX_STYLE,
-      center: [20, 44],
-      zoom: 5,
-      minZoom: 4,
-      maxZoom: 14,
-      maxBounds: [
-        [-15, 30],
-        [45, 65],
-      ],
+      center: opts.center,
+      zoom: opts.zoom,
+      minZoom: opts.minZoom,
+      maxZoom: opts.maxZoom,
+      maxBounds: opts.maxBounds,
+      interactive: opts.interactive,
+      attributionControl: opts.attributionControl,
     });
 
-    this.map.addControl(new mapboxgl.NavigationControl(), "top-right");
+    if (opts.navigationControl) {
+      this.map.addControl(new mapboxgl.NavigationControl(), "top-right");
+    }
   }
 
   onLoad(callback: () => void) {

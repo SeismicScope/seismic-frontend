@@ -7,8 +7,13 @@ import { getEarthquakesMagnitudeHistogram } from "../api";
 export function useEarthquakeHistogram() {
   const { apiFilters } = useFilters();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { minMag, maxMag, ...filtersWithoutMag } = apiFilters;
+
   return useQuery({
-    queryKey: ["earthquakes-histogram", apiFilters],
-    queryFn: () => getEarthquakesMagnitudeHistogram(apiFilters),
+    queryKey: ["earthquakes-histogram", filtersWithoutMag],
+    queryFn: () => getEarthquakesMagnitudeHistogram(filtersWithoutMag),
+    staleTime: Infinity,
+    gcTime: Infinity,
   });
 }

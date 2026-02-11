@@ -24,7 +24,7 @@ function AnalyticsPage() {
   } = useEarthquakesTimeSeries();
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="mt-5 w-full px-4 lg:px-10">
       <EarthquakesStats />
 
       <Card>
