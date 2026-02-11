@@ -1,8 +1,8 @@
 "use client";
+import { useEarthquakesStats } from "@/features/analytics/hooks/use-earthquakes-stats";
 import { formatNumber } from "@/shared/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 
-import { useEarthquakesStats } from "../../../analytics/hooks/use-earthquakes-stats";
 import EarthquakesStatsSkeleton from "./earthquakes-stats-skeleton";
 
 function EarthquakesStats() {

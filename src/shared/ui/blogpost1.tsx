@@ -9,7 +9,7 @@ interface Blogpost1Props {
   className?: string;
 }
 
-const Blogpost1 = ({ className }: Blogpost1Props) => {
+function Blogpost1({ className }: Blogpost1Props) {
   return (
     <section className={cn("p-3 lg:p-16", className)}>
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
@@ -155,6 +155,6 @@ const Blogpost1 = ({ className }: Blogpost1Props) => {
       </div>
     </section>
   );
-};
+}
 
 export { Blogpost1 };

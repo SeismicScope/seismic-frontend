@@ -6,7 +6,7 @@ import { Input } from "../input";
 import HistogramBar from "./histogram-bar";
 import HistogramSkeleton from "./histogram-skeleton";
 import type { HistogramProps } from "./types";
-import { useHstogram } from "./use-histogram";
+import { useHistogram } from "./use-histogram";
 
 function Histogram({
   histogram,
@@ -21,7 +21,7 @@ function Histogram({
     dataMin,
     handleValueChange,
     handleValueCommit,
-  } = useHstogram({ histogram, range, onRangeCommit });
+  } = useHistogram({ histogram, range, onRangeCommit });
 
   if (isLoading) {
     return <HistogramSkeleton />;

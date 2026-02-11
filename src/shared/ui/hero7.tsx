@@ -14,7 +14,7 @@ interface Hero7Props {
   className?: string;
 }
 
-const Hero7 = ({
+function Hero7({
   heading = "A Collection of Components Built With Shadcn & Tailwind",
   subtitle = "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
   description = "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
@@ -24,7 +24,7 @@ const Hero7 = ({
   },
   children,
   className,
-}: Hero7Props) => {
+}: Hero7Props) {
   return (
     <section className={cn("py-32", className)}>
       <div className="container text-center">
@@ -44,6 +44,6 @@ const Hero7 = ({
       </div>
     </section>
   );
-};
+}
 
 export { Hero7 };

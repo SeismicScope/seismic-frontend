@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { Suspense } from "react";
 
 import { Providers } from "@/shared/providers";
+import LayoutLoader from "@/shared/ui/layout-loader";
 import { Navbar1 } from "@/shared/ui/navbar";
 
 const inter = Inter({
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} pt-20 antialiased`}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LayoutLoader />}>
           <Providers>
             <Navbar1 />
             {children}

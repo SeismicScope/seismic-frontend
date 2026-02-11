@@ -1,7 +1,7 @@
 "use client";
 import { useImportStatus } from "@/shared/hooks/use-import-status";
 
-const JobStatus = () => {
+function JobStatus() {
   const { jobStatus, jobId } = useImportStatus();
 
   if (!jobId) {
@@ -22,6 +22,6 @@ const JobStatus = () => {
       )}
     </div>
   );
-};
+}
 
 export default JobStatus;

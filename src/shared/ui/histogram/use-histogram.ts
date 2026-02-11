@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 
 import type { HistogramProps } from "./types";
 
-export function useHstogram({
+export function useHistogram({
   histogram,
   range,
   onRangeCommit,

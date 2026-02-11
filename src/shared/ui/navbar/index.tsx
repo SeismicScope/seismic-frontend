@@ -33,11 +33,7 @@ import { LOGO_DATA, MENU } from "./constants";
 import { type MenuItem, Navbar1Props } from "./types";
 import { useNavbar } from "./use-navbar";
 
-const Navbar1 = ({
-  logo = LOGO_DATA,
-  menu = MENU,
-  className,
-}: Navbar1Props) => {
+function Navbar1({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
   const { login, logout, user } = useNavbar();
   const isAdmin = user?.role === "admin";
 
@@ -143,7 +139,7 @@ const Navbar1 = ({
       </div>
     </section>
   );
-};
+}
 
 const renderMenuItem = (item: MenuItem) => {
   if (item.items) {

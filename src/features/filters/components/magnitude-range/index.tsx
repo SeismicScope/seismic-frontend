@@ -2,9 +2,8 @@
 import { useCallback, useMemo } from "react";
 
 import { useEarthquakeHistogram } from "@/features/earthquakes/hooks/use-earthquakes-histogram";
+import { useFilters } from "@/features/filters/hooks/use-filters";
 import Histogram from "@/shared/ui/histogram";
-
-import { useFilters } from "../../hooks/use-filters";
 
 function MagnitudeRange() {
   const { data: histogram, isLoading } = useEarthquakeHistogram();

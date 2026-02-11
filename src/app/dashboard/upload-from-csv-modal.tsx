@@ -10,16 +10,16 @@ import {
   DialogTrigger,
 } from "@/shared/ui/dialog";
 
-const UploadFromCSVModal = () => {
+function UploadFromCSVModal() {
   const { mutate: upload, isPending } = useUploadEarthquakes();
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const file = e.target.files?.[0];
     console.log(file);
     if (file) {
       upload(file);
     }
-  };
+  }
 
   return (
     <Dialog>
@@ -55,6 +55,6 @@ const UploadFromCSVModal = () => {
       </DialogContent>
     </Dialog>
   );
-};
+}
 
 export default UploadFromCSVModal;

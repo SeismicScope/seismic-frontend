@@ -1,4 +1,5 @@
 import type { EarthquakeFilters } from "@/features/earthquakes/types";
+import type { TimeInterval } from "@/types/main";
 
 export type EarthquakeStats = {
   avgDepth: number;
@@ -11,8 +12,6 @@ export type EarthquakeTimeSeries = {
   date: string;
   count: number;
 };
-
-export type TimeInterval = "day" | "week" | "month" | "year";
 
 export type TimeSeriesParams = EarthquakeFilters & {
   interval?: TimeInterval;

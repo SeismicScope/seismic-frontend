@@ -4,12 +4,11 @@ import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import type { DateRange } from "react-day-picker";
 
+import { useFilters } from "@/features/filters/hooks/use-filters";
 import { Button } from "@/shared/ui/button";
 import { Calendar } from "@/shared/ui/calendar";
 import { Field } from "@/shared/ui/field";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
-
-import { useFilters } from "../../hooks/use-filters";
 
 function DatePickerWithRange() {
   const { filters, setFilters } = useFilters();

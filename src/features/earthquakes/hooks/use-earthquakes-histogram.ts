@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { useFilters } from "../../filters/hooks/use-filters";
+import { useFilters } from "@/features/filters/hooks/use-filters";
+
 import { getEarthquakesMagnitudeHistogram } from "../api";
 
 export function useEarthquakeHistogram() {

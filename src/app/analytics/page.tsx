@@ -3,7 +3,7 @@
 import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
 import { TimeSeriesChart } from "@/features/analytics/components/time-series-chart";
 import { useEarthquakesTimeSeries } from "@/features/analytics/hooks/use-earthquakes-time-series";
-import { TimeInterval } from "@/features/analytics/types";
+import { PERIOD_INTERVALS } from "@/shared/constants";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import {
   Select,
@@ -12,10 +12,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/ui/select";
+import type { TimeInterval } from "@/types/main";
 
-import { INTERVALS } from "./constants";
-
-const AnalyticsPage = () => {
+function AnalyticsPage() {
   const {
     data: timeSeries,
     isLoading,
@@ -40,7 +39,7 @@ const AnalyticsPage = () => {
               <SelectValue placeholder="Select interval" />
             </SelectTrigger>
             <SelectContent>
-              {INTERVALS.map((interval) => (
+              {PERIOD_INTERVALS.map((interval) => (
                 <SelectItem key={interval} value={interval}>
                   {interval}
                 </SelectItem>
@@ -52,6 +51,6 @@ const AnalyticsPage = () => {
       </Card>
     </div>
   );
-};
+}
 
 export default AnalyticsPage;

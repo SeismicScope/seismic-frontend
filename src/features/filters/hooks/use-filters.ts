@@ -9,7 +9,7 @@ import { useMemo } from "react";
 
 import { getApiFilters } from "../lib/utils";
 
-export const useFilters = () => {
+export function useFilters() {
   const [filters, setFilters] = useQueryStates(
     {
       minMag: parseAsFloat,
@@ -59,4 +59,4 @@ export const useFilters = () => {
     setField,
     resetFilters,
   };
-};
+}

@@ -1,7 +1,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 
-import type { Earthquake } from "../../types";
+import type { Earthquake } from "@/features/earthquakes/types";
 
 export const columns: ColumnDef<Earthquake>[] = [
   {

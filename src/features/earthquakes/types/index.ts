@@ -3,7 +3,6 @@ export type ImportStatus = {
   id: number;
   processed: number;
   status: string;
-  totalRows: number | null;
   updatedAt: string;
 };
 

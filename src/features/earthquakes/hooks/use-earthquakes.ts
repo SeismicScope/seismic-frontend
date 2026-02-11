@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { useFilters } from "../../filters/hooks/use-filters";
-import { getEarthquakes } from "../api";
+import { getEarthquakes } from "@/features/earthquakes/api";
+import { useFilters } from "@/features/filters/hooks/use-filters";
 
 export function useEarthquakes() {
   const { apiFilters } = useFilters();

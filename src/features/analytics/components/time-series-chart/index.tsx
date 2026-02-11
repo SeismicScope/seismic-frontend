@@ -3,13 +3,13 @@
 import { useMemo } from "react";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
+import type { EarthquakeTimeSeries } from "@/features/analytics/types";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/shared/ui/chart";
 
-import type { EarthquakeTimeSeries } from "../../types";
 import { chartConfig } from "./contants";
 import { formatDate } from "./helpers";
 import TimeSeriesLoader from "./time-series-loader";

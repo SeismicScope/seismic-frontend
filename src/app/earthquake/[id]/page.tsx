@@ -1,7 +1,7 @@
 import React from "react";
 
-const EarthquakePage = () => {
+function EarthquakePage() {
   return <div>EarthquakePage</div>;
-};
+}
 
 export default EarthquakePage;

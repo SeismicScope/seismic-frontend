@@ -3,7 +3,8 @@ import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useEffect, useMemo, useRef } from "react";
 
-import { useEarthquakes } from "../../hooks/use-earthquakes";
+import { useEarthquakes } from "@/features/earthquakes/hooks/use-earthquakes";
+
 import { columns } from "./columns";
 
 export function useEarthquakesTable() {
