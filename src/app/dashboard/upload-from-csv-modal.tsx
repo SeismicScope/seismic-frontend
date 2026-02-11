@@ -15,7 +15,6 @@ function UploadFromCSVModal() {
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const file = e.target.files?.[0];
-    console.log(file);
     if (file) {
       upload(file);
     }

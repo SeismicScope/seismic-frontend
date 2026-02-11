@@ -37,8 +37,6 @@ function Navbar1({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
   const { login, logout, user } = useNavbar();
   const isAdmin = user?.role === "admin";
 
-  console.log("user", user);
-
   const menuWithAdmin = isAdmin
     ? [...menu, { title: "Admin", url: "/admin" }]
     : menu;

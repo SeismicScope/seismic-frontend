@@ -5,13 +5,11 @@ export const api = axios.create({
   withCredentials: true,
 });
 
-console.log("process.env.NEXT_PUBLIC_API_URL", process.env.NEXT_PUBLIC_API_URL);
-
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      console.log("Unauthorized");
+      console.error("Unauthorized");
     }
 
     return Promise.reject(error);

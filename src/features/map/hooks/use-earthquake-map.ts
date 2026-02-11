@@ -68,7 +68,6 @@ export function useEarthquakeMap() {
       }
 
       if (e.data.type === "clusterStats") {
-        console.log(e.data.data);
         setMapStats({
           pointsCount: e.data.data.pointsCount,
           buildTime: e.data.data.buildTime,
