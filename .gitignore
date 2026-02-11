@@ -46,3 +46,7 @@ types/cache-life.d.ts
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+*storybook.log
+storybook-static
+.env*.local

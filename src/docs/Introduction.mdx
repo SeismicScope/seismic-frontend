@@ -1,0 +1,158 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introduction" parameters={{ layout: "fullscreen" }} />
+
+<div className="mx-auto max-w-4xl space-y-8 p-8">
+
+<div>
+  <h1 className="mb-4 text-4xl font-bold">SeismicScope Design System</h1>
+  <p className="text-lg text-gray-600">
+    Welcome to the SeismicScope Design System Storybook! 🏡
+  </p>
+</div>
+
+<section>
+  <h2 className="mb-3 text-2xl font-semibold">🎨 What&apos;s inside?</h2>
+  <p className="mb-4 text-gray-700">
+    This Storybook contains all the reusable components used across the
+    SeismicScope platform - the future of real estate in Austria.
+  </p>
+  <p className="text-gray-700">
+    Our design system helps maintain consistency, improve development speed, and
+    create a unified user experience across all SeismicScope products.
+  </p>
+</section>
+
+  <section>
+    <h2 className="mb-3 text-2xl font-semibold">📂 Design System Structure</h2>
+    <p className="mb-4 text-gray-700">
+     Core design tokens and visual foundations that define the look and feel of the SeismicScope platform.
+     This section documents the shared visual language used across all products to ensure consistency, accessibility, and scalability.
+    </p>
+    <div className="space-y-4">
+      <div>
+        <p className="mb-2 text-gray-600">
+          Here you’ll find:
+        </p>
+        <ul className="list-inside list-disc space-y-1 text-gray-700">
+          <li>
+            <strong>Color System Architecture</strong> – The design system uses a three-level color architecture for maximum flexibility and maintainability.
+          </li>
+          <li>
+            <strong>Level 1 - Core Colors</strong> – Core colors are the foundation of the design system. These are raw color palettes that don't change based on theme.
+          </li>
+          <li>
+           <strong>Level 2 - Theme Colors</strong> – Theme tokens are semantic colors that can be swapped based on the active theme. They reference Core Colors but provide a flexible abstraction layer.
+          </li>
+          <li>
+            <strong>Level 3 - Mode Colors</strong> – Mode tokens are usage-specific colors for different contexts and states. These are the tokens you should use most often in your components.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <section>
+    <h2 className="mb-3 text-2xl font-semibold">📂 Component Structure</h2>
+    <p className="mb-4 text-gray-700">
+      We organize components in a simple, practical way:
+    </p>
+
+    <div className="space-y-4">
+      <div>
+        <h3 className="mb-2 text-xl font-semibold">Components</h3>
+        <p className="mb-2 text-gray-600">
+          Core UI building blocks used throughout the app:
+        </p>
+        <ul className="list-inside list-disc space-y-1 text-gray-700">
+          <li><strong>Buttons</strong> – Primary, secondary, icon buttons</li>
+          <li><strong>Forms</strong> – Inputs, selects, checkboxes, date pickers</li>
+          <li><strong>Layout</strong> – Containers, grids, spacing utilities</li>
+          <li><strong>Navigation</strong> – Headers, sidebars, tabs, breadcrumbs</li>
+          <li><strong>Cards</strong> – Content containers, listing cards</li>
+          <li><strong>Modals</strong> – Dialogs, drawers, popups, toasts</li>
+          <li><strong>Data Display</strong> – Tables, lists, badges, avatars</li>
+          <li><strong>Feedback</strong> – Alerts, notifications, loading states</li>
+          <li><strong>Typography</strong> – Headings, paragraphs, text styles</li>
+          <li><strong>Icons</strong> – Complete icon library</li>
+          <li><strong>Media</strong> – Images, galleries, video players</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+<section>
+  <h2 className="mb-3 text-2xl font-semibold">🏷️Tags and Development Stages</h2>
+  <p className="mb-4 text-gray-700">
+    In this Storybook, each component is assigned a stage or tag to indicate its
+    development status and alignment with the SeismicScope Design System. These
+    tags help the team understand which components are production-ready, in
+    progress, or legacy.
+  </p>
+  <ul className="list-inside list-disc space-y-2 text-gray-700">
+    <li>
+      <strong>Stage 0</strong> – Component exists in Storybook, but no stories
+      have been created yet.
+    </li>
+    <li>
+      <strong>Stage 1</strong> – Stories have been added, demonstrating usage
+      and props.
+    </li>
+    <li>
+      <strong>Stage 2</strong> – Component is fully aligned with the Design
+      System, including styles, tokens, and naming conventions.
+    </li>
+    <li>
+      <strong>In Progress</strong> – Component has been added or is under
+      redesign; it may not fully comply with the Design System yet.
+    </li>
+    <li>
+      <strong>Old / Legacy</strong> – Deprecated or legacy components that may
+      be replaced or removed in the future.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 className="mb-3 text-2xl font-semibold">🚀 Quick Start</h2>
+  <ol className="list-inside list-decimal space-y-2 text-gray-700">
+    <li>Browse components in the sidebar (organized by type)</li>
+    <li>Interact with props using the Controls panel</li>
+    <li>Test responsive behavior with the viewport toolbar</li>
+  </ol>
+</section>
+
+<section>
+  <h2 className="mb-3 text-2xl font-semibold">💡 Pro Tips</h2>
+  <ul className="list-inside list-disc space-y-1 text-gray-700">
+    <li>⌘K / Ctrl+K — quick search</li>
+  </ul>
+</section>
+
+<section className="border-t pt-6">
+  <p className="text-center text-gray-600">
+    Built with ❤️ by the Vasyl Oliinyk
+  </p>
+  <p className="text-center text-gray-600">
+    <a
+      href="https://github.com/vasyloliinyk/seismicscope"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub
+    </a>
+  </p>
+  <p className="text-center text-gray-600">
+    <a
+      href="https://www.linkedin.com/in/oleinik-vasiliiy/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      LinkedIn
+    </a>
+  </p>
+</section>
+
+</div>

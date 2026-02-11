@@ -1,0 +1,192 @@
+import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
+
+<Meta title="Design System/3. Mode Tokens" tags={["stage-2"]} />
+
+# Level 3: Mode Tokens
+
+Mode tokens are usage-specific colors for different contexts and states. These are the tokens you should use most often in your components.
+
+## Background
+
+Background colors for different container levels.
+
+<ColorPalette>
+  <ColorItem
+    title="Background"
+    colors={{
+      "ds-background-default": "var(--ds-background-default)",
+      "ds-background-soft": "var(--ds-background-soft)",
+    }}
+  />
+</ColorPalette>
+
+### Usage
+
+```tsx
+// Page background
+<div className="bg-ds-background-default">...</div>
+
+// Section background
+<div className="bg-ds-background-soft">...</div>
+```
+
+## Surface
+
+Surface colors for cards, panels, and elevated elements.
+
+<ColorPalette>
+  <ColorItem
+    title="Surface"
+    colors={{
+      "ds-surface-default": "var(--ds-surface-default)",
+      "ds-surface-soft": "var(--ds-surface-soft)",
+      "ds-surface-medium": "var(--ds-surface-medium)",
+      "ds-surface-disable": "var(--ds-surface-disable)",
+      "ds-surface-invert": "var(--ds-surface-invert)",
+    }}
+  />
+</ColorPalette>
+
+### Usage
+
+```tsx
+// Card
+<div className="bg-ds-surface-default">...</div>
+
+// Disabled button
+<button className="bg-ds-surface-disable">...</button>
+
+// Dark mode / inverted surface
+<div className="bg-ds-surface-invert text-ds-content-invert">...</div>
+```
+
+## Overlay
+
+Semi-transparent overlays for modals, dropdowns, and hover states.
+
+<ColorPalette>
+  <ColorItem
+    title="Overlay"
+    colors={{
+      "ds-overlay-light": "var(--ds-overlay-light)",
+      "ds-overlay-medium": "var(--ds-overlay-medium)",
+      "ds-overlay-high": "var(--ds-overlay-high)",
+    }}
+  />
+</ColorPalette>
+
+### Usage
+
+```tsx
+// Modal backdrop
+<div className="bg-ds-overlay-high">...</div>
+
+// Hover state
+<div className="hover:bg-ds-overlay-light">...</div>
+
+// Disabled overlay
+<div className="bg-ds-overlay-medium">...</div>
+```
+
+## Content
+
+Text and icon colors with different emphasis levels.
+
+<ColorPalette>
+  <ColorItem
+    title="Content"
+    colors={{
+      "ds-content-high": "var(--ds-content-high)",
+      "ds-content-medium": "var(--ds-content-medium)",
+      "ds-content-low": "var(--ds-content-low)",
+      "ds-content-disable": "var(--ds-content-disable)",
+      "ds-content-invert": "var(--ds-content-invert)",
+    }}
+  />
+</ColorPalette>
+
+### Usage
+
+```tsx
+// Heading
+<h1 className="text-ds-content-high">Important Title</h1>
+
+// Body text
+<p className="text-ds-content-medium">Regular paragraph text</p>
+
+// Caption or helper text
+<span className="text-ds-content-low">Optional information</span>
+
+// Disabled text
+<span className="text-ds-content-disable">Disabled option</span>
+
+// Text on dark background
+<span className="text-ds-content-invert">White text</span>
+```
+
+## Outline
+
+Border and divider colors.
+
+<ColorPalette>
+  <ColorItem
+    title="Outline"
+    colors={{
+      "ds-outline-high": "var(--ds-outline-high)",
+      "ds-outline-medium": "var(--ds-outline-medium)",
+      "ds-outline-light": "var(--ds-outline-light)",
+      "ds-outline-black": "var(--ds-outline-black)",
+    }}
+  />
+</ColorPalette>
+
+### Usage
+
+```tsx
+// Input border
+<input className="border border-ds-outline-medium" />
+
+// Divider
+<hr className="border-ds-outline-light" />
+
+// Strong border (e.g., on focus)
+<input className="focus:border-ds-outline-high" />
+
+// Solid black border
+<div className="border-2 border-ds-outline-black" />
+```
+
+## Gradient
+
+<ColorPalette>
+  <ColorItem
+    title="Gradient"
+    colors={{
+      "ds-gradient-primary": "var(--ds-gradient-primary)",
+    }}
+  />
+</ColorPalette>
+
+### Usage
+
+```tsx
+// Gradient background
+<div className="bg-ds-gradient-primary">...</div>
+
+// Or with inline styles if Tailwind doesn't support complex gradients
+<div style={{ background: 'var(--ds-gradient-primary)' }}>...</div>
+```
+
+---
+
+## Visual Hierarchy
+
+Mode tokens follow this layering system:
+
+1. **Background** - Base layer (page)
+2. **Surface** - Elevated elements (cards, panels)
+3. **Content** - Text and icons
+4. **Overlay** - Interactive states and overlays
+5. **Outline** - Borders and dividers
+
+When building components, always use Mode tokens rather than Core or Theme tokens directly for maximum flexibility.
