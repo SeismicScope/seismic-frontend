@@ -9,7 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix",
+    "lint": "eslint . --ext .ts,.tsx --fix",
     "prepare": "husky",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged"

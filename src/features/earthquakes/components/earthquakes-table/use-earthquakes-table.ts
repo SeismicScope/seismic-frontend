@@ -37,24 +37,21 @@ export function useEarthquakesTable() {
 
   const virtualRows = rowVirtualizer.getVirtualItems();
 
-  useEffect(() => {
-    const lastItem = virtualRows[virtualRows.length - 1];
-    if (!lastItem) return;
+  useEffect(
+    function fetchNextPageIfNeeded() {
+      const lastItem = virtualRows[virtualRows.length - 1];
+      if (!lastItem) return;
 
-    if (
-      lastItem.index >= rows.length - 1 &&
-      hasNextPage &&
-      !isFetchingNextPage
-    ) {
-      fetchNextPage();
-    }
-  }, [
-    hasNextPage,
-    fetchNextPage,
-    virtualRows,
-    rows.length,
-    isFetchingNextPage,
-  ]);
+      if (
+        lastItem.index >= rows.length - 1 &&
+        hasNextPage &&
+        !isFetchingNextPage
+      ) {
+        fetchNextPage();
+      }
+    },
+    [hasNextPage, fetchNextPage, virtualRows, rows.length, isFetchingNextPage],
+  );
 
   return {
     isLoading,

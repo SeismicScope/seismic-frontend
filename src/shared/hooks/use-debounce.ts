@@ -5,15 +5,18 @@ const DEFAULT_DELAY = 300;
 export function useDebounce<T>(value: T, delay: number = DEFAULT_DELAY): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
+  useEffect(
+    function scheduleDebouncedValueUpdate() {
+      const handler = setTimeout(() => {
+        setDebouncedValue(value);
+      }, delay);
 
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
+      return function clearScheduledUpdate() {
+        clearTimeout(handler);
+      };
+    },
+    [value, delay],
+  );
 
   return debouncedValue;
 }
@@ -25,12 +28,15 @@ export function useDebouncedCallback<T extends (...args: never[]) => void>(
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const callbackRef = useRef(callback);
 
-  useEffect(() => {
-    callbackRef.current = callback;
-  }, [callback]);
+  useEffect(
+    function syncCallbackRef() {
+      callbackRef.current = callback;
+    },
+    [callback],
+  );
 
-  useEffect(() => {
-    return () => {
+  useEffect(function cleanupTimeoutOnUnmount() {
+    return function clearPendingTimeout() {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);

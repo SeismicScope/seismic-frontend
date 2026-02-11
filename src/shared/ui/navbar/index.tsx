@@ -105,8 +105,8 @@ function Navbar1({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
                 <SheetHeader>
                   <SheetTitle>
                     <a href={logo.url} className="flex items-center gap-2">
-                      <img
-                        src={logo.src}
+                      <Image
+                        src={Logo}
                         className="max-h-8 dark:invert"
                         alt={logo.alt}
                       />
