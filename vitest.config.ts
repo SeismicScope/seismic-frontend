@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import path from "path";
@@ -11,18 +10,17 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    noDiscovery: true, 
-    include: [],
+    include: [
+      'aria-query', 
+      'expect-type', 
+      '@testing-library/jest-dom/vitest',
+      '@storybook/test'
+    ],
   },
   test: {
-    environment: "jsdom",
     globals: true,
+    environment: "jsdom",
     setupFiles: ["./vitest.setup.ts"], 
-    server: {
-      deps: {
-        inline: [/runtime-utils/, "aria-query", "expect-type"],
-      },
-    },
     projects: [
       {
         extends: true,
@@ -37,7 +35,7 @@ export default defineConfig({
             enabled: true,
             headless: true,
             provider: playwright({}),
-            instances: [{ browser: 'chromium' }]
+            instances: [{ browser: 'chromium' }],
           },
           setupFiles: ["./.storybook/vitest.setup.ts"] 
         }
