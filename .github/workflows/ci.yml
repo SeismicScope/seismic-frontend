@@ -27,11 +27,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-          cache: "npm"
 
       - run: npm install -g npm@10.9.0
       - run: npm -v
-      - run: npm ci
+      - run: npm install
       - run: npm run test:coverage
 
       - uses: codecov/codecov-action@v5
@@ -47,10 +46,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-          cache: "npm"
 
       - run: npm install -g npm@10.9.0
-      - run: npm ci
+      - run: npm install
       - run: npx playwright install --with-deps
       - run: npm run e2e
 
@@ -69,10 +67,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-          cache: "npm"
 
       - run: npm install -g npm@10.9.0
-      - run: npm ci
+      - run: npm install
       - run: npm run build-storybook
 
       - uses: actions/upload-artifact@v4
@@ -88,10 +85,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-          cache: "npm"
 
       - run: npm install -g npm@10.9.0
-      - run: npm ci
+      - run: npm install
       - run: npm audit --audit-level=high
 
   codeql:
