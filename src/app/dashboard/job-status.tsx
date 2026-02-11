@@ -1,5 +1,5 @@
 "use client";
-import { useImportStatus } from "@/shared/hooks/use-import-status";
+import { useImportStatus } from "@/features/import/hooks/use-import-status";
 
 function JobStatus() {
   const { jobStatus, jobId } = useImportStatus();

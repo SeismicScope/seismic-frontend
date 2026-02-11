@@ -11,3 +11,6 @@ export const PERIOD_INTERVALS = [
   PERIODS.MONTH,
   PERIODS.YEAR,
 ];
+
+export const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
+export const MAPBOX_STYLE = process.env.NEXT_PUBLIC_MAPBOX_STYLE!;

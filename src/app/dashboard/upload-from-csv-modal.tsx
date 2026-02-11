@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useUploadEarthquakes } from "@/shared/hooks/use-upload-earthquakes";
+import { useUploadEarthquakes } from "@/features/import/hooks/use-upload-earthquakes";
 import { Button } from "@/shared/ui/button";
 import {
   Dialog,
