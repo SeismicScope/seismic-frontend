@@ -73,6 +73,10 @@ const eslintConfig = defineConfig([
     "types/routes.d.ts",
     "types/validator.ts",
     "types/cache-life.d.ts",
+    "*.test.ts",
+    "*.test.tsx",
+    "*.test.js",
+    "*.test.jsx",
   ]),
 ]);
 
