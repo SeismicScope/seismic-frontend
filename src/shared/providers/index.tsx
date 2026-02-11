@@ -31,6 +31,10 @@ export function Providers({
 
         queryCache: new QueryCache({
           onError: (error, query) => {
+            if (query.meta?.skipGlobalErrorHandler) {
+              return;
+            }
+
             const message = getErrorMessage(error);
             toast.error(message);
             Sentry.captureException(error, {

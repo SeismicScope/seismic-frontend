@@ -14,6 +14,9 @@ export function useAuth() {
     queryFn: me,
     retry: false,
     refetchOnWindowFocus: false,
+    meta: {
+      skipGlobalErrorHandler: true,
+    },
   });
 
   const loginMutation = useMutation({
