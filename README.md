@@ -105,6 +105,10 @@ npm run test:coverage     # vitest with coverage
 npm run storybook         # component playground on :6006
 ```
 
+### Test Coverage
+
+[![codecov](https://codecov.io/github/SeismicScope/seismic-frontend/graph/badge.svg?token=CJ1Q2HZEII)](https://codecov.io/github/SeismicScope/seismic-frontend)
+
 ## Deployment
 
 Deployed on Vercel. Push to `main` triggers automatic build and deployment.
