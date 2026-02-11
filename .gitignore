@@ -43,3 +43,6 @@ next-env.d.ts
 types/routes.d.ts
 types/validator.ts
 types/cache-life.d.ts
+
+# Sentry Config File
+.env.sentry-build-plugin

@@ -3,6 +3,7 @@
 import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
 import { TimeSeriesChart } from "@/features/analytics/components/time-series-chart";
 import { useEarthquakesTimeSeries } from "@/features/analytics/hooks/use-earthquakes-time-series";
+import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
 import { PERIOD_INTERVALS } from "@/shared/constants";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import {
@@ -46,7 +47,15 @@ function AnalyticsPage() {
               ))}
             </SelectContent>
           </Select>
-          <TimeSeriesChart data={timeSeries ?? []} isLoading={isLoading} />
+          <ErrorBoundary
+            fallback={
+              <div className="text-muted-foreground flex h-[300px] items-center justify-center text-sm">
+                Failed to render chart
+              </div>
+            }
+          >
+            <TimeSeriesChart data={timeSeries ?? []} isLoading={isLoading} />
+          </ErrorBoundary>
         </CardContent>
       </Card>
     </div>
