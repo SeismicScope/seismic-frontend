@@ -10,7 +10,5 @@ export function useEarthquakeHistogram() {
   return useQuery({
     queryKey: ["earthquakes-histogram", apiFilters],
     queryFn: () => getEarthquakesMagnitudeHistogram(apiFilters),
-    staleTime: Infinity,
-    gcTime: Infinity,
   });
 }

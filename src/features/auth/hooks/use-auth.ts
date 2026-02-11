@@ -16,8 +16,6 @@ export function useAuth() {
     refetchOnWindowFocus: false,
   });
 
-  console.log("isLoading", isLoading);
-
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: (userData) => {

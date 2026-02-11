@@ -2,9 +2,9 @@ import mapboxgl from "mapbox-gl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import React from "react";
 
+import { MapAdapter } from "@/shared/adapters/map-adapter";
 import { useDebouncedCallback } from "@/shared/hooks/use-debounce";
 
-import { MapAdapter } from "../adapters/map-adapter";
 import MapPopup from "../components/map-popup";
 import { SOURCE_ID } from "../constants";
 import { getBounds, renderMapPopup, toGeoJSON } from "../lib/utils";

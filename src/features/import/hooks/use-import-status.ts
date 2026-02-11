@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
 
-import { getImportStatus } from "@/features/earthquakes/api";
+import { getImportStatus } from "../api";
 
 export function useImportStatus() {
   const [jobId] = useQueryState("jobId", { defaultValue: "" });

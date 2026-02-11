@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
 
-import { uploadEarthquakes } from "@/features/earthquakes/api";
+import { uploadEarthquakes } from "../api";
 
 export function useUploadEarthquakes() {
   const [, setJobId] = useQueryState("jobId", { defaultValue: "" });

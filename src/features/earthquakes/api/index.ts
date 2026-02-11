@@ -4,7 +4,6 @@ import type {
   EarthquakeFilters,
   EarthquakeParams,
   EarthquakesResponse,
-  ImportStatus,
   MagnitudeHistogram,
 } from "../types";
 
@@ -16,24 +15,20 @@ export async function getEarthquakes(
   return data;
 }
 
+export async function getEarthquakeById(
+  id: string,
+): Promise<EarthquakesResponse> {
+  const { data } = await api.get(`/earthquakes/${id}`);
+
+  return data;
+}
+
 export async function getEarthquakesMagnitudeHistogram(
   filters: EarthquakeFilters,
 ): Promise<MagnitudeHistogram[]> {
   const { data } = await api.get("/earthquakes/magnitude-histogram", {
     params: filters,
   });
-
-  return data;
-}
-
-export async function uploadEarthquakes(data: FormData): Promise<ImportStatus> {
-  const { data: earthquake } = await api.post("/import/upload", data);
-
-  return earthquake;
-}
-
-export async function getImportStatus(jobId: number): Promise<ImportStatus> {
-  const { data } = await api.get(`/import/status/${jobId}`);
 
   return data;
 }
