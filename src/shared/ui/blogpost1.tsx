@@ -38,7 +38,7 @@ function Blogpost1({ className }: Blogpost1Props) {
             </li>
             <li className="my-2">
               <span className="font-semibold">Database Optimization:</span>{" "}
-              Advanced indexing and performance tuninli
+              Advanced indexing and performance tuning
             </li>
             <li className="my-2">
               <span className="font-semibold">
@@ -148,7 +148,6 @@ function Blogpost1({ className }: Blogpost1Props) {
             </li>
             <li className="my-2">
               <span className="font-semibold">Containerization:</span> Docker
-              Docker
             </li>
           </ul>
         </div>

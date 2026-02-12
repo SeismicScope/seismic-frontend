@@ -1,28 +1,22 @@
-"use client";
-import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
-import { useAuth } from "@/features/auth/hooks/use-auth";
-import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
-import Filters from "@/features/filters/components/filters";
-import { useFilters } from "@/features/filters/hooks/use-filters";
-import { Button } from "@/shared/ui/button";
+import type { Metadata } from "next";
 
-import JobStatus from "./job-status";
-import UploadFromCSVModal from "./upload-from-csv-modal";
+import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
+import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
+
+import DashbardFilters from "./dashboard-filters";
+import UploadFromCSV from "./upload-from-csv";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description:
+    "Earthquake dashboard with aggregated metrics, advanced filtering, and high-performance data table for large-scale seismic records.",
+};
 
 export default function DashboardPage() {
-  const { hasActiveFilters, resetFilters } = useFilters();
-  const { user } = useAuth();
-
   return (
     <div className="mt-5 w-full px-4 lg:px-10">
       <h1 className="text-2xl font-bold">Dashboard</h1>
-      {user && (
-        <>
-          <p className="text-muted-foreground">Hello {user?.name}</p>
-          <UploadFromCSVModal />
-          <JobStatus />
-        </>
-      )}
+      <UploadFromCSV />
 
       <div className="my-4 flex flex-col items-stretch gap-4 lg:flex-row">
         <div className="w-full lg:w-1/4">
@@ -32,17 +26,7 @@ export default function DashboardPage() {
         <div className="hidden pt-15 pb-10 lg:block">
           <div className="h-full w-px bg-black/40" />
         </div>
-        <div className="w-full lg:w-3/4">
-          <div className="flex items-center gap-3">
-            <p className="text-lg font-bold">Filters</p>
-            {hasActiveFilters && (
-              <Button variant="destructive" size="sm" onClick={resetFilters}>
-                Reset
-              </Button>
-            )}
-          </div>
-          <Filters />
-        </div>
+        <DashbardFilters />
       </div>
       <EarthquakeTable />
     </div>

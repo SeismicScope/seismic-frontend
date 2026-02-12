@@ -2,10 +2,8 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Suspense } from "react";
 
 import { Providers } from "@/shared/providers";
-import LayoutLoader from "@/shared/ui/layout-loader";
 import { Navbar1 } from "@/shared/ui/navbar";
 
 const inter = Inter({
@@ -14,7 +12,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SeismicScope Platform",
+  title: {
+    default: "SeismicScope Platform",
+    template: "%s | SeismicScope Platform",
+  },
   description: "High-performance earthquake analytics system (800k+ records)",
 };
 
@@ -33,12 +34,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} pt-20 antialiased`}>
-        <Suspense fallback={<LayoutLoader />}>
-          <Providers>
-            <Navbar1 />
-            {children}
-          </Providers>
-        </Suspense>
+        <Providers>
+          <Navbar1 />
+          {children}
+        </Providers>
       </body>
     </html>
   );
