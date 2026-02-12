@@ -153,6 +153,74 @@ function Blogpost1({ className }: Blogpost1Props) {
           </ul>
         </div>
       </div>
+
+      <div className="mt-10">
+        <div className="prose dark:prose-invert mx-auto max-w-3xl">
+          <Separator className="my-6" />
+
+          <h4 className="text-xl font-extrabold">About the Author</h4>
+
+          <p>
+            This project was designed and developed by{" "}
+            <span className="font-semibold">Vasyl Oliinyk</span> as a
+            demonstration of full-stack engineering expertise, focusing on
+            high-performance data systems, spatial analytics, and scalable
+            architecture.
+          </p>
+
+          <p>
+            The goal of this platform is not just feature implementation, but
+            architectural clarity, performance optimization, and
+            production-grade engineering practices.
+          </p>
+
+          <ul className="my-4 ml-4 list-disc">
+            <li>
+              <span className="font-semibold">LinkedIn:</span>{" "}
+              <a
+                href="https://www.linkedin.com/in/oleinik-vasiliiy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary transition-all hover:opacity-60"
+              >
+                Vasyl Oliinyk
+              </a>
+            </li>
+            <li>
+              <span className="font-semibold">Project Storybook:</span>{" "}
+              <a
+                href="https://seismicscope.github.io/seismic-frontend/storybook/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary transition-all hover:opacity-60"
+              >
+                UI Component Library
+              </a>
+            </li>
+            <li>
+              <span className="font-semibold">Backend Repository:</span>{" "}
+              <a
+                href="https://github.com/SeismicScope/seismic-backend"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary transition-all hover:opacity-60"
+              >
+                NestJS API Source Code
+              </a>
+            </li>
+          </ul>
+
+          <Alert className="mt-4">
+            <Lightbulb className="h-4 w-4" />
+            <AlertTitle>Engineering Focus</AlertTitle>
+            <AlertDescription>
+              The emphasis of this project is on system design, performance
+              scaling, data-heavy architecture, and production-level code
+              quality — not just UI development.
+            </AlertDescription>
+          </Alert>
+        </div>
+      </div>
     </section>
   );
 }

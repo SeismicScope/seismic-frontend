@@ -18,7 +18,7 @@ function EarthquakesStats() {
         <CardHeader className="px-3">
           <CardTitle className="text-center">Total events</CardTitle>
         </CardHeader>
-        <CardContent className="px-3 text-center text-2xl font-bold">
+        <CardContent className="text-primary px-3 text-center text-2xl font-bold">
           {formatNumber(stats?.totalEvents || 0)}
         </CardContent>
       </Card>
@@ -26,7 +26,7 @@ function EarthquakesStats() {
         <CardHeader className="px-3">
           <CardTitle className="text-center">Max magnitude</CardTitle>
         </CardHeader>
-        <CardContent className="px-3 text-center text-2xl font-bold">
+        <CardContent className="text-primary px-3 text-center text-2xl font-bold">
           {stats?.maxMagnitude}
         </CardContent>
       </Card>
@@ -34,7 +34,7 @@ function EarthquakesStats() {
         <CardHeader className="px-3">
           <CardTitle className="text-center">Avg magnitude</CardTitle>
         </CardHeader>
-        <CardContent className="px-3 text-center text-2xl font-bold">
+        <CardContent className="text-primary px-3 text-center text-2xl font-bold">
           {stats?.avgMagnitude}
         </CardContent>
       </Card>
@@ -42,7 +42,7 @@ function EarthquakesStats() {
         <CardHeader className="px-3">
           <CardTitle className="text-center">Avg depth</CardTitle>
         </CardHeader>
-        <CardContent className="px-3 text-center text-2xl font-bold">
+        <CardContent className="text-primary px-3 text-center text-2xl font-bold">
           {stats?.avgDepth}
         </CardContent>
       </Card>

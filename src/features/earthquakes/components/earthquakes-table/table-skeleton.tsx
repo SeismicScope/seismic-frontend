@@ -10,7 +10,7 @@ import {
 
 import { columns } from "./columns";
 
-const SKELETON_ROWS = 12;
+const SKELETON_ROWS = 7;
 
 function TableSkeleton() {
   return (
