@@ -1,3 +1,4 @@
+// this is deatult shadcn/block hero7
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 
@@ -15,13 +16,10 @@ interface Hero7Props {
 }
 
 function Hero7({
-  heading = "A Collection of Components Built With Shadcn & Tailwind",
-  subtitle = "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
-  description = "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
-  button = {
-    text: "Discover all components",
-    url: "https://www.shadcnblocks.com",
-  },
+  heading = "",
+  subtitle = "",
+  description = "",
+  button,
   children,
   className,
 }: Hero7Props) {
@@ -35,9 +33,11 @@ function Hero7({
             {description}
           </p>
         </div>
-        <Button asChild size="lg" className="mt-10">
-          <a href={button.url}>{button.text}</a>
-        </Button>
+        {!!button && (
+          <Button asChild size="lg" className="mt-10">
+            <a href={button.url}>{button.text}</a>
+          </Button>
+        )}
         <div className="mx-auto mt-10 flex w-fit flex-col items-center gap-4 sm:flex-row">
           {children}
         </div>
