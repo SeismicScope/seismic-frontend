@@ -15,7 +15,7 @@ describe("toGeoJSON", () => {
         magnitude: 5,
         depth: 100,
         location: "Test Location",
-        occuredAt: "2024-01-01",
+        occurredAt: "2024-01-01",
       },
     ];
 
@@ -34,7 +34,7 @@ describe("toGeoJSON", () => {
         magnitude: 5,
         depth: 100,
         location: "Test Location",
-        occuredAt: "2024-01-01",
+        occurredAt: "2024-01-01",
       },
     });
   });

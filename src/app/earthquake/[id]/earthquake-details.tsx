@@ -17,8 +17,8 @@ export default function EarthquakeDetails({ earthquake }: Props) {
             <CardTitle>Occurred At</CardTitle>
           </CardHeader>
           <CardContent>
-            {earthquake?.occuredAt
-              ? formatDate(new Date(earthquake.occuredAt))
+            {earthquake?.occurredAt
+              ? formatDate(new Date(earthquake.occurredAt))
               : "Unknown"}
           </CardContent>
         </Card>

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const earthquake = await getEarthquakeById(id);
 
   return {
-    title: `M${earthquake.magnitude} — ${earthquake.location}`,
+    title: `M${earthquake.magnitude} — ${earthquake.depth}km`,
     description: `Earthquake at ${earthquake.location}, depth ${earthquake.depth}km`,
   };
 }

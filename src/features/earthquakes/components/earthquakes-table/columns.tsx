@@ -5,7 +5,7 @@ import type { Earthquake } from "@/features/earthquakes/types";
 
 export const columns: ColumnDef<Earthquake>[] = [
   {
-    accessorKey: "occuredAt",
+    accessorKey: "occurredAt",
     header: "Date",
     cell: (info) => new Date(info.getValue() as string).toLocaleString(),
     size: 200,

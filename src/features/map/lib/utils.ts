@@ -14,7 +14,7 @@ export function toGeoJSON(
       magnitude: p.magnitude,
       depth: p.depth,
       location: p.location,
-      occuredAt: p.occuredAt,
+      occurredAt: p.occurredAt,
     },
   }));
 }

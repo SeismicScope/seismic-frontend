@@ -1,7 +1,7 @@
 export type Earthquake = {
   id: number;
   externalId: string | null;
-  occuredAt: string;
+  occurredAt: string;
   magnitude: number;
   depth: number;
   latitude: number;

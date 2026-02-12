@@ -4,7 +4,7 @@ type MapPopupProps = {
   magnitude: number;
   depth?: number;
   location?: string | null;
-  occuredAt?: string | null;
+  occurredAt?: string | null;
   id?: string | null;
 };
 
@@ -12,11 +12,11 @@ function MapPopup({
   magnitude,
   depth,
   location,
-  occuredAt,
+  occurredAt,
   id,
 }: MapPopupProps) {
-  const occuredAtDate = occuredAt
-    ? new Date(occuredAt).toLocaleString()
+  const occurredAtDate = occurredAt
+    ? new Date(occurredAt).toLocaleString()
     : "N/A";
 
   return (
@@ -30,7 +30,7 @@ function MapPopup({
       <p className="text-foreground font-semibold">
         Location: {location ? location : "N/A"}
       </p>
-      <p className="text-foreground font-semibold">Date: {occuredAtDate}</p>
+      <p className="text-foreground font-semibold">Date: {occurredAtDate}</p>
 
       <Link
         href={`/earthquake/${id}`}

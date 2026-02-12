@@ -11,7 +11,7 @@ export type MapRequest = MapBounds & {
 
 export type MapPoint = {
   id: number;
-  occuredAt: string;
+  occurredAt: string;
   magnitude: number;
   depth: number;
   latitude: number;
@@ -30,7 +30,7 @@ export type MapPointProperties = {
   magnitude: number;
   depth: number;
   location: string | null;
-  occuredAt: string;
+  occurredAt: string;
 };
 
 export type WorkerOnMessageEvent = MessageEvent<

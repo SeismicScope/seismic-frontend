@@ -163,7 +163,7 @@ export function useEarthquakeMap() {
             magnitude: feature.properties?.magnitude,
             depth: feature.properties?.depth,
             location: feature.properties?.location,
-            occuredAt: feature.properties?.occuredAt,
+            occurredAt: feature.properties?.occurredAt,
             id: feature.properties?.id,
           }),
         );
