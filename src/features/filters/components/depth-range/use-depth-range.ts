@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "sonner";
 
 import { useFilters } from "@/features/filters/hooks/use-filters";
 import { useDebouncedCallback } from "@/shared/hooks/use-debounce";
@@ -11,16 +12,13 @@ export function useDepthRange() {
   const [localMax, setLocalMax] = useState<number | null>(null);
   const [editingMin, setEditingMin] = useState(false);
   const [editingMax, setEditingMax] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   function validate(min: number | null, max: number | null): boolean {
     if (min !== null && max !== null && min > max) {
-      setError("Min must be less than Max");
+      toast.error("Min must be less than Max");
 
       return false;
     }
-
-    setError(null);
 
     return true;
   }
@@ -53,7 +51,6 @@ export function useDepthRange() {
     setEditingMin,
     syncMin,
     syncMax,
-    error,
     editingMax,
     localMax,
     setLocalMax,

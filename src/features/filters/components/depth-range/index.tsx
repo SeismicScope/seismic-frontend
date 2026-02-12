@@ -12,7 +12,6 @@ function DepthRange() {
     setEditingMin,
     syncMin,
     syncMax,
-    error,
     editingMax,
     localMax,
     setLocalMax,
@@ -53,7 +52,6 @@ function DepthRange() {
           />
         </div>
       </div>
-      {error && <p className="text-sm text-red-500">{error}</p>}
     </div>
   );
 }
