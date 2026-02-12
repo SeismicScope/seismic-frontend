@@ -20,7 +20,7 @@ Earthquake data visualization — interactive map with clustering, analytics das
 | Map        | Mapbox GL 3 + Supercluster (Web Worker)       |
 | Charts     | Recharts                                      |
 | Tables     | TanStack Table + TanStack Virtual             |
-| Testing    | Vitest, Testing Library, Playwright           |
+| Testing    | Vitest, Testing Library                       |
 | Docs       | Storybook 10                                  |
 | Monitoring | Sentry                                        |
 

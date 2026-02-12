@@ -17,3 +17,15 @@ export interface Navbar1Props {
   };
   menu?: MenuItem[];
 }
+
+export type NavProps = {
+  logo: {
+    url: string;
+    alt: string;
+    title: string;
+  };
+  user: string;
+  menuWithAdmin: MenuItem[];
+  login: () => void;
+  logout: () => void;
+};

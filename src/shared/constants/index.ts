@@ -14,3 +14,14 @@ export const PERIOD_INTERVALS = [
 
 export const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
 export const MAPBOX_STYLE = process.env.NEXT_PUBLIC_MAPBOX_STYLE!;
+
+export enum THEMES {
+  TEAL = "teal",
+  TOMATO = "tomato",
+  MANGO = "mango",
+  DARK = "dark",
+  LIGHT = "light",
+  SYSTEM = "system",
+}
+
+export const THEMES_VALUES = Object.values(THEMES);
