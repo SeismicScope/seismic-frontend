@@ -19,7 +19,7 @@ function Navbar1({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
   return (
     <section
       className={cn(
-        "fixed top-0 z-50 w-full bg-white py-4 shadow-sm",
+        "bg-background fixed top-0 z-50 w-full py-4 shadow-sm",
         className,
       )}
     >

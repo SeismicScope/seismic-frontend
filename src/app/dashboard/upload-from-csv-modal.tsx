@@ -28,7 +28,7 @@ function UploadFromCSVModal() {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Upload data from CSV </DialogTitle>
-          <div className="flex flex-col gap-4 rounded-lg border bg-white p-6">
+          <div className="bg-card flex flex-col gap-4 rounded-lg border p-6">
             <h3 className="text-lg font-semibold">Import Earthquakes</h3>
             <p className="text-muted-foreground text-sm">
               Upload a CSV file with earthquake data

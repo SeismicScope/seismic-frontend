@@ -6,7 +6,7 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 
 Theme tokens are semantic colors that can be swapped based on the active theme. They reference Core Colors but provide a flexible abstraction layer.
 
-**Key Concept**: These tokens are theme-aware, meaning their values can change when switching themes (e.g., admin vs user interface).
+**Key Concept**: These tokens are theme-aware, meaning their values change when switching themes (Teal, Mango, Tomato) via the `data-theme` attribute.
 
 ## Primary
 
@@ -15,12 +15,12 @@ The primary color represents the main brand or interface accent color.
 <ColorPalette>
   <ColorItem
     title="Primary"
-    subtitle="Default theme uses Iris"
+    subtitle="Default theme uses Teal"
     colors={{
-      "ds-primary": "var(--ds-theme-primary-default)",
-      "ds-on-primary": "var(--ds-theme-primary-on-primary)",
-      "ds-primary-surface": "var(--ds-theme-primary-surface)",
-      "ds-on-primary-surface": "var(--ds-theme-primary-on-surface)",
+      "theme-primary-default": "var(--theme-primary-default)",
+      "theme-primary-on-primary": "var(--theme-primary-on-primary)",
+      "theme-primary-surface": "var(--theme-primary-surface)",
+      "theme-primary-on-surface": "var(--theme-primary-on-surface)",
     }}
   />
 </ColorPalette>
@@ -29,12 +29,12 @@ The primary color represents the main brand or interface accent color.
 
 ```tsx
 // Primary button
-<button className="bg-ds-primary text-ds-primary-on-primary">
+<button className="bg-primary text-primary-foreground">
   Click me
 </button>
 
 // Primary badge
-<div className="bg-ds-primary-surface text-ds-primary-on-surface">
+<div className="bg-accent text-accent-foreground">
   Featured
 </div>
 ```
@@ -44,12 +44,12 @@ The primary color represents the main brand or interface accent color.
 <ColorPalette>
   <ColorItem
     title="Success"
-    subtitle="Uses Pickle palette"
+    subtitle="Uses Success palette"
     colors={{
-      "ds-success": "var(--ds-theme-success-default)",
-      "ds-on-success": "var(--ds-theme-success-on-success)",
-      "ds-success-surface": "var(--ds-theme-success-surface)",
-      "ds-on-success-surface": "var(--ds-theme-success-on-surface)",
+      "theme-success-default": "var(--theme-success-default)",
+      "theme-success-on-success": "var(--theme-success-on-success)",
+      "theme-success-surface": "var(--theme-success-surface)",
+      "theme-success-on-surface": "var(--theme-success-on-surface)",
     }}
   />
 </ColorPalette>
@@ -58,12 +58,12 @@ The primary color represents the main brand or interface accent color.
 
 ```tsx
 // Success alert
-<div className="bg-ds-success text-ds-success-on-success">
+<div className="bg-success text-content-invert">
   Operation completed!
 </div>
 
-// Success notification
-<div className="bg-ds-success-surface text-ds-success-on-surface">
+// Success badge
+<div style={{ background: 'var(--badge-success-bg)', color: 'var(--badge-success-text)' }}>
   Your changes have been saved
 </div>
 ```
@@ -73,12 +73,12 @@ The primary color represents the main brand or interface accent color.
 <ColorPalette>
   <ColorItem
     title="Error"
-    subtitle="Uses Tomato palette"
+    subtitle="Uses Error palette"
     colors={{
-      "ds-error": "var(--ds-theme-error-default)",
-      "ds-on-error": "var(--ds-theme-error-on-error)",
-      "ds-error-surface": "var(--ds-theme-error-surface)",
-      "ds-on-error-surface": "var(--ds-theme-error-on-surface)",
+      "theme-error-default": "var(--theme-error-default)",
+      "theme-error-on-error": "var(--theme-error-on-error)",
+      "theme-error-surface": "var(--theme-error-surface)",
+      "theme-error-on-surface": "var(--theme-error-on-surface)",
     }}
   />
 </ColorPalette>
@@ -86,13 +86,13 @@ The primary color represents the main brand or interface accent color.
 ### Usage Examples
 
 ```tsx
-// Error button
-<button className="bg-ds-error text-ds-error-on-error">
+// Destructive button
+<button className="bg-destructive text-white">
   Delete
 </button>
 
-// Error message
-<div className="bg-ds-error-surface text-ds-error-on-surface">
+// Error badge
+<div style={{ background: 'var(--badge-error-bg)', color: 'var(--badge-error-text)' }}>
   Invalid input
 </div>
 ```
@@ -102,12 +102,12 @@ The primary color represents the main brand or interface accent color.
 <ColorPalette>
   <ColorItem
     title="Warning"
-    subtitle="Uses Mango palette"
+    subtitle="Uses Warning palette"
     colors={{
-      "ds-warning": "var(--ds-theme-warning-default)",
-      "ds-on-warning": "var(--ds-theme-warning-on-warning)",
-      "ds-warning-surface": "var(--ds-theme-warning-surface)",
-      "ds-on-warning-surface": "var(--ds-theme-warning-on-surface)",
+      "theme-warning-default": "var(--theme-warning-default)",
+      "theme-warning-on-warning": "var(--theme-warning-on-warning)",
+      "theme-warning-surface": "var(--theme-warning-surface)",
+      "theme-warning-on-surface": "var(--theme-warning-on-surface)",
     }}
   />
 </ColorPalette>
@@ -116,13 +116,8 @@ The primary color represents the main brand or interface accent color.
 
 ```tsx
 // Warning banner
-<div className="bg-ds-warning text-ds-warning-on-warning">
+<div className="bg-warning text-content-invert">
   Please review your settings
-</div>
-
-// Warning notice
-<div className="bg-ds-warning-surface text-ds-warning-on-surface">
-  Limited stock available
 </div>
 ```
 
@@ -130,125 +125,165 @@ The primary color represents the main brand or interface accent color.
 
 ## Theme Switching
 
-Theme tokens can be switched by applying different data attributes to automatically change the primary color throughout your interface.
+Theme tokens can be switched by applying the `data-theme` attribute on `<html>` to automatically change the primary color throughout your interface.
 
 ### How It Works
 
 ```tsx
-// Admin theme - Primary uses Iris (purple)
-<div data-theme="admin">
-  <button className="bg-ds-primary text-ds-primary-on-primary">
-    Admin Action
+// Teal theme (default) - Primary uses Teal
+<html data-theme="teal">
+  <button className="bg-primary text-primary-foreground">
+    Teal Action
   </button>
-</div>
+</html>
 
-// User theme - Primary uses Mango (orange)
-<div data-theme="user">
-  <button className="bg-ds-primary text-ds-primary-on-primary">
-    User Action
+// Mango theme - Primary uses Warning/Orange
+<html data-theme="mango">
+  <button className="bg-primary text-primary-foreground">
+    Mango Action
   </button>
-</div>
+</html>
+
+// Tomato theme - Primary uses Error/Red
+<html data-theme="tomato">
+  <button className="bg-primary text-primary-foreground">
+    Tomato Action
+  </button>
+</html>
 ```
 
 **The same code produces different colors based on the active theme!**
 
 ### Visual Examples
 
-Below are identical components using the same token classes (`bg-ds-primary`, `bg-ds-primary-surface`, etc.), but with different themes applied:
+Below are identical components using the same token classes (`bg-primary`, `text-primary-foreground`), but with different themes applied:
 
-#### Admin Theme (Purple - Iris)
+#### Teal Theme (Default)
 
-<div data-theme="admin" style={{ padding: '24px', background: '#fafafa', borderRadius: '8px', marginBottom: '24px' }}>
+<div data-theme="teal" style={{ padding: '24px', background: 'var(--background)', borderRadius: '8px', marginBottom: '24px' }}>
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-    
-    {/* Primary Button */}
     <div>
-      <p style={{ fontSize: '14px', color: '#717680', marginBottom: '8px' }}>Primary Button</p>
-      <button style={{ 
-        background: 'var(--ds-theme-primary-default)', 
-        color: 'var(--ds-theme-primary-on-primary)',
+      <p style={{ fontSize: '14px', color: 'var(--muted-foreground)', marginBottom: '8px' }}>Primary Button</p>
+      <button style={{
+        background: 'var(--theme-primary-default)',
+        color: 'var(--theme-primary-on-primary)',
         padding: '12px 24px',
         borderRadius: '8px',
         border: 'none',
         fontWeight: 600,
         cursor: 'pointer'
       }}>
-        Admin Action
+        Teal Action
       </button>
     </div>
-
-    {/* Card with Primary Accent */}
     <div>
-      <p style={{ fontSize: '14px', color: '#717680', marginBottom: '8px' }}>Card with Primary Accent</p>
+      <p style={{ fontSize: '14px', color: 'var(--muted-foreground)', marginBottom: '8px' }}>Card with Primary Accent</p>
       <div style={{
-        background: 'white',
-        border: '2px solid var(--ds-theme-primary-default)',
+        background: 'var(--card)',
+        border: '2px solid var(--theme-primary-default)',
         borderRadius: '12px',
         padding: '16px',
         maxWidth: '300px'
       }}>
         <h3 style={{
-          color: 'var(--ds-theme-primary-default)',
+          color: 'var(--theme-primary-default)',
           margin: '0 0 8px 0',
           fontSize: '18px',
           fontWeight: 600
         }}>
-          Admin Panel
+          Teal Dashboard
         </h3>
-        <p style={{ margin: 0, color: '#717680', fontSize: '14px' }}>
+        <p style={{ margin: 0, color: 'var(--muted-foreground)', fontSize: '14px' }}>
           This card uses primary theme color for borders and headings
         </p>
       </div>
     </div>
-
   </div>
 </div>
 
-#### User Theme (Orange - Mango)
+#### Mango Theme (Orange)
 
-<div data-theme="user" style={{ padding: '24px', background: '#fafafa', borderRadius: '8px' }}>
+<div data-theme="mango" style={{ padding: '24px', background: 'var(--background)', borderRadius: '8px', marginBottom: '24px' }}>
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-    
-    {/* Primary Button */}
     <div>
-      <p style={{ fontSize: '14px', color: '#717680', marginBottom: '8px' }}>Primary Button (same code!)</p>
-      <button style={{ 
-        background: 'var(--ds-theme-primary-default)', 
-        color: 'var(--ds-theme-primary-on-primary)',
+      <p style={{ fontSize: '14px', color: 'var(--muted-foreground)', marginBottom: '8px' }}>Primary Button (same code!)</p>
+      <button style={{
+        background: 'var(--theme-primary-default)',
+        color: 'var(--theme-primary-on-primary)',
         padding: '12px 24px',
         borderRadius: '8px',
         border: 'none',
         fontWeight: 600,
         cursor: 'pointer'
       }}>
-        User Action
+        Mango Action
       </button>
     </div>
-
-    {/* Card with Primary Accent */}
     <div>
-      <p style={{ fontSize: '14px', color: '#717680', marginBottom: '8px' }}>Card with Primary Accent (same code!)</p>
+      <p style={{ fontSize: '14px', color: 'var(--muted-foreground)', marginBottom: '8px' }}>Card with Primary Accent (same code!)</p>
       <div style={{
-        background: 'white',
-        border: '2px solid var(--ds-theme-primary-default)',
+        background: 'var(--card)',
+        border: '2px solid var(--theme-primary-default)',
         borderRadius: '12px',
         padding: '16px',
         maxWidth: '300px'
       }}>
         <h3 style={{
-          color: 'var(--ds-theme-primary-default)',
+          color: 'var(--theme-primary-default)',
           margin: '0 0 8px 0',
           fontSize: '18px',
           fontWeight: 600
         }}>
-          User Dashboard
+          Mango Dashboard
         </h3>
-        <p style={{ margin: 0, color: '#717680', fontSize: '14px' }}>
+        <p style={{ margin: 0, color: 'var(--muted-foreground)', fontSize: '14px' }}>
           This card uses primary theme color for borders and headings
         </p>
       </div>
     </div>
+  </div>
+</div>
 
+#### Tomato Theme (Red)
+
+<div data-theme="tomato" style={{ padding: '24px', background: 'var(--background)', borderRadius: '8px' }}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div>
+      <p style={{ fontSize: '14px', color: 'var(--muted-foreground)', marginBottom: '8px' }}>Primary Button (same code!)</p>
+      <button style={{
+        background: 'var(--theme-primary-default)',
+        color: 'var(--theme-primary-on-primary)',
+        padding: '12px 24px',
+        borderRadius: '8px',
+        border: 'none',
+        fontWeight: 600,
+        cursor: 'pointer'
+      }}>
+        Tomato Action
+      </button>
+    </div>
+    <div>
+      <p style={{ fontSize: '14px', color: 'var(--muted-foreground)', marginBottom: '8px' }}>Card with Primary Accent (same code!)</p>
+      <div style={{
+        background: 'var(--card)',
+        border: '2px solid var(--theme-primary-default)',
+        borderRadius: '12px',
+        padding: '16px',
+        maxWidth: '300px'
+      }}>
+        <h3 style={{
+          color: 'var(--theme-primary-default)',
+          margin: '0 0 8px 0',
+          fontSize: '18px',
+          fontWeight: 600
+        }}>
+          Tomato Dashboard
+        </h3>
+        <p style={{ margin: 0, color: 'var(--muted-foreground)', fontSize: '14px' }}>
+          This card uses primary theme color for borders and headings
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -256,7 +291,8 @@ Below are identical components using the same token classes (`bg-ds-primary`, `b
 
 **Same component code, different themes!** The theme tokens automatically resolve to the correct colors:
 
-- **Admin theme**: `--ds-theme-primary-default` → `var(--ds-iris-500)` → Purple
-- **User theme**: `--ds-theme-primary-default` → `var(--ds-mango-500)` → Orange
+- **Teal theme**: `--theme-primary-default` &#8594; `var(--teal-500)` &#8594; Teal
+- **Mango theme**: `--theme-primary-default` &#8594; `var(--warning-500)` &#8594; Orange
+- **Tomato theme**: `--theme-primary-default` &#8594; `var(--error-500)` &#8594; Red
 
 This allows you to create flexible, theme-aware components without hardcoding colors.

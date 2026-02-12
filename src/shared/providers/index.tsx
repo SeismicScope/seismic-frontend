@@ -13,6 +13,7 @@ import { type JSX, useState } from "react";
 import { toast, Toaster } from "sonner";
 
 import { getErrorMessage } from "../lib/utils";
+import { ColorThemeProvider } from "./theme-provider";
 
 export function Providers({
   children,
@@ -64,11 +65,13 @@ export function Providers({
 
   return (
     <NuqsAdapter>
-      <ThemeProvider>
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
-        <Toaster richColors position="top-right" />
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ColorThemeProvider>
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
+          <Toaster richColors position="top-right" />
+        </ColorThemeProvider>
       </ThemeProvider>
     </NuqsAdapter>
   );

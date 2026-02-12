@@ -12,6 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../sheet";
+import ThemeSwitcher from "../theme-switcher";
 import renderMobileMenuItem from "./render-mobile-menu-item";
 import type { NavProps } from "./types";
 
@@ -48,6 +49,10 @@ function MobileNav({ logo, user, menuWithAdmin, login, logout }: NavProps) {
               >
                 {menuWithAdmin.map((item) => renderMobileMenuItem(item))}
               </Accordion>
+
+              <div className="flex items-center justify-center">
+                <ThemeSwitcher />
+              </div>
 
               <div className="flex flex-col gap-3">
                 {!user ? (

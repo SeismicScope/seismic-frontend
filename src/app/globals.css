@@ -217,12 +217,21 @@
 
 [data-theme="teal"] {
   --theme-primary-default: var(--teal-500);
+  --theme-primary-on-primary: var(--ocean-0);
+  --theme-primary-surface: var(--teal-50);
+  --theme-primary-on-surface: var(--teal-700);
 }
 [data-theme="mango"] {
   --theme-primary-default: var(--warning-500);
+  --theme-primary-on-primary: var(--ocean-0);
+  --theme-primary-surface: var(--warning-50);
+  --theme-primary-on-surface: var(--warning-700);
 }
 [data-theme="tomato"] {
   --theme-primary-default: var(--error-500);
+  --theme-primary-on-primary: var(--ocean-0);
+  --theme-primary-surface: var(--error-50);
+  --theme-primary-on-surface: var(--error-700);
 }
 
 @layer base {

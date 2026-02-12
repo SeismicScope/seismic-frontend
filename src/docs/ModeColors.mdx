@@ -14,8 +14,8 @@ Background colors for different container levels.
   <ColorItem
     title="Background"
     colors={{
-      "ds-background-default": "var(--ds-background-default)",
-      "ds-background-soft": "var(--ds-background-soft)",
+      "background-default": "var(--background-default)",
+      "background-soft": "var(--background-soft)",
     }}
   />
 </ColorPalette>
@@ -24,10 +24,10 @@ Background colors for different container levels.
 
 ```tsx
 // Page background
-<div className="bg-ds-background-default">...</div>
+<div className="bg-background">...</div>
 
 // Section background
-<div className="bg-ds-background-soft">...</div>
+<div className="bg-bg-soft">...</div>
 ```
 
 ## Surface
@@ -38,11 +38,11 @@ Surface colors for cards, panels, and elevated elements.
   <ColorItem
     title="Surface"
     colors={{
-      "ds-surface-default": "var(--ds-surface-default)",
-      "ds-surface-soft": "var(--ds-surface-soft)",
-      "ds-surface-medium": "var(--ds-surface-medium)",
-      "ds-surface-disable": "var(--ds-surface-disable)",
-      "ds-surface-invert": "var(--ds-surface-invert)",
+      "surface-default": "var(--surface-default)",
+      "surface-soft": "var(--surface-soft)",
+      "surface-medium": "var(--surface-medium)",
+      "surface-disable": "var(--surface-disable)",
+      "surface-invert": "var(--surface-invert)",
     }}
   />
 </ColorPalette>
@@ -51,41 +51,16 @@ Surface colors for cards, panels, and elevated elements.
 
 ```tsx
 // Card
-<div className="bg-ds-surface-default">...</div>
+<div className="bg-card">...</div>
 
-// Disabled button
-<button className="bg-ds-surface-disable">...</button>
+// Muted section
+<div className="bg-muted">...</div>
+
+// Secondary element
+<div className="bg-secondary">...</div>
 
 // Dark mode / inverted surface
-<div className="bg-ds-surface-invert text-ds-content-invert">...</div>
-```
-
-## Overlay
-
-Semi-transparent overlays for modals, dropdowns, and hover states.
-
-<ColorPalette>
-  <ColorItem
-    title="Overlay"
-    colors={{
-      "ds-overlay-light": "var(--ds-overlay-light)",
-      "ds-overlay-medium": "var(--ds-overlay-medium)",
-      "ds-overlay-high": "var(--ds-overlay-high)",
-    }}
-  />
-</ColorPalette>
-
-### Usage
-
-```tsx
-// Modal backdrop
-<div className="bg-ds-overlay-high">...</div>
-
-// Hover state
-<div className="hover:bg-ds-overlay-light">...</div>
-
-// Disabled overlay
-<div className="bg-ds-overlay-medium">...</div>
+<div className="bg-surface-invert text-content-invert">...</div>
 ```
 
 ## Content
@@ -96,11 +71,11 @@ Text and icon colors with different emphasis levels.
   <ColorItem
     title="Content"
     colors={{
-      "ds-content-high": "var(--ds-content-high)",
-      "ds-content-medium": "var(--ds-content-medium)",
-      "ds-content-low": "var(--ds-content-low)",
-      "ds-content-disable": "var(--ds-content-disable)",
-      "ds-content-invert": "var(--ds-content-invert)",
+      "content-high": "var(--content-high)",
+      "content-medium": "var(--content-medium)",
+      "content-low": "var(--content-low)",
+      "content-disable": "var(--content-disable)",
+      "content-invert": "var(--content-invert)",
     }}
   />
 </ColorPalette>
@@ -109,19 +84,19 @@ Text and icon colors with different emphasis levels.
 
 ```tsx
 // Heading
-<h1 className="text-ds-content-high">Important Title</h1>
+<h1 className="text-foreground">Important Title</h1>
 
 // Body text
-<p className="text-ds-content-medium">Regular paragraph text</p>
+<p className="text-muted-foreground">Regular paragraph text</p>
 
 // Caption or helper text
-<span className="text-ds-content-low">Optional information</span>
+<span className="text-content-low">Optional information</span>
 
 // Disabled text
-<span className="text-ds-content-disable">Disabled option</span>
+<span className="text-content-low">Disabled option</span>
 
 // Text on dark background
-<span className="text-ds-content-invert">White text</span>
+<span className="text-content-invert">White text</span>
 ```
 
 ## Outline
@@ -132,10 +107,9 @@ Border and divider colors.
   <ColorItem
     title="Outline"
     colors={{
-      "ds-outline-high": "var(--ds-outline-high)",
-      "ds-outline-medium": "var(--ds-outline-medium)",
-      "ds-outline-light": "var(--ds-outline-light)",
-      "ds-outline-black": "var(--ds-outline-black)",
+      "outline-high": "var(--outline-high)",
+      "outline-medium": "var(--outline-medium)",
+      "outline-light": "var(--outline-light)",
     }}
   />
 </ColorPalette>
@@ -144,16 +118,13 @@ Border and divider colors.
 
 ```tsx
 // Input border
-<input className="border border-ds-outline-medium" />
+<input className="border border-input" />
 
 // Divider
-<hr className="border-ds-outline-light" />
+<hr className="border-border" />
 
 // Strong border (e.g., on focus)
-<input className="focus:border-ds-outline-high" />
-
-// Solid black border
-<div className="border-2 border-ds-outline-black" />
+<input className="focus:border-ring" />
 ```
 
 ## Gradient
@@ -162,7 +133,7 @@ Border and divider colors.
   <ColorItem
     title="Gradient"
     colors={{
-      "ds-gradient-primary": "var(--ds-gradient-primary)",
+      "gradient-primary": "var(--gradient-primary)",
     }}
   />
 </ColorPalette>
@@ -170,12 +141,54 @@ Border and divider colors.
 ### Usage
 
 ```tsx
-// Gradient background
-<div className="bg-ds-gradient-primary">...</div>
-
-// Or with inline styles if Tailwind doesn't support complex gradients
-<div style={{ background: 'var(--ds-gradient-primary)' }}>...</div>
+// Gradient background with inline styles
+<div style={{ background: 'var(--gradient-primary)' }}>...</div>
 ```
+
+## shadcn/ui Semantic Tokens
+
+These tokens are used by shadcn/ui components and map to the Mode tokens above.
+
+<ColorPalette>
+  <ColorItem
+    title="shadcn/ui - Layout"
+    colors={{
+      "background": "var(--background)",
+      "foreground": "var(--foreground)",
+      "card": "var(--card)",
+      "card-foreground": "var(--card-foreground)",
+      "popover": "var(--popover)",
+      "popover-foreground": "var(--popover-foreground)",
+    }}
+  />
+  <ColorItem
+    title="shadcn/ui - Brand"
+    colors={{
+      "primary": "var(--primary)",
+      "primary-foreground": "var(--primary-foreground)",
+      "secondary": "var(--secondary)",
+      "secondary-foreground": "var(--secondary-foreground)",
+    }}
+  />
+  <ColorItem
+    title="shadcn/ui - States"
+    colors={{
+      "muted": "var(--muted)",
+      "muted-foreground": "var(--muted-foreground)",
+      "accent": "var(--accent)",
+      "accent-foreground": "var(--accent-foreground)",
+      "destructive": "var(--destructive)",
+    }}
+  />
+  <ColorItem
+    title="shadcn/ui - Borders & Input"
+    colors={{
+      "border": "var(--border)",
+      "input": "var(--input)",
+      "ring": "var(--ring)",
+    }}
+  />
+</ColorPalette>
 
 ---
 
@@ -186,7 +199,6 @@ Mode tokens follow this layering system:
 1. **Background** - Base layer (page)
 2. **Surface** - Elevated elements (cards, panels)
 3. **Content** - Text and icons
-4. **Overlay** - Interactive states and overlays
-5. **Outline** - Borders and dividers
+4. **Outline** - Borders and dividers
 
 When building components, always use Mode tokens rather than Core or Theme tokens directly for maximum flexibility.
