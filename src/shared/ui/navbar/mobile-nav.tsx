@@ -25,7 +25,7 @@ function MobileNav({ logo, user, menuWithAdmin, login, logout }: NavProps) {
         </a>
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" aria-label="Menu">
               <Menu className="size-4" />
             </Button>
           </SheetTrigger>
@@ -56,11 +56,17 @@ function MobileNav({ logo, user, menuWithAdmin, login, logout }: NavProps) {
 
               <div className="flex flex-col gap-3">
                 {!user ? (
-                  <Button variant="outline" onClick={() => login()}>
+                  <Button
+                    variant="outline"
+                    onClick={() => login()}
+                    aria-label="Login"
+                  >
                     Login
                   </Button>
                 ) : (
-                  <Button onClick={() => logout()}>Logout</Button>
+                  <Button onClick={() => logout()} aria-label="Logout">
+                    Logout
+                  </Button>
                 )}
               </div>
             </div>

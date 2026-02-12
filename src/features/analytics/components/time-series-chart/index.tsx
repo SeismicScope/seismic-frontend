@@ -31,50 +31,70 @@ export function TimeSeriesChart({ data, isLoading }: TimeSeriesChartProps) {
     [data],
   );
 
-  if (isLoading) {
-    return <TimeSeriesLoader />;
-  }
+  const summary = useMemo(() => {
+    if (!data.length) return "No earthquake data available.";
 
-  if (!data.length) {
-    return <TimeSeriesNoData />;
-  }
+    const total = data.reduce((acc, d) => acc + d.count, 0);
+    const max = Math.max(...data.map((d) => d.count));
+    const min = Math.min(...data.map((d) => d.count));
+
+    return `Time series chart showing earthquake frequency over time. 
+    Total events: ${total}. 
+    Minimum: ${min} events. 
+    Maximum: ${max} events.`;
+  }, [data]);
+
+  if (isLoading) return <TimeSeriesLoader />;
+  if (!data.length) return <TimeSeriesNoData />;
 
   return (
-    <ChartContainer config={chartConfig} className="h-[300px] w-full">
-      <AreaChart data={chartData} margin={{ left: 0, right: 12, top: 12 }}>
-        <CartesianGrid vertical={false} />
-        <XAxis
-          dataKey="label"
-          tickLine={false}
-          axisLine={false}
-          tickMargin={8}
-          interval="preserveStartEnd"
-          minTickGap={40}
-        />
-        <YAxis tickLine={false} axisLine={false} tickMargin={8} width={50} />
-        <ChartTooltip
-          content={
-            <ChartTooltipContent
-              labelFormatter={(_, payload) => {
-                if (!payload?.[0]?.payload?.date) return "";
+    <div className="w-full">
+      <p id="chart-summary" className="sr-only">
+        {summary}
+      </p>
 
-                return formatDate({
-                  dateStr: payload[0].payload.date,
-                  month: "long",
-                });
-              }}
-            />
-          }
-        />
-        <Area
-          dataKey="count"
-          type="monotone"
-          fill="var(--color-count)"
-          fillOpacity={0.2}
-          stroke="var(--color-count)"
-          strokeWidth={2}
-        />
-      </AreaChart>
-    </ChartContainer>
+      <ChartContainer
+        config={chartConfig}
+        className="h-[300px] w-full"
+        role="img"
+        aria-label="Earthquake frequency time series chart"
+        aria-describedby="chart-summary"
+      >
+        <AreaChart data={chartData} margin={{ left: 0, right: 12, top: 12 }}>
+          <CartesianGrid vertical={false} />
+          <XAxis
+            dataKey="label"
+            tickLine={false}
+            axisLine={false}
+            tickMargin={8}
+            interval="preserveStartEnd"
+            minTickGap={40}
+          />
+          <YAxis tickLine={false} axisLine={false} tickMargin={8} width={50} />
+          <ChartTooltip
+            content={
+              <ChartTooltipContent
+                labelFormatter={(_, payload) => {
+                  if (!payload?.[0]?.payload?.date) return "";
+
+                  return formatDate({
+                    dateStr: payload[0].payload.date,
+                    month: "long",
+                  });
+                }}
+              />
+            }
+          />
+          <Area
+            dataKey="count"
+            type="monotone"
+            fill="var(--color-count)"
+            fillOpacity={0.2}
+            stroke="var(--color-count)"
+            strokeWidth={2}
+          />
+        </AreaChart>
+      </ChartContainer>
+    </div>
   );
 }

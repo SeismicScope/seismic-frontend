@@ -29,11 +29,16 @@ function DesktopNav({ logo, user, menuWithAdmin, login, logout }: NavProps) {
       <ThemeSwitcher />
       <div className="flex gap-2">
         {!user ? (
-          <Button variant="default" size="sm" onClick={() => login()}>
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => login()}
+            aria-label="Login"
+          >
             Login
           </Button>
         ) : (
-          <Button size="sm" onClick={() => logout()}>
+          <Button size="sm" onClick={() => logout()} aria-label="Logout">
             Logout
           </Button>
         )}

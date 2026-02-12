@@ -27,7 +27,7 @@ export const columns: ColumnDef<Earthquake>[] = [
     size: 200,
   },
   {
-    accessorKey: "place",
+    accessorKey: "location",
     header: "Location",
     size: 300,
   },

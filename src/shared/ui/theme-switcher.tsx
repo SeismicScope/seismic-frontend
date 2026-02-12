@@ -4,7 +4,6 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 
-import type { ColorTheme } from "../constants";
 import { COLOR_THEME_META, COLOR_THEME_VALUES } from "../constants";
 import { useColorTheme } from "../providers/theme-provider";
 import { Button } from "./button";
@@ -44,7 +43,7 @@ function ThemeSwitcher() {
         aria-label="Accent color"
       >
         {COLOR_THEME_VALUES.map((theme) => {
-          const meta = COLOR_THEME_META[theme as ColorTheme];
+          const meta = COLOR_THEME_META[theme];
           const isActive = colorTheme === theme;
 
           return (
@@ -54,7 +53,7 @@ function ThemeSwitcher() {
               role="radio"
               aria-checked={isActive}
               aria-label={`${meta.label} accent color`}
-              onClick={() => setColorTheme(theme as ColorTheme)}
+              onClick={() => setColorTheme(theme)}
               className="focus-visible:outline-ring flex size-7 items-center justify-center rounded-full transition-transform hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               <span

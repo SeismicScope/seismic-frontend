@@ -43,6 +43,7 @@ function DatePickerWithRange() {
             variant="outline"
             id="date-picker-range"
             className="justify-start px-2.5 font-normal"
+            aria-label="Date range picker button"
           >
             <CalendarIcon />
             {filters.dateFrom ? (
@@ -68,6 +69,7 @@ function DatePickerWithRange() {
             }}
             onSelect={(date) => onDateSelect(date)}
             numberOfMonths={2}
+            aria-label="Date range picker calendar"
           />
         </PopoverContent>
       </Popover>

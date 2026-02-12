@@ -34,6 +34,7 @@ function DepthRange() {
               setEditingMin(true);
               syncMin(value);
             }}
+            aria-label="Min depth input"
           />
         </div>
         <div className="flex items-center gap-2">
@@ -49,6 +50,7 @@ function DepthRange() {
               setEditingMax(true);
               syncMax(value);
             }}
+            aria-label="Max depth input"
           />
         </div>
       </div>

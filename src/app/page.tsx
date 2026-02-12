@@ -11,6 +11,7 @@ export default function Home() {
           text: "Discover earthquakes!",
           url: "/dashboard",
         }}
+        aria-label="Discover earthquakes!"
       />
     </main>
   );
