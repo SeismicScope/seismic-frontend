@@ -14,7 +14,7 @@ export const columns: ColumnDef<Earthquake>[] = [
     accessorKey: "magnitude",
     header: "Magnitude",
     cell: (info) => (
-      <span className={Number(info.getValue()) > 5 ? "text-red-500" : ""}>
+      <span className={Number(info.getValue()) > 5 ? "text-error-500" : ""}>
         {Number(info.getValue()).toFixed(1)}
       </span>
     ),

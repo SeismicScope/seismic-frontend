@@ -38,7 +38,7 @@ function EarthquakePage() {
               <CardTitle>Magnitude</CardTitle>
             </CardHeader>
             <CardContent>
-              <span className="text-xl font-bold text-red-500">
+              <span className="text-error-500 text-xl font-bold">
                 {earthquake?.magnitude}
               </span>
             </CardContent>

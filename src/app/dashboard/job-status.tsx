@@ -16,9 +16,7 @@ function JobStatus() {
       </div>
 
       {jobStatus?.status === "completed" && (
-        <p className="text-sm text-green-600">
-          ✓ Import finished successfully!
-        </p>
+        <p className="text-success text-sm">✓ Import finished successfully!</p>
       )}
     </div>
   );

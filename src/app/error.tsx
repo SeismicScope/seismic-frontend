@@ -30,7 +30,7 @@ export default function GlobalError({
         </p>
 
         {process.env.NODE_ENV === "development" && (
-          <pre className="mt-4 text-xs text-red-500">{error.message}</pre>
+          <pre className="text-error mt-4 text-xs">{error.message}</pre>
         )}
 
         <button
