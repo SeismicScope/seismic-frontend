@@ -16,7 +16,9 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
@@ -59,6 +61,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
+    "@playwright/test": "^1.58.2",
     "@storybook/addon-a11y": "^10.2.8",
     "@storybook/addon-docs": "^10.2.8",
     "@storybook/addon-vitest": "^10.2.8",

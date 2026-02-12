@@ -36,9 +36,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
-
       - name: Run unit tests with coverage
         run: npm run test:coverage
 
@@ -50,6 +47,8 @@ jobs:
   e2e-tests:
     runs-on: ubuntu-latest
     needs: unit-tests
+    env:
+      NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,10 +65,12 @@ jobs:
         run: npm install
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install --with-deps chromium
 
       - name: Run e2e tests
         run: npm run e2e
+        env:
+          CI: true
 
       - name: Upload e2e test report
         uses: actions/upload-artifact@v4
@@ -146,22 +147,56 @@ jobs:
   deploy-pages:
     runs-on: ubuntu-latest
     needs: [storybook, e2e-tests]
-    if: always()
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download Storybook artifact
+        uses: actions/download-artifact@v4
         with:
           name: storybook-static
           path: ./public/storybook
 
-      - uses: actions/download-artifact@v4
+      - name: Download Playwright report
+        uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: playwright-report
           path: ./public/playwright
 
-      - uses: actions/configure-pages@v5
+      - name: Create index page
+        run: |
+          cat > ./public/index.html << 'HTML'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>SeismicScope Reports</title>
+            <style>
+              body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 80px auto; padding: 0 20px; }
+              h1 { font-size: 1.5rem; }
+              a { display: block; padding: 12px 16px; margin: 8px 0; border-radius: 8px; background: #f4f4f5; color: #18181b; text-decoration: none; font-weight: 500; }
+              a:hover { background: #e4e4e7; }
+            </style>
+          </head>
+          <body>
+            <h1>SeismicScope Reports</h1>
+            <a href="./storybook/">Storybook</a>
+            <a href="./playwright/">Playwright Report</a>
+          </body>
+          </html>
+          HTML
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
-      - uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
