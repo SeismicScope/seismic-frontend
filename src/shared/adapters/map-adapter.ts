@@ -23,10 +23,6 @@ const DEFAULT_OPTIONS: MapAdapterOptions = {
   zoom: 5,
   minZoom: 4,
   maxZoom: 14,
-  maxBounds: [
-    [-15, 30],
-    [45, 65],
-  ],
   interactive: true,
   navigationControl: true,
   attributionControl: true,
