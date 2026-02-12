@@ -6,11 +6,12 @@ import EarthquakeDetails from "./earthquake-details";
 import EarthquakeMapClient from "./earthquake-map-client";
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const earthquake = await getEarthquakeById(params.id);
+  const { id } = await params;
+  const earthquake = await getEarthquakeById(id);
 
   return {
     title: `M${earthquake.magnitude} — ${earthquake.location}`,
@@ -19,7 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function EarthquakePage({ params }: Props) {
-  const earthquake = await getEarthquakeById(params.id);
+  const { id } = await params;
+  const earthquake = await getEarthquakeById(id);
 
   if (!earthquake) {
     return <div className="p-10">Earthquake not found</div>;
