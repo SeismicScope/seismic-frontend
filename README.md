@@ -7,7 +7,7 @@ Earthquake data visualization — interactive map with clustering, analytics das
 |              | URL                                                                             |
 | ------------ | ------------------------------------------------------------------------------- |
 | Production   | [seismic-scope.vercel.app](https://seismic-scope.vercel.app)                    |
-| Storybook    | `npm run storybook` (localhost:6006)                                            |
+| Storybook    | [Storybook](https://seismicscope.github.io/seismic-frontend/storybook/)         |
 | Backend repo | [SeismicScope/seismic-backend](https://github.com/SeismicScope/seismic-backend) |
 
 ## Tech Stack
