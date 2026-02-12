@@ -10,7 +10,7 @@ import {
   ChartTooltipContent,
 } from "@/shared/ui/chart";
 
-import { chartConfig } from "./contants";
+import { chartConfig } from "./constants";
 import { formatDate } from "./helpers";
 import TimeSeriesLoader from "./time-series-loader";
 import TimeSeriesNoData from "./time-series-no-data";
