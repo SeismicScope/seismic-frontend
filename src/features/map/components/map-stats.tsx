@@ -11,7 +11,7 @@ function MapStats() {
     <div className="mb-4 flex items-center gap-2 px-3">
       <p className="text-xs lg:text-sm">
         <span className="font-bold">In bounds:</span>{" "}
-        {formatNumber(totalInBounds)}
+        <span className="text-primary">{formatNumber(totalInBounds)}</span>
         {totalInBounds > limit && (
           <span className="text-muted-foreground">
             {" "}
@@ -22,20 +22,26 @@ function MapStats() {
 
       <p className="text-xs lg:text-sm">
         <span className="font-bold">Points:</span>{" "}
-        {pointsCount && formatNumber(pointsCount)}
+        <span className="text-primary">
+          {pointsCount && <span>{formatNumber(pointsCount)}</span>}
+        </span>
       </p>
 
       <p className="text-xs lg:text-sm">
         <span className="font-bold">Build time:</span>{" "}
-        {buildTime && buildTime.toFixed(2)} ms
+        <span className="text-primary">
+          {buildTime && buildTime.toFixed(2)} ms
+        </span>
       </p>
 
       <p className="text-xs lg:text-sm">
-        <span className="font-bold">Heap:</span> {heap && heap.toFixed(2)} MB
+        <span className="font-bold">Heap:</span>{" "}
+        <span className="text-primary">{heap && heap.toFixed(2)} MB</span>
       </p>
 
       <p className="text-xs lg:text-sm">
-        <span className="font-bold">FPS:</span> {fps && fps}
+        <span className="font-bold">FPS:</span>{" "}
+        <span className="text-primary">{fps && fps}</span>
       </p>
     </div>
   );
