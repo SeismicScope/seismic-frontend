@@ -1,10 +1,10 @@
 "use client";
 
-import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import type { DateRange } from "react-day-picker";
 
 import { useFilters } from "@/features/filters/hooks/use-filters";
+import { dateAdapter } from "@/shared/adapters/date.adapter";
 import { Button } from "@/shared/ui/button";
 import { Calendar } from "@/shared/ui/calendar";
 import { Field } from "@/shared/ui/field";
@@ -14,7 +14,7 @@ function DatePickerWithRange() {
   const { filters, setFilters } = useFilters();
 
   function formatDate(date: Date): string {
-    return format(date, "LLL dd, y");
+    return dateAdapter.format(date, "LLL dd, y");
   }
 
   function onDateSelect(date?: DateRange): void {

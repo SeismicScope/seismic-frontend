@@ -1,8 +1,8 @@
 import { AxiosError } from "axios";
 import { type ClassValue, clsx } from "clsx";
-import { format } from "date-fns";
 import { twMerge } from "tailwind-merge";
 
+import { dateAdapter } from "@/shared/adapters/date.adapter";
 import type { ApiErrorResponse } from "@/types/main";
 
 export function cn(...inputs: ClassValue[]) {
@@ -36,5 +36,5 @@ export function getErrorMessage(error: unknown): string {
 }
 
 export function formatDate(date: Date): string {
-  return format(date, "LLL dd, y HH:mm:ss");
+  return dateAdapter.format(date, "LLL dd, y HH:mm:ss");
 }
