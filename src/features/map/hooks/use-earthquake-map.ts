@@ -156,8 +156,9 @@ export function useEarthquakeMap() {
         if (!features.length) return;
 
         const feature = features[0];
+        if (feature.geometry.type !== "Point") return;
 
-        const popupNode = renderMapPopup(
+        const { element, unmount } = renderMapPopup(
           React.createElement(MapPopup, {
             magnitude: feature.properties?.magnitude,
             depth: feature.properties?.depth,
@@ -167,12 +168,12 @@ export function useEarthquakeMap() {
           }),
         );
 
-        if (feature.geometry.type !== "Point") return;
-
-        new mapboxgl.Popup({ offset: 12 })
+        const popup = new mapboxgl.Popup({ offset: 12 })
           .setLngLat(feature.geometry.coordinates as [number, number])
-          .setDOMContent(popupNode)
+          .setDOMContent(element)
           .addTo(map);
+
+        popup.on("remove", unmount);
       });
     });
 

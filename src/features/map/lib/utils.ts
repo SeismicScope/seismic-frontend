@@ -1,5 +1,5 @@
 import type { Feature, Point } from "geojson";
-import { createRoot } from "react-dom/client";
+import { createRoot, Root } from "react-dom/client";
 
 import type { MapBounds, MapPoint, MapPointProperties } from "../types";
 
@@ -30,10 +30,16 @@ export function getBounds(map: mapboxgl.Map): MapBounds {
   };
 }
 
-export function renderMapPopup(content: React.ReactNode): HTMLElement {
-  const div = document.createElement("div");
-  const root = createRoot(div);
+export function renderMapPopup(content: React.ReactNode) {
+  const container = document.createElement("div");
+  const root: Root = createRoot(container);
+
   root.render(content);
 
-  return div;
+  return {
+    element: container,
+    unmount: () => {
+      root.unmount();
+    },
+  };
 }
