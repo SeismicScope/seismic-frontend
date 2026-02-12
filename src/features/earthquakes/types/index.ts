@@ -1,3 +1,5 @@
+import type { SortOption } from "@/shared/constants";
+
 export type Earthquake = {
   id: number;
   externalId: string | null;
@@ -28,6 +30,7 @@ export type EarthquakeFilters = {
 export type EarthquakeParams = EarthquakeFilters & {
   limit?: number;
   cursor?: number;
+  sort?: SortOption;
 };
 
 export type MagnitudeHistogram = {

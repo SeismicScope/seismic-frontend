@@ -3,9 +3,12 @@ import {
   parseAsFloat,
   parseAsInteger,
   parseAsIsoDate,
+  parseAsStringLiteral,
   useQueryStates,
 } from "nuqs";
 import { useMemo } from "react";
+
+import { SORT_OPTIONS } from "@/shared/constants";
 
 import { getApiFilters } from "../lib/utils";
 
@@ -18,6 +21,7 @@ export function useFilters() {
       maxDepth: parseAsInteger,
       dateFrom: parseAsIsoDate,
       dateTo: parseAsIsoDate,
+      sort: parseAsStringLiteral(SORT_OPTIONS),
     },
     {
       shallow: false,

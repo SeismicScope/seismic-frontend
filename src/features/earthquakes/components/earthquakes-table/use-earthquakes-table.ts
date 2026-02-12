@@ -55,6 +55,7 @@ export function useEarthquakesTable() {
 
   return {
     isLoading,
+    isEmpty: !isLoading && flatData.length === 0,
     table,
     virtualRows,
     parentRef,

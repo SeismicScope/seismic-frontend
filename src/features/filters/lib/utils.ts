@@ -8,5 +8,6 @@ export function getApiFilters(filters: FilterType) {
     maxDepth: filters.maxDepth ?? undefined,
     dateFrom: filters.dateFrom ?? undefined,
     dateTo: filters.dateTo ?? undefined,
+    sort: filters.sort ?? undefined,
   };
 }

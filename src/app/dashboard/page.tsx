@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
+import SortSelect from "@/features/filters/components/sort-select";
 
 import DashbardFilters from "./dashboard-filters";
 import UploadFromCSV from "./upload-from-csv";
@@ -27,6 +28,10 @@ export default function DashboardPage() {
           <div className="h-full w-px bg-black/40" />
         </div>
         <DashbardFilters />
+      </div>
+      <div className="mb-2 flex items-center justify-between">
+        <p className="text-lg font-bold">Earthquakes</p>
+        <SortSelect />
       </div>
       <EarthquakeTable />
     </div>

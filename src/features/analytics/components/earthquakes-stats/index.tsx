@@ -10,7 +10,12 @@ function EarthquakesStats() {
 
   if (isLoading) return <EarthquakesStatsSkeleton />;
 
-  if (!isLoading && !stats) return null;
+  if (!isLoading && !stats)
+    return (
+      <div className="flex h-[200px] items-center justify-center">
+        <p className="text-muted-foreground text-sm">No data available</p>
+      </div>
+    );
 
   return (
     <div className="grid w-full grid-cols-2 gap-4 py-4">

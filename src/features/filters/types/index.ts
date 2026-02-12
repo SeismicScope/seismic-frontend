@@ -1,3 +1,5 @@
+import type { SortOption } from "@/shared/constants";
+
 export type FilterType = {
   dateFrom?: Date | null;
   dateTo?: Date | null;
@@ -5,4 +7,5 @@ export type FilterType = {
   maxDepth?: number | null;
   minMag?: number | null;
   maxMag?: number | null;
+  sort?: SortOption | null;
 };

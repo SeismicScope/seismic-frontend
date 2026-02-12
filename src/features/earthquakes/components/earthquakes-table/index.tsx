@@ -16,10 +16,24 @@ import TableSkeleton from "./table-skeleton";
 import { useEarthquakesTable } from "./use-earthquakes-table";
 
 export function EarthquakeTable() {
-  const { isLoading, table, virtualRows, parentRef, rowVirtualizer, rows } =
-    useEarthquakesTable();
+  const {
+    isLoading,
+    isEmpty,
+    table,
+    virtualRows,
+    parentRef,
+    rowVirtualizer,
+    rows,
+  } = useEarthquakesTable();
 
   if (isLoading) return <TableSkeleton />;
+
+  if (isEmpty)
+    return (
+      <div className="flex h-[300px] items-center justify-center">
+        <p className="text-muted-foreground text-sm">No data available</p>
+      </div>
+    );
 
   return (
     <div ref={parentRef} className="relative h-[400px] w-full overflow-auto">

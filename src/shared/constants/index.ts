@@ -33,3 +33,14 @@ export const COLOR_THEME_META: Record<
   [COLOR_THEME.TOMATO]: { label: "Tomato", color: "#dc2626" },
   [COLOR_THEME.MANGO]: { label: "Mango", color: "#e8780a" },
 };
+
+export const SORT_OPTIONS = [
+  "date_asc",
+  "date_desc",
+  "magnitude_asc",
+  "magnitude_desc",
+  "depth_asc",
+  "depth_desc",
+] as const;
+
+export type SortOption = (typeof SORT_OPTIONS)[number];
