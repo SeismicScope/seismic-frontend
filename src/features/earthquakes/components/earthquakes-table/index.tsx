@@ -36,7 +36,7 @@ export function EarthquakeTable() {
     );
 
   return (
-    <div ref={parentRef} className="relative h-[400px] w-full overflow-auto">
+    <div ref={parentRef} className="relative h-[350px] w-full overflow-auto">
       <table className="w-full min-w-[700px] caption-bottom text-sm">
         <TableHeader className="bg-background sticky top-0 z-10">
           {table.getHeaderGroups().map((headerGroup) => (
