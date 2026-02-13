@@ -1,21 +1,28 @@
 import { api } from "@/shared/lib/axios";
 
-import type { LoginCredentials } from "../types";
+import type {
+  LoginCredentials,
+  LoginResponse,
+  LogoutResponse,
+  User,
+} from "../types";
 
-export async function login(credentials: LoginCredentials) {
-  const { data } = await api.post("/auth/login", credentials);
+export async function login(
+  credentials: LoginCredentials,
+): Promise<LoginResponse> {
+  const { data } = await api.post<LoginResponse>("/auth/login", credentials);
 
   return data;
 }
 
-export async function logout() {
-  const { data } = await api.post("/auth/logout");
+export async function logout(): Promise<LogoutResponse> {
+  const { data } = await api.post<LogoutResponse>("/auth/logout");
 
   return data;
 }
 
-export async function me() {
-  const { data } = await api.get("/auth/me");
+export async function me(): Promise<User> {
+  const { data } = await api.get<User>("/auth/me");
 
   return data;
 }

@@ -1,3 +1,5 @@
+import type { User } from "@/features/auth/types";
+
 export interface MenuItem {
   title: string;
   url: string;
@@ -24,7 +26,7 @@ export type NavProps = {
     alt: string;
     title: string;
   };
-  user: string;
+  user: User | undefined;
   menuWithAdmin: MenuItem[];
   logout: () => void;
 };
