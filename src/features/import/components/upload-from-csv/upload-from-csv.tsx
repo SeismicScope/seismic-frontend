@@ -11,11 +11,11 @@ function UploadFromCSV() {
   if (!user) return null;
 
   return (
-    <>
+    <div className="flex w-full flex-col gap-3 px-3 lg:w-1/3">
       <p className="text-muted-foreground">Hello {user?.name}</p>
       <UploadFromCSVModal />
       <JobStatus />
-    </>
+    </div>
   );
 }
 
