@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["mapbox-gl"],
 
   experimental: {
+    inlineCss: true,
     optimizePackageImports: ["recharts", "lucide-react", "date-fns"],
   },
 };
