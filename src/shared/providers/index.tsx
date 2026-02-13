@@ -1,5 +1,4 @@
 "use client";
-
 import * as Sentry from "@sentry/nextjs";
 import {
   MutationCache,
@@ -7,16 +6,20 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import dynamic from "next/dynamic";
 import { ThemeProvider } from "next-themes";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { type JSX, useState } from "react";
 import { toast, Toaster } from "sonner";
 
-import CookieBanner from "../components/cookie-banner";
 import { WebVitals } from "../components/web-vitals";
 import GoogleAnalytics from "../lib/google-analytics";
 import { getErrorMessage } from "../lib/utils";
 import { ColorThemeProvider } from "./theme-provider";
+
+const CookieBanner = dynamic(() => import("../components/cookie-banner"), {
+  ssr: false,
+});
 
 export function Providers({
   children,

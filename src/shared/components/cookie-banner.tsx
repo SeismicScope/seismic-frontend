@@ -5,10 +5,8 @@ import { useState } from "react";
 import { COOKIE_CONSENT_KEY } from "../constants";
 import { Button } from "../ui/button";
 
-function CookieBanner() {
+export default function CookieBanner() {
   const [consent, setConsent] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-
     return localStorage.getItem(COOKIE_CONSENT_KEY);
   });
 
@@ -42,5 +40,3 @@ function CookieBanner() {
     </div>
   );
 }
-
-export default CookieBanner;
