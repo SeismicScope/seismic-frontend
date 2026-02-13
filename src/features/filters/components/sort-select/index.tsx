@@ -30,7 +30,7 @@ export default function SortSelect() {
       <SelectTrigger>
         <SelectValue placeholder="Sort by..." />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent position="popper">
         {Object.entries(SORT_LABELS).map(([value, label]) => (
           <SelectItem key={value} value={value}>
             {label}
