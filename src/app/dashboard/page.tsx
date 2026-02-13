@@ -5,7 +5,6 @@ import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-t
 import SortSelect from "@/features/filters/components/sort-select";
 
 import DashbardFilters from "./dashboard-filters";
-import UploadFromCSV from "./upload-from-csv";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -17,7 +16,6 @@ export default function DashboardPage() {
   return (
     <div className="mt-5 w-full px-4 lg:px-10">
       <h1 className="text-2xl font-bold">Dashboard</h1>
-      <UploadFromCSV />
 
       <div className="my-4 flex flex-col items-stretch gap-4 lg:flex-row">
         <div className="w-full lg:w-1/4">

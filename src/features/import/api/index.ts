@@ -1,11 +1,17 @@
 import { api } from "@/shared/lib/axios";
 
-import type { ImportStatus } from "../types";
+import type { ImportStatus, UploadParams } from "../types";
 
-export async function uploadEarthquakes(data: FormData): Promise<ImportStatus> {
-  const { data: earthquake } = await api.post("/import/upload", data);
+export async function uploadEarthquakes(
+  params: UploadParams,
+): Promise<ImportStatus> {
+  const formData = new FormData();
+  formData.append("file", params.file);
+  formData.append("secretWord", params.secretWord);
 
-  return earthquake;
+  const { data } = await api.post("/import/upload", formData);
+
+  return data;
 }
 
 export async function getImportStatus(jobId: number): Promise<ImportStatus> {

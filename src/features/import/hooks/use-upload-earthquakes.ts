@@ -2,17 +2,15 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
 
 import { uploadEarthquakes } from "../api";
+import type { UploadParams } from "../types";
 
 export function useUploadEarthquakes() {
   const [, setJobId] = useQueryState("jobId", { defaultValue: "" });
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (file: File) => {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const data = await uploadEarthquakes(formData);
+    mutationFn: async (params: UploadParams) => {
+      const data = await uploadEarthquakes(params);
 
       return data;
     },

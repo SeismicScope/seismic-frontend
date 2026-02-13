@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import Logo from "@/assets/logo.svg";
+import { LoginDialog } from "@/features/auth/components/login-dialog";
 
 import { Button } from "../button";
 import { NavigationMenu, NavigationMenuList } from "../navigation-menu";
@@ -8,7 +9,7 @@ import ThemeSwitcher from "../theme-switcher";
 import renderMenuItem from "./render-menu-item";
 import type { NavProps } from "./types";
 
-function DesktopNav({ logo, user, menuWithAdmin, login, logout }: NavProps) {
+function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
   return (
     <nav className="hidden items-center justify-between lg:flex">
       <div className="flex items-center gap-6">
@@ -29,14 +30,7 @@ function DesktopNav({ logo, user, menuWithAdmin, login, logout }: NavProps) {
       <ThemeSwitcher />
       <div className="flex gap-2">
         {!user ? (
-          <Button
-            variant="default"
-            size="sm"
-            onClick={() => login()}
-            aria-label="Login"
-          >
-            Login
-          </Button>
+          <LoginDialog />
         ) : (
           <Button size="sm" onClick={() => logout()} aria-label="Logout">
             Logout

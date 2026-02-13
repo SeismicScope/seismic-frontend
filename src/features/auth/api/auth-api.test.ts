@@ -21,12 +21,13 @@ describe("auth api", () => {
 
   it("calls login and returns user data", async () => {
     const mockData = { id: 1, email: "test@example.com", accessToken: "token" };
+    const credentials = { username: "admin", password: "secret123" };
 
     mockedPost.mockResolvedValue({ data: mockData });
 
-    const result = await login();
+    const result = await login(credentials);
 
-    expect(api.post).toHaveBeenCalledWith("/auth/login");
+    expect(api.post).toHaveBeenCalledWith("/auth/login", credentials);
     expect(result).toEqual(mockData);
   });
 

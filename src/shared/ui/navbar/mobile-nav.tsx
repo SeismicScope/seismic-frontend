@@ -2,6 +2,7 @@ import { Menu } from "lucide-react";
 import Image from "next/image";
 
 import Logo from "@/assets/logo.svg";
+import { LoginDialog } from "@/features/auth/components/login-dialog";
 
 import { Accordion } from "../accordion";
 import { Button } from "../button";
@@ -16,7 +17,7 @@ import ThemeSwitcher from "../theme-switcher";
 import renderMobileMenuItem from "./render-mobile-menu-item";
 import type { NavProps } from "./types";
 
-function MobileNav({ logo, user, menuWithAdmin, login, logout }: NavProps) {
+function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
   return (
     <div className="block lg:hidden">
       <div className="flex items-center justify-between">
@@ -56,13 +57,7 @@ function MobileNav({ logo, user, menuWithAdmin, login, logout }: NavProps) {
 
               <div className="flex flex-col gap-3">
                 {!user ? (
-                  <Button
-                    variant="outline"
-                    onClick={() => login()}
-                    aria-label="Login"
-                  >
-                    Login
-                  </Button>
+                  <LoginDialog />
                 ) : (
                   <Button onClick={() => logout()} aria-label="Logout">
                     Logout

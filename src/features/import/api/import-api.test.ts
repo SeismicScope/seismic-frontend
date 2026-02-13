@@ -19,16 +19,19 @@ describe("import api", () => {
     vi.clearAllMocks();
   });
 
-  it("calls uploadEarthquakes with FormData and returns status", async () => {
+  it("calls uploadEarthquakes with file and secretWord and returns status", async () => {
     const mockStatus = { id: 123, status: "pending", progress: 0 };
     mockedPost.mockResolvedValue({ data: mockStatus });
 
-    const formData = new FormData();
-    formData.append("file", new Blob(["test content"]), "test.csv");
+    const file = new File(["test content"], "test.csv", { type: "text/csv" });
+    const params = { file, secretWord: "mysecret" };
 
-    const result = await uploadEarthquakes(formData);
+    const result = await uploadEarthquakes(params);
 
-    expect(api.post).toHaveBeenCalledWith("/import/upload", formData);
+    expect(api.post).toHaveBeenCalledWith(
+      "/import/upload",
+      expect.any(FormData),
+    );
     expect(result).toEqual(mockStatus);
   });
 

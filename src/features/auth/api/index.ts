@@ -1,7 +1,9 @@
 import { api } from "@/shared/lib/axios";
 
-export async function login() {
-  const { data } = await api.post("/auth/login");
+import type { LoginCredentials } from "../types";
+
+export async function login(credentials: LoginCredentials) {
+  const { data } = await api.post("/auth/login", credentials);
 
   return data;
 }

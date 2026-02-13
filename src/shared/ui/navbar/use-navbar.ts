@@ -3,15 +3,7 @@
 import { useAuth } from "@/features/auth/hooks/use-auth";
 
 export function useNavbar() {
-  const { login, logout, user } = useAuth();
-
-  async function handleLogin(): Promise<void> {
-    try {
-      await login();
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  const { logout, user } = useAuth();
 
   async function handleLogout(): Promise<void> {
     try {
@@ -22,7 +14,6 @@ export function useNavbar() {
   }
 
   return {
-    login: handleLogin,
     logout: handleLogout,
     user,
   };

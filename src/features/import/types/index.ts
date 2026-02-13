@@ -5,3 +5,8 @@ export type ImportStatus = {
   status: string;
   updatedAt: string;
 };
+
+export type UploadParams = {
+  file: File;
+  secretWord: string;
+};

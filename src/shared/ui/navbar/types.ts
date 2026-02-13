@@ -26,6 +26,5 @@ export type NavProps = {
   };
   user: string;
   menuWithAdmin: MenuItem[];
-  login: () => void;
   logout: () => void;
 };

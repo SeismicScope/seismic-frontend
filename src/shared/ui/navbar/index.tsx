@@ -8,8 +8,8 @@ import MobileNav from "./mobile-nav";
 import type { Navbar1Props } from "./types";
 import { useNavbar } from "./use-navbar";
 
-function Navbar1({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
-  const { login, logout, user } = useNavbar();
+function Navbar({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
+  const { logout, user } = useNavbar();
   const isAdmin = user?.role === "admin";
 
   const menuWithAdmin = isAdmin
@@ -28,14 +28,12 @@ function Navbar1({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
           logo={logo}
           menuWithAdmin={menuWithAdmin}
           user={user}
-          login={login}
           logout={logout}
         />
         <MobileNav
           logo={logo}
           menuWithAdmin={menuWithAdmin}
           user={user}
-          login={login}
           logout={logout}
         />
       </div>
@@ -43,4 +41,4 @@ function Navbar1({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
   );
 }
 
-export { Navbar1 };
+export default Navbar;
