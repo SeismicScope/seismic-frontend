@@ -36,5 +36,9 @@ export function getErrorMessage(error: unknown): string {
 }
 
 export function formatDate(date: Date): string {
+  return dateAdapter.format(date, "LLL dd, y");
+}
+
+export function formatDateWithTime(date: Date): string {
   return dateAdapter.format(date, "LLL dd, y HH:mm:ss");
 }
