@@ -76,5 +76,5 @@ export function useEarthquakeMap() {
     [requestClusters],
   );
 
-  return { containerRef, isFetching } as const;
+  return { containerRef, isFetching, ready };
 }

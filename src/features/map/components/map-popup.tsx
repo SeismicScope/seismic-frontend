@@ -21,16 +21,18 @@ function MapPopup({
 
   return (
     <div className="flex flex-col text-sm">
-      <p className="text-foreground font-semibold">
+      <p className="text-muted-foreground font-semibold">
         Magnitude: {magnitude ? magnitude : "N/A"}
       </p>
-      <p className="text-foreground font-semibold">
+      <p className="text-muted-foreground font-semibold">
         Depth: {depth ? depth : "N/A"}
       </p>
-      <p className="text-foreground font-semibold">
+      <p className="text-muted-foreground font-semibold">
         Location: {location ? location : "N/A"}
       </p>
-      <p className="text-foreground font-semibold">Date: {occurredAtDate}</p>
+      <p className="text-muted-foreground font-semibold">
+        Date: {occurredAtDate}
+      </p>
 
       <Link
         href={`/earthquake/${id}`}
