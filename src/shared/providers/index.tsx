@@ -13,6 +13,7 @@ import { type JSX, useState } from "react";
 import { toast, Toaster } from "sonner";
 
 import { WebVitals } from "../components/web-vitals";
+import GoogleAnalytics from "../lib/google-analytics";
 import { getErrorMessage } from "../lib/utils";
 import { ColorThemeProvider } from "./theme-provider";
 
@@ -77,6 +78,7 @@ export function Providers({
           </QueryClientProvider>
           <Toaster richColors position="top-right" />
           <WebVitals />
+          <GoogleAnalytics />
         </ColorThemeProvider>
       </ThemeProvider>
     </NuqsAdapter>
