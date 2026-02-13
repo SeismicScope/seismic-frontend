@@ -50,6 +50,10 @@ export function Providers({
 
         mutationCache: new MutationCache({
           onError: (error, _variables, _context, mutation) => {
+            if (mutation.meta?.skipGlobalErrorHandler) {
+              return;
+            }
+
             const message = getErrorMessage(error);
             toast.error(message);
             Sentry.captureException(error, {

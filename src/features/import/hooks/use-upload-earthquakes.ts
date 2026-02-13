@@ -18,5 +18,6 @@ export function useUploadEarthquakes() {
       setJobId(data.id.toString());
       queryClient.invalidateQueries({ queryKey: ["import-status"] });
     },
+    meta: { skipGlobalErrorHandler: true },
   });
 }

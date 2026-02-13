@@ -25,6 +25,7 @@ export function useAuth() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["me"] });
     },
+    meta: { skipGlobalErrorHandler: true },
   });
 
   const logoutMutation = useMutation({
