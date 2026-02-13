@@ -33,7 +33,6 @@ export function useMapWorker({ adapterRef }: UseMapWorkerParams) {
         switch (e.data.type) {
           case "clusters":
             adapter.updateData(SOURCE_ID, e.data.data);
-            setMapStats({ processing: false });
             break;
 
           case "expansionZoom":
@@ -60,13 +59,9 @@ export function useMapWorker({ adapterRef }: UseMapWorkerParams) {
     [adapterRef, setMapStats],
   );
 
-  const loadPoints = useCallback(
-    (points: MapPoint[]) => {
-      setMapStats({ processing: true });
-      workerRef.current?.postMessage({ type: "load", rawPoints: points });
-    },
-    [setMapStats],
-  );
+  const loadPoints = useCallback((points: MapPoint[]) => {
+    workerRef.current?.postMessage({ type: "load", rawPoints: points });
+  }, []);
 
   const requestClusters = useCallback((map: mapboxgl.Map) => {
     if (!workerRef.current) return;

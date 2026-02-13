@@ -12,6 +12,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { type JSX, useState } from "react";
 import { toast, Toaster } from "sonner";
 
+import CookieBanner from "../components/cookie-banner";
 import { WebVitals } from "../components/web-vitals";
 import GoogleAnalytics from "../lib/google-analytics";
 import { getErrorMessage } from "../lib/utils";
@@ -79,6 +80,7 @@ export function Providers({
           <Toaster richColors position="top-right" />
           <WebVitals />
           <GoogleAnalytics />
+          <CookieBanner />
         </ColorThemeProvider>
       </ThemeProvider>
     </NuqsAdapter>

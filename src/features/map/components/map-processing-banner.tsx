@@ -1,11 +1,9 @@
-"use client";
+type MapProcessingBannerProps = {
+  visible: boolean;
+};
 
-import { useMapStatsStore } from "../store/use-map-stats";
-
-function MapProcessingBanner() {
-  const processing = useMapStatsStore((s) => s.processing);
-
-  if (!processing) return null;
+function MapProcessingBanner({ visible }: MapProcessingBannerProps) {
+  if (!visible) return null;
 
   return (
     <div className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2">

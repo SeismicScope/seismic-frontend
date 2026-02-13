@@ -5,6 +5,8 @@ import { twMerge } from "tailwind-merge";
 import { dateAdapter } from "@/shared/adapters/date.adapter";
 import type { ApiErrorResponse } from "@/types/main";
 
+import { COOKIE_CONSENT_KEY } from "../constants";
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -41,4 +43,10 @@ export function formatDate(date: Date): string {
 
 export function formatDateWithTime(date: Date): string {
   return dateAdapter.format(date, "LLL dd, y HH:mm:ss");
+}
+
+export function getConsent(): string | null {
+  if (typeof window === "undefined") return null;
+
+  return localStorage.getItem(COOKIE_CONSENT_KEY);
 }

@@ -6,13 +6,13 @@ import MapLoader from "./map-loader";
 import MapProcessingBanner from "./map-processing-banner";
 
 export default function EarthquakeMap() {
-  const { containerRef, ready } = useEarthquakeMap();
+  const { containerRef, ready, isFetching } = useEarthquakeMap();
 
   return (
     <div className="relative h-full w-full">
       <div ref={containerRef} className="h-full w-full" />
       {!ready && <MapLoader />}
-      <MapProcessingBanner />
+      <MapProcessingBanner visible={isFetching} />
     </div>
   );
 }

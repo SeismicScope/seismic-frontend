@@ -7,6 +7,11 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 function GoogleAnalytics() {
   if (!GA_ID) return null;
 
+  if (typeof window !== "undefined") {
+    const consent = localStorage.getItem("cookie-consent");
+    if (consent !== "accepted") return null;
+  }
+
   return (
     <>
       <Script

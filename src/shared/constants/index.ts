@@ -56,3 +56,4 @@ export const SORT_OPTIONS_META: Record<SortOption, string> = {
 
 export const DATE_RANGE_START = new Date(1930, 0, 1);
 export const DATE_RANGE_END = new Date(2018, 11, 31);
+export const COOKIE_CONSENT_KEY = "cookie-consent";
