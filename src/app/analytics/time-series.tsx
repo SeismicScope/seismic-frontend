@@ -1,5 +1,7 @@
 "use client";
-import { TimeSeriesChart } from "@/features/analytics/components/time-series-chart";
+
+import dynamic from "next/dynamic";
+
 import { useEarthquakesTimeSeries } from "@/features/analytics/hooks/use-earthquakes-time-series";
 import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
 import { PERIOD_INTERVALS } from "@/shared/constants";
@@ -11,7 +13,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/ui/select";
+import { Skeleton } from "@/shared/ui/skeleton";
 import type { TimeInterval } from "@/types/main";
+
+const TimeSeriesChart = dynamic(
+  () =>
+    import("@/features/analytics/components/time-series-chart").then(
+      (mod) => mod.TimeSeriesChart,
+    ),
+  {
+    ssr: false,
+    loading: () => <Skeleton className="h-[300px] w-full" />,
+  },
+);
 
 function TimeSeries() {
   const {

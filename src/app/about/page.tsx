@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { Blogpost1 } from "@/shared/ui/blogpost1";
+import Blogpost from "@/shared/ui/blogpost";
 
 export const metadata: Metadata = {
   title: "About",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 function AboutPage() {
-  return <Blogpost1 />;
+  return <Blogpost />;
 }
 
 export default AboutPage;

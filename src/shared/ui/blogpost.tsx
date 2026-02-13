@@ -1,3 +1,4 @@
+// this is default shadcn/blocks blogpost1
 import { Lightbulb } from "lucide-react";
 
 import { cn } from "@/shared/lib/utils";
@@ -9,7 +10,7 @@ interface Blogpost1Props {
   className?: string;
 }
 
-function Blogpost1({ className }: Blogpost1Props) {
+function Blogpost({ className }: Blogpost1Props) {
   return (
     <section className={cn("p-3 lg:p-16", className)}>
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
@@ -84,7 +85,7 @@ function Blogpost1({ className }: Blogpost1Props) {
           <p className="mt-4 font-bold">Tech Stack</p>
           <ul className="my-2 ml-4 list-disc">
             <li className="my-2">
-              <span className="font-semibold">Frontend:</span> Next.js 14 (App
+              <span className="font-semibold">Frontend:</span> Next.js 16 (App
               Router)
             </li>
             <li className="my-2">
@@ -224,4 +225,4 @@ function Blogpost1({ className }: Blogpost1Props) {
   );
 }
 
-export { Blogpost1 };
+export default Blogpost;

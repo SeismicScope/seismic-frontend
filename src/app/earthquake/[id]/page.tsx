@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { getEarthquakeById } from "@/features/earthquakes/api/server";
 
 import EarthquakeDetails from "./earthquake-details";
-import EarthquakeMapClient from "./earthquake-map-client";
+import LazyEarthquakeMap from "./lazy-earthquake-map";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -30,10 +30,7 @@ export default async function EarthquakePage({ params }: Props) {
   return (
     <div className="mt-5 flex w-full flex-col gap-10 px-4 lg:flex-row lg:px-10">
       <EarthquakeDetails earthquake={earthquake} />
-      <EarthquakeMapClient
-        lat={earthquake.latitude}
-        lng={earthquake.longitude}
-      />
+      <LazyEarthquakeMap lat={earthquake.latitude} lng={earthquake.longitude} />
     </div>
   );
 }

@@ -1,5 +1,8 @@
 "use client";
 
+import { Lightbulb } from "lucide-react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/shared/ui/alert";
 import { Button } from "@/shared/ui/button";
 import {
   Dialog,
@@ -35,6 +38,18 @@ export function LoginDialog() {
         <DialogHeader>
           <DialogTitle>Login</DialogTitle>
         </DialogHeader>
+        <Alert>
+          <Lightbulb className="h-4 w-4" />
+          <AlertTitle>Credetials for demo:</AlertTitle>
+          <AlertDescription>
+            <p>
+              Username: <span className="font-bold">oleinikdev</span>
+            </p>
+            <p>
+              Password: <span className="font-bold">Oleinikdev1996</span>
+            </p>
+          </AlertDescription>
+        </Alert>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <Label htmlFor="username">Username</Label>

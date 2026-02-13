@@ -3,6 +3,8 @@
 import * as Sentry from "@sentry/nextjs";
 import { useEffect } from "react";
 
+import { Button } from "@/shared/ui/button";
+
 export default function GlobalError({
   error,
   reset,
@@ -33,12 +35,9 @@ export default function GlobalError({
           <pre className="text-error mt-4 text-xs">{error.message}</pre>
         )}
 
-        <button
-          onClick={reset}
-          className="mt-6 rounded-md bg-black px-4 py-2 text-white"
-        >
+        <Button onClick={reset} className="mt-6">
           Try again
-        </button>
+        </Button>
       </div>
     </div>
   );

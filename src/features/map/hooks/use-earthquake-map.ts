@@ -1,5 +1,5 @@
 import mapboxgl from "mapbox-gl";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import React from "react";
 
 import { MapAdapter } from "@/shared/adapters/map-adapter";
@@ -7,7 +7,7 @@ import { useDebouncedCallback } from "@/shared/hooks/use-debounce";
 
 import MapPopup from "../components/map-popup";
 import { SOURCE_ID } from "../constants";
-import { getBounds, renderMapPopup, toGeoJSON } from "../lib/utils";
+import { getBounds, renderMapPopup } from "../lib/utils";
 import { useMapStatsStore } from "../store/use-map-stats";
 import type { MapRequest, WorkerOnMessageEvent } from "../types";
 import { useMapData } from "./use-map-data";
@@ -30,12 +30,6 @@ export function useEarthquakeMap() {
       zoom: Math.floor(map.getZoom()),
     });
   }, 400);
-
-  const geoJsonPoints = useMemo(() => {
-    if (!mapResponse?.data?.length) return [];
-
-    return toGeoJSON(mapResponse.data);
-  }, [mapResponse]);
 
   const requestClusters = useCallback((map: mapboxgl.Map) => {
     if (!workerRef.current) return;
@@ -92,19 +86,23 @@ export function useEarthquakeMap() {
 
   useEffect(
     function loadClusterData() {
-      if (!geoJsonPoints.length || !workerRef.current || !adapterRef.current)
+      if (
+        !mapResponse?.data?.length ||
+        !workerRef.current ||
+        !adapterRef.current
+      )
         return;
 
       const map = adapterRef.current.getMap();
 
       workerRef.current.postMessage({
         type: "load",
-        points: geoJsonPoints,
+        rawPoints: mapResponse.data,
       });
 
       requestClusters(map);
     },
-    [geoJsonPoints],
+    [mapResponse],
   );
 
   useEffect(function initializeMap() {

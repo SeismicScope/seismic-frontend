@@ -24,7 +24,7 @@ export default function AdminContent() {
   }
 
   return (
-    <div className="mt-4 flex w-full flex-col gap-3 px-3 lg:w-1/3">
+    <div className="mt-4 flex w-full flex-col gap-3 lg:w-1/3">
       <p className="text-muted-foreground">Hello {user?.name}</p>
       <div className="bg-card flex flex-col gap-4 rounded-lg border p-6">
         <h3 className="text-lg font-semibold">Import Earthquakes</h3>

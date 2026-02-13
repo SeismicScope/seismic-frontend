@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import Map from "@/features/map/components/map";
+import LazyMap from "@/features/map/components/lazy-map";
 import MapStats from "@/features/map/components/map-stats";
 import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
 
@@ -21,7 +21,7 @@ function MapPage() {
           </div>
         }
       >
-        <Map />
+        <LazyMap />
       </ErrorBoundary>
     </div>
   );

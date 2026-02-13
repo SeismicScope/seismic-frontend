@@ -12,6 +12,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { type JSX, useState } from "react";
 import { toast, Toaster } from "sonner";
 
+import { WebVitals } from "../components/web-vitals";
 import { getErrorMessage } from "../lib/utils";
 import { ColorThemeProvider } from "./theme-provider";
 
@@ -75,6 +76,7 @@ export function Providers({
             {children}
           </QueryClientProvider>
           <Toaster richColors position="top-right" />
+          <WebVitals />
         </ColorThemeProvider>
       </ThemeProvider>
     </NuqsAdapter>

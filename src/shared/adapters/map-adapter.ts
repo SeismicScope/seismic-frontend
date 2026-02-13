@@ -46,6 +46,10 @@ export class MapAdapter {
       maxBounds: opts.maxBounds,
       interactive: opts.interactive,
       attributionControl: opts.attributionControl,
+      fadeDuration: 0,
+      collectResourceTiming: false,
+      renderWorldCopies: false,
+      trackResize: true,
     });
 
     if (opts.navigationControl) {
