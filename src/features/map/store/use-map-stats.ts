@@ -5,6 +5,7 @@ type MapStatsState = {
   buildTime: number;
   totalInBounds: number;
   limit: number;
+  processing: boolean;
 };
 
 type MapStatsActions = {
@@ -18,5 +19,6 @@ export const useMapStatsStore = create<MapStatsStore>((set) => ({
   buildTime: 0,
   totalInBounds: 0,
   limit: 0,
+  processing: false,
   setMapStats: (stats) => set(stats),
 }));
