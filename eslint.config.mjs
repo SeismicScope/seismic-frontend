@@ -77,6 +77,8 @@ const eslintConfig = defineConfig([
     "*.test.tsx",
     "*.test.js",
     "*.test.jsx",
+    "storybook-static/**",
+    "coverage/**",
   ]),
 ]);
 

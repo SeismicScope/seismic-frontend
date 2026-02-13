@@ -34,7 +34,7 @@ export const COLOR_THEME_META: Record<
   [COLOR_THEME.MANGO]: { label: "Mango", color: "#e8780a" },
 };
 
-export const SORT_OPTIONS = [
+export const SORT_VALUES = [
   "date_asc",
   "date_desc",
   "magnitude_asc",
@@ -43,4 +43,16 @@ export const SORT_OPTIONS = [
   "depth_desc",
 ] as const;
 
-export type SortOption = (typeof SORT_OPTIONS)[number];
+export type SortOption = (typeof SORT_VALUES)[number];
+
+export const SORT_OPTIONS_META: Record<SortOption, string> = {
+  date_asc: "Date (oldest first)",
+  date_desc: "Date (newest first)",
+  magnitude_asc: "Magnitude (low to high)",
+  magnitude_desc: "Magnitude (high to low)",
+  depth_asc: "Depth (shallow to deep)",
+  depth_desc: "Depth (deep to shallow)",
+};
+
+export const DATE_RANGE_START = new Date(1930, 0, 1);
+export const DATE_RANGE_END = new Date(2018, 11, 31);

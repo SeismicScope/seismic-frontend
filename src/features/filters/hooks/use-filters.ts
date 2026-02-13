@@ -8,7 +8,7 @@ import {
 } from "nuqs";
 import { useMemo } from "react";
 
-import { SORT_OPTIONS } from "@/shared/constants";
+import { SORT_VALUES } from "@/shared/constants";
 
 import { getApiFilters } from "../lib/utils";
 
@@ -21,7 +21,7 @@ export function useFilters() {
       maxDepth: parseAsInteger,
       dateFrom: parseAsIsoDate,
       dateTo: parseAsIsoDate,
-      sort: parseAsStringLiteral(SORT_OPTIONS),
+      sort: parseAsStringLiteral(SORT_VALUES),
     },
     {
       shallow: false,

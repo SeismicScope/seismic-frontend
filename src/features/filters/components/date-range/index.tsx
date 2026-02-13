@@ -1,10 +1,13 @@
 "use client";
 
 import { CalendarIcon } from "lucide-react";
+import { useCallback } from "react";
 import type { DateRange } from "react-day-picker";
+import { toast } from "sonner";
 
 import { useFilters } from "@/features/filters/hooks/use-filters";
-import { dateAdapter } from "@/shared/adapters/date.adapter";
+import { DATE_RANGE_END, DATE_RANGE_START } from "@/shared/constants";
+import { formatDate } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Calendar } from "@/shared/ui/calendar";
 import { Field } from "@/shared/ui/field";
@@ -13,27 +16,23 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 function DatePickerWithRange() {
   const { filters, setFilters } = useFilters();
 
-  function formatDate(date: Date): string {
-    return dateAdapter.format(date, "LLL dd, y");
-  }
+  const onDateSelect = useCallback(
+    (date?: DateRange): void => {
+      if (!date?.from) return;
 
-  function onDateSelect(date?: DateRange): void {
-    if (date?.from && date?.to) {
+      if (date.from && date.to && date.from > date.to) {
+        toast.error("Start date must be before end date");
+
+        return;
+      }
+
       setFilters({
         dateFrom: date.from,
-        dateTo: date.to,
+        dateTo: date.to ?? null,
       });
-
-      return;
-    }
-
-    if (date?.from) {
-      setFilters({
-        dateFrom: date.from,
-        dateTo: null,
-      });
-    }
-  }
+    },
+    [setFilters],
+  );
 
   return (
     <Field className="mx-auto w-full">
@@ -60,14 +59,20 @@ function DatePickerWithRange() {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
+          <p className="text-muted-foreground px-3 pt-3 text-center text-xs">
+            Available: {formatDate(DATE_RANGE_START)} —{" "}
+            {formatDate(DATE_RANGE_END)}
+          </p>
           <Calendar
             mode="range"
-            defaultMonth={new Date()}
+            defaultMonth={DATE_RANGE_START}
+            startMonth={DATE_RANGE_START}
+            endMonth={DATE_RANGE_END}
             selected={{
               from: filters.dateFrom || undefined,
               to: filters.dateTo || undefined,
             }}
-            onSelect={(date) => onDateSelect(date)}
+            onSelect={onDateSelect}
             numberOfMonths={2}
             aria-label="Date range picker calendar"
           />
