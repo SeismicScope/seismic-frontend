@@ -23,8 +23,8 @@ function CookieBanner() {
   }
 
   return (
-    <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2">
-      <div className="bg-background/90 flex items-center gap-4 rounded-lg border px-5 py-3 shadow-lg backdrop-blur-sm">
+    <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center">
+      <div className="bg-background/90 pointer-events-auto flex items-center gap-4 rounded-lg border px-5 py-3 shadow-lg backdrop-blur-sm">
         <p className="text-muted-foreground text-sm">
           We use cookies to analyze site usage.
         </p>
