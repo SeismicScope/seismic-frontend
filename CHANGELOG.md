@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.0.0...v1.1.0) (2026-02-27)
+
+### Features
+
+- **title-map:** add titles map page with vector tiles support ([ec06b5d](https://github.com/SeismicScope/seismic-frontend/commit/ec06b5dc885ed34e2fc23b3bd46aaf27a38b1179))
+
 # 1.0.0 (2026-02-20)
 
 ### Bug Fixes
