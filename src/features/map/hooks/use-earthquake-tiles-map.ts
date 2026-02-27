@@ -18,7 +18,11 @@ export function useEarthquakeTilesMap() {
         `${process.env.NEXT_PUBLIC_API_URL}/map/tiles/{z}/{x}/{y}`,
       );
 
-      adapter.addVectorTileLayer("earthquakes-layer", "earthquakes");
+      adapter.addVectorTileLayer({
+        layerId: "earthquakes-layer",
+        sourceId: "earthquakes-tiles",
+        sourceLayer: "earthquakes",
+      });
     });
 
     return () => adapter.destroy();

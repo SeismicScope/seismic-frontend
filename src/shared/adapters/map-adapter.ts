@@ -114,13 +114,21 @@ export class MapAdapter {
     });
   }
 
-  addVectorTileLayer(id: string, sourceLayer: string) {
-    if (this.map.getLayer(id)) return;
+  addVectorTileLayer({
+    layerId,
+    sourceId,
+    sourceLayer,
+  }: {
+    layerId: string;
+    sourceId: string;
+    sourceLayer: string;
+  }) {
+    if (this.map.getLayer(layerId)) return;
 
     this.map.addLayer({
-      id,
+      id: layerId,
       type: "circle",
-      source: id,
+      source: sourceId,
       "source-layer": sourceLayer,
       paint: {
         "circle-radius": 4,
