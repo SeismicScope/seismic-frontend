@@ -20,6 +20,10 @@ export const MENU = [
     url: "/map",
   },
   {
+    title: "Titles Map",
+    url: "/titles-map",
+  },
+  {
     title: "About",
     url: "/about",
   },

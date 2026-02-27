@@ -103,6 +103,33 @@ export class MapAdapter {
     });
   }
 
+  addVectorTileSource(id: string, tileUrl: string) {
+    if (this.map.getSource(id)) return;
+
+    this.map.addSource(id, {
+      type: "vector",
+      tiles: [tileUrl],
+      minzoom: 0,
+      maxzoom: 14,
+    });
+  }
+
+  addVectorTileLayer(id: string, sourceLayer: string) {
+    if (this.map.getLayer(id)) return;
+
+    this.map.addLayer({
+      id,
+      type: "circle",
+      source: id,
+      "source-layer": sourceLayer,
+      paint: {
+        "circle-radius": 4,
+        "circle-color": "#ff5500",
+        "circle-opacity": 0.7,
+      },
+    });
+  }
+
   destroy() {
     this.map.remove();
   }
