@@ -1,3 +1,9 @@
+# [1.8.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.7.0...v1.8.0) (2026-02-28)
+
+### Features
+
+- **seo:** add sitemap, robots.txt, and JSON-LD structured data ([01af199](https://github.com/SeismicScope/seismic-frontend/commit/01af1999ce3c7776f41304cd8d85e30abb2d1bea))
+
 # [1.7.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.6.0...v1.7.0) (2026-02-28)
 
 ### Features
