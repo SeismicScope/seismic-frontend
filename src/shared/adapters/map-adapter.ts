@@ -6,7 +6,6 @@ import {
   clusterCircleLayerTiles,
   clusterCountLayer,
   clusterCountLayerTiles,
-  pointLabelLayerTiles,
   pointLayer,
   pointLayerTiles,
 } from "./map-layers";
@@ -148,12 +147,6 @@ export class MapAdapter {
     this.map.addLayer({
       ...pointLayerTiles,
       id: layerId,
-      source: sourceId,
-      "source-layer": sourceLayer,
-    });
-
-    this.map.addLayer({
-      ...pointLabelLayerTiles,
       source: sourceId,
       "source-layer": sourceLayer,
     });
