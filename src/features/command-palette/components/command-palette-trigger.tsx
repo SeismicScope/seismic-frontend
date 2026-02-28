@@ -1,3 +1,4 @@
+"use client";
 import { Search } from "lucide-react";
 
 import { useCommandPalette } from "../hooks/use-command-palette";

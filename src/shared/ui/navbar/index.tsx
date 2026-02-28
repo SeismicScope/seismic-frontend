@@ -1,4 +1,3 @@
-// Note: this navbar1 is a copy of navbar1 from shadcnblocks
 "use client";
 import { cn } from "@/shared/lib/utils";
 
