@@ -133,7 +133,7 @@ export const pointLabelLayerTiles: Layer = {
       ["get", "magnitude"],
       { "max-fraction-digits": 1 },
     ],
-    "text-font": ["Inter", "Arial Unicode MS Bold"],
+    "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
     "text-size": ["interpolate", ["linear"], ["zoom"], 8, 8, 8, 12, 12, 12],
     "text-allow-overlap": true,
     "text-ignore-placement": true,
