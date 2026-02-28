@@ -35,11 +35,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} pt-20 antialiased`}>
+      <body className={`${inter.variable} antialiased`}>
         <Providers>
           <Navbar />
-          {children}
-          {modal}
+          <main className="pt-20">
+            {children}
+            {modal}
+          </main>
         </Providers>
       </body>
     </html>
