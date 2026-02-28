@@ -1,41 +1,39 @@
 "use client";
-
 import { useState } from "react";
 
 import { COOKIE_CONSENT_KEY } from "../constants";
 import { Button } from "../ui/button";
 
 export default function CookieBanner() {
-  const [consent, setConsent] = useState<string | null>(() => {
-    return localStorage.getItem(COOKIE_CONSENT_KEY);
+  const [visible, setVisible] = useState<boolean>(() => {
+    const seen = localStorage.getItem(COOKIE_CONSENT_KEY);
+    if (!seen) {
+      localStorage.setItem(COOKIE_CONSENT_KEY, "seen");
+
+      return true;
+    }
+
+    return false;
   });
 
-  if (consent) return null;
+  if (!visible) return null;
 
-  function handleAccept(): void {
-    localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
-    setConsent("accepted");
-  }
-
-  function handleDecline(): void {
-    localStorage.setItem(COOKIE_CONSENT_KEY, "declined");
-    setConsent("declined");
+  function handleAcknowledge(): void {
+    localStorage.setItem(COOKIE_CONSENT_KEY, "acknowledged");
+    setVisible(false);
   }
 
   return (
     <div className="fixed inset-x-0 bottom-6 z-50 mx-3 flex justify-center">
       <div className="bg-background/90 flex items-center gap-4 rounded-lg border px-5 py-3 shadow-lg backdrop-blur-sm">
         <p className="text-muted-foreground text-sm">
-          We use cookies to analyze site usage.
+          We use cookies to improve your experience, analyze site usage, and
+          support our services. By continuing to use this site, you agree to our
+          use of cookies.
         </p>
-        <div className="flex gap-2">
-          <Button size="sm" variant="ghost" onClick={handleDecline}>
-            Decline
-          </Button>
-          <Button size="sm" onClick={handleAccept}>
-            Accept
-          </Button>
-        </div>
+        <Button size="sm" onClick={handleAcknowledge}>
+          Got it
+        </Button>
       </div>
     </div>
   );
