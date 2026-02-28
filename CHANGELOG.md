@@ -1,3 +1,9 @@
+# [1.6.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.5.0...v1.6.0) (2026-02-28)
+
+### Features
+
+- **share-link:** add share link dialog with QR code generation to dashboard ([d22fedb](https://github.com/SeismicScope/seismic-frontend/commit/d22fedba25424d572ba7605bbfd11ba316f2ef35))
+
 # [1.5.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.4.0...v1.5.0) (2026-02-28)
 
 ### Features
