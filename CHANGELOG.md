@@ -1,3 +1,9 @@
+# [1.9.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.8.0...v1.9.0) (2026-02-28)
+
+### Features
+
+- **sync:** add cross-tab synchronization for filters and theme using BroadcastChannel API ([a221aa9](https://github.com/SeismicScope/seismic-frontend/commit/a221aa980c2cb071b03a5dade682d62288c14ddc))
+
 # [1.8.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.7.0...v1.8.0) (2026-02-28)
 
 ### Features
