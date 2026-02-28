@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
 
 async function getOriginalUrl(code: string) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/shortener/${code}/resolve`,
-  );
+  const res = await fetch(`${process.env.API_URL}/shortener/${code}/resolve`, {
+    cache: "no-store",
+  });
   if (!res.ok) return null;
 
   return res.json();
