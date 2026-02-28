@@ -1,6 +1,6 @@
-import EarthquakeDetails from "@/app/earthquake/[id]/earthquake-details";
 import { getEarthquakeById } from "@/features/earthquakes/api/server";
 
+import EarthquakeModalDetails from "./earthquake-modal-details";
 import ModalWrapper from "./modal-wrapper";
 
 type Props = {
@@ -15,7 +15,7 @@ export default async function EarthquakeModal({ params }: Props) {
 
   return (
     <ModalWrapper>
-      <EarthquakeDetails earthquake={earthquake} />
+      <EarthquakeModalDetails earthquake={earthquake} />
     </ModalWrapper>
   );
 }
