@@ -1,8 +1,6 @@
 import { redirect } from "next/navigation";
 
 async function getOriginalUrl(code: string) {
-  console.log("API_URL", process.env.API_URL);
-  console.log("URL", `${process.env.API_URL}/shortener/resolve/${code}`);
   const res = await fetch(`${process.env.API_URL}/shortener/resolve/${code}`, {
     cache: "no-store",
   });
@@ -14,9 +12,10 @@ async function getOriginalUrl(code: string) {
 export default async function ShortLinkPage({
   params,
 }: {
-  params: { code: string };
+  params: Promise<{ code: string }>;
 }) {
-  const data = await getOriginalUrl(params.code);
+  const { code } = await params;
+  const data = await getOriginalUrl(code);
 
   if (!data?.url) redirect("/not-found");
 
