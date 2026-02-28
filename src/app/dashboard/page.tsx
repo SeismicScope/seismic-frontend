@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
-import { FiltersSync } from "@/features/filters/components/filters-sync";
 import SortSelect from "@/features/filters/components/sort-select";
 import { ShareLinkDialog } from "@/features/share-link/components/share-link-dialog";
 
@@ -17,7 +16,6 @@ export const metadata: Metadata = {
 export default function DashboardPage() {
   return (
     <div className="mt-5 w-full px-4 lg:px-10">
-      <FiltersSync />
       <div className="flex items-center gap-4">
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <ShareLinkDialog />
