@@ -2,7 +2,7 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import { useEarthquakeTilesMap } from "../hooks/use-earthquake-tiles-map";
-import MapLoader from "./map-loader";
+import MapProcessingBanner from "./map-processing-banner";
 
 export default function EarthquakeTitleMap() {
   const { containerRef, isLoading } = useEarthquakeTilesMap();
@@ -10,7 +10,7 @@ export default function EarthquakeTitleMap() {
   return (
     <div className="relative h-full w-full">
       <div ref={containerRef} className="h-full w-full" />
-      {isLoading && <MapLoader />}
+      <MapProcessingBanner visible={isLoading} />
     </div>
   );
 }
