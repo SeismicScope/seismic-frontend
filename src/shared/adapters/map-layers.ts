@@ -113,11 +113,32 @@ export const pointLayerTiles: Layer = {
       ["linear"],
       ["get", "magnitude"],
       0,
-      4,
+      2,
       5,
-      7,
+      3.5,
       9,
-      12,
+      6,
     ],
+  },
+};
+
+export const pointLabelLayerTiles: Layer = {
+  id: "unclustered-point-labels-tiles",
+  type: "symbol",
+  source: "earthquakes-tiles",
+  filter: ["!", ["has", "point_count"]],
+  layout: {
+    "text-field": [
+      "number-format",
+      ["get", "magnitude"],
+      { "max-fraction-digits": 1 },
+    ],
+    "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
+    "text-size": ["interpolate", ["linear"], ["zoom"], 2, 8, 8, 12, 12, 16],
+    "text-allow-overlap": true,
+    "text-ignore-placement": true,
+  },
+  paint: {
+    "text-color": "#ffffff",
   },
 };
