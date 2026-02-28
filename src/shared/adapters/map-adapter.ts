@@ -3,8 +3,11 @@ import mapboxgl from "mapbox-gl";
 import { MAPBOX_STYLE, MAPBOX_TOKEN } from "../constants";
 import {
   clusterCircleLayer,
+  clusterCircleLayerTiles,
   clusterCountLayer,
+  clusterCountLayerTiles,
   pointLayer,
+  pointLayerTiles,
 } from "./map-layers";
 
 export type MapAdapterOptions = {
@@ -130,55 +133,21 @@ export class MapAdapter {
     if (this.map.getLayer(layerId)) return;
 
     this.map.addLayer({
-      id: layerId,
-      type: "circle",
+      ...clusterCircleLayerTiles,
       source: sourceId,
       "source-layer": sourceLayer,
-      paint: {
-        "circle-radius": [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          4,
-          ["interpolate", ["linear"], ["get", "magnitude"], 0, 1, 6, 4, 9, 8],
-          8,
-          ["interpolate", ["linear"], ["get", "magnitude"], 0, 3, 6, 8, 9, 16],
-          12,
-          ["interpolate", ["linear"], ["get", "magnitude"], 0, 6, 6, 14, 9, 28],
-        ],
-        "circle-color": [
-          "interpolate",
-          ["linear"],
-          ["get", "magnitude"],
-          0,
-          "#00ff00",
-          3,
-          "#ffff00",
-          6,
-          "#ff0000",
-        ],
-      },
     });
 
     this.map.addLayer({
-      id: `${layerId}-labels`,
-      type: "symbol",
+      ...clusterCountLayerTiles,
       source: sourceId,
       "source-layer": sourceLayer,
-      layout: {
-        "text-field": [
-          "number-format",
-          ["get", "magnitude"],
-          { "max-fraction-digits": 1 },
-        ],
-        "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
-        "text-size": ["step", ["zoom"], 0, 7, 10, 12, 13],
-        "text-allow-overlap": true,
-        "text-ignore-placement": true,
-      },
-      paint: {
-        "text-color": "#ffffff",
-      },
+    });
+
+    this.map.addLayer({
+      ...pointLayerTiles,
+      source: sourceId,
+      "source-layer": sourceLayer,
     });
   }
 
