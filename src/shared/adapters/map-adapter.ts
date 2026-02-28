@@ -61,6 +61,10 @@ export class MapAdapter {
     this.map.on("style.load", callback);
   }
 
+  onLoadMapTiles(callback: () => void) {
+    this.map.on("load", callback);
+  }
+
   getMap() {
     return this.map;
   }
@@ -131,10 +135,52 @@ export class MapAdapter {
       source: sourceId,
       "source-layer": sourceLayer,
       paint: {
-        "circle-radius": 4,
-        "circle-color": "#ff5500",
-        "circle-opacity": 0.7,
+        "circle-radius": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          4,
+          2,
+          8,
+          4,
+          12,
+          8,
+        ],
+        "circle-color": [
+          "interpolate",
+          ["linear"],
+          ["get", "magnitude"],
+          0,
+          "#00ff00",
+          3,
+          "#ffff00",
+          6,
+          "#ff0000",
+        ],
       },
+    });
+  }
+
+  addLayerClickHandler(
+    layerId: string,
+    handler: (
+      feature: mapboxgl.MapboxGeoJSONFeature,
+      lngLat: mapboxgl.LngLat,
+    ) => void,
+  ) {
+    this.map.on("click", layerId, (e) => {
+      const feature = e.features?.[0];
+      if (!feature) return;
+
+      handler(feature, e.lngLat);
+    });
+
+    this.map.on("mouseenter", layerId, () => {
+      this.map.getCanvas().style.cursor = "pointer";
+    });
+
+    this.map.on("mouseleave", layerId, () => {
+      this.map.getCanvas().style.cursor = "";
     });
   }
 
