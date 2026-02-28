@@ -4,6 +4,8 @@ import LazyMap from "@/features/map/components/lazy-map";
 import MapStats from "@/features/map/components/map-stats";
 import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
 
+import AboutThisMap from "./about-this-map";
+
 export const metadata: Metadata = {
   title: "Map",
   description:
@@ -13,7 +15,10 @@ export const metadata: Metadata = {
 function MapPage() {
   return (
     <div className="relative h-[calc(100vh-8rem)] w-full">
-      <MapStats />
+      <div className="mb-4 flex items-center justify-between">
+        <MapStats />
+        <AboutThisMap />
+      </div>
       <ErrorBoundary
         fallback={
           <div className="text-muted-foreground flex h-[300px] items-center justify-center text-sm">

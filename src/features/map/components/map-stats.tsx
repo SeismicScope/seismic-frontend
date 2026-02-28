@@ -8,7 +8,7 @@ function MapStats() {
   const { fps, heap } = usePerformanceMetrics();
 
   return (
-    <div className="mb-4 flex items-center gap-2 px-3">
+    <div className="flex items-center gap-2 px-3">
       <p className="text-xs lg:text-sm">
         <span className="font-bold">In bounds:</span>{" "}
         <span className="text-primary">{formatNumber(totalInBounds)}</span>
