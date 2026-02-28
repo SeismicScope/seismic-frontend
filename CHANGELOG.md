@@ -1,3 +1,9 @@
+# [1.7.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.6.0...v1.7.0) (2026-02-28)
+
+### Features
+
+- **command-palette:** add command palette with keyboard shortcuts and filter actions ([3debebb](https://github.com/SeismicScope/seismic-frontend/commit/3debebbf4b9da491b22deca38bf268ce12d9c7c0))
+
 # [1.6.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.5.0...v1.6.0) (2026-02-28)
 
 ### Features
