@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const EarthquakeTitleMap = dynamic(() => import("./title-map"), {
+const EarthquakeTilesMap = dynamic(() => import("./tiles-map"), {
   ssr: false,
   loading: () => (
     <div className="flex h-full w-full items-center justify-center">
@@ -16,4 +16,4 @@ const EarthquakeTitleMap = dynamic(() => import("./title-map"), {
   ),
 });
 
-export default EarthquakeTitleMap;
+export default EarthquakeTilesMap;

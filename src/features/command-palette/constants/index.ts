@@ -12,7 +12,7 @@ export const PAGES = [
   { label: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
   { label: "Analytics", path: "/analytics", icon: BarChart2 },
   { label: "Map", path: "/map", icon: Map },
-  { label: "Titles Map", path: "/titles-map", icon: MapPin },
+  { label: "Tiles Map", path: "/tiles-map", icon: MapPin },
   { label: "About", path: "/about", icon: Info },
 ];
 

@@ -2,10 +2,11 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 
 import { Providers } from "@/shared/providers";
+import { JsonLd } from "@/shared/ui/json-ld";
 import Navbar from "@/shared/ui/navbar";
+import { ThemeInitScript } from "@/shared/ui/theme-init-script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,13 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          id="theme-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('seismic-color-theme');if(t&&['teal','mango','tomato'].includes(t)){document.documentElement.setAttribute('data-theme',t)}else{document.documentElement.setAttribute('data-theme','teal')}}catch(e){document.documentElement.setAttribute('data-theme','teal')}})()`,
-          }}
-        />
+        <ThemeInitScript />
+        <JsonLd />
       </head>
       <body className={`${inter.variable} antialiased`}>
         <Providers>

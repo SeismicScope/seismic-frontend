@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 
-import LazyTitleMap from "@/features/map/components/lazy-title-map";
+import LazyTilesMap from "@/features/map/components/lazy-tiles-map";
 import MapStats from "@/features/map/components/map-stats";
 import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
 
 import AboutThisMap from "./about-this-map";
 
 export const metadata: Metadata = {
-  title: "Titles Map",
+  title: "Tiles Map",
   description:
     "Global earthquake map visualizing up to 150,000+ seismic events with zoom-based data rendering and spatial optimization.",
 };
 
-function TitlesMapPage() {
+function TilesMapPage() {
   return (
     <div className="relative h-[calc(100vh-8rem)] w-full">
       <div className="mb-4 flex items-center justify-between">
@@ -26,10 +26,10 @@ function TitlesMapPage() {
           </div>
         }
       >
-        <LazyTitleMap />
+        <LazyTilesMap />
       </ErrorBoundary>
     </div>
   );
 }
 
-export default TitlesMapPage;
+export default TilesMapPage;
