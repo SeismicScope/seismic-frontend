@@ -1,8 +1,8 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import Logo from "@/assets/logo.svg";
 import { LoginDialog } from "@/features/auth/components/login-dialog";
-import CommandPalette from "@/features/command-palette/components/command-palette";
 import CommandPaletteTrigger from "@/features/command-palette/components/command-palette-trigger";
 
 import { Button } from "../button";
@@ -10,6 +10,13 @@ import { NavigationMenu, NavigationMenuList } from "../navigation-menu";
 import ThemeSwitcher from "../theme-switcher";
 import renderMenuItem from "./render-menu-item";
 import type { NavProps } from "./types";
+
+const CommandPalette = dynamic(
+  () => import("@/features/command-palette/components/command-palette"),
+  {
+    ssr: false,
+  },
+);
 
 function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
   return (

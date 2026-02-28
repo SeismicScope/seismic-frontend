@@ -1,9 +1,9 @@
 import { Menu } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import Logo from "@/assets/logo.svg";
 import { LoginDialog } from "@/features/auth/components/login-dialog";
-import CommandPalette from "@/features/command-palette/components/command-palette";
 import CommandPaletteTrigger from "@/features/command-palette/components/command-palette-trigger";
 
 import { Accordion } from "../accordion";
@@ -18,6 +18,13 @@ import {
 import ThemeSwitcher from "../theme-switcher";
 import renderMobileMenuItem from "./render-mobile-menu-item";
 import type { NavProps } from "./types";
+
+const CommandPalette = dynamic(
+  () => import("@/features/command-palette/components/command-palette"),
+  {
+    ssr: false,
+  },
+);
 
 function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
   return (
