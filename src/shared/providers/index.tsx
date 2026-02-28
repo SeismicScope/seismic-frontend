@@ -9,7 +9,7 @@ import {
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "next-themes";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { type JSX, useState } from "react";
+import { type JSX, Suspense, useState } from "react";
 import { toast, Toaster } from "sonner";
 
 import { FiltersSync } from "@/features/filters/components/filters-sync";
@@ -87,8 +87,10 @@ export function Providers({
           <WebVitals />
           <GoogleAnalytics />
           <CookieBanner />
-          <ThemeSync />
-          <FiltersSync />
+          <Suspense>
+            <ThemeSync />
+            <FiltersSync />
+          </Suspense>
         </ColorThemeProvider>
       </ThemeProvider>
     </NuqsAdapter>

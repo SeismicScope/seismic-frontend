@@ -1,14 +1,14 @@
 "use client";
 import { Search } from "lucide-react";
 
-import { useCommandPalette } from "../hooks/use-command-palette";
+import { useCommandPaletteStore } from "../store/use-command-palette-store";
 
 export default function CommandPaletteTrigger() {
-  const { setOpen } = useCommandPalette();
+  const { open, setOpen } = useCommandPaletteStore();
 
   return (
     <button
-      onClick={() => setOpen(true)}
+      onClick={() => setOpen(!open)}
       className="text-muted-foreground flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm"
     >
       <Search className="size-3.5" />

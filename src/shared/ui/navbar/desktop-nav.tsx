@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import Logo from "@/assets/logo.svg";
 import { LoginDialog } from "@/features/auth/components/login-dialog";
+import CommandPaletteTrigger from "@/features/command-palette/components/command-palette-trigger";
 
 import { Button } from "../button";
 import { NavigationMenu, NavigationMenuList } from "../navigation-menu";
@@ -12,13 +13,6 @@ import type { NavProps } from "./types";
 
 const CommandPalette = dynamic(
   () => import("@/features/command-palette/components/command-palette"),
-  {
-    ssr: false,
-  },
-);
-
-const CommandPaletteTrigger = dynamic(
-  () => import("@/features/command-palette/components/command-palette-trigger"),
   {
     ssr: false,
   },
