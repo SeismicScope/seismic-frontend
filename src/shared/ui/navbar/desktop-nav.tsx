@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import Logo from "@/assets/logo.svg";
 import { LoginDialog } from "@/features/auth/components/login-dialog";
+import CommandPalette from "@/features/command-palette/components/command-palette";
+import CommandPaletteTrigger from "@/features/command-palette/components/command-palette-trigger";
 
 import { Button } from "../button";
 import { NavigationMenu, NavigationMenuList } from "../navigation-menu";
@@ -29,6 +31,8 @@ function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
       </div>
       <ThemeSwitcher />
       <div className="flex gap-2">
+        <CommandPaletteTrigger />
+        <CommandPalette />
         {!user ? (
           <LoginDialog />
         ) : (

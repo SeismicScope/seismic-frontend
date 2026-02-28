@@ -3,6 +3,8 @@ import Image from "next/image";
 
 import Logo from "@/assets/logo.svg";
 import { LoginDialog } from "@/features/auth/components/login-dialog";
+import CommandPalette from "@/features/command-palette/components/command-palette";
+import CommandPaletteTrigger from "@/features/command-palette/components/command-palette-trigger";
 
 import { Accordion } from "../accordion";
 import { Button } from "../button";
@@ -24,6 +26,8 @@ function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
         <a href={logo.url} className="flex items-center gap-2">
           <Image src={Logo} className="max-h-8 dark:invert" alt={logo.alt} />
         </a>
+        <CommandPaletteTrigger />
+        <CommandPalette />
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" aria-label="Menu">
