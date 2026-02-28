@@ -18,7 +18,7 @@ function ShareContent() {
   });
 
   const shortUrl = shortLink?.code
-    ? `${process.env.NEXT_PUBLIC_API_URL}/shortener/${shortLink.code}`
+    ? `${process.env.NEXT_PUBLIC_APP_URL}/${shortLink.code}`
     : "";
 
   return (
