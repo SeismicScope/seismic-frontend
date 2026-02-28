@@ -11,7 +11,7 @@ export async function generateShortURL(url: string): Promise<ShortURL> {
 }
 
 export async function getShortLinkQRCode(code: string): Promise<LinkQRCode> {
-  const { data } = await api.get<LinkQRCode>(`/shortener/${code}/qr`);
+  const { data } = await api.get<LinkQRCode>(`/shortener/qr/${code}`);
 
   return data;
 }
