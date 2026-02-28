@@ -1,8 +1,8 @@
-import Link from "next/link";
-
 import type { Earthquake } from "@/features/earthquakes/types";
 import { formatDate } from "@/shared/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
+
+import SeeMoreDetails from "./see-more-details";
 
 type Props = {
   earthquake: Earthquake;
@@ -10,11 +10,11 @@ type Props = {
 
 export default function EarthquakeModalDetails({ earthquake }: Props) {
   return (
-    <div className="flex w-full flex-col gap-3 lg:w-1/2">
+    <div className="flex w-full flex-col gap-3">
       <p className="text-lg font-bold">Earthquake details</p>
 
       <div className="flex w-full flex-col gap-3">
-        <Card>
+        <Card className="py-3">
           <CardHeader>
             <CardTitle>Occurred At</CardTitle>
           </CardHeader>
@@ -53,15 +53,7 @@ export default function EarthquakeModalDetails({ earthquake }: Props) {
         </Card>
       </div>
 
-      <p className="text-muted-foreground text-sm">
-        Want to see more details?{" "}
-        <Link
-          href={`/earthquake/${earthquake.id}`}
-          className="text-primary underline-offset-4 hover:underline"
-        >
-          Open full page
-        </Link>
-      </p>
+      <SeeMoreDetails id={earthquake.id} />
     </div>
   );
 }
