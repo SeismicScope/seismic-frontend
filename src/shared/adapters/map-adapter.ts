@@ -107,6 +107,18 @@ export class MapAdapter {
     });
   }
 
+  async loadImage(id: string, url: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.map.loadImage(url, (error, image) => {
+        if (error || !image) return reject(error);
+        if (!this.map.hasImage(id)) {
+          this.map.addImage(id, image);
+        }
+        resolve();
+      });
+    });
+  }
+
   addVectorTileSource(id: string, tileUrl: string) {
     if (this.map.getSource(id)) return;
 
@@ -118,7 +130,7 @@ export class MapAdapter {
     });
   }
 
-  addVectorTileLayer({
+  async addVectorTileLayer({
     layerId,
     sourceId,
     sourceLayer,
@@ -129,34 +141,43 @@ export class MapAdapter {
   }) {
     if (this.map.getLayer(layerId)) return;
 
+    await Promise.all([
+      this.loadImage("eq-low", "/icons/eq-low.svg"),
+      this.loadImage("eq-mid", "/icons/eq-mid.svg"),
+      this.loadImage("eq-high", "/icons/eq-high.svg"),
+      this.loadImage("eq-ultra-high", "/icons/eq-ultra-high.svg"),
+    ]);
+
     this.map.addLayer({
       id: layerId,
-      type: "circle",
+      type: "symbol",
       source: sourceId,
       "source-layer": sourceLayer,
-      paint: {
-        "circle-radius": [
+      layout: {
+        "icon-image": [
+          "step",
+          ["get", "magnitude"],
+          "eq-low",
+          3,
+          "eq-mid",
+          6,
+          "eq-high",
+          8,
+          "eq-ultra-high",
+        ],
+        "icon-size": [
           "interpolate",
           ["linear"],
           ["zoom"],
           4,
-          2,
+          0.3,
           8,
-          4,
+          0.6,
           12,
-          8,
+          1.0,
         ],
-        "circle-color": [
-          "interpolate",
-          ["linear"],
-          ["get", "magnitude"],
-          0,
-          "#00ff00",
-          3,
-          "#ffff00",
-          6,
-          "#ff0000",
-        ],
+        "icon-allow-overlap": true,
+        "icon-ignore-placement": true,
       },
     });
   }
