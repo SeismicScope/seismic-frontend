@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.1.0...v1.2.0) (2026-02-28)
+
+### Features
+
+- **map:** add earthquake tiles visualization with popups and performance tracking ([fb10cd3](https://github.com/SeismicScope/seismic-frontend/commit/fb10cd3d5ed8624b18fb75ab155e1b2c0422c83c))
+
 # [1.1.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.0.0...v1.1.0) (2026-02-27)
 
 ### Features
