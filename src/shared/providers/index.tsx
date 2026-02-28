@@ -15,6 +15,7 @@ import { toast, Toaster } from "sonner";
 import { WebVitals } from "../components/web-vitals";
 import GoogleAnalytics from "../lib/google-analytics";
 import { getErrorMessage } from "../lib/utils";
+import { ThemeSync } from "../ui/theme-sync";
 import { ColorThemeProvider } from "./theme-provider";
 
 const CookieBanner = dynamic(() => import("../components/cookie-banner"), {
@@ -84,6 +85,7 @@ export function Providers({
           <WebVitals />
           <GoogleAnalytics />
           <CookieBanner />
+          <ThemeSync />
         </ColorThemeProvider>
       </ThemeProvider>
     </NuqsAdapter>
