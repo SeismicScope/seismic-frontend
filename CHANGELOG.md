@@ -1,3 +1,9 @@
+# [1.5.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.4.0...v1.5.0) (2026-02-28)
+
+### Features
+
+- **earthquake:** add modal view for earthquake details using Next.js parallel routes ([685a3f1](https://github.com/SeismicScope/seismic-frontend/commit/685a3f1d93fb6fa0c9770e2832faa54b2e0c8930))
+
 # [1.4.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.3.0...v1.4.0) (2026-02-28)
 
 ### Features
