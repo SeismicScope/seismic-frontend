@@ -1,3 +1,9 @@
+# [1.4.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.3.0...v1.4.0) (2026-02-28)
+
+### Features
+
+- **map:** add architecture documentation dialogs to map pages ([e13c4a7](https://github.com/SeismicScope/seismic-frontend/commit/e13c4a77eaaf9722d8f43904c28ce73dd807c10a))
+
 # [1.3.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.2.0...v1.3.0) (2026-02-28)
 
 ### Features
