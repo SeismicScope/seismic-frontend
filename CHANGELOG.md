@@ -1,3 +1,9 @@
+# [1.3.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.2.0...v1.3.0) (2026-02-28)
+
+### Features
+
+- **map:** add earthquake severity icons and loading state to tiles map ([3fb0d0a](https://github.com/SeismicScope/seismic-frontend/commit/3fb0d0a47a9857bd3ecaccfa46218c9f90128dfb))
+
 # [1.2.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.1.0...v1.2.0) (2026-02-28)
 
 ### Features
