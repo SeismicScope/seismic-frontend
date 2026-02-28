@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
 import SortSelect from "@/features/filters/components/sort-select";
+import { ShareLinkDialog } from "@/features/share-link/components/share-link-dialog";
 
 import DashbardFilters from "./dashboard-filters";
 
@@ -15,8 +16,10 @@ export const metadata: Metadata = {
 export default function DashboardPage() {
   return (
     <div className="mt-5 w-full px-4 lg:px-10">
-      <h1 className="text-2xl font-bold">Dashboard</h1>
-
+      <div className="flex items-center gap-4">
+        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <ShareLinkDialog />
+      </div>
       <div className="my-4 flex flex-col items-stretch gap-4 lg:flex-row">
         <div className="w-full lg:w-1/4">
           <p className="text-lg font-bold">KPI Cards</p>
