@@ -135,21 +135,12 @@ export class MapAdapter {
 
     this.map.addLayer({
       ...clusterCircleLayerTiles,
-      id: layerId,
       source: sourceId,
       "source-layer": sourceLayer,
     });
 
     this.map.addLayer({
       ...clusterCountLayerTiles,
-      id: layerId,
-      source: sourceId,
-      "source-layer": sourceLayer,
-    });
-
-    this.map.addLayer({
-      ...pointLabelLayerTiles,
-      id: layerId,
       source: sourceId,
       "source-layer": sourceLayer,
     });
@@ -157,6 +148,12 @@ export class MapAdapter {
     this.map.addLayer({
       ...pointLayerTiles,
       id: layerId,
+      source: sourceId,
+      "source-layer": sourceLayer,
+    });
+
+    this.map.addLayer({
+      ...pointLabelLayerTiles,
       source: sourceId,
       "source-layer": sourceLayer,
     });
