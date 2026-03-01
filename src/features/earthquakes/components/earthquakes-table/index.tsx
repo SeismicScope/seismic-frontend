@@ -42,7 +42,7 @@ export function EarthquakeTable() {
   const columns = getColumns(t);
 
   return (
-    <div ref={parentRef} className="relative h-[350px] w-full overflow-auto">
+    <div ref={parentRef} className="relative h-[350px] w-1/2 overflow-auto">
       <table className="w-full min-w-[700px] caption-bottom text-sm">
         <TableHeader className="bg-background sticky top-0 z-10">
           {table.getHeaderGroups().map((headerGroup) => (
