@@ -1,6 +1,7 @@
 "use client";
 
 import { SlidersHorizontal } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import {
   CommandDialog,
@@ -16,13 +17,14 @@ import { FILTERS, PAGES } from "../constants";
 import { useCommandPalette } from "../hooks/use-command-palette";
 
 export default function CommandPalette() {
+  const t = useTranslations();
   const { handleNavigate, handleFilter, open, setOpen } = useCommandPalette();
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
       <CommandInput placeholder="Search pages, filters, actions..." />
       <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandEmpty>{t("general.noResults")}</CommandEmpty>
 
         <CommandGroup heading="Pages">
           {PAGES.map((page) => (

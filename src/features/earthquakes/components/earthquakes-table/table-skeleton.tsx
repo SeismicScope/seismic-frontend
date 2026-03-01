@@ -1,3 +1,6 @@
+"use client";
+import { useTranslations } from "next-intl";
+
 import { Skeleton } from "@/shared/ui/skeleton";
 import {
   Table,
@@ -8,11 +11,14 @@ import {
   TableRow,
 } from "@/shared/ui/table";
 
-import { columns } from "./columns";
+import { getColumns } from "./columns";
 
 const SKELETON_ROWS = 7;
 
 function TableSkeleton() {
+  const t = useTranslations();
+  const columns = getColumns(t);
+
   return (
     <div className="w-full">
       <Table>

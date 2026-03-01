@@ -1,15 +1,19 @@
+import { getTranslations } from "node_modules/next-intl/dist/types/server/react-server";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Skeleton } from "@/shared/ui/skeleton";
 
-function EarthquakeSkeleton() {
+async function EarthquakeSkeleton() {
+  const t = await getTranslations();
+
   return (
     <div className="mt-5 flex w-full flex-col items-start gap-10 px-4 lg:flex-row lg:px-10">
       <div className="flex w-full flex-col gap-3 lg:w-1/2">
-        <p className="text-lg font-bold">Earthquake details</p>
+        <p className="text-lg font-bold">{t("general.earthquakeDetails")}</p>
         <div className="grid w-full grid-cols-2 gap-4">
           <Card>
             <CardHeader>
-              <CardTitle>Occurred At</CardTitle>
+              <CardTitle>{t("general.occuredAt")}</CardTitle>
             </CardHeader>
             <CardContent>
               <Skeleton className="h-5 w-40" />
@@ -17,7 +21,7 @@ function EarthquakeSkeleton() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Magnitude</CardTitle>
+              <CardTitle>{t("general.magnitude")}</CardTitle>
             </CardHeader>
             <CardContent>
               <Skeleton className="h-7 w-16" />
@@ -25,7 +29,7 @@ function EarthquakeSkeleton() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Depth</CardTitle>
+              <CardTitle>{t("general.depth")}</CardTitle>
             </CardHeader>
             <CardContent>
               <Skeleton className="h-5 w-20" />
@@ -33,7 +37,7 @@ function EarthquakeSkeleton() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Coordinates</CardTitle>
+              <CardTitle>{t("general.coordinates")}</CardTitle>
             </CardHeader>
             <CardContent>
               <Skeleton className="h-5 w-32" />
@@ -42,7 +46,7 @@ function EarthquakeSkeleton() {
         </div>
       </div>
       <div className="flex w-full flex-col gap-3 lg:w-1/2">
-        <p className="text-lg font-bold">Location on map</p>
+        <p className="text-lg font-bold">{t("general.locationOnMap")}</p>
         <Skeleton className="h-[400px] w-full rounded-lg" />
       </div>
     </div>

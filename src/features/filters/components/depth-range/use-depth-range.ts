@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -7,6 +8,7 @@ import { useDebouncedCallback } from "@/shared/hooks/use-debounce";
 const DEBOUNCE_DELAY = 500;
 
 export function useDepthRange() {
+  const t = useTranslations();
   const { filters, setField } = useFilters();
   const [localMin, setLocalMin] = useState<number | null>(null);
   const [localMax, setLocalMax] = useState<number | null>(null);
@@ -15,7 +17,7 @@ export function useDepthRange() {
 
   function validate(min: number | null, max: number | null): boolean {
     if (min !== null && max !== null && min > max) {
-      toast.error("Min must be less than Max");
+      toast.error(t("filters.minMustBeLess"));
 
       return false;
     }

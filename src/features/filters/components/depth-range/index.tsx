@@ -1,9 +1,12 @@
 "use client";
+import { useTranslations } from "next-intl";
+
 import { Input } from "@/shared/ui/input";
 
 import { useDepthRange } from "./use-depth-range";
 
 function DepthRange() {
+  const t = useTranslations();
   const {
     editingMin,
     localMin,
@@ -22,10 +25,10 @@ function DepthRange() {
     <div className="flex w-full flex-col gap-1">
       <div className="flex w-full items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <p className="font-semibold">Min</p>
+          <p className="font-semibold">{t("general.min")}</p>
           <Input
             type="number"
-            placeholder="Depth"
+            placeholder={t("general.depth")}
             className="max-w-48 lg:max-w-24"
             value={(editingMin ? localMin : filters.minDepth) ?? ""}
             onChange={(e) => {
@@ -34,14 +37,14 @@ function DepthRange() {
               setEditingMin(true);
               syncMin(value);
             }}
-            aria-label="Min depth input"
+            aria-label={t("filters.minDepthInput")}
           />
         </div>
         <div className="flex items-center gap-2">
-          <p className="font-semibold">Max</p>
+          <p className="font-semibold">{t("general.max")}</p>
           <Input
             type="number"
-            placeholder="Depth"
+            placeholder={t("general.depth")}
             className="max-w-48 lg:max-w-24"
             value={(editingMax ? localMax : filters.maxDepth) ?? ""}
             onChange={(e) => {
@@ -50,7 +53,7 @@ function DepthRange() {
               setEditingMax(true);
               syncMax(value);
             }}
-            aria-label="Max depth input"
+            aria-label={t("filters.maxDepthInput")}
           />
         </div>
       </div>

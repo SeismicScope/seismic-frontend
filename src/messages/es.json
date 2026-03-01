@@ -1,7 +1,286 @@
 {
   "home": {
     "title": "Plataforma SeismicScope",
-    "subtitle": "Sistema de análisis sísmico de alto rendimiento (más de 800k registros)",
+    "subtitle": "Sistema de análisis sísmico de alto rendimiento (+800k registros)",
     "cta": "¡Descubre terremotos!"
+  },
+  "pages": {
+    "home": "Inicio",
+    "dashboard": "Panel de control",
+    "analytics": "Análisis",
+    "map": "Mapa",
+    "tilesMap": "Mapa de teselas",
+    "about": "Acerca de",
+    "admin": "Admin"
+  },
+  "general": {
+    "search": "Buscar",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "share": "Compartir",
+    "shareLink": "Compartir enlace",
+    "copy": "Copiar",
+    "orScanQRCode": "O escanea el código QR",
+    "noDataAvailable": "No hay datos disponibles",
+    "noResults": "No se encontraron resultados",
+    "depth": "Profundidad",
+    "min": "Mín",
+    "max": "Máx",
+    "earthquakes": "Terremotos",
+    "date": "Fecha",
+    "magnitude": "Magnitud",
+    "location": "Ubicación",
+    "coordinates": "Coordenadas",
+    "actions": "Acciones",
+    "moreInfo": "Más info",
+    "earthquakeDetails": "Detalles del terremoto",
+    "occuredAt": "Ocurrido el",
+    "wantToSeeMoreDetails": "¿Quieres ver más detalles?",
+    "openFullPage": "Abrir página completa",
+    "seismicEventsOverTime": "Eventos sísmicos a lo largo del tiempo",
+    "day": "Día",
+    "week": "Semana",
+    "month": "Mes",
+    "year": "Año",
+    "cookieText": "Utilizamos cookies para mejorar su experiencia, analizar el uso del sitio y dar soporte a nuestros servicios. Al continuar usando este sitio, usted acepta nuestro uso de cookies.",
+    "gotIt": "¡Entendido!",
+    "generating": "Generando...",
+    "available": "Disponible",
+    "selectInterval": "Seleccionar intervalo",
+    "earthquakeNotFound": "Terremoto no encontrado",
+    "locationOnMap": "Ubicación en el mapa"
+  },
+  "auth": {
+    "credentialsForDemo": "Credenciales para demo:",
+    "enterUsername": "Introducir usuario",
+    "enterPassword": "Introducir contraseña",
+    "loggingIn": "Iniciando sesión..."
+  },
+  "analytics": {
+    "kpiCards": "Tarjetas KPI",
+    "totalEvents": "Eventos totales",
+    "maxMagnitude": "Magnitud máx.",
+    "avgMagnitude": "Magnitud promedio",
+    "avgDepth": "Profundidad promedio",
+    "failedToRenderChart": "Error al renderizar el gráfico",
+    "loadingChart": "Cargando gráfico..."
+  },
+  "filters": {
+    "title": "Filtros",
+    "datePickerRange": "Rango de fechas",
+    "pickDate": "Elegir fecha",
+    "depthRange": "Rango de profundidad",
+    "magnitudeRange": "Rango de magnitud",
+    "reset": "Restablecer",
+    "startDateError": "¡La fecha de inicio debe ser anterior a la fecha de finalización!",
+    "dateRangePickerCalendar": "Calendario de selección de rango de fechas",
+    "minDepthInput": "Entrada de profundidad mínima",
+    "maxDepthInput": "Entrada de profundidad máxima",
+    "minMustBeLess": "El mínimo debe ser menor que el máximo"
+  },
+  "sort": {
+    "title": "Ordenar por...",
+    "sortEarthquakes": "Ordenar terremotos",
+    "dateOldest": "Fecha (más antiguos)",
+    "dateNewest": "Fecha (más recientes)",
+    "magnitudeAscending": "Magnitud (menor a mayor)",
+    "magnitudeDescending": "Magnitud (mayor a menor)",
+    "depthAscending": "Profundidad (superficial a profunda)",
+    "depthDescending": "Profundidad (profunda a superficial)"
+  },
+  "map": {
+    "preparingEarthquakePoints": "Preparando puntos de terremotos...",
+    "inBounds": "En pantalla",
+    "points": "Puntos",
+    "buildTime": "Tiempo de carga",
+    "heap": "Memoria Heap",
+    "fps": "FPS",
+    "achitectureFlow": "Flujo de arquitectura",
+    "failedToRenderMap": "Error al renderizar el mapa"
+  },
+  "aboutGeoJsonAndSuperCluster": {
+    "cta": "Sobre la arquitectura GeoJSON + Supercluster",
+    "title": "Arquitectura del Mapa (GeoJSON + Supercluster)",
+    "description": "Esta implementación utiliza una estrategia de renderizado espacial en el cliente basada en GeoJSON combinada con Supercluster ejecutándose en un Web Worker.",
+    "clientSideRenderingTitle": "Clústeres en el cliente",
+    "clientSideRenderingText": "Toda la lógica de clústeres se ejecuta en el navegador. El backend solo devuelve datos espaciales crudos filtrados por el área visible.",
+    "whatHappensOnInteraction": {
+      "title": "Qué sucede durante la interacción:",
+      "1": "El usuario mueve el mapa.",
+      "2": "El frontend envía el área visible + zoom a la API.",
+      "3": "El backend consulta PostGIS usando un índice espacial.",
+      "4": "Se devuelve la carga de datos GeoJSON.",
+      "5": "El Web Worker construye el índice de clústeres.",
+      "6": "Mapbox renderiza los clústeres o puntos."
+    },
+    "advantages": {
+      "title": "Ventajas",
+      "1": "Renderizado a altos FPS (acelerado por GPU vía Mapbox)",
+      "2": "Control total de clústeres en el frontend",
+      "3": "Depuración sencilla (datos JSON planos)",
+      "4": "Bajo coste de CPU en el backend",
+      "5": "Reconstrucción local rápida del índice"
+    },
+    "tradeOffs": {
+      "title": "Compromisos:",
+      "1": "Cargas GeoJSON grandes (pueden alcanzar varios MB)",
+      "2": "Mayor uso de RAM en el navegador",
+      "3": "Uso de CPU del cliente durante la reconstrucción",
+      "4": "Difícil de escalar más allá de ~100k puntos visibles",
+      "5": "Los dispositivos móviles pueden tener dificultades"
+    },
+    "whenThisIsIdeal": {
+      "title": "Cuándo es ideal esta arquitectura",
+      "1": "Conjuntos de datos medianos (10k–150k puntos)",
+      "2": "Paneles analíticos",
+      "3": "Herramientas de exploración de datos",
+      "4": "Proyectos que requieren lógica interactiva de clústeres"
+    },
+    "whenToAvoid": {
+      "title": "Cuándo evitarla",
+      "1": "Más de un millón de puntos visibles",
+      "2": "Dispositivos de baja potencia",
+      "3": "Límites estrictos de ancho de banda",
+      "4": "Streaming en tiempo real a alta frecuencia"
+    },
+    "productionNoteTitle": "Nota de producción",
+    "productionNoteText": "Para conjuntos masivos, una arquitectura de Vector Tiles (MVT) en el servidor es más escalable, moviendo el recorte y clústeres a PostGIS."
+  },
+  "aboutVectorTiles": {
+    "cta": "Sobre la arquitectura Vector Tiles",
+    "title": "Arquitectura del Mapa (PostGIS → MVT → Mapbox)",
+    "description": "Esta implementación utiliza Vector Tiles de Mapbox (MVT) generados en el servidor, donde el recorte de geometría y la preparación de datos se realizan en PostgreSQL con PostGIS.",
+    "serverSideSpatialTitle": "Procesamiento espacial en servidor",
+    "serverSideSpatialText": "PostGIS genera teselas vectoriales usando ST_AsMVT y ST_AsMVTGeom. El frontend solo renderiza datos binarios de teselas.",
+    "whatHappensOnInteraction": {
+      "title": "Qué sucede durante la interacción:",
+      "1": "El usuario mueve el mapa.",
+      "2": "Mapbox solicita automáticamente teselas (z/x/y).",
+      "3": "El backend genera la tesela vectorial en PostGIS.",
+      "4": "Se devuelve la tesela binaria MVT.",
+      "5": "Mapbox renderiza la geometría directamente desde buffers de GPU."
+    },
+    "advantages": {
+      "title": "Ventajas",
+      "1": "Carga de red pequeña (teselas binarias)",
+      "2": "Sin transferencias JSON pesadas",
+      "3": "Renderizado optimizado por GPU",
+      "4": "Escalable a millones de puntos",
+      "5": "Control espacial a nivel de backend"
+    },
+    "tradeOffs": {
+      "title": "Compromisos:",
+      "1": "Consultas SQL más complejas",
+      "2": "Depuración más difícil (formato binario)",
+      "3": "Mayor carga de CPU en el servidor",
+      "4": "Requiere indexación espacial adecuada (se recomienda 3857)"
+    },
+    "whenThisIsIdeal": {
+      "title": "Cuándo es ideal esta arquitectura:",
+      "1": "Cientos de miles a millones de puntos",
+      "2": "Plataformas geográficas de producción",
+      "3": "Entornos de bajo ancho de banda",
+      "4": "Sistemas de alta concurrencia"
+    },
+    "performance": {
+      "title": "Características de rendimiento:",
+      "1": "El renderizado depende solo de las teselas visibles",
+      "2": "No requiere clústeres en el cliente",
+      "3": "Rendimiento del backend ligado a la calidad del índice"
+    },
+    "productionStandardTitle": "Estándar de Producción",
+    "productionStandardText": "Esta es la arquitectura utilizada por grandes plataformas geográficas, sistemas logísticos y herramientas de análisis espacial."
+  },
+  "about": {
+    "description": "Es un sistema analítico diseñado para procesar y visualizar un conjunto masivo de datos de terremotos (~800,000 registros).",
+    "projectFocusOn": {
+      "title": "El proyecto sirve como demostración de ingeniería de alto rendimiento, enfocado en:",
+      "1_title": "Gestión de Big Data:",
+      "1_body": "Manejo y procesamiento eficiente de grandes conjuntos de datos.",
+      "2_title": "Consultas espaciales:",
+      "2_body": "Implementación de consultas geográficas complejas.",
+      "3_title": "Optimización de base de datos:",
+      "3_body": "Indexación avanzada y ajuste de rendimiento.",
+      "4_title": "Paginación y filtrado en servidor:",
+      "4_body": "Respuesta rápida para recuperación profunda de datos.",
+      "5_title": "Renderizado virtualizado en frontend:",
+      "5_body": "Visualización de miles de puntos sin retardo en la interfaz.",
+      "6_title": "Escalabilidad de rendimiento:",
+      "6_body": "Implementación de caché y tareas en segundo plano.",
+      "7_title": "Seguridad:",
+      "7_body": "Control de acceso basado en roles (RBAC) minimalista."
+    },
+    "notACrudTitle": "No es una aplicación CRUD",
+    "notACrudText": "Este proyecto no es una aplicación CRUD estándar. Su objetivo principal es mostrar soluciones de arquitectura e ingeniería aplicadas a datos reales y complejos.",
+    "generalArchitecture": {
+      "title": "Arquitectura General",
+      "description": "El sistema está construido con un stack moderno y escalable diseñado para operaciones de datos de alta frecuencia y análisis espacial complejo.",
+      "techStack": "Tecnologías utilizadas",
+      "1_title": "Frontend:",
+      "1_body": "Next.js 16 (App Router)",
+      "2_title": "Backend:",
+      "2_body": "NestJS (Node.js Framework)",
+      "3_title": "Base de datos:",
+      "3_body": "PostgreSQL con extensión PostGIS (para datos espaciales)",
+      "4_title": "ORM:",
+      "4_body": "Prisma",
+      "5_title": "Caché y Message Broker:",
+      "5_body": "Redis",
+      "6_title": "Programación de tareas:",
+      "6_body": "BullMQ (Trabajos en segundo plano)",
+      "7_title": "Visualización:",
+      "7_body": "Mapbox GL JS (Mapas) & Recharts (Análisis)"
+    },
+    "interactionWorkflow": {
+      "title": "Flujo de Interacción",
+      "1_title": "Frontend:",
+      "1_body": "Se comunica con la API NestJS mediante REST.",
+      "2_title": "NestJS:",
+      "2_body": "Gestiona la lógica de negocio y consulta PostgreSQL.",
+      "3_title": "Redis:",
+      "3_body": "Actúa como capa de alta velocidad para caché y gestión de colas.",
+      "4_title": "Background Worker:",
+      "4_body": "Procesa tareas pesadas vía BullMQ para mantener la API receptiva."
+    },
+    "infra": {
+      "title": "Infraestructura y Despliegue",
+      "1_title": "Frontend Hosting:",
+      "1_body": "Vercel",
+      "2_title": "Backend Hosting:",
+      "2_body": "DigitalOcean Droplet",
+      "3_title": "CI/CD Pipeline:",
+      "3_body": "GitHub Actions",
+      "4_title": "Contenedores:",
+      "4_body": "Docker"
+    },
+    "aboutAuthor": {
+      "title": "Sobre el Autor",
+      "description_1": "Este proyecto fue diseñado y desarrollado por",
+      "description_2": "como demostración de experiencia en ingeniería full-stack, con enfoque en sistemas de datos de alto rendimiento, análisis espacial y arquitectura escalable. El objetivo de esta plataforma no es solo la implementación de funcionalidades, sino la claridad arquitectónica, la optimización del rendimiento y las prácticas de ingeniería de nivel de producción.",
+      "linkedIn": "LinkedIn",
+      "projectStorybook": "Storybook del Proyecto",
+      "projectStorybookLink": "Librería de componentes UI",
+      "beRepo": "Repositorio Backend",
+      "beRepoLink": "Código fuente de API NestJS"
+    },
+    "engineeringFocusTitle": "Enfoque de Ingeniería",
+    "engineeringFocusText": "El énfasis de este proyecto está en el diseño del sistema, la escalabilidad de rendimiento, la arquitectura orientada a datos y la calidad de código de nivel de producción, no solo el desarrollo de interfaz."
+  },
+  "metadata": {
+    "defaultDescription": "Sistema de análisis sísmico de alto rendimiento (+800k registros)",
+    "dashboartTitle": "Panel de control",
+    "dashboardDescription": "Panel de terremotos con métricas agregadas, filtrado avanzado y tabla de datos de alto rendimiento para registros sísmicos a gran escala.",
+    "analyticsTitle": "Análisis",
+    "analyticsDescription": "Panel analítico que muestra métricas promedio de terremotos y tendencias temporales para conjuntos de datos sísmicos masivos.",
+    "mapTitle": "Mapa",
+    "mapDescription": "Mapa global de terremotos que visualiza más de 150,000 eventos sísmicos con renderizado basado en zoom y optimización espacial.",
+    "tilesMapTitle": "Mapa de teselas",
+    "tilesMapDescription": "Mapa global de terremotos que visualiza más de 150,000 eventos sísmicos con renderizado basado en zoom y optimización espacial.",
+    "aboutTitle": "Acerca de",
+    "aboutDescription": "Plataforma de inteligencia sísmica de alto rendimiento que procesa más de 800,000 registros con consultas espaciales, caché y arquitectura full-stack escalable.",
+    "earthquakeTitle": "M{magnitude} — {depth}km",
+    "earthquakeDescription": "Terremoto en {location}, profundidad {depth}km"
   }
 }

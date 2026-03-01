@@ -1,7 +1,7 @@
 import type { User } from "@/features/auth/types";
 
 export interface MenuItem {
-  title: string;
+  titleKey: string;
   url: string;
   description?: string;
   icon?: React.ReactNode;

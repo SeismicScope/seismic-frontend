@@ -1,12 +1,18 @@
 "use client";
 
+import { enUS } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback } from "react";
 import type { DateRange } from "react-day-picker";
 import { toast } from "sonner";
 
 import { useFilters } from "@/features/filters/hooks/use-filters";
-import { DATE_RANGE_END, DATE_RANGE_START } from "@/shared/constants";
+import {
+  DATE_RANGE_END,
+  DATE_RANGE_START,
+  LOCALE_MAP,
+} from "@/shared/constants";
 import { formatDate } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Calendar } from "@/shared/ui/calendar";
@@ -14,14 +20,19 @@ import { Field } from "@/shared/ui/field";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 
 function DatePickerWithRange() {
+  const t = useTranslations();
   const { filters, setFilters } = useFilters();
+
+  const currentLocale = useLocale();
+  const dateFnsLocale =
+    LOCALE_MAP[currentLocale as keyof typeof LOCALE_MAP] ?? enUS;
 
   const onDateSelect = useCallback(
     (date?: DateRange): void => {
       if (!date?.from) return;
 
       if (date.from && date.to && date.from > date.to) {
-        toast.error("Start date must be before end date");
+        toast.error(t("filters.startDateError"));
 
         return;
       }
@@ -31,7 +42,7 @@ function DatePickerWithRange() {
         dateTo: date.to ?? null,
       });
     },
-    [setFilters],
+    [setFilters, t],
   );
 
   return (
@@ -54,16 +65,17 @@ function DatePickerWithRange() {
                 formatDate(filters.dateFrom)
               )
             ) : (
-              <span>Pick a date</span>
+              <span>{t("filters.pickDate")}</span>
             )}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
           <p className="text-muted-foreground px-3 pt-3 text-center text-xs">
-            Available: {formatDate(DATE_RANGE_START)} —{" "}
+            {t("general.available")}: {formatDate(DATE_RANGE_START)} —{" "}
             {formatDate(DATE_RANGE_END)}
           </p>
           <Calendar
+            locale={dateFnsLocale}
             mode="range"
             defaultMonth={DATE_RANGE_START}
             startMonth={DATE_RANGE_START}
@@ -74,7 +86,7 @@ function DatePickerWithRange() {
             }}
             onSelect={onDateSelect}
             numberOfMonths={2}
-            aria-label="Date range picker calendar"
+            aria-label={t("filters.dateRangePickerCalendar")}
           />
         </PopoverContent>
       </Popover>

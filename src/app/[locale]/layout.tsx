@@ -8,6 +8,30 @@ export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  const t = await getTranslations({
+    locale,
+    namespace: "metadata",
+  });
+
+  return {
+    title: {
+      default: "SeismicScope Platform",
+      template: `%s | SeismicScope Platform`,
+    },
+    description: t("defaultDescription"),
+  };
+}
+
 export default async function LocaleLayout({
   children,
   params,

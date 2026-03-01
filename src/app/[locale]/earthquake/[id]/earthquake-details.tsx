@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import type { Earthquake } from "@/features/earthquakes/types";
 import { formatDate } from "@/shared/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
@@ -6,15 +8,17 @@ type Props = {
   earthquake: Earthquake;
 };
 
-export default function EarthquakeDetails({ earthquake }: Props) {
+export default async function EarthquakeDetails({ earthquake }: Props) {
+  const t = await getTranslations();
+
   return (
     <div className="flex w-full flex-col gap-3 lg:w-1/2">
-      <p className="text-lg font-bold">Earthquake details</p>
+      <p className="text-lg font-bold">{t("general.earthquakeDetails")}</p>
 
       <div className="grid w-full grid-cols-2 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle>Occurred At</CardTitle>
+            <CardTitle>{t("general.occuredAt")}</CardTitle>
           </CardHeader>
           <CardContent>
             {earthquake?.occurredAt
@@ -25,7 +29,7 @@ export default function EarthquakeDetails({ earthquake }: Props) {
 
         <Card>
           <CardHeader>
-            <CardTitle>Magnitude</CardTitle>
+            <CardTitle>{t("general.magnitude")}</CardTitle>
           </CardHeader>
           <CardContent>
             <span className="text-error-500 text-xl font-bold">
@@ -36,14 +40,14 @@ export default function EarthquakeDetails({ earthquake }: Props) {
 
         <Card>
           <CardHeader>
-            <CardTitle>Depth</CardTitle>
+            <CardTitle>{t("general.depth")}</CardTitle>
           </CardHeader>
           <CardContent>{earthquake?.depth} km</CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Coordinates</CardTitle>
+            <CardTitle>{t("general.coordinates")}</CardTitle>
           </CardHeader>
           <CardContent>
             {earthquake?.latitude}, {earthquake?.longitude}
@@ -53,7 +57,7 @@ export default function EarthquakeDetails({ earthquake }: Props) {
         {earthquake?.location && (
           <Card className="col-span-2">
             <CardHeader>
-              <CardTitle>Location</CardTitle>
+              <CardTitle>{t("general.location")}</CardTitle>
             </CardHeader>
             <CardContent>{earthquake.location}</CardContent>
           </Card>

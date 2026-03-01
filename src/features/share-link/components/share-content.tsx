@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import { useCopyToClipboard } from "@/shared/hooks/use-copy-to-clipboard";
 import { Button } from "@/shared/ui/button";
@@ -10,6 +12,7 @@ import { useShortUrl } from "../hooks/use-short-url";
 import { useShortUrlQR } from "../hooks/use-short-url-qr";
 
 function ShareContent() {
+  const t = useTranslations();
   const { copyToClipboard } = useCopyToClipboard();
   const { data: shortLink, isLoading } = useShortUrl();
 
@@ -24,12 +27,16 @@ function ShareContent() {
   return (
     <div className="flex flex-col gap-3">
       <Field>
-        <FieldLabel htmlFor="input-button-group">Share link</FieldLabel>
+        <FieldLabel htmlFor="input-button-group">
+          {t("general.shareLink")}
+        </FieldLabel>
         <ButtonGroup>
           <Input
             id="input-button-group"
             value={shortUrl}
-            placeholder={isLoading ? "Generating..." : "Share link"}
+            placeholder={
+              isLoading ? t("general.generating") : t("general.shareLink")
+            }
             readOnly
           />
           <Button
@@ -37,12 +44,12 @@ function ShareContent() {
             disabled={!shortUrl}
             onClick={() => copyToClipboard(shortUrl)}
           >
-            Copy
+            {t("general.copy")}
           </Button>
         </ButtonGroup>
       </Field>
       <Field>
-        <FieldLabel>OR Scan QR code</FieldLabel>
+        <FieldLabel> {t("general.orScanQRCode")}</FieldLabel>
         {qr ? (
           <Image src={qr.qr} alt="QR Code" width={200} height={200} />
         ) : (

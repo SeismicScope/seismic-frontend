@@ -1,12 +1,21 @@
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 import Blogpost from "@/shared/ui/blogpost";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "High-performance seismic intelligence platform processing 800K+ earthquake records with spatial queries, caching, and scalable full-stack architecture.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+
+  return {
+    title: t("aboutTitle"),
+    description: t("aboutDescription"),
+  };
+}
 
 function AboutPage() {
   return <Blogpost />;

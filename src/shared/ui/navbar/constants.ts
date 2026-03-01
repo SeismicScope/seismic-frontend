@@ -6,25 +6,25 @@ export const LOGO_DATA = {
 };
 
 export const MENU = [
-  { title: "Home", url: "/" },
+  { titleKey: "pages.home", url: "/" },
   {
-    title: "Dashboard",
+    titleKey: "pages.dashboard",
     url: "/dashboard",
   },
   {
-    title: "Analytics",
+    titleKey: "pages.analytics",
     url: "/analytics",
   },
   {
-    title: "Map",
+    titleKey: "pages.map",
     url: "/map",
   },
   {
-    title: "Tiles Map",
+    titleKey: "pages.tilesMap",
     url: "/tiles-map",
   },
   {
-    title: "About",
+    titleKey: "pages.about",
     url: "/about",
   },
 ];

@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 import Logo from "@/assets/logo.svg";
 import { LoginDialog } from "@/features/auth/components/login-dialog";
@@ -19,7 +20,9 @@ const CommandPalette = dynamic(
   },
 );
 
-function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
+async function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
+  const t = await getTranslations();
+
   return (
     <nav className="hidden items-center justify-between lg:flex">
       <div className="flex items-center gap-6">
@@ -32,7 +35,7 @@ function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
         <div className="flex items-center">
           <NavigationMenu>
             <NavigationMenuList>
-              {menuWithAdmin.map((item) => renderMenuItem(item))}
+              {menuWithAdmin.map((item) => renderMenuItem(item, t))}
             </NavigationMenuList>
           </NavigationMenu>
         </div>

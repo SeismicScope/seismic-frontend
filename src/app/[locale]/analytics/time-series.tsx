@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
 import { useEarthquakesTimeSeries } from "@/features/analytics/hooks/use-earthquakes-time-series";
 import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
@@ -28,6 +29,7 @@ const TimeSeriesChart = dynamic(
 );
 
 function TimeSeries() {
+  const t = useTranslations();
   const {
     data: timeSeries,
     isLoading,
@@ -42,12 +44,12 @@ function TimeSeries() {
         onValueChange={(value) => setInterval(value as TimeInterval)}
       >
         <SelectTrigger className="mb-2">
-          <SelectValue placeholder="Select interval" />
+          <SelectValue placeholder={t("general.selectInterval")} />
         </SelectTrigger>
         <SelectContent>
           {PERIOD_INTERVALS.map((interval) => (
             <SelectItem key={interval} value={interval}>
-              {interval}
+              {t(interval)}
             </SelectItem>
           ))}
         </SelectContent>
@@ -55,7 +57,7 @@ function TimeSeries() {
       <ErrorBoundary
         fallback={
           <div className="text-muted-foreground flex h-[300px] items-center justify-center text-sm">
-            Failed to render chart
+            {t("analytics.failedToRenderChart")}
           </div>
         }
       >

@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { memo } from "react";
 
 import { Slider } from "@/shared/ui/slider";
@@ -14,6 +15,7 @@ function Histogram({
   onRangeCommit,
   isLoading = false,
 }: HistogramProps) {
+  const t = useTranslations();
   const {
     bars,
     displayRange,
@@ -28,7 +30,7 @@ function Histogram({
   }
 
   if (!histogram?.length) {
-    return <div>No data</div>;
+    return <div>{t("general.noDataAvailable")}</div>;
   }
 
   return (

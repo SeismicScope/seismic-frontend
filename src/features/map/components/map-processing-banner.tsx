@@ -1,8 +1,13 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 type MapProcessingBannerProps = {
   visible: boolean;
 };
 
 function MapProcessingBanner({ visible }: MapProcessingBannerProps) {
+  const t = useTranslations("map");
   if (!visible) return null;
 
   return (
@@ -10,7 +15,7 @@ function MapProcessingBanner({ visible }: MapProcessingBannerProps) {
       <div className="bg-background/90 flex items-center gap-2.5 rounded-lg border px-4 py-2.5 shadow-lg backdrop-blur-sm">
         <div className="border-primary/30 border-t-primary h-4 w-4 animate-spin rounded-full border-2" />
         <p className="text-muted-foreground text-sm font-medium">
-          Preparing earthquake points…
+          {t("preparingEarthquakePoints")}
         </p>
       </div>
     </div>

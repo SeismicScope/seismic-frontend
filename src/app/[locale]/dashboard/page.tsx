@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
@@ -7,22 +8,32 @@ import { ShareLinkDialog } from "@/features/share-link/components/share-link-dia
 
 import DashbardFilters from "./dashboard-filters";
 
-export const metadata: Metadata = {
-  title: "Dashboard",
-  description:
-    "Earthquake dashboard with aggregated metrics, advanced filtering, and high-performance data table for large-scale seismic records.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
 
-export default function DashboardPage() {
+  return {
+    title: t("dashboardTitle"),
+    description: t("dashboardDescription"),
+  };
+}
+
+export default async function DashboardPage() {
+  const t = await getTranslations();
+
   return (
     <div className="mt-5 w-full px-4 lg:px-10">
       <div className="flex items-center gap-4">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <h1 className="text-2xl font-bold">{t("pages.dashboard")}</h1>
         <ShareLinkDialog />
       </div>
       <div className="my-4 flex flex-col items-stretch gap-4 lg:flex-row">
         <div className="w-full lg:w-1/4">
-          <p className="text-lg font-bold">KPI Cards</p>
+          <p className="text-lg font-bold">{t("analytics.kpiCards")}</p>
           <EarthquakesStats />
         </div>
         <div className="hidden pt-15 pb-10 lg:block">
@@ -31,7 +42,7 @@ export default function DashboardPage() {
         <DashbardFilters />
       </div>
       <div className="mb-2 flex items-center justify-between">
-        <p className="text-lg font-bold">Earthquakes</p>
+        <p className="text-lg font-bold">{t("general.earthquakes")}</p>
         <SortSelect />
       </div>
       <EarthquakeTable />

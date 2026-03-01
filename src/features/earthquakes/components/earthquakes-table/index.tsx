@@ -1,6 +1,7 @@
 "use client";
 
 import { flexRender } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
 
 import { Skeleton } from "@/shared/ui/skeleton";
 import {
@@ -11,11 +12,12 @@ import {
   TableRow,
 } from "@/shared/ui/table";
 
-import { columns } from "./columns";
+import { getColumns } from "./columns";
 import TableSkeleton from "./table-skeleton";
 import { useEarthquakesTable } from "./use-earthquakes-table";
 
 export function EarthquakeTable() {
+  const t = useTranslations();
   const {
     isLoading,
     isEmpty,
@@ -31,9 +33,13 @@ export function EarthquakeTable() {
   if (isEmpty)
     return (
       <div className="flex h-[300px] items-center justify-center">
-        <p className="text-muted-foreground text-sm">No data available</p>
+        <p className="text-muted-foreground text-sm">
+          {t("general.noDataAvailable")}
+        </p>
       </div>
     );
+
+  const columns = getColumns(t);
 
   return (
     <div ref={parentRef} className="relative h-[350px] w-full overflow-auto">

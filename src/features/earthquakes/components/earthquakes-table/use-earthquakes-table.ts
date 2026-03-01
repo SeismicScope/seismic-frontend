@@ -1,13 +1,15 @@
 "use client";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef } from "react";
 
 import { useEarthquakes } from "@/features/earthquakes/hooks/use-earthquakes";
 
-import { columns } from "./columns";
+import { getColumns } from "./columns";
 
 export function useEarthquakesTable() {
+  const t = useTranslations();
   const parentRef = useRef<HTMLDivElement>(null);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
@@ -20,7 +22,7 @@ export function useEarthquakesTable() {
 
   const table = useReactTable({
     data: flatData,
-    columns,
+    columns: getColumns(t),
     getCoreRowModel: getCoreRowModel(),
     enableColumnResizing: true,
     columnResizeMode: "onChange",

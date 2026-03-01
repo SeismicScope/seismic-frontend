@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpDownIcon, CheckIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
 
 import { useFilters } from "@/features/filters/hooks/use-filters";
@@ -10,6 +11,7 @@ import { Button } from "@/shared/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 
 export default function SortSelect() {
+  const t = useTranslations();
   const { filters, setField } = useFilters();
   const [open, setOpen] = useState(false);
 
@@ -28,9 +30,9 @@ export default function SortSelect() {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button variant="outline" aria-label="Sort earthquakes">
+        <Button variant="outline" aria-label={t("sort.sortEarthquakes")}>
           <ArrowUpDownIcon />
-          {activeLabel ?? "Sort by..."}
+          {activeLabel ?? t("sort.title")}
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-auto p-1">
@@ -50,7 +52,7 @@ export default function SortSelect() {
                   "focus-visible:bg-accent focus-visible:text-accent-foreground",
                 )}
               >
-                {label}
+                {t(label)}
                 {isActive && (
                   <CheckIcon className="absolute right-2 size-3.5" />
                 )}

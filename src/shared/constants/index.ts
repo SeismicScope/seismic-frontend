@@ -1,8 +1,10 @@
+import { de, enUS, es } from "date-fns/locale";
+
 export enum PERIODS {
-  DAY = "day",
-  WEEK = "week",
-  MONTH = "month",
-  YEAR = "year",
+  DAY = "general.day",
+  WEEK = "general.week",
+  MONTH = "general.month",
+  YEAR = "general.year",
 }
 
 export const PERIOD_INTERVALS = [
@@ -46,12 +48,12 @@ export const SORT_VALUES = [
 export type SortOption = (typeof SORT_VALUES)[number];
 
 export const SORT_OPTIONS_META: Record<SortOption, string> = {
-  date_asc: "Date (oldest first)",
-  date_desc: "Date (newest first)",
-  magnitude_asc: "Magnitude (low to high)",
-  magnitude_desc: "Magnitude (high to low)",
-  depth_asc: "Depth (shallow to deep)",
-  depth_desc: "Depth (deep to shallow)",
+  date_asc: "sort.dateOldest",
+  date_desc: "sort.dateNewest",
+  magnitude_asc: "sort.magnitudeAscending",
+  magnitude_desc: "sort.magnitudeDescending",
+  depth_asc: "sort.depthAscending",
+  depth_desc: "sort.depthDescending",
 };
 
 export const DATE_RANGE_START = new Date(1930, 0, 1);
@@ -64,4 +66,10 @@ export const LOCALE_META: Record<Locale, { flag: string; label: string }> = {
   en: { flag: "🇬🇧", label: "English" },
   de: { flag: "🇩🇪", label: "Deutsch" },
   es: { flag: "🇪🇸", label: "Español" },
+};
+
+export const LOCALE_MAP = {
+  en: enUS,
+  de: de,
+  es: es,
 };

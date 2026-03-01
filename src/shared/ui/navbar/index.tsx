@@ -12,7 +12,7 @@ function Navbar({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
   const isAdmin = user?.role === "admin";
 
   const menuWithAdmin = isAdmin
-    ? [...menu, { title: "Admin", url: "/admin" }]
+    ? [...menu, { titleKey: "pages.admin", url: "/admin" }]
     : menu;
 
   return (

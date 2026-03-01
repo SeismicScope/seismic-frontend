@@ -1,6 +1,7 @@
 "use client";
 
 import { Lightbulb } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Alert, AlertDescription, AlertTitle } from "@/shared/ui/alert";
 import { Button } from "@/shared/ui/button";
@@ -17,6 +18,7 @@ import { Label } from "@/shared/ui/label";
 import { useLoginDialog } from "./use-login-dialog";
 
 export function LoginDialog() {
+  const t = useTranslations();
   const {
     open,
     setOpen,
@@ -30,32 +32,34 @@ export function LoginDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="default" size="sm" aria-label="Login">
-          Login
+        <Button variant="default" size="sm" aria-label={t("general.login")}>
+          {t("general.login")}
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Login</DialogTitle>
+          <DialogTitle>{t("general.login")}</DialogTitle>
         </DialogHeader>
         <Alert>
           <Lightbulb className="h-4 w-4" />
-          <AlertTitle>Credetials for demo:</AlertTitle>
+          <AlertTitle>{t("auth.credentialsForDemo")}</AlertTitle>
           <AlertDescription>
             <p>
-              Username: <span className="font-bold">oleinikdev</span>
+              {t("general.username")}:{" "}
+              <span className="font-bold">oleinikdev</span>
             </p>
             <p>
-              Password: <span className="font-bold">Oleinikdev1996</span>
+              {t("general.password")}:{" "}
+              <span className="font-bold">Oleinikdev1996</span>
             </p>
           </AlertDescription>
         </Alert>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Label htmlFor="username">Username</Label>
+            <Label htmlFor="username">{t("general.username")}</Label>
             <Input
               id="username"
-              placeholder="Enter username"
+              placeholder={t("auth.enterUsername")}
               {...register("username")}
               aria-invalid={!!errors.username}
             />
@@ -66,11 +70,11 @@ export function LoginDialog() {
             )}
           </div>
           <div className="flex flex-col gap-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">{t("general.password")}</Label>
             <Input
               id="password"
               type="password"
-              placeholder="Enter password"
+              placeholder={t("auth.enterPassword")}
               {...register("password")}
               aria-invalid={!!errors.password}
             />
@@ -81,7 +85,7 @@ export function LoginDialog() {
             )}
           </div>
           <Button type="submit" disabled={isLoggingIn}>
-            {isLoggingIn ? "Logging in..." : "Login"}
+            {isLoggingIn ? t("auth.loggingIn") : t("general.login")}
           </Button>
         </form>
       </DialogContent>

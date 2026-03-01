@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 
 import DatePickerWithRange from "../date-range";
@@ -5,12 +7,14 @@ import DepthRange from "../depth-range";
 import MagnitudeRange from "../magnitude-range";
 
 function Filters() {
+  const t = useTranslations();
+
   return (
     <div className="flex w-full flex-col gap-4 py-4 lg:flex-row">
       <div className="flex w-full flex-col gap-4 lg:w-1/3">
         <Card className="h-24 w-full gap-2 py-3">
           <CardHeader className="px-3">
-            <CardTitle>Date Picker Range</CardTitle>
+            <CardTitle>{t("filters.datePickerRange")}</CardTitle>
           </CardHeader>
           <CardContent className="px-3">
             <DatePickerWithRange />
@@ -18,7 +22,7 @@ function Filters() {
         </Card>
         <Card className="h-24 w-full gap-2 py-3">
           <CardHeader className="px-3">
-            <CardTitle>Depth Range</CardTitle>
+            <CardTitle>{t("filters.depthRange")}</CardTitle>
           </CardHeader>
           <CardContent className="px-3">
             <DepthRange />
@@ -27,7 +31,7 @@ function Filters() {
       </div>
       <Card className="w-full gap-2 py-3 lg:w-2/3">
         <CardHeader className="px-3">
-          <CardTitle>Magnitude Range</CardTitle>
+          <CardTitle>{t("filters.magnitudeRange")}</CardTitle>
         </CardHeader>
         <CardContent className="px-3">
           <MagnitudeRange />

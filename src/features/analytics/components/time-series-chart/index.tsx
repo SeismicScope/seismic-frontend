@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
@@ -21,6 +22,8 @@ type TimeSeriesChartProps = {
 };
 
 export function TimeSeriesChart({ data, isLoading }: TimeSeriesChartProps) {
+  const t = useTranslations();
+
   const chartData = useMemo(
     () =>
       data.map((item) => ({
@@ -32,17 +35,17 @@ export function TimeSeriesChart({ data, isLoading }: TimeSeriesChartProps) {
   );
 
   const summary = useMemo(() => {
-    if (!data.length) return "No earthquake data available.";
+    if (!data.length) return t("general.noDataAvailable");
 
     const total = data.reduce((acc, d) => acc + d.count, 0);
     const max = Math.max(...data.map((d) => d.count));
     const min = Math.min(...data.map((d) => d.count));
 
     return `Time series chart showing earthquake frequency over time. 
-    Total events: ${total}. 
-    Minimum: ${min} events. 
-    Maximum: ${max} events.`;
-  }, [data]);
+  Total events: ${total}. 
+  Minimum: ${min} events. 
+  Maximum: ${max} events.`;
+  }, [data, t]);
 
   if (isLoading) return <TimeSeriesLoader />;
   if (!data.length) return <TimeSeriesNoData />;

@@ -1,7 +1,286 @@
 {
   "home": {
     "title": "SeismicScope Plattform",
-    "subtitle": "Hochleistungs-System zur Erdbebenanalyse (über 800.000 Datensätze)",
+    "subtitle": "Hochleistungs-System zur Erdbebenanalyse (800k+ Datensätze)",
     "cta": "Erdbeben entdecken!"
+  },
+  "pages": {
+    "home": "Startseite",
+    "dashboard": "Dashboard",
+    "analytics": "Analyse",
+    "map": "Karte",
+    "tilesMap": "Kachelkarte",
+    "about": "Über uns",
+    "admin": "Admin"
+  },
+  "general": {
+    "search": "Suche",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "share": "Teilen",
+    "shareLink": "Link teilen",
+    "copy": "Kopieren",
+    "orScanQRCode": "ODER QR-Code scannen",
+    "noDataAvailable": "Keine Daten verfügbar",
+    "noResults": "Keine Ergebnisse gefunden",
+    "depth": "Tiefe",
+    "min": "Min",
+    "max": "Max",
+    "earthquakes": "Erdbeben",
+    "date": "Datum",
+    "magnitude": "Magnitude",
+    "location": "Ort",
+    "coordinates": "Koordinaten",
+    "actions": "Aktionen",
+    "moreInfo": "Mehr Info",
+    "earthquakeDetails": "Erdbeben-Details",
+    "occuredAt": "Ereignet am",
+    "wantToSeeMoreDetails": "Möchten Sie mehr Details sehen?",
+    "openFullPage": "Vollständige Seite öffnen",
+    "seismicEventsOverTime": "Seismische Ereignisse im Zeitverlauf",
+    "day": "Tag",
+    "week": "Woche",
+    "month": "Monat",
+    "year": "Jahr",
+    "cookieText": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern, die Website-Nutzung zu analysieren und unsere Dienste zu unterstützen. Durch die weitere Nutzung dieser Website stimmen Sie der Verwendung von Cookies zu.",
+    "gotIt": "Verstanden!",
+    "generating": "Generierung läuft...",
+    "available": "Verfügbar",
+    "selectInterval": "Intervall auswählen",
+    "earthquakeNotFound": "Erdbeben nicht gefunden",
+    "locationOnMap": "Standort auf der Karte"
+  },
+  "auth": {
+    "credentialsForDemo": "Zugangsdaten für Demo:",
+    "enterUsername": "Benutzername eingeben",
+    "enterPassword": "Passwort eingeben",
+    "loggingIn": "Anmeldung läuft..."
+  },
+  "analytics": {
+    "kpiCards": "KPI-Karten",
+    "totalEvents": "Ereignisse gesamt",
+    "maxMagnitude": "Max. Magnitude",
+    "avgMagnitude": "Durchschn. Magnitude",
+    "avgDepth": "Durchschn. Tiefe",
+    "failedToRenderChart": "Fehler beim Rendern des Diagramms",
+    "loadingChart": "Diagramm wird geladen..."
+  },
+  "filters": {
+    "title": "Filter",
+    "datePickerRange": "Datumsbereich wählen",
+    "pickDate": "Datum wählen",
+    "depthRange": "Tiefenbereich",
+    "magnitudeRange": "Magnitudenbereich",
+    "reset": "Zurücksetzen",
+    "startDateError": "Das Startdatum muss vor dem Enddatum liegen!",
+    "dateRangePickerCalendar": "Kalender zur Auswahl des Zeitraums",
+    "minDepthInput": "Eingabe Mindesttiefe",
+    "maxDepthInput": "Eingabe Maximaltiefe",
+    "minMustBeLess": "Minimum muss kleiner als das Maximum sein"
+  },
+  "sort": {
+    "title": "Sortieren nach...",
+    "sortEarthquakes": "Erdbeben sortieren",
+    "dateOldest": "Datum (älteste zuerst)",
+    "dateNewest": "Datum (neueste zuerst)",
+    "magnitudeAscending": "Magnitude (niedrig bis hoch)",
+    "magnitudeDescending": "Magnitude (hoch bis niedrig)",
+    "depthAscending": "Tiefe (flach bis tief)",
+    "depthDescending": "Tiefe (tief bis flach)"
+  },
+  "map": {
+    "preparingEarthquakePoints": "Erdbebenpunkte werden vorbereitet...",
+    "inBounds": "Im Sichtbereich",
+    "points": "Punkte",
+    "buildTime": "Erstellungszeit",
+    "heap": "Heap-Speicher",
+    "fps": "FPS",
+    "achitectureFlow": "Architektur-Ablauf",
+    "failedToRenderMap": "Fehler beim Rendern der Karte"
+  },
+  "aboutGeoJsonAndSuperCluster": {
+    "cta": "Über GeoJSON + Supercluster Architektur",
+    "title": "Karten-Architektur (GeoJSON + Supercluster)",
+    "description": "Diese Implementierung nutzt eine clientgesteuerte räumliche Rendering-Strategie basierend auf GeoJSON-Payloads kombiniert mit Supercluster, das in einem Web Worker läuft.",
+    "clientSideRenderingTitle": "Clientseitiges Clustering",
+    "clientSideRenderingText": "Die gesamte Clustering-Logik läuft im Browser. Das Backend liefert nur rohe räumliche Daten, gefiltert nach dem Sichtbereich.",
+    "whatHappensOnInteraction": {
+      "title": "Was bei Interaktion passiert:",
+      "1": "Benutzer bewegt die Karte.",
+      "2": "Frontend sendet Sichtbereich (Bounding Box) + Zoom an die API.",
+      "3": "Backend fragt PostGIS unter Verwendung eines räumlichen Index ab.",
+      "4": "GeoJSON-Payload wird zurückgegeben.",
+      "5": "Web Worker erstellt den Cluster-Index.",
+      "6": "Mapbox rendert Cluster oder Punkte."
+    },
+    "advantages": {
+      "title": "Vorteile",
+      "1": "High-FPS Rendering (GPU-beschleunigt via Mapbox)",
+      "2": "Vollständige Clustering-Kontrolle im Frontend",
+      "3": "Einfaches Debugging (reine JSON-Payloads)",
+      "4": "Geringe CPU-Last im Backend",
+      "5": "Schnelle lokale Neuerstellung des Cluster-Index"
+    },
+    "tradeOffs": {
+      "title": "Kompromisse:",
+      "1": "Große GeoJSON-Payloads (können mehrere MB erreichen)",
+      "2": "Erhöhter RAM-Verbrauch im Browser",
+      "3": "Client-CPU-Last bei Cluster-Neuerstellung",
+      "4": "Schwer skalierbar über ~100k sichtbare Punkte hinaus",
+      "5": "Mobilgeräte könnten Probleme haben"
+    },
+    "whenThisIsIdeal": {
+      "title": "Wann diese Architektur ideal ist",
+      "1": "Mittlere Datensätze (10k–150k sichtbare Punkte)",
+      "2": "Analytische Dashboards",
+      "3": "Tools zur explorativen Datenanalyse",
+      "4": "Projekte, die interaktive Clustering-Logik erfordern"
+    },
+    "whenToAvoid": {
+      "title": "Wann man sie vermeiden sollte",
+      "1": "Über 1 Million sichtbare Punkte",
+      "2": "Leistungsschwache Geräte",
+      "3": "Strikte Bandbreitenbeschränkungen",
+      "4": "Echtzeit-Streaming mit hoher Frequenz"
+    },
+    "productionNoteTitle": "Produktionshinweis",
+    "productionNoteText": "Für massive Datensätze ist eine serverseitige Vector Tile (MVT) Architektur skalierbarer, da Clustering und Geometrie-Clipping nach PostGIS verlagert werden."
+  },
+  "aboutVectorTiles": {
+    "cta": "Über Vector Tiles Architektur",
+    "title": "Karten-Architektur (PostGIS → MVT → Mapbox)",
+    "description": "Diese Implementierung nutzt serverseitig generierte Mapbox Vector Tiles (MVT), wobei Geometrie-Clipping und Datenaufbereitung direkt in PostgreSQL mittels PostGIS erfolgen.",
+    "serverSideSpatialTitle": "Serverseitige räumliche Verarbeitung",
+    "serverSideSpatialText": "PostGIS generiert Vektorkacheln mit ST_AsMVT und ST_AsMVTGeom. Das Frontend rendert nur binäre Kacheldaten.",
+    "whatHappensOnInteraction": {
+      "title": "Was bei Interaktion passiert:",
+      "1": "Benutzer bewegt die Karte.",
+      "2": "Mapbox fordert automatisch Kacheln (z/x/y) an.",
+      "3": "Backend generiert Vektorkachel in PostGIS.",
+      "4": "Binäre MVT-Kachel wird zurückgegeben.",
+      "5": "Mapbox rendert Geometrie direkt aus GPU-Buffern."
+    },
+    "advantages": {
+      "title": "Vorteile",
+      "1": "Geringe Netzwerk-Payload (binäre Kacheln)",
+      "2": "Keine großen JSON-Übertragungen",
+      "3": "GPU-optimiertes Rendering",
+      "4": "Skaliert auf Millionen von Punkten",
+      "5": "Räumliche Kontrolle auf Backend-Ebene"
+    },
+    "tradeOffs": {
+      "title": "Kompromisse:",
+      "1": "Komplexere SQL-Abfragen",
+      "2": "Schwierigeres Debugging (binäres Format)",
+      "3": "Erhöhte CPU-Last im Backend",
+      "4": "Erfordert korrekte räumliche Indizierung (3857 empfohlen)"
+    },
+    "whenThisIsIdeal": {
+      "title": "Wann diese Architektur ideal ist:",
+      "1": "Hunderttausende bis Millionen von Punkten",
+      "2": "Professionelle Geo-Plattformen",
+      "3": "Umgebungen mit geringer Bandbreite",
+      "4": "Systeme mit hoher Parallelität"
+    },
+    "performance": {
+      "title": "Leistungsmerkmale:",
+      "1": "Rendering hängt nur von sichtbaren Kacheln ab",
+      "2": "Kein clientseitiges Clustering erforderlich",
+      "3": "Backend-Leistung gekoppelt an Qualität des räumlichen Index"
+    },
+    "productionStandardTitle": "Produktionsstandard",
+    "productionStandardText": "Dies ist die Architektur, die von großen Geo-Plattformen wie Kartenanbietern, Logistiksystemen und räumlichen Analyse-Tools verwendet wird."
+  },
+  "about": {
+    "description": "Ist ein Analysesystem zur Verarbeitung und Visualisierung eines massiven Datensatzes von Erdbebenereignissen (~800.000 Datensätze).",
+    "projectFocusOn": {
+      "title": "Das Projekt dient als Demonstration für Hochleistungs-Engineering, mit Fokus auf:",
+      "1_title": "Big Data Management:",
+      "1_body": "Effiziente Handhabung und Verarbeitung großer Datensätze.",
+      "2_title": "Räumliche Abfragen:",
+      "2_body": "Implementierung komplexer geografischer Abfragen.",
+      "3_title": "Datenbankoptimierung:",
+      "3_body": "Fortgeschrittene Indizierung und Leistungsabstimmung.",
+      "4_title": "Serverseitige Paginierung & Filterung:",
+      "4_body": "Schnelle Antwortzeiten bei tiefen Datenabrufen.",
+      "5_title": "Virtualisiertes Frontend-Rendering:",
+      "5_body": "Darstellung tausender Datenpunkte ohne UI-Verzögerung.",
+      "6_title": "Leistungsskalierung:",
+      "6_body": "Implementierung von Caching und Hintergrundaufgaben.",
+      "7_title": "Sicherheit:",
+      "7_body": "Minimale rollenbasierte Zugriffskontrolle (RBAC)."
+    },
+    "notACrudTitle": "Keine CRUD-Anwendung",
+    "notACrudText": "Dieses Projekt ist keine Standard-CRUD-Anwendung. Sein Hauptziel ist es, architektonische und technische Lösungen für komplexe, reale Datensätze aufzuzeigen.",
+    "generalArchitecture": {
+      "title": "Allgemeine Architektur",
+      "description": "Das System basiert auf einem modernen, skalierbaren Stack für Hochfrequenz-Datenoperationen und komplexe räumliche Analysen.",
+      "techStack": "Technologie-Stack",
+      "1_title": "Frontend:",
+      "1_body": "Next.js 16 (App Router)",
+      "2_title": "Backend:",
+      "2_body": "NestJS (Node.js Framework)",
+      "3_title": "Datenbank:",
+      "3_body": "PostgreSQL mit PostGIS-Erweiterung (für räumliche Daten)",
+      "4_title": "ORM:",
+      "4_body": "Prisma",
+      "5_title": "Cache & Message Broker:",
+      "5_body": "Redis",
+      "6_title": "Task Scheduling:",
+      "6_body": "BullMQ (Hintergrund-Jobs)",
+      "7_title": "Visualisierung:",
+      "7_body": "Mapbox GL JS (Mapping) & Recharts (Analyse)"
+    },
+    "interactionWorkflow": {
+      "title": "Interaktions-Workflow",
+      "1_title": "Frontend:",
+      "1_body": "Kommuniziert mit der NestJS-API via REST.",
+      "2_title": "NestJS:",
+      "2_body": "Verwaltet die Business-Logik und fragt PostgreSQL ab.",
+      "3_title": "Redis:",
+      "3_body": "Dient als Hochgeschwindigkeitsebene für Caching und Job-Queue-Management.",
+      "4_title": "Background Worker:",
+      "4_body": "Verarbeitet schwere Datenaufgaben via BullMQ, um die API reaktionsschnell zu halten."
+    },
+    "infra": {
+      "title": "Infrastruktur & Deployment",
+      "1_title": "Frontend Hosting:",
+      "1_body": "Vercel",
+      "2_title": "Backend Hosting:",
+      "2_body": "DigitalOcean Droplet",
+      "3_title": "CI/CD Pipeline:",
+      "3_body": "GitHub Actions",
+      "4_title": "Containerisierung:",
+      "4_body": "Docker"
+    },
+    "aboutAuthor": {
+      "title": "Über den Autor",
+      "description_1": "Dieses Projekt wurde entworfen und entwickelt von",
+      "description_2": "als Demonstration für Full-Stack-Engineering-Expertise, mit Fokus auf Hochleistungs-Datensysteme, räumliche Analysen und skalierbare Architekturen. Ziel dieser Plattform ist nicht nur die Implementierung von Features, sondern architektonische Klarheit, Leistungsoptimierung und Engineering auf Produktionsniveau.",
+      "linkedIn": "LinkedIn",
+      "projectStorybook": "Projekt Storybook",
+      "projectStorybookLink": "UI-Komponentenbibliothek",
+      "beRepo": "Backend-Repository",
+      "beRepoLink": "NestJS API Quellcode"
+    },
+    "engineeringFocusTitle": "Engineering-Fokus",
+    "engineeringFocusText": "Der Schwerpunkt dieses Projekts liegt auf Systemdesign, Leistungsskalierung, datenintensiver Architektur und Codequalität auf Produktionsniveau – nicht nur auf der UI-Entwicklung."
+  },
+  "metadata": {
+    "defaultDescription": "Hochleistungs-System zur Erdbebenanalyse (800k+ Datensätze)",
+    "dashboartTitle": "Dashboard",
+    "dashboardDescription": "Erdbeben-Dashboard mit aggregierten Metriken, erweiterten Filtern und Hochleistungs-Datentabelle für umfangreiche seismische Datensätze.",
+    "analyticsTitle": "Analyse",
+    "analyticsDescription": "Analyse-Dashboard mit durchschnittlichen Erdbeben-Metriken und Zeitreihen-Trends für umfangreiche seismische Datensätze.",
+    "mapTitle": "Karte",
+    "mapDescription": "Globale Erdbebenkarte zur Visualisierung von über 150.000 seismischen Ereignissen mit zoom-basiertem Rendering und räumlicher Optimierung.",
+    "tilesMapTitle": "Kachelkarte",
+    "tilesMapDescription": "Globale Erdbebenkarte zur Visualisierung von über 150.000 seismischen Ereignissen mit zoom-basiertem Rendering und räumlicher Optimierung.",
+    "aboutTitle": "Über das Projekt",
+    "aboutDescription": "Hochleistungs-Plattform für seismische Daten zur Verarbeitung von über 800.000 Erdbeben-Datensätzen mit räumlichen Abfragen, Caching und skalierbarer Full-Stack-Architektur.",
+    "earthquakeTitle": "M{magnitude} — {depth}km",
+    "earthquakeDescription": "Erdbeben in {location}, Tiefe {depth}km"
   }
 }
