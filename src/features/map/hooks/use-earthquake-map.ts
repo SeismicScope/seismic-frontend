@@ -54,10 +54,12 @@ export function useEarthquakeMap(isDashboard: boolean = false) {
     function initializeMap() {
       if (!containerRef.current || adapterRef.current) return;
 
-      const adapter = new MapAdapter(containerRef.current);
+      const container = containerRef.current;
+      const adapter = new MapAdapter(container);
       adapterRef.current = adapter;
 
       adapter.onLoad(() => {
+        adapter.resize();
         adapter.addSource(SOURCE_ID);
         adapter.addLayers();
         setReady(true);
@@ -72,7 +74,13 @@ export function useEarthquakeMap(isDashboard: boolean = false) {
         requestClusters(map);
       });
 
+      const resizeObserver = new ResizeObserver(() => {
+        adapter.resize();
+      });
+      resizeObserver.observe(container);
+
       return () => {
+        resizeObserver.disconnect();
         adapter.destroy();
         adapterRef.current = null;
       };

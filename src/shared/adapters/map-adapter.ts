@@ -175,6 +175,10 @@ export class MapAdapter {
     });
   }
 
+  resize() {
+    this.map.resize();
+  }
+
   destroy() {
     this.map.remove();
   }
