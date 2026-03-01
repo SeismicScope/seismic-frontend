@@ -270,7 +270,7 @@
   },
   "metadata": {
     "defaultDescription": "Sistema de análisis sísmico de alto rendimiento (+800k registros)",
-    "dashboartTitle": "Panel de control",
+    "dashboardTitle": "Panel de control",
     "dashboardDescription": "Panel de terremotos con métricas agregadas, filtrado avanzado y tabla de datos de alto rendimiento para registros sísmicos a gran escala.",
     "analyticsTitle": "Análisis",
     "analyticsDescription": "Panel analítico que muestra métricas promedio de terremotos y tendencias temporales para conjuntos de datos sísmicos masivos.",

@@ -270,7 +270,7 @@
   },
   "metadata": {
     "defaultDescription": "Hochleistungs-System zur Erdbebenanalyse (800k+ Datensätze)",
-    "dashboartTitle": "Dashboard",
+    "dashboardTitle": "Dashboard",
     "dashboardDescription": "Erdbeben-Dashboard mit aggregierten Metriken, erweiterten Filtern und Hochleistungs-Datentabelle für umfangreiche seismische Datensätze.",
     "analyticsTitle": "Analyse",
     "analyticsDescription": "Analyse-Dashboard mit durchschnittlichen Erdbeben-Metriken und Zeitreihen-Trends für umfangreiche seismische Datensätze.",
