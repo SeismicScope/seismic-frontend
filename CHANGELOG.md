@@ -1,3 +1,9 @@
+## [1.10.1](https://github.com/SeismicScope/seismic-frontend/compare/v1.10.0...v1.10.1) (2026-03-01)
+
+### Bug Fixes
+
+- **i18n:** correct typo in metadata key from dashboartTitle to dashboardTitle ([993e79c](https://github.com/SeismicScope/seismic-frontend/commit/993e79c42b88ef6e2fa3d596fd93232385e8998a))
+
 # [1.10.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.9.0...v1.10.0) (2026-03-01)
 
 ### Features
