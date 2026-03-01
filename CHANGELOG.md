@@ -1,3 +1,9 @@
+## [1.10.3](https://github.com/SeismicScope/seismic-frontend/compare/v1.10.2...v1.10.3) (2026-03-01)
+
+### Bug Fixes
+
+- **table:** correct typo in skeleton container width class ([432fdd5](https://github.com/SeismicScope/seismic-frontend/commit/432fdd5b03d48fa3e781c1260827bed270577afe))
+
 ## [1.10.2](https://github.com/SeismicScope/seismic-frontend/compare/v1.10.1...v1.10.2) (2026-03-01)
 
 ### Bug Fixes
