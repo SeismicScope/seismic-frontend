@@ -6,7 +6,7 @@ import { useMapRequestParams } from "@/features/map/store/use-map-request-params
 
 export function useEarthquakes() {
   const { apiFilters } = useFilters();
-  const mapRequestParams = useMapRequestParams.getState().requestParams;
+  const mapRequestParams = useMapRequestParams((state) => state.requestParams);
 
   return useInfiniteQuery({
     queryKey: ["earthquakes", apiFilters, mapRequestParams],

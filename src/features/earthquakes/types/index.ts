@@ -1,4 +1,5 @@
 import type { EarthquakeFilters } from "@/features/filters/types";
+import type { MapParams } from "@/features/map/store/use-map-request-params";
 import type { SortOption } from "@/shared/constants";
 
 export type Earthquake = {
@@ -19,11 +20,12 @@ export type EarthquakesResponse = {
   nextCursor: number | null;
 };
 
-export type EarthquakeParams = EarthquakeFilters & {
-  limit?: number;
-  cursor?: number;
-  sort?: SortOption;
-};
+export type EarthquakeParams = EarthquakeFilters &
+  MapParams & {
+    limit?: number;
+    cursor?: number;
+    sort?: SortOption;
+  };
 
 export type MagnitudeHistogram = {
   magnitude: number;

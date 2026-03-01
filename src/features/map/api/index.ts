@@ -20,7 +20,6 @@ export async function getMapData({
       ...filters,
     },
     signal,
-    ...filters,
   });
 
   return data;
