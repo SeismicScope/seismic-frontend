@@ -84,7 +84,7 @@ function AboutThisMap() {
             <li className="my-2">{t("advantages.2")}</li>
             <li className="my-2">{t("advantages.3")}</li>
             <li className="my-2">{t("advantages.4")}</li>
-            <li className="my-2">{t("advantages.5s")}</li>
+            <li className="my-2">{t("advantages.5")}</li>
           </ul>
 
           <Separator className="my-6" />

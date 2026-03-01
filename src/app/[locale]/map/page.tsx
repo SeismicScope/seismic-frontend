@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import LazyMap from "@/features/map/components/lazy-map";
 import MapStats from "@/features/map/components/map-stats";
 import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
+import type { Locale } from "@/shared/constants";
 
 import AboutThisMap from "./about-this-map";
 
@@ -21,8 +22,9 @@ export async function generateMetadata({
   };
 }
 
-async function MapPage() {
-  const t = await getTranslations();
+async function MapPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
 
   return (
     <div className="relative h-[calc(100vh-8rem)] w-full">

@@ -5,6 +5,7 @@ import EarthquakesStats from "@/features/analytics/components/earthquakes-stats"
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
 import SortSelect from "@/features/filters/components/sort-select";
 import { ShareLinkDialog } from "@/features/share-link/components/share-link-dialog";
+import type { Locale } from "@/shared/constants";
 
 import DashbardFilters from "./dashboard-filters";
 
@@ -22,8 +23,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function DashboardPage() {
-  const t = await getTranslations();
+export default async function DashboardPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
 
   return (
     <div className="mt-5 w-full px-4 lg:px-10">

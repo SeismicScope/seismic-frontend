@@ -1,15 +1,17 @@
 import { getTranslations } from "next-intl/server";
 
 import type { Earthquake } from "@/features/earthquakes/types";
+import type { Locale } from "@/shared/constants";
 import { formatDate } from "@/shared/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 
 type Props = {
   earthquake: Earthquake;
+  locale: Locale;
 };
 
-export default async function EarthquakeDetails({ earthquake }: Props) {
-  const t = await getTranslations();
+export default async function EarthquakeDetails({ earthquake, locale }: Props) {
+  const t = await getTranslations({ locale });
 
   return (
     <div className="flex w-full flex-col gap-3 lg:w-1/2">

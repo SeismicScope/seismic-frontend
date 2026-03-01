@@ -1,10 +1,11 @@
-import { getTranslations } from "node_modules/next-intl/dist/types/server/react-server";
+import { getTranslations } from "next-intl/server";
 
+import type { Locale } from "@/shared/constants";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Skeleton } from "@/shared/ui/skeleton";
 
-async function EarthquakeSkeleton() {
-  const t = await getTranslations();
+async function EarthquakeSkeleton({ locale }: { locale: Locale }) {
+  const t = await getTranslations({ locale });
 
   return (
     <div className="mt-5 flex w-full flex-col items-start gap-10 px-4 lg:flex-row lg:px-10">

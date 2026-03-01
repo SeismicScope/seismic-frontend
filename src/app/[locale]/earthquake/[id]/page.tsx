@@ -2,12 +2,13 @@ import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { getEarthquakeById } from "@/features/earthquakes/api/server";
+import type { Locale } from "@/shared/constants";
 
 import EarthquakeDetails from "./earthquake-details";
 import LazyEarthquakeMap from "./lazy-earthquake-map";
 
 type Props = {
-  params: Promise<{ locale: string; id: string }>;
+  params: Promise<{ locale: Locale; id: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -30,8 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function EarthquakePage({ params }: Props) {
-  const { id } = await params;
-  const t = await getTranslations();
+  const { id, locale } = await params;
+  const t = await getTranslations({ locale });
   const earthquake = await getEarthquakeById(id);
 
   if (!earthquake) {
@@ -40,7 +41,7 @@ export default async function EarthquakePage({ params }: Props) {
 
   return (
     <div className="mt-5 flex w-full flex-col gap-10 px-4 lg:flex-row lg:px-10">
-      <EarthquakeDetails earthquake={earthquake} />
+      <EarthquakeDetails earthquake={earthquake} locale={locale} />
       <LazyEarthquakeMap lat={earthquake.latitude} lng={earthquake.longitude} />
     </div>
   );

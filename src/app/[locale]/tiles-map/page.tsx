@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import LazyTilesMap from "@/features/map/components/lazy-tiles-map";
 import MapStats from "@/features/map/components/map-stats";
 import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
+import type { Locale } from "@/shared/constants";
 
 import AboutThisMap from "./about-this-map";
 
@@ -21,8 +22,13 @@ export async function generateMetadata({
   };
 }
 
-async function TilesMapPage() {
-  const t = await getTranslations();
+async function TilesMapPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
 
   return (
     <div className="relative h-[calc(100vh-8rem)] w-full">
