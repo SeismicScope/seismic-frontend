@@ -270,7 +270,7 @@
   },
   "metadata": {
     "defaultDescription": "High-performance earthquake analytics system (800k+ records)",
-    "dashboartTitle": "Dashboard",
+    "dashboardTitle": "Dashboard",
     "dashboardDescription": "Earthquake dashboard with aggregated metrics, advanced filtering, and high-performance data table for large-scale seismic records.",
     "analyticsTitle": "Analytics",
     "analyticsDescription": "Analytical dashboard displaying average earthquake metrics and time-series trends for large-scale seismic datasets.",
