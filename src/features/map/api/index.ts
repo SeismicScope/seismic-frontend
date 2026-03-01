@@ -10,3 +10,15 @@ export async function getMapData(
 
   return data;
 }
+
+export async function getDashboardMapData(
+  params: MapRequest,
+  signal?: AbortSignal,
+): Promise<MapResponse> {
+  const { data } = await api.get<MapResponse>("/map/dashboard", {
+    params,
+    signal,
+  });
+
+  return data;
+}

@@ -10,7 +10,7 @@ import { useMapData } from "./use-map-data";
 import { useMapEvents } from "./use-map-events";
 import { useMapWorker } from "./use-map-worker";
 
-export function useEarthquakeMap() {
+export function useEarthquakeMap(isDashboard: boolean = false) {
   const containerRef = useRef<HTMLDivElement>(null);
   const adapterRef = useRef<MapAdapter | null>(null);
 
@@ -18,7 +18,10 @@ export function useEarthquakeMap() {
 
   const [ready, setReady] = useState(false);
   const [requestParams, setRequestParams] = useState<MapRequest | null>(null);
-  const { data: mapResponse, isFetching } = useMapData(requestParams);
+  const { data: mapResponse, isFetching } = useMapData({
+    requestParams,
+    isDashboard,
+  });
 
   const { loadPoints, requestClusters } = useMapWorker({ adapterRef });
 

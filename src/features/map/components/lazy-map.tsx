@@ -2,7 +2,11 @@
 
 import dynamic from "next/dynamic";
 
-const EarthquakeMap = dynamic(() => import("./map"), {
+type MapProps = {
+  isDashboard?: boolean;
+};
+
+const EarthquakeMapLazy = dynamic(() => import("./map"), {
   ssr: false,
   loading: () => (
     <div className="flex h-full w-full items-center justify-center">
@@ -15,5 +19,9 @@ const EarthquakeMap = dynamic(() => import("./map"), {
     </div>
   ),
 });
+
+function EarthquakeMap(props: MapProps) {
+  return <EarthquakeMapLazy {...props} />;
+}
 
 export default EarthquakeMap;

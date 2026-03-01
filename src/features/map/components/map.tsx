@@ -5,8 +5,12 @@ import { useEarthquakeMap } from "../hooks/use-earthquake-map";
 import MapLoader from "./map-loader";
 import MapProcessingBanner from "./map-processing-banner";
 
-export default function EarthquakeMap() {
-  const { containerRef, ready, isFetching } = useEarthquakeMap();
+export default function EarthquakeMap({
+  isDashboard = false,
+}: {
+  isDashboard?: boolean;
+}) {
+  const { containerRef, ready, isFetching } = useEarthquakeMap(isDashboard);
 
   return (
     <div className="relative h-full w-full">

@@ -1,13 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getMapData } from "../api";
+import { getDashboardMapData, getMapData } from "../api";
 import type { MapRequest } from "../types";
 
-export function useMapData(bounds: MapRequest | null) {
+type UseMapDataOptions = {
+  requestParams: MapRequest | null;
+  isDashboard?: boolean;
+};
+
+export function useMapData({
+  requestParams,
+  isDashboard = false,
+}: UseMapDataOptions) {
   return useQuery({
-    queryKey: ["map-data", bounds],
-    queryFn: ({ signal }) => getMapData(bounds!, signal),
-    enabled: bounds !== null,
+    queryKey: [isDashboard ? "map-data-dashboard" : "map-data", requestParams],
+
+    queryFn: ({ signal }) => {
+      const fetcher = isDashboard ? getDashboardMapData : getMapData;
+
+      return fetcher(requestParams!, signal);
+    },
+
+    enabled: !!requestParams,
     staleTime: 30_000,
   });
 }

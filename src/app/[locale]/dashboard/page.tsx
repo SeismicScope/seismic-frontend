@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
 import SortSelect from "@/features/filters/components/sort-select";
+import EarthquakeMap from "@/features/map/components/map";
 import { ShareLinkDialog } from "@/features/share-link/components/share-link-dialog";
 import type { Locale } from "@/shared/constants";
 
@@ -51,7 +52,10 @@ export default async function DashboardPage({
         <p className="text-lg font-bold">{t("general.earthquakes")}</p>
         <SortSelect />
       </div>
-      <EarthquakeTable />
+      <div className="flex items-start">
+        <EarthquakeTable />
+        <EarthquakeMap />
+      </div>
     </div>
   );
 }
