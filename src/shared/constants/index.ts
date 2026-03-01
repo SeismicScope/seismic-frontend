@@ -1,17 +1,17 @@
 import { de, enUS, es } from "date-fns/locale";
 
 export enum PERIODS {
-  DAY = "general.day",
-  WEEK = "general.week",
-  MONTH = "general.month",
-  YEAR = "general.year",
+  DAY = "day",
+  WEEK = "week",
+  MONTH = "month",
+  YEAR = "year",
 }
 
 export const PERIOD_INTERVALS = [
-  PERIODS.DAY,
-  PERIODS.WEEK,
-  PERIODS.MONTH,
-  PERIODS.YEAR,
+  { value: "day", label: "general.day" },
+  { value: "week", label: "general.week" },
+  { value: "month", label: "general.month" },
+  { value: "year", label: "general.year" },
 ];
 
 export const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;

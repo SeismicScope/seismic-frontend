@@ -48,8 +48,8 @@ function TimeSeries() {
         </SelectTrigger>
         <SelectContent>
           {PERIOD_INTERVALS.map((interval) => (
-            <SelectItem key={interval} value={interval}>
-              {t(interval)}
+            <SelectItem key={interval.value} value={interval.value}>
+              {t(interval.label)}
             </SelectItem>
           ))}
         </SelectContent>
