@@ -57,3 +57,11 @@ export const SORT_OPTIONS_META: Record<SortOption, string> = {
 export const DATE_RANGE_START = new Date(1930, 0, 1);
 export const DATE_RANGE_END = new Date(2018, 11, 31);
 export const COOKIE_CONSENT_KEY = "cookie-consent";
+export const LOCALES = ["en", "de", "es"] as const;
+export const DEFAULT_LOCALE = "en";
+export type Locale = (typeof LOCALES)[number];
+export const LOCALE_META: Record<Locale, { flag: string; label: string }> = {
+  en: { flag: "🇬🇧", label: "English" },
+  de: { flag: "🇩🇪", label: "Deutsch" },
+  es: { flag: "🇪🇸", label: "Español" },
+};

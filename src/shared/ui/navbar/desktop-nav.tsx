@@ -6,6 +6,7 @@ import { LoginDialog } from "@/features/auth/components/login-dialog";
 import CommandPaletteTrigger from "@/features/command-palette/components/command-palette-trigger";
 
 import { Button } from "../button";
+import LanguageSwitcher from "../language-switcher";
 import { NavigationMenu, NavigationMenuList } from "../navigation-menu";
 import ThemeSwitcher from "../theme-switcher";
 import renderMenuItem from "./render-menu-item";
@@ -40,6 +41,7 @@ function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
       <div className="flex gap-2">
         <CommandPaletteTrigger />
         <CommandPalette />
+        <LanguageSwitcher />
         {!user ? (
           <LoginDialog />
         ) : (

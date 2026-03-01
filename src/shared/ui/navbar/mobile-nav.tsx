@@ -8,6 +8,7 @@ import CommandPaletteTrigger from "@/features/command-palette/components/command
 
 import { Accordion } from "../accordion";
 import { Button } from "../button";
+import LanguageSwitcher from "../language-switcher";
 import {
   Sheet,
   SheetContent,
@@ -35,6 +36,7 @@ function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
         </a>
         <CommandPaletteTrigger />
         <CommandPalette />
+        <LanguageSwitcher />
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" aria-label="Menu">

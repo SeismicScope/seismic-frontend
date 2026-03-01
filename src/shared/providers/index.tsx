@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
+import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { type JSX, Suspense, useState } from "react";
@@ -15,6 +16,7 @@ import { toast, Toaster } from "sonner";
 import { FiltersSync } from "@/features/filters/components/filters-sync";
 
 import { WebVitals } from "../components/web-vitals";
+import type { Locale } from "../constants";
 import GoogleAnalytics from "../lib/google-analytics";
 import { getErrorMessage } from "../lib/utils";
 import { ThemeSync } from "../ui/theme-sync";
@@ -26,8 +28,12 @@ const CookieBanner = dynamic(() => import("../components/cookie-banner"), {
 
 export function Providers({
   children,
+  messages,
+  locale,
 }: {
   children: React.ReactNode;
+  messages: Record<string, string>;
+  locale: Locale;
 }): JSX.Element {
   const [queryClient] = useState(
     () =>
@@ -81,7 +87,9 @@ export function Providers({
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <ColorThemeProvider>
           <QueryClientProvider client={queryClient}>
-            {children}
+            <NextIntlClientProvider messages={messages} locale={locale}>
+              {children}
+            </NextIntlClientProvider>
           </QueryClientProvider>
           <Toaster richColors position="top-right" />
           <WebVitals />

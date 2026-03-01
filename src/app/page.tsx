@@ -1,18 +1,7 @@
-import { Hero7 } from "@/shared/ui/hero7";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <main className="flex h-[calc(100vh-80px)] items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <Hero7
-        heading="SeismicScope Platform"
-        subtitle="High-performance earthquake analytics system (800k+ records)"
-        description=""
-        button={{
-          text: "Discover earthquakes!",
-          url: "/dashboard",
-        }}
-        aria-label="Discover earthquakes!"
-      />
-    </main>
-  );
+import { DEFAULT_LOCALE } from "@/shared/constants";
+
+export default function Page() {
+  redirect(`/${DEFAULT_LOCALE}`);
 }
