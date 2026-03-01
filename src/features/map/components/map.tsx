@@ -15,7 +15,9 @@ export default function EarthquakeMap({
   const { containerRef, ready, isFetching } = useEarthquakeMap(isDashboard);
 
   return (
-    <div className={cn("relative h-full w-full", isDashboard && "w-1/2")}>
+    <div
+      className={cn("relative h-full w-full", isDashboard && "h-[350px] w-1/2")}
+    >
       <div ref={containerRef} className="h-full w-full" />
       {!ready && <MapLoader />}
       <MapProcessingBanner visible={isFetching} />
