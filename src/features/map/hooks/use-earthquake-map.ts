@@ -4,8 +4,8 @@ import { MapAdapter } from "@/shared/adapters/map-adapter";
 
 import { SOURCE_ID } from "../constants";
 import { getBounds } from "../lib/utils";
+import { useMapRequestParams } from "../store/use-map-request-params";
 import { useMapStatsStore } from "../store/use-map-stats";
-import type { MapRequest } from "../types";
 import { useMapData } from "./use-map-data";
 import { useMapEvents } from "./use-map-events";
 import { useMapWorker } from "./use-map-worker";
@@ -15,9 +15,10 @@ export function useEarthquakeMap(isDashboard: boolean = false) {
   const adapterRef = useRef<MapAdapter | null>(null);
 
   const setMapStats = useMapStatsStore.getState().setMapStats;
+  const { requestParams, setMapRequestParams } = useMapRequestParams();
 
   const [ready, setReady] = useState(false);
-  const [requestParams, setRequestParams] = useState<MapRequest | null>(null);
+
   const { data: mapResponse, isFetching } = useMapData({
     requestParams,
     isDashboard,
@@ -28,7 +29,7 @@ export function useEarthquakeMap(isDashboard: boolean = false) {
   useMapEvents({
     adapterRef,
     ready,
-    onBoundsChange: setRequestParams,
+    onBoundsChange: setMapRequestParams,
     requestClusters,
   });
 
@@ -63,7 +64,7 @@ export function useEarthquakeMap(isDashboard: boolean = false) {
 
         const map = adapter.getMap();
 
-        setRequestParams({
+        setMapRequestParams({
           ...getBounds(map),
           zoom: Math.floor(map.getZoom()),
         });

@@ -1,4 +1,4 @@
-import type { EarthquakeFilters } from "@/features/earthquakes/types";
+import type { EarthquakeFilters } from "@/features/filters/types";
 import type { TimeInterval } from "@/types/main";
 
 export type EarthquakeStats = {

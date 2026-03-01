@@ -23,10 +23,10 @@ export function getBounds(map: mapboxgl.Map): MapBounds {
   const b = map.getBounds();
 
   return {
-    west: b?.getWest() || 0,
-    south: b?.getSouth() || 0,
-    east: b?.getEast() || 0,
-    north: b?.getNorth() || 0,
+    west: Number(b?.getWest().toFixed(5)) || 0,
+    south: Number(b?.getSouth().toFixed(5)) || 0,
+    east: Number(b?.getEast().toFixed(5)) || 0,
+    north: Number(b?.getNorth().toFixed(5)) || 0,
   };
 }
 

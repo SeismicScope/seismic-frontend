@@ -33,7 +33,9 @@ describe("map api", () => {
       zoom: 10,
     };
 
-    const result = await getMapData(params);
+    const filters = {};
+
+    const result = await getMapData({ params, filters });
 
     expect(api.get).toHaveBeenCalledWith("/map", {
       params,
@@ -47,10 +49,11 @@ describe("map api", () => {
     const controller = new AbortController();
     const signal = controller.signal;
     const params = { west: 0, east: 10, north: 10, south: 0, zoom: 5 };
+    const filters = {};
 
     mockedGet.mockResolvedValue({ data: { points: [], clusters: [] } });
 
-    await getMapData(params, signal);
+    await getMapData({ params, filters, signal });
 
     expect(api.get).toHaveBeenCalledWith("/map", {
       params,

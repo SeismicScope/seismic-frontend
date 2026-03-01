@@ -9,3 +9,12 @@ export type FilterType = {
   maxMag?: number | null;
   sort?: SortOption | null;
 };
+
+export type EarthquakeFilters = {
+  minMag?: number;
+  maxMag?: number;
+  minDepth?: number;
+  maxDepth?: number;
+  dateFrom?: string;
+  dateTo?: string;
+};

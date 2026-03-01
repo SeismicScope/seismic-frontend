@@ -1,3 +1,4 @@
+import type { EarthquakeFilters } from "@/features/filters/types";
 import type { SortOption } from "@/shared/constants";
 
 export type Earthquake = {
@@ -16,15 +17,6 @@ export type EarthquakesResponse = {
   data: Earthquake[];
   total: number;
   nextCursor: number | null;
-};
-
-export type EarthquakeFilters = {
-  minMag?: number;
-  maxMag?: number;
-  minDepth?: number;
-  maxDepth?: number;
-  dateFrom?: string;
-  dateTo?: string;
 };
 
 export type EarthquakeParams = EarthquakeFilters & {

@@ -1,8 +1,8 @@
+import type { EarthquakeFilters } from "@/features/filters/types";
 import { api } from "@/shared/lib/axios";
 
 import type {
   Earthquake,
-  EarthquakeFilters,
   EarthquakeParams,
   EarthquakesResponse,
   MagnitudeHistogram,
