@@ -54,7 +54,7 @@ export default async function DashboardPage({
       </div>
       <div className="flex items-start gap-3">
         <EarthquakeTable />
-        <EarthquakeMap />
+        <EarthquakeMap isDashboard />
       </div>
     </div>
   );
