@@ -3,10 +3,9 @@
 import { notFound } from "next/navigation";
 
 import { useAuth } from "@/features/auth/hooks/use-auth";
+import JobStatus from "@/features/import/components/upload-from-csv/job-status";
+import UploadFromCSVModal from "@/features/import/components/upload-from-csv/upload-from-csv-modal";
 import LayoutLoader from "@/shared/ui/layout-loader";
-
-import JobStatus from "../../features/import/components/upload-from-csv/job-status";
-import UploadFromCSVModal from "../../features/import/components/upload-from-csv/upload-from-csv-modal";
 
 export default function AdminContent() {
   const { user, isLoading } = useAuth();
