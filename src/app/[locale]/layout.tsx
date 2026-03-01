@@ -1,12 +1,20 @@
+import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import { type Locale, LOCALES } from "@/shared/constants";
 import { Providers } from "@/shared/providers";
+import { JsonLd } from "@/shared/ui/json-ld";
 import Navbar from "@/shared/ui/navbar";
+import { ThemeInitScript } from "@/shared/ui/theme-init-script";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
 
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -48,9 +56,17 @@ export default async function LocaleLayout({
   const messages = (await import(`@/messages/${locale}.json`)).default;
 
   return (
-    <Providers messages={messages} locale={locale}>
-      <Navbar />
-      <main className="pt-20">{children}</main>
-    </Providers>
+    <html suppressHydrationWarning lang={locale}>
+      <head>
+        <ThemeInitScript />
+        <JsonLd />
+      </head>
+      <body className={`${inter.variable} antialiased`}>
+        <Providers messages={messages} locale={locale}>
+          <Navbar />
+          <main className="pt-20">{children}</main>
+        </Providers>
+      </body>
+    </html>
   );
 }

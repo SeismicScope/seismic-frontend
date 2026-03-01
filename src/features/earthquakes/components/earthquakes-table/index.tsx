@@ -32,7 +32,7 @@ export function EarthquakeTable() {
 
   if (isEmpty)
     return (
-      <div className="flex h-[300px] items-center justify-center">
+      <div className="flex h-[300px] w-1/2 items-center justify-center">
         <p className="text-muted-foreground text-sm">
           {t("general.noDataAvailable")}
         </p>
