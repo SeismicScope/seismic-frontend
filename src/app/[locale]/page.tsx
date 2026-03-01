@@ -2,8 +2,13 @@ import { getTranslations } from "next-intl/server";
 
 import { Hero7 } from "@/shared/ui/hero7";
 
-export default async function Home() {
-  const t = await getTranslations("home");
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home" });
 
   return (
     <main className="flex h-[calc(100vh-80px)] items-center justify-center bg-zinc-50 font-sans dark:bg-black">

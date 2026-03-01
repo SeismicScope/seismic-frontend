@@ -60,13 +60,15 @@ function Histogram({
 
       <div className="flex justify-between">
         <Input
-          id="magnitude-input-min"
+          id="histogram-input-min"
+          aria-label="Histogram min value"
           readOnly
           value={displayRange[0]}
           className="max-w-20 text-center"
         />
         <Input
-          id="magnitude-input-max"
+          id="histogram-input-max"
+          aria-label="Histogram max value"
           readOnly
           value={displayRange[1]}
           className="max-w-20 text-center"

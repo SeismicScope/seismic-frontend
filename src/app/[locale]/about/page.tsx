@@ -19,8 +19,9 @@ export async function generateMetadata({
   };
 }
 
-async function AboutPage() {
-  const t = await getTranslations("about");
+async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "about" });
 
   return (
     <section className={"p-3 lg:p-16"}>
