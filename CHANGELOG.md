@@ -1,3 +1,9 @@
+# [1.10.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.9.0...v1.10.0) (2026-03-01)
+
+### Features
+
+- **i18n:** add internationalization support with next-intl for English, German, and Spanish ([b48a59c](https://github.com/SeismicScope/seismic-frontend/commit/b48a59cc1c822597e7535e49249d68b2d2a0db21))
+
 # [1.9.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.8.0...v1.9.0) (2026-02-28)
 
 ### Features
