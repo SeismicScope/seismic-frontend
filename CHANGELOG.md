@@ -1,3 +1,9 @@
+## [1.10.2](https://github.com/SeismicScope/seismic-frontend/compare/v1.10.1...v1.10.2) (2026-03-01)
+
+### Bug Fixes
+
+- **i18n:** correct typo in metadata key ([c26edfc](https://github.com/SeismicScope/seismic-frontend/commit/c26edfc4674e72cb0ae2fdd759023c05f198e9f3))
+
 ## [1.10.1](https://github.com/SeismicScope/seismic-frontend/compare/v1.10.0...v1.10.1) (2026-03-01)
 
 ### Bug Fixes
