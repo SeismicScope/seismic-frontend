@@ -8,7 +8,7 @@ function SubMenuLink({ item }: { item: MenuItem }) {
     >
       <div className="text-foreground">{item.icon}</div>
       <div>
-        <div className="text-sm font-semibold">{item.title}</div>
+        <div className="text-sm font-semibold">{item.titleKey}</div>
         {item.description && (
           <p className="text-muted-foreground text-sm leading-snug">
             {item.description}
