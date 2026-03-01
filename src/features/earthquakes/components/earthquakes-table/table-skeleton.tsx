@@ -20,7 +20,7 @@ function TableSkeleton() {
   const columns = getColumns(t);
 
   return (
-    <div className="w-fulllg:w-1/2">
+    <div className="w-full lg:w-1/2">
       <Table>
         <TableHeader>
           <TableRow>
