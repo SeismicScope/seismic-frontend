@@ -1,5 +1,3 @@
-import mapboxgl from "mapbox-gl";
-
 import { MAPBOX_STYLE, MAPBOX_TOKEN } from "../constants";
 import {
   clusterCircleLayer,
@@ -34,7 +32,9 @@ const DEFAULT_OPTIONS: MapAdapterOptions = {
 export class MapAdapter {
   private map!: mapboxgl.Map;
 
-  init(container: HTMLElement, options?: MapAdapterOptions) {
+  async init(container: HTMLElement, options?: MapAdapterOptions) {
+    const mapboxgl = (await import("mapbox-gl")).default;
+
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
     const opts = { ...DEFAULT_OPTIONS, ...options };

@@ -11,7 +11,6 @@ const withAnalyzer = withBundleAnalyzer({
 
 const nextConfig: NextConfig = {
   experimental: {
-    inlineCss: true,
     optimizePackageImports: ["recharts", "lucide-react", "date-fns"],
   },
 };

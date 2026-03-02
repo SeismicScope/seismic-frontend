@@ -56,38 +56,44 @@ export function useEarthquakeMap(isDashboard: boolean = false) {
     const container = containerRef.current;
     let isMounted = true;
 
-    const adapter = new MapAdapter();
-    adapter.init(container);
-
-    adapterRef.current = adapter;
-
-    adapter.onLoad(() => {
-      if (!isMounted) return;
-
-      adapter.resize();
-      adapter.addSource(SOURCE_ID);
-      adapter.addLayers();
-      setReady(true);
-
-      const map = adapter.getMap();
-
-      setMapRequestParams({
-        ...getBounds(map),
-        zoom: Math.floor(map.getZoom()),
-      });
-
-      requestClusters(map);
-    });
-
     const resizeObserver = new ResizeObserver(() => {
-      adapter.resize();
+      adapterRef.current?.resize();
     });
     resizeObserver.observe(container);
+
+    async function initialize() {
+      const adapter = new MapAdapter();
+      await adapter.init(container);
+
+      if (!isMounted) return;
+
+      adapterRef.current = adapter;
+
+      adapter.onLoad(() => {
+        if (!isMounted) return;
+
+        adapter.resize();
+        adapter.addSource(SOURCE_ID);
+        adapter.addLayers();
+        setReady(true);
+
+        const map = adapter.getMap();
+
+        setMapRequestParams({
+          ...getBounds(map),
+          zoom: Math.floor(map.getZoom()),
+        });
+
+        requestClusters(map);
+      });
+    }
+
+    initialize();
 
     return () => {
       isMounted = false;
       resizeObserver.disconnect();
-      adapter.destroy();
+      adapterRef.current?.destroy();
       adapterRef.current = null;
     };
   }, [requestClusters]);
