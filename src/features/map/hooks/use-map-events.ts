@@ -1,4 +1,4 @@
-import type mapboxgl from "mapbox-gl";
+import mapboxgl from "mapbox-gl";
 import type { RefObject } from "react";
 import { useCallback, useEffect, useRef } from "react";
 import React from "react";
@@ -97,9 +97,6 @@ export function useMapEvents({
           id: feature.properties?.id,
         }),
       );
-
-      const mapboxModule = await import("mapbox-gl");
-      const mapboxgl = mapboxModule.default;
 
       const popup = new mapboxgl.Popup({ offset: 12 })
         .setLngLat(feature.geometry.coordinates as [number, number])
