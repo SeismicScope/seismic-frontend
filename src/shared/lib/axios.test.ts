@@ -12,7 +12,7 @@ describe("axios interceptor", () => {
 
     await expect(api.get("/test")).rejects.toBeTruthy();
 
-    expect(consoleSpy).toHaveBeenCalledWith("Unauthorized");
+    expect(consoleSpy).not.toHaveBeenCalled();
 
     consoleSpy.mockRestore();
     mock.restore();

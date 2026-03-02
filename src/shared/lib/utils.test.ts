@@ -3,8 +3,9 @@ import MockAdapter from "axios-mock-adapter";
 import { describe, expect, it } from "vitest";
 
 import { api } from "@/shared/lib/axios";
+import { getApiErrorMessage } from "@/shared/lib/get-api-error-message";
 
-import { cn, formatDate, formatNumber, getErrorMessage } from "./utils";
+import { cn, formatDate, formatNumber } from "./utils";
 
 const mock = new MockAdapter(api);
 
@@ -27,7 +28,7 @@ describe("formatNumber", () => {
 
 describe("getErrorMessage", () => {
   it("returns string error directly", () => {
-    expect(getErrorMessage("Error")).toBe("Error");
+    expect(getApiErrorMessage("Error")).toBe("Error");
   });
 
   it("handles AxiosError with response message", () => {
@@ -39,21 +40,21 @@ describe("getErrorMessage", () => {
       },
     });
 
-    expect(getErrorMessage(error)).toBe("Backend error");
+    expect(getApiErrorMessage(error)).toBe("Backend error");
   });
 
   it("handles AxiosError without response message", () => {
     const error = new AxiosError("Network error");
 
-    expect(getErrorMessage(error)).toBe("Network error");
+    expect(getApiErrorMessage(error)).toBe("Network error");
   });
 
   it("handles generic Error", () => {
-    expect(getErrorMessage(new Error("Boom"))).toBe("Boom");
+    expect(getApiErrorMessage(new Error("Boom"))).toBe("Boom");
   });
 
   it("fallbacks to default message", () => {
-    expect(getErrorMessage({})).toBe("Something went wrong");
+    expect(getApiErrorMessage({})).toBe("Unexpected error");
   });
 });
 

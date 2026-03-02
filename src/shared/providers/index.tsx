@@ -15,11 +15,11 @@ import { type JSX, Suspense, useState } from "react";
 import { toast, Toaster } from "sonner";
 
 import { FiltersSync } from "@/features/filters/components/filters-sync";
+import { getApiErrorMessage } from "@/shared/lib/get-api-error-message";
 
 import { WebVitals } from "../components/web-vitals";
 import type { Locale } from "../constants";
 import GoogleAnalytics from "../lib/google-analytics";
-import { getErrorMessage } from "../lib/utils";
 import { ThemeSync } from "../ui/theme-sync";
 import { ColorThemeProvider } from "./theme-provider";
 
@@ -53,7 +53,7 @@ export function Providers({
               return;
             }
 
-            const message = getErrorMessage(error);
+            const message = getApiErrorMessage(error);
             toast.error(message);
             Sentry.captureException(error, {
               tags: {
@@ -70,7 +70,7 @@ export function Providers({
               return;
             }
 
-            const message = getErrorMessage(error);
+            const message = getApiErrorMessage(error);
             toast.error(message);
             Sentry.captureException(error, {
               tags: {

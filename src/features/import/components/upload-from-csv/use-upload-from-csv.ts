@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { useUploadEarthquakes } from "@/features/import/hooks/use-upload-earthquakes";
-import { getErrorMessage } from "@/shared/lib/utils";
+import { getApiErrorMessage } from "@/shared/lib/get-api-error-message";
 
 import { type UploadFormValues, uploadSchema } from "./schema";
 
@@ -51,7 +51,7 @@ export function useUploadFromCSV() {
           toast.success("CSV upload started");
         },
         onError: (error) => {
-          toast.error(getErrorMessage(error));
+          toast.error(getApiErrorMessage(error));
         },
       },
     );

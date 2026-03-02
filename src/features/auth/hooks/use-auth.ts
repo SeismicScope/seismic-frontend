@@ -14,6 +14,7 @@ export function useAuth() {
     queryKey: ["me"],
     queryFn: me,
     retry: false,
+    staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
     meta: {
       skipGlobalErrorHandler: true,

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { useAuth } from "@/features/auth/hooks/use-auth";
-import { getErrorMessage } from "@/shared/lib/utils";
+import { getApiErrorMessage } from "@/shared/lib/get-api-error-message";
 
 import { type LoginFormValues, loginSchema } from "./schema";
 
@@ -32,7 +32,7 @@ export function useLoginDialog() {
       reset();
       toast.success("Logged in successfully");
     } catch (error) {
-      toast.error(getErrorMessage(error));
+      toast.error(getApiErrorMessage(error));
     }
   }
 
