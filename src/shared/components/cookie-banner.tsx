@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 
 import { COOKIE_CONSENT_KEY } from "../constants";
@@ -6,14 +7,11 @@ import { Button } from "../ui/button";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState<boolean>(() => {
-    const seen = localStorage.getItem(COOKIE_CONSENT_KEY);
-    if (!seen) {
-      localStorage.setItem(COOKIE_CONSENT_KEY, "seen");
+    if (typeof window === "undefined") return false;
 
-      return true;
-    }
+    const value = localStorage.getItem(COOKIE_CONSENT_KEY);
 
-    return false;
+    return value !== "acknowledged";
   });
 
   if (!visible) return null;
