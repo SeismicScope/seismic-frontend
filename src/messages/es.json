@@ -52,7 +52,8 @@
     "earthquakeNotFound": "Terremoto no encontrado",
     "locationOnMap": "Ubicación en el mapa",
     "showMap": "Ver mapa",
-    "showList": "Ver lista"
+    "showList": "Ver lista",
+    "failedToRenderTable": "Error al renderizar la tabla"
   },
   "auth": {
     "credentialsForDemo": "Credenciales para demo:",

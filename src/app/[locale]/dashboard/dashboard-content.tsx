@@ -7,6 +7,7 @@ import { useState } from "react";
 import { EarthquakeTable } from "@/features/earthquakes/components/earthquakes-table";
 import SortSelect from "@/features/filters/components/sort-select";
 import EarthquakeMap from "@/features/map/components/lazy-map";
+import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { Button } from "@/shared/ui/button";
 
@@ -48,10 +49,28 @@ export function DashboardContent() {
       <div className="flex items-start gap-3">
         {renderTable && (
           <div className="min-w-0 flex-1">
-            <EarthquakeTable />
+            <ErrorBoundary
+              fallback={
+                <div className="text-muted-foreground flex h-[300px] items-center justify-center text-sm">
+                  {t("general.failedToRenderTable")}
+                </div>
+              }
+            >
+              <EarthquakeTable />
+            </ErrorBoundary>
           </div>
         )}
-        {renderMap && <EarthquakeMap isDashboard />}
+        {renderMap && (
+          <ErrorBoundary
+            fallback={
+              <div className="text-muted-foreground flex h-[300px] items-center justify-center text-sm">
+                {t("map.failedToRenderMap")}
+              </div>
+            }
+          >
+            <EarthquakeMap isDashboard />
+          </ErrorBoundary>
+        )}
       </div>
     </>
   );

@@ -52,7 +52,8 @@
     "earthquakeNotFound": "Earthquake not found",
     "locationOnMap": "Location on map",
     "showMap": "Show Map",
-    "showList": "Show List"
+    "showList": "Show List",
+    "failedToRenderTable": "Failed to render table"
   },
   "auth": {
     "credentialsForDemo": "Credentials for demo:",

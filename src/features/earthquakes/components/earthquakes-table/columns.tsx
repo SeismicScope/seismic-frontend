@@ -4,6 +4,8 @@ import type { useTranslations } from "next-intl";
 
 import type { Earthquake } from "@/features/earthquakes/types";
 
+import { DANGEROUS_MAGNITUDE_LEVEL } from "../../constants";
+
 type TFunction = ReturnType<typeof useTranslations>;
 
 export function getColumns(t: TFunction): ColumnDef<Earthquake>[] {
@@ -18,7 +20,13 @@ export function getColumns(t: TFunction): ColumnDef<Earthquake>[] {
       accessorKey: "magnitude",
       header: t("general.magnitude"),
       cell: (info) => (
-        <span className={Number(info.getValue()) > 5 ? "text-error-500" : ""}>
+        <span
+          className={
+            Number(info.getValue()) > DANGEROUS_MAGNITUDE_LEVEL
+              ? "text-error-500"
+              : ""
+          }
+        >
           {Number(info.getValue()).toFixed(1)}
         </span>
       ),

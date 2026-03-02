@@ -1,6 +1,8 @@
 import type { EarthquakeFilters } from "@/features/filters/types";
 import type { MapParams } from "@/features/map/store/use-map-request-params";
 
+export const DANGEROUS_MAGNITUDE_LEVEL = 5;
+
 export const EARTHQUAKES_KEYS = {
   all: ["earthquakes"] as const,
 
