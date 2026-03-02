@@ -33,6 +33,14 @@ export class MapAdapter {
   private map!: mapboxgl.Map;
   private mapLoadedPromise: Promise<void>;
   private resolveMapLoaded!: () => void;
+  private layerHandlers = new Map<
+    string,
+    {
+      click: (e: mapboxgl.MapMouseEvent) => void;
+      mouseenter: (e: mapboxgl.MapMouseEvent) => void;
+      mouseleave: (e: mapboxgl.MapMouseEvent) => void;
+    }
+  >();
 
   constructor() {
     this.mapLoadedPromise = new Promise((resolve) => {
@@ -172,31 +180,50 @@ export class MapAdapter {
       lngLat: mapboxgl.LngLat,
     ) => void,
   ) {
-    this.map.on("click", layerId, (e) => {
+    if (this.layerHandlers.has(layerId)) return;
+
+    const clickHandler = (e: mapboxgl.MapLayerMouseEvent) => {
       const feature = e.features?.[0];
       if (!feature) return;
 
       handler(feature, e.lngLat);
-    });
+    };
 
-    this.map.on("mouseenter", layerId, () => {
+    const mouseEnterHandler = () => {
       this.map.getCanvas().style.cursor = "pointer";
-    });
+    };
 
-    this.map.on("mouseleave", layerId, () => {
+    const mouseLeaveHandler = () => {
       this.map.getCanvas().style.cursor = "";
+    };
+
+    this.map.on("click", layerId, clickHandler);
+    this.map.on("mouseenter", layerId, mouseEnterHandler);
+    this.map.on("mouseleave", layerId, mouseLeaveHandler);
+
+    this.layerHandlers.set(layerId, {
+      click: clickHandler,
+      mouseenter: mouseEnterHandler,
+      mouseleave: mouseLeaveHandler,
     });
   }
-
   resize() {
     this.map.resize();
   }
 
   destroy() {
-    if (this.map) {
-      this.map.remove();
-      // @ts-expect-error: Mapbox instance removal causes type mismatch
-      this.map = undefined;
+    if (!this.map) return;
+
+    for (const [layerId, handlers] of this.layerHandlers) {
+      this.map.off("click", layerId, handlers.click);
+      this.map.off("mouseenter", layerId, handlers.mouseenter);
+      this.map.off("mouseleave", layerId, handlers.mouseleave);
     }
+
+    this.layerHandlers.clear();
+
+    this.map.remove();
+    // @ts-expect-error: Mapbox instance removal causes type mismatch
+    this.map = undefined;
   }
 }
