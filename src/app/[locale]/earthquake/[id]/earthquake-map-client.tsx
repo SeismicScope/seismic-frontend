@@ -1,7 +1,5 @@
 "use client";
 
-import "mapbox-gl/dist/mapbox-gl.css";
-
 import { useTranslations } from "next-intl";
 
 import { useStaticMap } from "./use-static-map";

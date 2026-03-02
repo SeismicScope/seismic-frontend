@@ -1,5 +1,4 @@
 "use client";
-import "mapbox-gl/dist/mapbox-gl.css";
 
 import { useEarthquakeTilesMap } from "../hooks/use-earthquake-tiles-map";
 import MapProcessingBanner from "./map-processing-banner";

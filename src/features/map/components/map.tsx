@@ -1,6 +1,4 @@
 "use client";
-import "mapbox-gl/dist/mapbox-gl.css";
-
 import { cn } from "@/shared/lib/utils";
 
 import { useEarthquakeMap } from "../hooks/use-earthquake-map";

@@ -1,43 +1,6 @@
-"use client";
-import { cn } from "@/shared/lib/utils";
-
-import { LOGO_DATA, MENU } from "./constants";
-import DesktopNav from "./desktop-nav";
-import MobileNav from "./mobile-nav";
+import NavbarClient from "./navbar-client";
 import type { Navbar1Props } from "./types";
-import { useNavbar } from "./use-navbar";
 
-function Navbar({ logo = LOGO_DATA, menu = MENU, className }: Navbar1Props) {
-  const { logout, user } = useNavbar();
-  const isAdmin = user?.role === "admin";
-
-  const menuWithAdmin = isAdmin
-    ? [...menu, { titleKey: "pages.admin", url: "/admin" }]
-    : menu;
-
-  return (
-    <section
-      className={cn(
-        "bg-background fixed top-0 z-50 w-full py-4 shadow-sm",
-        className,
-      )}
-    >
-      <div className="px-4 lg:px-10">
-        <DesktopNav
-          logo={logo}
-          menuWithAdmin={menuWithAdmin}
-          user={user}
-          logout={logout}
-        />
-        <MobileNav
-          logo={logo}
-          menuWithAdmin={menuWithAdmin}
-          user={user}
-          logout={logout}
-        />
-      </div>
-    </section>
-  );
+export default function Navbar(props: Navbar1Props) {
+  return <NavbarClient {...props} />;
 }
-
-export default Navbar;
