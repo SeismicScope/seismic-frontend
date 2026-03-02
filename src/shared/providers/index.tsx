@@ -6,6 +6,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import dynamic from "next/dynamic";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
@@ -103,6 +104,7 @@ export function Providers({
             <ThemeSync />
             <FiltersSync />
           </Suspense>
+          <SpeedInsights />
         </ColorThemeProvider>
       </ThemeProvider>
     </NuqsAdapter>
