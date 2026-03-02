@@ -14,6 +14,13 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["recharts", "lucide-react", "date-fns"],
   },
+  webpack: (config) => {
+    config.module.rules.push(
+      { test: /mapbox-gl\.js$/, type: "javascript/auto" },
+      { test: /mapbox-gl\/dist\/mapbox-gl\.js$/, type: "javascript/auto" },
+    );
+    return config;
+  },
 };
 
 export default withSentryConfig(
@@ -24,5 +31,6 @@ export default withSentryConfig(
     silent: !process.env.CI,
     widenClientFileUpload: true,
     autoInstrumentMiddleware: false,
+    disableSourceMapUpload: !process.env.SENTRY_AUTH_TOKEN,
   }
 );
