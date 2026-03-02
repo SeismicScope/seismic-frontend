@@ -32,7 +32,7 @@ export function EarthquakeTable() {
 
   if (isEmpty)
     return (
-      <div className="flex h-[300px] w-1/2 items-center justify-center">
+      <div className="flex h-[300px] items-center justify-center">
         <p className="text-muted-foreground text-sm">
           {t("general.noDataAvailable")}
         </p>
@@ -42,7 +42,7 @@ export function EarthquakeTable() {
   const columns = getColumns(t);
 
   return (
-    <div ref={parentRef} className="relative h-[350px] w-1/2 overflow-auto">
+    <div ref={parentRef} className="relative h-[350px] overflow-auto">
       <table className="w-full min-w-[700px] caption-bottom text-sm">
         <TableHeader className="bg-background sticky top-0 z-10">
           {table.getHeaderGroups().map((headerGroup) => (
