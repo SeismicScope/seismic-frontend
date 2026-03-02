@@ -50,7 +50,9 @@
     "available": "Disponible",
     "selectInterval": "Seleccionar intervalo",
     "earthquakeNotFound": "Terremoto no encontrado",
-    "locationOnMap": "Ubicación en el mapa"
+    "locationOnMap": "Ubicación en el mapa",
+    "showMap": "Ver mapa",
+    "showList": "Ver lista"
   },
   "auth": {
     "credentialsForDemo": "Credenciales para demo:",

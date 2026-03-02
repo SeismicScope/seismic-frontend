@@ -16,7 +16,10 @@ export default function EarthquakeMap({
 
   return (
     <div
-      className={cn("relative h-full w-full", isDashboard && "h-[350px] w-1/2")}
+      className={cn(
+        "relative h-full w-full",
+        isDashboard && "h-[350px] lg:w-1/2",
+      )}
     >
       <div ref={containerRef} className="h-full w-full" />
       {!ready && <MapLoader />}

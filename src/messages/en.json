@@ -50,7 +50,9 @@
     "available": "Available",
     "selectInterval": "Select interval",
     "earthquakeNotFound": "Earthquake not found",
-    "locationOnMap": "Location on map"
+    "locationOnMap": "Location on map",
+    "showMap": "Show Map",
+    "showList": "Show List"
   },
   "auth": {
     "credentialsForDemo": "Credentials for demo:",
