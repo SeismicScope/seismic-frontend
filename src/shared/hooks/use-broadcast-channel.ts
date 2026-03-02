@@ -7,18 +7,25 @@ export function useBroadcastChannel<T>(
   onMessage: (data: T) => void,
 ) {
   const channelRef = useRef<BroadcastChannel | null>(null);
+  const callbackRef = useRef(onMessage);
 
   useEffect(() => {
-    channelRef.current = new BroadcastChannel(channelName);
+    callbackRef.current = onMessage;
+  }, [onMessage]);
 
-    channelRef.current.onmessage = (event: MessageEvent<T>) => {
-      onMessage(event.data);
+  useEffect(() => {
+    const channel = new BroadcastChannel(channelName);
+    channelRef.current = channel;
+
+    channel.onmessage = (event: MessageEvent<T>) => {
+      callbackRef.current(event.data);
     };
 
     return () => {
-      channelRef.current?.close();
+      channel.close();
+      channelRef.current = null;
     };
-  }, [channelName, onMessage]);
+  }, [channelName]);
 
   function postMessage(data: T) {
     channelRef.current?.postMessage(data);
