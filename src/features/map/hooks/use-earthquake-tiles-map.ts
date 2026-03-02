@@ -18,7 +18,8 @@ export function useEarthquakeTilesMap() {
   useEffect(() => {
     if (!containerRef.current || adapterRef.current) return;
 
-    const adapter = new MapAdapter(containerRef.current);
+    const adapter = new MapAdapter();
+    adapter.init(containerRef.current);
     adapterRef.current = adapter;
 
     adapter.onLoadMapTiles(() => {

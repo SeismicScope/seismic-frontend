@@ -1,4 +1,4 @@
-import mapboxgl from "mapbox-gl";
+import type mapboxgl from "mapbox-gl";
 import type { RefObject } from "react";
 import { useCallback, useEffect, useRef } from "react";
 import React from "react";
@@ -50,72 +50,73 @@ export function useMapEvents({
 
   const debouncedFetch = useDebouncedCallback(stableBoundsChange, 400);
 
-  useEffect(
-    function bindMapEvents() {
-      const adapter = adapterRef.current;
-      if (!adapter) return;
+  useEffect(() => {
+    const adapterInstance = adapterRef.current;
+    if (!adapterInstance) return;
 
-      const map = adapter.getMap();
+    const map = adapterInstance.getMap();
+    const flyTo = adapterInstance.flyTo.bind(adapterInstance);
 
-      const handleMoveEnd = () => {
-        debouncedFetch(map);
-        requestClustersRef.current(map);
-      };
+    function handleMoveEnd() {
+      debouncedFetch(map);
+      requestClustersRef.current(map);
+    }
 
-      const handleClusterClick = (e: mapboxgl.MapMouseEvent) => {
-        const features = map.queryRenderedFeatures(e.point, {
-          layers: [LAYER_CLUSTERS],
-        });
+    function handleClusterClick(e: mapboxgl.MapMouseEvent) {
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: [LAYER_CLUSTERS],
+      });
 
-        if (!features.length) return;
+      if (!features.length) return;
 
-        const feature = features[0];
-        if (feature.geometry.type !== "Point") return;
+      const feature = features[0];
+      if (feature.geometry.type !== "Point") return;
 
-        const coords = feature.geometry.coordinates as [number, number];
-        const nextZoom = Math.floor(map.getZoom()) + 1;
+      const coords = feature.geometry.coordinates as [number, number];
+      const nextZoom = Math.floor(map.getZoom()) + 1;
 
-        adapter.flyTo(coords, nextZoom);
-      };
+      flyTo(coords, nextZoom);
+    }
 
-      const handlePointClick = (e: mapboxgl.MapMouseEvent) => {
-        const features = map.queryRenderedFeatures(e.point, {
-          layers: [LAYER_POINTS],
-        });
+    async function handlePointClick(e: mapboxgl.MapMouseEvent) {
+      const features = map.queryRenderedFeatures(e.point, {
+        layers: [LAYER_POINTS],
+      });
 
-        if (!features.length) return;
+      if (!features.length) return;
 
-        const feature = features[0];
-        if (feature.geometry.type !== "Point") return;
+      const feature = features[0];
+      if (feature.geometry.type !== "Point") return;
 
-        const { element, unmount } = renderMapPopup(
-          React.createElement(MapPopup, {
-            magnitude: feature.properties?.magnitude,
-            depth: feature.properties?.depth,
-            location: feature.properties?.location,
-            occurredAt: feature.properties?.occurredAt,
-            id: feature.properties?.id,
-          }),
-        );
+      const { element, unmount } = renderMapPopup(
+        React.createElement(MapPopup, {
+          magnitude: feature.properties?.magnitude,
+          depth: feature.properties?.depth,
+          location: feature.properties?.location,
+          occurredAt: feature.properties?.occurredAt,
+          id: feature.properties?.id,
+        }),
+      );
 
-        const popup = new mapboxgl.Popup({ offset: 12 })
-          .setLngLat(feature.geometry.coordinates as [number, number])
-          .setDOMContent(element)
-          .addTo(map);
+      const mapboxModule = await import("mapbox-gl");
+      const mapboxgl = mapboxModule.default;
 
-        popup.on("remove", unmount);
-      };
+      const popup = new mapboxgl.Popup({ offset: 12 })
+        .setLngLat(feature.geometry.coordinates as [number, number])
+        .setDOMContent(element)
+        .addTo(map);
 
-      map.on("moveend", handleMoveEnd);
-      map.on("click", LAYER_CLUSTERS, handleClusterClick);
-      map.on("click", LAYER_POINTS, handlePointClick);
+      popup.on("remove", unmount);
+    }
 
-      return () => {
-        map.off("moveend", handleMoveEnd);
-        map.off("click", LAYER_CLUSTERS, handleClusterClick);
-        map.off("click", LAYER_POINTS, handlePointClick);
-      };
-    },
-    [adapterRef, ready, debouncedFetch],
-  );
+    map.on("moveend", handleMoveEnd);
+    map.on("click", LAYER_CLUSTERS, handleClusterClick);
+    map.on("click", LAYER_POINTS, handlePointClick);
+
+    return () => {
+      map.off("moveend", handleMoveEnd);
+      map.off("click", LAYER_CLUSTERS, handleClusterClick);
+      map.off("click", LAYER_POINTS, handlePointClick);
+    };
+  }, [adapterRef, ready, debouncedFetch]);
 }

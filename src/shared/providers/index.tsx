@@ -87,7 +87,11 @@ export function Providers({
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <ColorThemeProvider>
           <QueryClientProvider client={queryClient}>
-            <NextIntlClientProvider messages={messages} locale={locale}>
+            <NextIntlClientProvider
+              messages={messages}
+              locale={locale}
+              timeZone="UTC"
+            >
               {children}
             </NextIntlClientProvider>
           </QueryClientProvider>

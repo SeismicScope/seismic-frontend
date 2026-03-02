@@ -6,7 +6,6 @@ import type { NextConfig } from "next";
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["mapbox-gl"],
   experimental: {
     inlineCss: true,
     optimizePackageImports: ["recharts", "lucide-react", "date-fns"],
@@ -19,7 +18,7 @@ const withAnalyzer = withBundleAnalyzer({
 
 export default withSentryConfig(
   withAnalyzer(
-    withNextIntl(nextConfig)   // 👈 ВАЖНО
+    withNextIntl(nextConfig) 
   ),
   {
     org: "oleinikdev",

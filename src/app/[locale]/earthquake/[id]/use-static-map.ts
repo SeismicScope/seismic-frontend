@@ -15,81 +15,104 @@ export function useStaticMap(lat?: number, lng?: number) {
   const adapterRef = useRef<MapAdapter | null>(null);
 
   useEffect(() => {
-    if (!containerRef.current || lat === undefined || lng === undefined) return;
+    if (!containerRef.current || lat === undefined || lng === undefined) {
+      return;
+    }
 
-    const adapter = new MapAdapter(containerRef.current, {
-      center: [lng, lat],
-      zoom: 6,
-      interactive: false,
-      navigationControl: false,
-      attributionControl: false,
-      maxBounds: undefined,
-      minZoom: undefined,
-      maxZoom: undefined,
-    });
+    const container = containerRef.current;
+    const safeLat = lat;
+    const safeLng = lng;
 
-    adapterRef.current = adapter;
-    const map = adapter.getMap();
+    let adapter: MapAdapter | null = null;
+    let isMounted = true;
 
-    adapter.onLoad(() => {
-      adapter.addSource(SOURCE_ID);
-      adapter.updateData(SOURCE_ID, [
-        {
-          type: "Feature",
-          geometry: {
-            type: "Point",
-            coordinates: [lng, lat],
+    async function initialize() {
+      adapter = new MapAdapter();
+
+      await adapter.init(container, {
+        center: [safeLng, safeLat],
+        zoom: 6,
+        interactive: false,
+        navigationControl: false,
+        attributionControl: false,
+        maxBounds: undefined,
+        minZoom: undefined,
+        maxZoom: undefined,
+      });
+
+      if (!isMounted) return;
+
+      adapterRef.current = adapter;
+      const map = adapter.getMap();
+
+      adapter.onLoad(() => {
+        adapter?.addSource(SOURCE_ID);
+
+        adapter?.updateData(SOURCE_ID, [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [safeLng, safeLat],
+            },
+            properties: {},
           },
-          properties: {},
-        },
-      ]);
+        ]);
 
-      map.addLayer({
-        id: PULSE_LAYER_ID,
-        type: "circle",
-        source: SOURCE_ID,
-        paint: {
-          "circle-radius": 20,
-          "circle-color": "transparent",
-          "circle-stroke-width": 3,
-          "circle-stroke-color": "#cc3232",
-          "circle-opacity": 0,
-          "circle-stroke-opacity": 0.8,
-        },
-      });
+        map.addLayer({
+          id: PULSE_LAYER_ID,
+          type: "circle",
+          source: SOURCE_ID,
+          paint: {
+            "circle-radius": 20,
+            "circle-color": "transparent",
+            "circle-stroke-width": 3,
+            "circle-stroke-color": "#cc3232",
+            "circle-opacity": 0,
+            "circle-stroke-opacity": 0.8,
+          },
+        });
 
-      map.addLayer({
-        id: DOT_LAYER_ID,
-        type: "circle",
-        source: SOURCE_ID,
-        paint: {
-          "circle-radius": 8,
-          "circle-color": "#cc3232",
-        },
-      });
+        map.addLayer({
+          id: DOT_LAYER_ID,
+          type: "circle",
+          source: SOURCE_ID,
+          paint: {
+            "circle-radius": 8,
+            "circle-color": "#cc3232",
+          },
+        });
 
-      const startTime = performance.now();
+        const startTime = performance.now();
 
-      function animatePulse(now: number): void {
-        if (!map.getLayer(PULSE_LAYER_ID)) return;
+        function animatePulse(now: number): void {
+          if (!map.getLayer(PULSE_LAYER_ID)) return;
 
-        const elapsed = (now - startTime) % DURATION;
-        const progress = elapsed / DURATION;
+          const elapsed = (now - startTime) % DURATION;
+          const progress = elapsed / DURATION;
 
-        const radius = MIN_RADIUS + (MAX_RADIUS - MIN_RADIUS) * progress;
-        const opacity = 0.8 * (1 - progress);
+          const radius = MIN_RADIUS + (MAX_RADIUS - MIN_RADIUS) * progress;
+          const opacity = 0.8 * (1 - progress);
 
-        map.setPaintProperty(PULSE_LAYER_ID, "circle-radius", radius);
-        map.setPaintProperty(PULSE_LAYER_ID, "circle-stroke-opacity", opacity);
+          map.setPaintProperty(PULSE_LAYER_ID, "circle-radius", radius);
+          map.setPaintProperty(
+            PULSE_LAYER_ID,
+            "circle-stroke-opacity",
+            opacity,
+          );
+
+          requestAnimationFrame(animatePulse);
+        }
 
         requestAnimationFrame(animatePulse);
-      }
+      });
+    }
 
-      requestAnimationFrame(animatePulse);
-    });
+    initialize();
 
     return () => {
-      adapter.destroy();
+      isMounted = false;
+      adapter?.destroy();
       adapterRef.current = null;
     };
   }, [lat, lng]);

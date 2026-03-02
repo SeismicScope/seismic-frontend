@@ -1,6 +1,6 @@
 import createMiddleware from "next-intl/middleware";
 
-import { LOCALES } from "./shared/constants";
+const LOCALES = ["en", "de", "es"] as const;
 
 export default createMiddleware({
   locales: LOCALES,
@@ -8,5 +8,5 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };

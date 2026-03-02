@@ -1,5 +1,3 @@
-import mapboxgl from "mapbox-gl";
-
 import { MAPBOX_STYLE, MAPBOX_TOKEN } from "../constants";
 import {
   clusterCircleLayer,
@@ -32,9 +30,12 @@ const DEFAULT_OPTIONS: MapAdapterOptions = {
 };
 
 export class MapAdapter {
-  private map: mapboxgl.Map;
+  private map!: mapboxgl.Map;
 
-  constructor(container: HTMLElement, options?: MapAdapterOptions) {
+  async init(container: HTMLElement, options?: MapAdapterOptions) {
+    const mapboxModule = await import("mapbox-gl");
+    const mapboxgl = mapboxModule.default;
+
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
     const opts = { ...DEFAULT_OPTIONS, ...options };
@@ -59,7 +60,6 @@ export class MapAdapter {
       this.map.addControl(new mapboxgl.NavigationControl(), "top-right");
     }
   }
-
   onLoad(callback: () => void) {
     this.map.on("style.load", callback);
   }
@@ -180,6 +180,10 @@ export class MapAdapter {
   }
 
   destroy() {
-    this.map.remove();
+    if (this.map) {
+      this.map.remove();
+      // @ts-expect-error: Mapbox instance removal causes type mismatch
+      this.map = undefined;
+    }
   }
 }
