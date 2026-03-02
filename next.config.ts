@@ -31,6 +31,5 @@ export default withSentryConfig(
     silent: !process.env.CI,
     widenClientFileUpload: true,
     autoInstrumentMiddleware: false,
-    disableSourceMapUpload: !process.env.SENTRY_AUTH_TOKEN,
   }
 );
