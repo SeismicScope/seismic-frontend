@@ -7,22 +7,31 @@ import { PERIODS } from "@/shared/constants";
 import type { TimeInterval } from "@/types/main";
 
 import { getEarthquakesTimeSeries } from "../api";
+import { ANALYTICS_KEYS } from "../constants";
 
 export function useEarthquakesTimeSeries() {
   const [interval, setInterval] = useState<TimeInterval>(PERIODS.MONTH);
   const { apiFilters } = useFilters();
-  const mapRequestParams = useMapRequestParams.getState().requestParams;
+  const mapRequestParams =
+    useMapRequestParams((state) => state.requestParams) ?? {};
 
   const params = { ...apiFilters, interval };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["earthquakes-time-series", params, interval],
+    queryKey: ANALYTICS_KEYS.timeSeries({
+      filters: params,
+      mapRequestParams,
+      interval,
+    }),
+
     queryFn: () =>
       getEarthquakesTimeSeries({
-        ...params,
+        ...apiFilters,
         ...mapRequestParams,
         interval,
       }),
+
+    staleTime: 5 * 60 * 1000,
   });
 
   return { data, isLoading, setInterval, interval };

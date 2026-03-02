@@ -3,6 +3,7 @@ import { useQueryState } from "nuqs";
 import { useEffect, useRef } from "react";
 
 import { getImportStatus } from "../api";
+import { IMPORT_KEYS } from "../constants";
 
 export function useImportStatus() {
   const [jobId] = useQueryState("jobId", { defaultValue: "" });
@@ -10,7 +11,7 @@ export function useImportStatus() {
   const prevStatusRef = useRef<string | undefined>(undefined);
 
   const { data: jobStatus } = useQuery({
-    queryKey: ["import-status", jobId],
+    queryKey: IMPORT_KEYS.status(jobId),
     queryFn: async () => {
       const status = await getImportStatus(Number(jobId));
 
