@@ -22,5 +22,6 @@ export default withSentryConfig(
     project: "javascript-nextjs-m3",
     silent: !process.env.CI,
     widenClientFileUpload: true,
+    autoInstrumentMiddleware: false,
   }
 );
