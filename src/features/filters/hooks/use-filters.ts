@@ -1,36 +1,18 @@
 "use client";
-import {
-  parseAsFloat,
-  parseAsInteger,
-  parseAsIsoDate,
-  parseAsStringLiteral,
-  useQueryStates,
-} from "nuqs";
+import { useQueryStates } from "nuqs";
 import { useMemo } from "react";
 
-import { SORT_VALUES } from "@/shared/constants";
-
+import { FILTER_SCHEMA } from "../constants";
 import { getApiFilters } from "../lib/utils";
 
 export function useFilters() {
-  const [filters, setFilters] = useQueryStates(
-    {
-      minMag: parseAsFloat,
-      maxMag: parseAsFloat,
-      minDepth: parseAsInteger,
-      maxDepth: parseAsInteger,
-      dateFrom: parseAsIsoDate,
-      dateTo: parseAsIsoDate,
-      sort: parseAsStringLiteral(SORT_VALUES),
-    },
-    {
-      shallow: false,
-      throttleMs: 500,
-      history: "replace",
-    },
-  );
+  const [filters, setFilters] = useQueryStates(FILTER_SCHEMA, {
+    shallow: false,
+    throttleMs: 500,
+    history: "replace",
+  });
 
-  const apiParams = useMemo(() => {
+  const apiFilters = useMemo(() => {
     const params = getApiFilters(filters);
 
     return {
@@ -40,12 +22,17 @@ export function useFilters() {
     };
   }, [filters]);
 
-  const hasActiveFilters = Object.values(filters).some(
-    (value) => value !== null,
+  const hasActiveFilters = useMemo(
+    () => Object.values(filters).some((v) => v !== null),
+    [filters],
   );
 
   function resetFilters(): void {
-    setFilters(Object.fromEntries(Object.keys(filters).map((k) => [k, null])));
+    const empty = Object.fromEntries(
+      Object.keys(FILTER_SCHEMA).map((k) => [k, null]),
+    ) as typeof filters;
+
+    setFilters(empty);
   }
 
   function setField<K extends keyof typeof filters>(
@@ -57,7 +44,7 @@ export function useFilters() {
 
   return {
     filters,
-    apiFilters: apiParams,
+    apiFilters,
     hasActiveFilters,
     setFilters,
     setField,
