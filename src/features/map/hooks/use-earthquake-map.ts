@@ -51,52 +51,43 @@ export function useEarthquakeMap(isDashboard: boolean = false) {
   );
 
   useEffect(() => {
-    let resizeObserver: ResizeObserver | null = null;
-    let adapter: MapAdapter | null = null;
+    if (!containerRef.current || adapterRef.current) return;
+
+    const container = containerRef.current;
     let isMounted = true;
 
-    async function initializeMap() {
-      if (!containerRef.current || adapterRef.current) return;
+    const adapter = new MapAdapter();
+    adapter.init(container);
 
-      const container = containerRef.current;
+    adapterRef.current = adapter;
 
-      adapter = new MapAdapter();
-      await adapter.init(container);
-
+    adapter.onLoad(() => {
       if (!isMounted) return;
 
-      adapterRef.current = adapter;
+      adapter.resize();
+      adapter.addSource(SOURCE_ID);
+      adapter.addLayers();
+      setReady(true);
 
-      adapter.onLoad(() => {
-        adapter?.resize();
-        adapter?.addSource(SOURCE_ID);
-        adapter?.addLayers();
-        setReady(true);
+      const map = adapter.getMap();
 
-        const map = adapter!.getMap();
-
-        setMapRequestParams({
-          ...getBounds(map),
-          zoom: Math.floor(map.getZoom()),
-        });
-
-        requestClusters(map);
+      setMapRequestParams({
+        ...getBounds(map),
+        zoom: Math.floor(map.getZoom()),
       });
 
-      resizeObserver = new ResizeObserver(() => {
-        adapter?.resize();
-      });
+      requestClusters(map);
+    });
 
-      resizeObserver.observe(container);
-    }
-
-    initializeMap();
+    const resizeObserver = new ResizeObserver(() => {
+      adapter.resize();
+    });
+    resizeObserver.observe(container);
 
     return () => {
       isMounted = false;
-
-      resizeObserver?.disconnect();
-      adapter?.destroy();
+      resizeObserver.disconnect();
+      adapter.destroy();
       adapterRef.current = null;
     };
   }, [requestClusters]);

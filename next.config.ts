@@ -14,20 +14,6 @@ const nextConfig: NextConfig = {
     inlineCss: true,
     optimizePackageImports: ["recharts", "lucide-react", "date-fns"],
   },
-
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /mapbox-gl\.js$/,
-      type: "javascript/auto",
-    });
-
-    config.module.rules.push({
-      test: /mapbox-gl\/dist\/mapbox-gl\.js$/,
-      type: "javascript/auto",
-    });
-
-    return config;
-  },
 };
 
 export default withSentryConfig(
@@ -37,6 +23,5 @@ export default withSentryConfig(
     project: "javascript-nextjs-m3",
     silent: !process.env.CI,
     widenClientFileUpload: true,
-    autoInstrumentMiddleware: false,
   }
 );
