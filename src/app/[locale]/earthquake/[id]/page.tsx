@@ -3,9 +3,11 @@ import { getTranslations } from "next-intl/server";
 
 import { getEarthquakeById } from "@/features/earthquakes/api/server";
 import type { Locale } from "@/shared/constants";
+import { generateLdJson } from "@/shared/lib/generate-ld-json";
 
 import EarthquakeDetails from "./earthquake-details";
 import LazyEarthquakeMap from "./lazy-earthquake-map";
+import { StructuredData } from "./structured-data";
 
 type Props = {
   params: Promise<{ locale: Locale; id: string }>;
@@ -39,10 +41,18 @@ export default async function EarthquakePage({ params }: Props) {
     return <div className="p-10">{t("general.earthquakeNotFound")}</div>;
   }
 
+  const ldJson = generateLdJson(earthquake);
+
   return (
-    <div className="mt-5 flex w-full flex-col gap-10 px-4 lg:flex-row lg:px-10">
-      <EarthquakeDetails earthquake={earthquake} locale={locale} />
-      <LazyEarthquakeMap lat={earthquake.latitude} lng={earthquake.longitude} />
-    </div>
+    <>
+      <StructuredData ldJson={ldJson} />
+      <div className="mt-5 flex w-full flex-col gap-10 px-4 lg:flex-row lg:px-10">
+        <EarthquakeDetails earthquake={earthquake} locale={locale} />
+        <LazyEarthquakeMap
+          lat={earthquake.latitude}
+          lng={earthquake.longitude}
+        />
+      </div>
+    </>
   );
 }

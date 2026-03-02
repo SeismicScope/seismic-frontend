@@ -11,12 +11,18 @@ export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({

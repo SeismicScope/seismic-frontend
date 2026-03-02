@@ -14,7 +14,7 @@ import { Button } from "@/shared/ui/button";
 export function DashboardContent() {
   const [showMap, setShowMap] = useState(false);
   const isDesktop = useBreakpoints("isDesktop");
-  const t = useTranslations("general");
+  const t = useTranslations();
 
   const renderTable = isDesktop || !showMap;
   const renderMap = isDesktop || showMap;
@@ -23,7 +23,7 @@ export function DashboardContent() {
     <>
       <div className="mb-2 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <p className="text-lg font-bold">{t("earthquakes")}</p>
+          <p className="text-lg font-bold">{t("general.earthquakes")}</p>
           <Button
             variant="outline"
             size="sm"
@@ -33,12 +33,12 @@ export function DashboardContent() {
             {showMap ? (
               <>
                 <AlignJustify className="h-4 w-4" />
-                {t("showList")}
+                {t("general.showList")}
               </>
             ) : (
               <>
                 <Map className="h-4 w-4" />
-                {t("showMap")}
+                {t("general.showMap")}
               </>
             )}
           </Button>
