@@ -5,7 +5,6 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useRef,
   useState,
 } from "react";
 
@@ -23,9 +22,12 @@ const ColorThemeContext = createContext<ColorThemeContextValue | undefined>(
 const STORAGE_KEY = "seismic-color-theme";
 
 function getInitialTheme(): ColorTheme {
-  if (typeof window === "undefined") return COLOR_THEME.TEAL;
+  if (typeof window === "undefined") {
+    return COLOR_THEME.TEAL;
+  }
 
   const stored = localStorage.getItem(STORAGE_KEY);
+
   if (stored && (Object.values(COLOR_THEME) as string[]).includes(stored)) {
     return stored as ColorTheme;
   }
@@ -40,14 +42,10 @@ export function ColorThemeProvider({
 }) {
   const [colorTheme, setColorThemeState] =
     useState<ColorTheme>(getInitialTheme);
-  const mounted = useRef(false);
-
-  useEffect(() => {
-    mounted.current = true;
-  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
+
     root.setAttribute("data-theme", colorTheme);
     localStorage.setItem(STORAGE_KEY, colorTheme);
   }, [colorTheme]);
@@ -65,6 +63,7 @@ export function ColorThemeProvider({
 
 export function useColorTheme(): ColorThemeContextValue {
   const context = useContext(ColorThemeContext);
+
   if (!context) {
     throw new Error("useColorTheme must be used within a ColorThemeProvider");
   }
