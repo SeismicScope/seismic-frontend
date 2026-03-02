@@ -10,7 +10,6 @@ const withAnalyzer = withBundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["mapbox-gl"],
   experimental: {
     optimizePackageImports: ["recharts", "lucide-react", "date-fns"],
   },
