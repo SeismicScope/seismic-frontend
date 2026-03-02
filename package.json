@@ -15,7 +15,6 @@
     "lint-staged": "lint-staged",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "analyze": "ANALYZE=true next build --webpack",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
