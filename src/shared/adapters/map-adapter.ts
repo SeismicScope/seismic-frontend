@@ -31,6 +31,14 @@ const DEFAULT_OPTIONS: MapAdapterOptions = {
 
 export class MapAdapter {
   private map!: mapboxgl.Map;
+  private mapLoadedPromise: Promise<void>;
+  private resolveMapLoaded!: () => void;
+
+  constructor() {
+    this.mapLoadedPromise = new Promise((resolve) => {
+      this.resolveMapLoaded = resolve;
+    });
+  }
 
   async init(container: HTMLElement, options?: MapAdapterOptions) {
     const mapboxgl = (await import("mapbox-gl")).default;
@@ -55,16 +63,22 @@ export class MapAdapter {
       trackResize: true,
     });
 
+    this.map.on("load", () => {
+      this.resolveMapLoaded();
+    });
+
     if (opts.navigationControl) {
       this.map.addControl(new mapboxgl.NavigationControl(), "top-right");
     }
   }
+
   onLoad(callback: () => void) {
     this.map.on("style.load", callback);
   }
 
-  onLoadMapTiles(callback: () => void) {
-    this.map.on("load", callback);
+  async onLoadMapTiles(callback: () => void) {
+    await this.mapLoadedPromise;
+    callback();
   }
 
   getMap() {

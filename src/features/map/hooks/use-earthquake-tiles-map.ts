@@ -19,76 +19,81 @@ export function useEarthquakeTilesMap() {
     if (!containerRef.current || adapterRef.current) return;
 
     const adapter = new MapAdapter();
-    adapter.init(containerRef.current);
     adapterRef.current = adapter;
 
-    adapter.onLoadMapTiles(() => {
-      const map = adapter.getMap();
+    const initMap = async () => {
+      await adapter.init(containerRef.current!);
 
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/map/tiles/{z}/{x}/{y}`;
-      if (!process.env.NEXT_PUBLIC_API_URL) return;
+      adapter.onLoadMapTiles(() => {
+        const map = adapter.getMap();
 
-      adapter.addVectorTileSource("earthquakes-tiles", url);
+        const url = `${process.env.NEXT_PUBLIC_API_URL}/map/tiles/{z}/{x}/{y}`;
+        if (!process.env.NEXT_PUBLIC_API_URL) return;
 
-      adapter.addVectorTileLayer({
-        layerId: "earthquakes-layer",
-        sourceId: "earthquakes-tiles",
-        sourceLayer: "earthquakes",
-      });
+        adapter.addVectorTileSource("earthquakes-tiles", url);
 
-      let buildStart = 0;
-
-      function handleDataLoading(
-        e: mapboxgl.MapDataEvent | mapboxgl.MapStyleDataEvent,
-      ) {
-        if ("sourceId" in e && e.sourceId === "earthquakes-tiles") {
-          buildStart = performance.now();
-          setIsLoading(true);
-        }
-      }
-
-      function handleIdle() {
-        const renderedPoints = map.queryRenderedFeatures({
-          layers: ["earthquakes-layer"],
-        }).length;
-
-        const buildTime = performance.now() - buildStart;
-
-        setMapStats({
-          pointsCount: renderedPoints,
-          buildTime: Math.round(buildTime),
+        adapter.addVectorTileLayer({
+          layerId: "earthquakes-layer",
+          sourceId: "earthquakes-tiles",
+          sourceLayer: "earthquakes",
         });
 
-        setIsLoading(false);
-      }
+        let buildStart = 0;
 
-      map.on("dataloading", handleDataLoading);
-      map.on("idle", handleIdle);
+        function handleDataLoading(
+          e: mapboxgl.MapDataEvent | mapboxgl.MapStyleDataEvent,
+        ) {
+          if ("sourceId" in e && e.sourceId === "earthquakes-tiles") {
+            buildStart = performance.now();
+            setIsLoading(true);
+          }
+        }
 
-      adapter.addLayerClickHandler("earthquakes-layer", (feature, lngLat) => {
-        const { element, unmount } = renderMapPopup(
-          React.createElement(MapPopup, {
-            magnitude: feature.properties?.magnitude,
-            depth: feature.properties?.depth,
-            location: feature.properties?.location,
-            occurredAt: feature.properties?.occurredAt,
-            id: feature.properties?.id,
-          }),
-        );
+        function handleIdle() {
+          const renderedPoints = map.queryRenderedFeatures({
+            layers: ["earthquakes-layer"],
+          }).length;
 
-        const popup = new mapboxgl.Popup({ offset: 12 })
-          .setLngLat(lngLat)
-          .setDOMContent(element)
-          .addTo(map);
+          const buildTime = performance.now() - buildStart;
 
-        popup.on("remove", unmount);
+          setMapStats({
+            pointsCount: renderedPoints,
+            buildTime: Math.round(buildTime),
+          });
+
+          setIsLoading(false);
+        }
+
+        map.on("dataloading", handleDataLoading);
+        map.on("idle", handleIdle);
+
+        adapter.addLayerClickHandler("earthquakes-layer", (feature, lngLat) => {
+          const { element, unmount } = renderMapPopup(
+            React.createElement(MapPopup, {
+              magnitude: feature.properties?.magnitude,
+              depth: feature.properties?.depth,
+              location: feature.properties?.location,
+              occurredAt: feature.properties?.occurredAt,
+              id: feature.properties?.id,
+            }),
+          );
+
+          const popup = new mapboxgl.Popup({ offset: 12 })
+            .setLngLat(lngLat)
+            .setDOMContent(element)
+            .addTo(map);
+
+          popup.on("remove", unmount);
+        });
+
+        return () => {
+          map.off("dataloading", handleDataLoading);
+          map.off("idle", handleIdle);
+        };
       });
+    };
 
-      return () => {
-        map.off("dataloading", handleDataLoading);
-        map.off("idle", handleIdle);
-      };
-    });
+    initMap();
 
     return () => {
       adapter.destroy();
