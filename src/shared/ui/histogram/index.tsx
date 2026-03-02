@@ -36,9 +36,9 @@ function Histogram({
   return (
     <div className="flex w-full flex-col gap-3">
       <div className="flex h-24 w-full items-stretch gap-0.5">
-        {bars.map((bar, index) => (
+        {bars.map((bar) => (
           <HistogramBar
-            key={index}
+            key={bar.magnitude}
             heightPercent={bar.heightPercent}
             isActive={
               bar.magnitude >= displayRange[0] &&

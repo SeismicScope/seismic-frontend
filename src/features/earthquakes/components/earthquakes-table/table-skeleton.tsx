@@ -1,6 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 
+import { generateSkeletonItems } from "@/shared/lib/generate-skeleton-items";
 import { Skeleton } from "@/shared/ui/skeleton";
 import {
   Table,
@@ -18,24 +19,25 @@ const SKELETON_ROWS = 7;
 function TableSkeleton() {
   const t = useTranslations();
   const columns = getColumns(t);
+  const tableItems = generateSkeletonItems(SKELETON_ROWS, "row");
 
   return (
     <div className="w-full">
       <Table>
         <TableHeader>
           <TableRow>
-            {columns.map((col, i) => (
-              <TableHead key={i} style={{ width: col.size }}>
+            {columns.map((col) => (
+              <TableHead key={col.id} style={{ width: col.size }}>
                 <Skeleton className="h-4 w-3/4" />
               </TableHead>
             ))}
           </TableRow>
         </TableHeader>
         <TableBody>
-          {Array.from({ length: SKELETON_ROWS }).map((_, i) => (
-            <TableRow key={i}>
-              {columns.map((col, j) => (
-                <TableCell key={j} style={{ width: col.size }}>
+          {tableItems.map((item) => (
+            <TableRow key={item}>
+              {columns.map((col) => (
+                <TableCell key={col.id} style={{ width: col.size }}>
                   <Skeleton className="h-4 w-2/3" />
                 </TableCell>
               ))}

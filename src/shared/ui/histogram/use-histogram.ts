@@ -1,13 +1,13 @@
 import { useCallback, useMemo, useState } from "react";
 
-import type { HistogramProps } from "./types";
+import type { HistogramProps, Range } from "./types";
 
 export function useHistogram({
   histogram,
   range,
   onRangeCommit,
 }: Omit<HistogramProps, "isLoading">) {
-  const [localRange, setLocalRange] = useState(range);
+  const [localRange, setLocalRange] = useState<Range>(range);
   const [isDragging, setIsDragging] = useState(false);
   const displayRange = isDragging ? localRange : range;
 
@@ -37,13 +37,13 @@ export function useHistogram({
     }));
   }, [histogram, maxCount]);
 
-  const handleValueChange = useCallback((values: number[]) => {
+  const handleValueChange = useCallback((values: Range) => {
     setLocalRange(values);
     setIsDragging(true);
   }, []);
 
   const handleValueCommit = useCallback(
-    (values: number[]) => {
+    (values: Range) => {
       setLocalRange(values);
       setIsDragging(false);
       onRangeCommit(values);

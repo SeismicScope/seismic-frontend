@@ -1,3 +1,5 @@
+export type Range = [number, number];
+
 export type HistogramEntry = {
   magnitude: number;
   count: number;
@@ -5,7 +7,7 @@ export type HistogramEntry = {
 
 export type HistogramProps = {
   histogram?: HistogramEntry[];
-  range: number[];
-  onRangeCommit: (values: number[]) => void;
+  range: Range;
+  onRangeCommit: (values: Range) => void;
   isLoading: boolean;
 };

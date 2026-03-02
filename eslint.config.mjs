@@ -22,6 +22,13 @@ const eslintConfig = defineConfig([
       "simple-import-sort/imports": "warn",
       "simple-import-sort/exports": "warn",
       "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-unused-vars": "error",
+      "react/jsx-key": "error",
+      "react/no-array-index-key": "warn",
+      "react-hooks/incompatible-library": "off",
+
+      "no-console": ["warn", { allow: ["warn", "error"] }],
 
       "padding-line-between-statements": [
         "error",
@@ -59,7 +66,6 @@ const eslintConfig = defineConfig([
       ],
 
       ...reactHooksPlugin.configs.recommended.rules,
-      "react-hooks/incompatible-library": "off",
     },
   },
 

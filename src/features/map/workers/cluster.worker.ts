@@ -15,11 +15,14 @@ function toGeoJSON(points: MapPoint[]): PointFeature[] {
   const features = new Array<PointFeature>(points.length);
 
   for (let i = 0; i < points.length; i++) {
-    const p = points[i];
+    const p = points[i] as MapPoint;
 
     features[i] = {
       type: "Feature",
-      geometry: { type: "Point", coordinates: [p.longitude, p.latitude] },
+      geometry: {
+        type: "Point",
+        coordinates: [p.longitude, p.latitude],
+      },
       properties: {
         id: p.id,
         magnitude: p.magnitude,
@@ -39,8 +42,8 @@ function toGeoJSON(points: MapPoint[]): PointFeature[] {
  */
 function hashPoints(points: MapPoint[]): string {
   if (points.length === 0) return "empty";
-  const first = points[0];
-  const last = points[points.length - 1];
+  const first = points[0] as MapPoint;
+  const last = points[points.length - 1] as MapPoint;
 
   return `${points.length}:${first.id}:${last.id}`;
 }

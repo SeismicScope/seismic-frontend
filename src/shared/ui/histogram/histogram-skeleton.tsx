@@ -7,9 +7,9 @@ function HistogramSkeleton() {
   return (
     <div className="flex w-full flex-col gap-3">
       <div className="flex h-24 w-full items-stretch gap-0.5">
-        {heights.slice(0, BAR_COUNT).map((h, i) => (
+        {heights.slice(0, BAR_COUNT).map((h) => (
           <Skeleton
-            key={i}
+            key={h}
             className="flex-1 self-end rounded-t-sm rounded-b-none"
             style={{ height: `${h}%` }}
           />

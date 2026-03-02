@@ -80,9 +80,9 @@ export function EarthquakeTable() {
                     transform: `translateY(${virtualRow.start}px)`,
                   }}
                 >
-                  {columns.map((col, j) => (
+                  {columns.map((col) => (
                     <TableCell
-                      key={j}
+                      key={col.id}
                       style={{ width: col.size, flex: "none" }}
                     >
                       <Skeleton className="h-4 w-2/3" />

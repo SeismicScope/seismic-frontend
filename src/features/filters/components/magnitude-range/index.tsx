@@ -4,6 +4,7 @@ import { useCallback, useMemo } from "react";
 import { useEarthquakeHistogram } from "@/features/earthquakes/hooks/use-earthquakes-histogram";
 import { useFilters } from "@/features/filters/hooks/use-filters";
 import Histogram from "@/shared/ui/histogram";
+import type { Range } from "@/shared/ui/histogram/types";
 
 function MagnitudeRange() {
   const { data: histogram, isLoading } = useEarthquakeHistogram();
@@ -13,12 +14,12 @@ function MagnitudeRange() {
   const dataMax = histogram?.[histogram.length - 1]?.magnitude ?? 9;
 
   const range = useMemo(
-    () => [filters.minMag ?? dataMin, filters.maxMag ?? dataMax],
+    () => [filters.minMag ?? dataMin, filters.maxMag ?? dataMax] as Range,
     [filters.minMag, filters.maxMag, dataMin, dataMax],
   );
 
   const handleRangeCommit = useCallback(
-    (values: number[]) => {
+    (values: Range) => {
       setFilters({ minMag: values[0], maxMag: values[1] });
     },
     [setFilters],

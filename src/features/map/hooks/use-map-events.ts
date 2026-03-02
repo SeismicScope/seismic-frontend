@@ -70,7 +70,7 @@ export function useMapEvents({
       if (!features.length) return;
 
       const feature = features[0];
-      if (feature.geometry.type !== "Point") return;
+      if (feature?.geometry.type !== "Point") return;
 
       const coords = feature.geometry.coordinates as [number, number];
       const nextZoom = Math.floor(map.getZoom()) + 1;
@@ -86,7 +86,7 @@ export function useMapEvents({
       if (!features.length) return;
 
       const feature = features[0];
-      if (feature.geometry.type !== "Point") return;
+      if (!feature || feature.geometry.type !== "Point") return;
 
       const { element, unmount } = renderMapPopup(
         React.createElement(MapPopup, {
