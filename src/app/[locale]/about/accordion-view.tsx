@@ -13,7 +13,7 @@ function AccordionView({ sections, t }: { sections: Section[]; t: TFunction }) {
     <Accordion type="single" collapsible>
       {sections.map((section) => (
         <AccordionItem key={section.value} value={section.value}>
-          <AccordionTrigger className="text-lg font-extrabold">
+          <AccordionTrigger className="border-b text-lg font-extrabold">
             {section.titleKeyAccordion
               ? t(section.titleKeyAccordion)
               : t(section.titleKey)}
