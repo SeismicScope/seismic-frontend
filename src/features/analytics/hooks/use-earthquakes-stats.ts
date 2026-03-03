@@ -8,6 +8,7 @@ import { ANALYTICS_KEYS } from "../constants";
 
 export function useEarthquakesStats() {
   const { apiFilters } = useFilters();
+
   const mapRequestParams =
     useMapRequestParams((state) => state.requestParams) ?? {};
 

@@ -5,6 +5,7 @@ import nextTs from "eslint-config-next/typescript";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import storybookPlugin from "eslint-plugin-storybook";
+import noManyParams from "./eslint-rules/no-many-params.js";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -16,9 +17,15 @@ const eslintConfig = defineConfig([
       "react-hooks": reactHooksPlugin,
       storybook: storybookPlugin,
       "simple-import-sort": simpleImportSort,
+      custom: {
+        rules: {
+          "no-many-params": noManyParams,
+        },
+      },
     },
 
     rules: {
+      "custom/no-many-params": "error",
       "simple-import-sort/imports": "warn",
       "simple-import-sort/exports": "warn",
       "@typescript-eslint/no-unused-vars": "error",
