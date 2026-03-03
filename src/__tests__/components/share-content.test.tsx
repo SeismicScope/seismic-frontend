@@ -41,7 +41,7 @@ vi.mock("next/image", () => ({
     width: number;
     height: number;
   }) => (
-    <Image
+    <img
       src={props.src}
       alt={props.alt}
       width={props.width}
@@ -49,8 +49,6 @@ vi.mock("next/image", () => ({
     />
   ),
 }));
-
-import Image from "next/image";
 
 import ShareContent from "@/features/share-link/components/share-content";
 
