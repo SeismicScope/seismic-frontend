@@ -1,6 +1,7 @@
 import { Menu } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import Logo from "@/assets/logo.svg";
 import { LoginDialog } from "@/features/auth/components/login-dialog";
@@ -28,6 +29,8 @@ const CommandPalette = dynamic(
 );
 
 function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
+  const t = useTranslations();
+
   return (
     <div className="block lg:hidden">
       <div className="flex items-center justify-between">
@@ -61,7 +64,7 @@ function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
                 collapsible
                 className="flex w-full flex-col gap-4"
               >
-                {menuWithAdmin.map((item) => renderMobileMenuItem(item))}
+                {menuWithAdmin.map((item) => renderMobileMenuItem(item, t))}
               </Accordion>
 
               <div className="flex items-center justify-center">

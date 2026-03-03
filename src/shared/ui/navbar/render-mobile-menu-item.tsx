@@ -1,3 +1,5 @@
+import type { useTranslations } from "next-intl";
+
 import {
   AccordionContent,
   AccordionItem,
@@ -6,7 +8,10 @@ import {
 import SubMenuLink from "./sub-menu-link";
 import type { MenuItem } from "./types";
 
-function renderMobileMenuItem(item: MenuItem) {
+function renderMobileMenuItem(
+  item: MenuItem,
+  t: ReturnType<typeof useTranslations>,
+) {
   if (item.items) {
     return (
       <AccordionItem
@@ -15,7 +20,7 @@ function renderMobileMenuItem(item: MenuItem) {
         className="border-b-0"
       >
         <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
-          {item.titleKey}
+          {t(item.titleKey)}
         </AccordionTrigger>
         <AccordionContent className="mt-2">
           {item.items.map((subItem) => (
@@ -28,7 +33,7 @@ function renderMobileMenuItem(item: MenuItem) {
 
   return (
     <a key={item.titleKey} href={item.url} className="text-md font-semibold">
-      {item.titleKey}
+      {t(item.titleKey)}
     </a>
   );
 }
