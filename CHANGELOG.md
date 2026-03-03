@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.10.3...v1.11.0) (2026-03-03)
+
+### Features
+
+- **api:** add retry logic and improve error handling with axios-retry ([2a0e77f](https://github.com/SeismicScope/seismic-frontend/commit/2a0e77fcbe36257bdd85176c4193a951d6194c27))
+- **seo:** add structured data and optimize metadata configuration ([7b3e31f](https://github.com/SeismicScope/seismic-frontend/commit/7b3e31f4bf1e99d31336d5fc5c9cf3ba4faf20dc))
+
 ## [1.10.3](https://github.com/SeismicScope/seismic-frontend/compare/v1.10.2...v1.10.3) (2026-03-01)
 
 ### Bug Fixes
