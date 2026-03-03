@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import type { Earthquake } from "@/features/earthquakes/types";
 import { formatDate } from "@/shared/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
+import type { Earthquake } from "@/types/main";
 
 type Props = {
   earthquake: Earthquake;

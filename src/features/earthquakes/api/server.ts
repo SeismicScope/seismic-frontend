@@ -1,6 +1,6 @@
 import { cache } from "react";
 
-import type { Earthquake } from "../types";
+import type { Earthquake } from "@/types/main";
 
 export const getEarthquakeById = cache(
   async (id: string): Promise<Earthquake> => {

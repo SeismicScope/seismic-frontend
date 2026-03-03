@@ -1,10 +1,7 @@
 import { api } from "@/shared/lib/axios";
+import type { Earthquake } from "@/types/main";
 
-import type {
-  Earthquake,
-  EarthquakeParams,
-  EarthquakesResponse,
-} from "../types";
+import type { EarthquakeParams, EarthquakesResponse } from "../types";
 
 export async function getEarthquakes(
   params: EarthquakeParams,

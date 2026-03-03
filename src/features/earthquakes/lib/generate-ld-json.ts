@@ -1,6 +1,6 @@
 import type { Event, WithContext } from "schema-dts";
 
-import type { Earthquake } from "@/features/earthquakes/types";
+import type { Earthquake } from "@/types/main";
 
 export function generateLdJson({
   magnitude,
