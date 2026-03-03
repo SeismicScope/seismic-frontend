@@ -1,3 +1,9 @@
+# [1.12.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.11.0...v1.12.0) (2026-03-03)
+
+### Features
+
+- **about:** change page structure to use tabs and accordion ([8d081ee](https://github.com/SeismicScope/seismic-frontend/commit/8d081ee6362d64892c9d70a98a2c43cd005fdbbc))
+
 # [1.11.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.10.3...v1.11.0) (2026-03-03)
 
 ### Features
