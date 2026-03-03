@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-import { useFilters } from "@/features/filters/hooks/use-filters";
+import { useFilters } from "@/entities/filter/hooks/use-filters";
 
 import { useCommandPaletteStore } from "../store/use-command-palette-store";
 

@@ -3,10 +3,10 @@
 import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
 
+import { useColorTheme } from "@/app/providers/theme-provider";
 import { useBroadcastChannel } from "@/shared/hooks/use-broadcast-channel";
 
-import { COLOR_THEME_VALUES } from "../constants";
-import { useColorTheme } from "../providers/theme-provider";
+import { COLOR_THEME_VALUES } from "../../shared/constants";
 
 type ThemePayload = {
   theme: string;

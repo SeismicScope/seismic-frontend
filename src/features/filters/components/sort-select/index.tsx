@@ -4,7 +4,7 @@ import { ArrowUpDownIcon, CheckIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
 
-import { useFilters } from "@/features/filters/hooks/use-filters";
+import { useFilters } from "@/entities/filter/hooks/use-filters";
 import { SORT_OPTIONS_META, type SortOption } from "@/shared/constants";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";

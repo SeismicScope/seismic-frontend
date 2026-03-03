@@ -2,9 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import { useFilters } from "@/entities/filter/hooks/use-filters";
 import { useBroadcastChannel } from "@/shared/hooks/use-broadcast-channel";
-
-import { useFilters } from "../../hooks/use-filters";
 
 type FiltersPayload = ReturnType<typeof useFilters>["filters"];
 

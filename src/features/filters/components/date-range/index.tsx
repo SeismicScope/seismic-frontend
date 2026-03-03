@@ -7,7 +7,7 @@ import { useCallback } from "react";
 import type { DateRange } from "react-day-picker";
 import { toast } from "sonner";
 
-import { useFilters } from "@/features/filters/hooks/use-filters";
+import { useFilters } from "@/entities/filter/hooks/use-filters";
 import {
   DATE_RANGE_END,
   DATE_RANGE_START,

@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 
-import { useFilters } from "@/features/filters/hooks/use-filters";
+import { useFilters } from "@/entities/filter/hooks/use-filters";
 import { useDebouncedCallback } from "@/shared/hooks/use-debounce";
 
 const DEBOUNCE_DELAY = 500;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { generateLdJson } from "@/shared/lib/generate-ld-json";
+import { generateLdJson } from "@/features/earthquakes/lib/generate-ld-json";
 
 describe("generateLdJson", () => {
   const mockEarthquake = {

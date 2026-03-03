@@ -4,7 +4,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../accordion";
+} from "@/shared/ui/accordion";
+
 import SubMenuLink from "./sub-menu-link";
 import type { MenuItem } from "./types";
 

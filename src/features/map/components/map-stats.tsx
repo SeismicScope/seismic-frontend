@@ -1,8 +1,8 @@
 "use client";
 import { useTranslations } from "next-intl";
 
+import { useMapStatsStore } from "@/entities/map/model/use-map-stats";
 import { usePerformanceMetrics } from "@/features/map/hooks/use-performance-metrics";
-import { useMapStatsStore } from "@/features/map/store/use-map-stats";
 import { formatNumber } from "@/shared/lib/utils";
 
 function MapStats() {

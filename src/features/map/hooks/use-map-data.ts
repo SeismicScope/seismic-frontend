@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { useFilters } from "@/features/filters/hooks/use-filters";
+import { useFilters } from "@/entities/filter/hooks/use-filters";
+import type { MapRequest } from "@/entities/map/types";
 
 import { getDashboardMapData, getMapData } from "../api";
 import { MAP_KEYS } from "../constants";
-import type { MapRequest } from "../types";
 
 type UseMapDataOptions = {
   requestParams: MapRequest | null;

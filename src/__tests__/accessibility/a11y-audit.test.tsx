@@ -32,7 +32,7 @@ import Link from "next/link";
 import { Alert, AlertDescription, AlertTitle } from "@/shared/ui/alert";
 import { Button } from "@/shared/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
-import ThemeSwitcher from "@/shared/ui/theme-switcher";
+import ThemeSwitcher from "@/widgets/theme/theme-switcher";
 
 function expectNoViolations(results: AxeResults) {
   expect(results.violations).toEqual([]);

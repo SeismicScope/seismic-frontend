@@ -6,18 +6,18 @@ import { useTranslations } from "next-intl";
 import Logo from "@/assets/logo.svg";
 import { LoginDialog } from "@/features/auth/components/login-dialog";
 import CommandPaletteTrigger from "@/features/command-palette/components/command-palette-trigger";
-
-import { Accordion } from "../accordion";
-import { Button } from "../button";
-import LanguageSwitcher from "../language-switcher";
+import { Accordion } from "@/shared/ui/accordion";
+import { Button } from "@/shared/ui/button";
+import LanguageSwitcher from "@/shared/ui/language-switcher";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "../sheet";
-import ThemeSwitcher from "../theme-switcher";
+} from "@/shared/ui/sheet";
+import ThemeSwitcher from "@/widgets/theme/theme-switcher";
+
 import renderMobileMenuItem from "./render-mobile-menu-item";
 import type { NavProps } from "./types";
 

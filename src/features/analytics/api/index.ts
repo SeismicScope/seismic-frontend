@@ -1,5 +1,5 @@
-import type { EarthquakeFilters } from "@/features/filters/types";
-import type { MapParams } from "@/features/map/store/use-map-request-params";
+import type { EarthquakeFilters } from "@/entities/filter/types";
+import type { MapParams } from "@/entities/map/model/use-map-request-params";
 import { api } from "@/shared/lib/axios";
 
 import type {

@@ -1,8 +1,8 @@
 "use client";
 import { useCallback, useMemo } from "react";
 
-import { useEarthquakeHistogram } from "@/features/earthquakes/hooks/use-earthquakes-histogram";
-import { useFilters } from "@/features/filters/hooks/use-filters";
+import { useFilters } from "@/entities/filter/hooks/use-filters";
+import { useEarthquakeHistogram } from "@/features/filters/hooks/use-earthquakes-histogram";
 import Histogram from "@/shared/ui/histogram";
 import type { Range } from "@/shared/ui/histogram/types";
 

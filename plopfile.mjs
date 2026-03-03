@@ -1,4 +1,4 @@
-export default function (plop) {
+export default function plopGenerator(plop) {
   plop.setGenerator("feature", {
     description: "Generate a new feature",
     prompts: [

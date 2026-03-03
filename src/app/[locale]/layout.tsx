@@ -2,9 +2,7 @@ import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import { type Locale, LOCALES } from "@/shared/constants";
-import { Providers } from "@/shared/providers";
 import { JsonLd } from "@/shared/ui/json-ld";
-import Navbar from "@/shared/ui/navbar";
 import { ThemeInitScript } from "@/shared/ui/theme-init-script";
 
 export function generateStaticParams() {
@@ -24,6 +22,10 @@ const inter = Inter({
 
 import type { Metadata, Viewport } from "next";
 import { getTranslations } from "next-intl/server";
+
+import Navbar from "@/widgets/navbar";
+
+import { Providers } from "../providers";
 
 export async function generateMetadata({
   params,

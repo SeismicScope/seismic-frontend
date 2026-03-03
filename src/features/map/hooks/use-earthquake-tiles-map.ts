@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { MapAdapter } from "@/shared/adapters/map-adapter";
 
+import { useMapStatsStore } from "../../../entities/map/model/use-map-stats";
 import MapPopup from "../components/map-popup";
 import { renderMapPopup } from "../lib/utils";
-import { useMapStatsStore } from "../store/use-map-stats";
 
 export function useEarthquakeTilesMap() {
   const containerRef = useRef<HTMLDivElement>(null);

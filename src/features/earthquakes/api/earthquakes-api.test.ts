@@ -2,11 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { api } from "@/shared/lib/axios";
 
-import {
-  getEarthquakeById,
-  getEarthquakes,
-  getEarthquakesMagnitudeHistogram,
-} from "./index";
+import { getEarthquakeById, getEarthquakes } from "./index";
 
 vi.mock("@/shared/lib/axios", () => ({
   api: {
@@ -43,22 +39,6 @@ describe("earthquakes api", () => {
     const result = await getEarthquakeById("1");
 
     expect(api.get).toHaveBeenCalledWith("/earthquakes/1");
-    expect(result).toEqual(mockData);
-  });
-
-  it("calls getEarthquakesMagnitudeHistogram with filters", async () => {
-    const mockData = [{ magnitude: 3, count: 10 }];
-
-    mockedGet.mockResolvedValue({ data: mockData });
-
-    const filters = { minMag: 2 };
-
-    const result = await getEarthquakesMagnitudeHistogram(filters);
-
-    expect(api.get).toHaveBeenCalledWith("/earthquakes/magnitude-histogram", {
-      params: filters,
-    });
-
     expect(result).toEqual(mockData);
   });
 });

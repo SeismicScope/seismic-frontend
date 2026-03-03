@@ -1,5 +1,5 @@
-import type { EarthquakeFilters } from "@/features/filters/types";
-import type { MapParams } from "@/features/map/store/use-map-request-params";
+import type { EarthquakeFilters } from "@/entities/filter/types";
+import type { MapParams } from "@/entities/map/model/use-map-request-params";
 import type { SortOption } from "@/shared/constants";
 
 export type Earthquake = {
@@ -26,8 +26,3 @@ export type EarthquakeParams = EarthquakeFilters &
     cursor?: number;
     sort?: SortOption;
   };
-
-export type MagnitudeHistogram = {
-  magnitude: number;
-  count: number;
-};

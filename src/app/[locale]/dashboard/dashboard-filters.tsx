@@ -1,8 +1,8 @@
 "use client";
 import { useTranslations } from "next-intl";
 
+import { useFilters } from "@/entities/filter/hooks/use-filters";
 import Filters from "@/features/filters/components/filters";
-import { useFilters } from "@/features/filters/hooks/use-filters";
 import { Button } from "@/shared/ui/button";
 
 function DashbardFilters() {

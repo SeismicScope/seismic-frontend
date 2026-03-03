@@ -3,13 +3,13 @@ import type { RefObject } from "react";
 import { useCallback, useEffect, useRef } from "react";
 import React from "react";
 
+import type { MapRequest } from "@/entities/map/types";
 import type { MapAdapter } from "@/shared/adapters/map-adapter";
 import { useDebouncedCallback } from "@/shared/hooks/use-debounce";
 
 import MapPopup from "../components/map-popup";
 import { LAYER_CLUSTERS, LAYER_POINTS } from "../constants";
 import { getBounds, renderMapPopup } from "../lib/utils";
-import type { MapRequest } from "../types";
 
 type UseMapEventsParams = {
   adapterRef: RefObject<MapAdapter | null>;

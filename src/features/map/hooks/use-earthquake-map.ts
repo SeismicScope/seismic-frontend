@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 import { MapAdapter } from "@/shared/adapters/map-adapter";
 
+import { useMapRequestParams } from "../../../entities/map/model/use-map-request-params";
+import { useMapStatsStore } from "../../../entities/map/model/use-map-stats";
 import { SOURCE_ID } from "../constants";
 import { getBounds } from "../lib/utils";
-import { useMapRequestParams } from "../store/use-map-request-params";
-import { useMapStatsStore } from "../store/use-map-stats";
 import { useMapData } from "./use-map-data";
 import { useMapEvents } from "./use-map-events";
 import { useMapWorker } from "./use-map-worker";

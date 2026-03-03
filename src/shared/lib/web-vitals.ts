@@ -20,6 +20,7 @@ export function reportWebVital(metric: Metric) {
           ? "\x1b[33m"
           : "\x1b[31m";
 
+    // eslint-disable-next-line no-console
     console.log(
       `${color}[Web Vital] ${metric.name}: ${Math.round(metric.value)}ms (${metric.rating})\x1b[0m`,
     );

@@ -8,12 +8,12 @@ import {
   useState,
 } from "react";
 
-import { COLOR_THEME, type ColorTheme } from "../constants";
+import { COLOR_THEME, type ColorTheme } from "@/shared/constants";
 
-interface ColorThemeContextValue {
+type ColorThemeContextValue = {
   colorTheme: ColorTheme;
   setColorTheme: (theme: ColorTheme) => void;
-}
+};
 
 const ColorThemeContext = createContext<ColorThemeContextValue | undefined>(
   undefined,

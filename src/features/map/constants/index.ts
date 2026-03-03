@@ -1,6 +1,6 @@
-import type { EarthquakeFilters } from "@/features/filters/types";
+import type { EarthquakeFilters } from "@/entities/filter/types";
 
-import type { MapParams } from "../store/use-map-request-params";
+import type { MapParams } from "../../../entities/map/model/use-map-request-params";
 
 export const SOURCE_ID = "earthquakes";
 export const LAYER_CLUSTERS = "clusters";

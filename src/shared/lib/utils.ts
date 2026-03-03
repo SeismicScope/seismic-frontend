@@ -14,11 +14,11 @@ export function formatNumber(number: number): string {
 }
 
 export function formatDate(date: Date): string {
-  return dateAdapter.format(date, "LLL dd, y");
+  return dateAdapter.format({ date, pattern: "LLL dd, y" });
 }
 
 export function formatDateWithTime(date: Date): string {
-  return dateAdapter.format(date, "LLL dd, y HH:mm:ss");
+  return dateAdapter.format({ date, pattern: "LLL dd, y HH:mm:ss" });
 }
 
 export function getConsent(): string | null {

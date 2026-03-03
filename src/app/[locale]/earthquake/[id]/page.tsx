@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { getEarthquakeById } from "@/features/earthquakes/api/server";
+import { generateLdJson } from "@/features/earthquakes/lib/generate-ld-json";
 import type { Locale } from "@/shared/constants";
-import { generateLdJson } from "@/shared/lib/generate-ld-json";
 
 import EarthquakeDetails from "./earthquake-details";
 import LazyEarthquakeMap from "./lazy-earthquake-map";

@@ -1,5 +1,5 @@
-import type { EarthquakeFilters } from "@/features/filters/types";
-import type { MapParams } from "@/features/map/store/use-map-request-params";
+import type { EarthquakeFilters } from "@/entities/filter/types";
+import type { MapParams } from "@/entities/map/model/use-map-request-params";
 import type { TimeInterval } from "@/types/main";
 
 export const ANALYTICS_KEYS = {

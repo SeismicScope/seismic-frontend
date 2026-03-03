@@ -1,11 +1,9 @@
-import type { EarthquakeFilters } from "@/features/filters/types";
 import { api } from "@/shared/lib/axios";
 
 import type {
   Earthquake,
   EarthquakeParams,
   EarthquakesResponse,
-  MagnitudeHistogram,
 } from "../types";
 
 export async function getEarthquakes(
@@ -18,16 +16,6 @@ export async function getEarthquakes(
 
 export async function getEarthquakeById(id: string): Promise<Earthquake> {
   const { data } = await api.get(`/earthquakes/${id}`);
-
-  return data;
-}
-
-export async function getEarthquakesMagnitudeHistogram(
-  filters: EarthquakeFilters,
-): Promise<MagnitudeHistogram[]> {
-  const { data } = await api.get("/earthquakes/magnitude-histogram", {
-    params: filters,
-  });
 
   return data;
 }

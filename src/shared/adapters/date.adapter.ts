@@ -18,7 +18,15 @@ type FormatOptions = {
 };
 
 export const dateAdapter = {
-  format(date: Date, pattern: string, options?: FormatOptions): string {
+  format({
+    date,
+    pattern,
+    options,
+  }: {
+    date: Date;
+    pattern: string;
+    options?: FormatOptions;
+  }): string {
     return dfFormat(date, pattern, {
       locale: localeMap[options?.locale || "en"],
     });

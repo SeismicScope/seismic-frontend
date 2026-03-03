@@ -5,11 +5,14 @@ import { useTranslations } from "next-intl";
 import Logo from "@/assets/logo.svg";
 import { LoginDialog } from "@/features/auth/components/login-dialog";
 import CommandPaletteTrigger from "@/features/command-palette/components/command-palette-trigger";
+import { Button } from "@/shared/ui/button";
+import LanguageSwitcher from "@/shared/ui/language-switcher";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+} from "@/shared/ui/navigation-menu";
+import ThemeSwitcher from "@/widgets/theme/theme-switcher";
 
-import { Button } from "../button";
-import LanguageSwitcher from "../language-switcher";
-import { NavigationMenu, NavigationMenuList } from "../navigation-menu";
-import ThemeSwitcher from "../theme-switcher";
 import renderMenuItem from "./render-menu-item";
 import type { NavProps } from "./types";
 
@@ -48,8 +51,12 @@ function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
         {!user ? (
           <LoginDialog />
         ) : (
-          <Button size="sm" onClick={() => logout()} aria-label="Logout">
-            Logout
+          <Button
+            size="sm"
+            onClick={() => logout()}
+            aria-label={t("general.logout")}
+          >
+            {t("general.logout")}
           </Button>
         )}
       </div>

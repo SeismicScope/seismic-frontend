@@ -1,7 +1,9 @@
 import type { Feature, Point } from "geojson";
 import { createRoot, Root } from "react-dom/client";
 
-import type { MapBounds, MapPoint, MapPointProperties } from "../types";
+import type { MapBounds } from "@/entities/map/types";
+
+import type { MapPoint, MapPointProperties } from "../types";
 
 export function toGeoJSON(
   points: MapPoint[],

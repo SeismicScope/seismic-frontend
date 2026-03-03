@@ -1,7 +1,8 @@
-import type { EarthquakeFilters } from "@/features/filters/types";
+import type { EarthquakeFilters } from "@/entities/filter/types";
+import type { MapRequest } from "@/entities/map/types";
 import { api } from "@/shared/lib/axios";
 
-import type { MapRequest, MapResponse } from "../types";
+import type { MapResponse } from "../types";
 
 type GetMapProps = {
   params: MapRequest;

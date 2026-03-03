@@ -4,9 +4,10 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 
-import { COLOR_THEME_META, COLOR_THEME_VALUES } from "../constants";
-import { useColorTheme } from "../providers/theme-provider";
-import { Button } from "./button";
+import { useColorTheme } from "@/app/providers/theme-provider";
+
+import { COLOR_THEME_META, COLOR_THEME_VALUES } from "../../shared/constants";
+import { Button } from "../../shared/ui/button";
 
 const subscribe = () => () => {};
 const useMounted = () =>

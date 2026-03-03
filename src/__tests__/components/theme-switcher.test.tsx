@@ -19,7 +19,7 @@ vi.mock("@/shared/providers/theme-provider", () => ({
   }),
 }));
 
-import ThemeSwitcher from "@/shared/ui/theme-switcher";
+import ThemeSwitcher from "@/widgets/theme/theme-switcher";
 
 describe("ThemeSwitcher", () => {
   it("renders light/dark toggle button", () => {

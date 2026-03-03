@@ -5,7 +5,8 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuTrigger,
-} from "../navigation-menu";
+} from "@/shared/ui/navigation-menu";
+
 import SubMenuLink from "./sub-menu-link";
 import type { MenuItem } from "./types";
 

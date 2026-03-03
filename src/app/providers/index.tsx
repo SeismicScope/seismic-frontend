@@ -15,17 +15,20 @@ import { type JSX, Suspense, useState } from "react";
 import { toast, Toaster } from "sonner";
 
 import { FiltersSync } from "@/features/filters/components/filters-sync";
+import { WebVitals } from "@/shared/components/web-vitals";
+import type { Locale } from "@/shared/constants";
 import { getApiErrorMessage } from "@/shared/lib/get-api-error-message";
+import GoogleAnalytics from "@/shared/lib/google-analytics";
+import { ThemeSync } from "@/widgets/theme/theme-sync";
 
-import { WebVitals } from "../components/web-vitals";
-import type { Locale } from "../constants";
-import GoogleAnalytics from "../lib/google-analytics";
-import { ThemeSync } from "../ui/theme-sync";
 import { ColorThemeProvider } from "./theme-provider";
 
-const CookieBanner = dynamic(() => import("../components/cookie-banner"), {
-  ssr: false,
-});
+const CookieBanner = dynamic(
+  () => import("@/shared/components/cookie-banner"),
+  {
+    ssr: false,
+  },
+);
 
 export function Providers({
   children,
@@ -65,6 +68,7 @@ export function Providers({
         }),
 
         mutationCache: new MutationCache({
+          // eslint-disable-next-line custom/no-many-params
           onError: (error, _variables, _context, mutation) => {
             if (mutation.meta?.skipGlobalErrorHandler) {
               return;

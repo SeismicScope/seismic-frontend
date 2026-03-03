@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { useFilters } from "@/features/filters/hooks/use-filters";
-import { useMapRequestParams } from "@/features/map/store/use-map-request-params";
+import { useFilters } from "@/entities/filter/hooks/use-filters";
+import { useMapRequestParams } from "@/entities/map/model/use-map-request-params";
 
 import { getEarthquakesMagnitudeHistogram } from "../api";
 import { EARTHQUAKES_KEYS } from "../constants";

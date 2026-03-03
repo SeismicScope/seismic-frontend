@@ -135,7 +135,11 @@ function ChartTooltipContent({
 
     const [item] = payload;
     const key = `${labelKey || item?.dataKey || item?.name || "value"}`;
-    const itemConfig = getPayloadConfigFromPayload(config, item, key);
+    const itemConfig = getPayloadConfigFromPayload({
+      config,
+      payload: item,
+      key,
+    });
     const value =
       !labelKey && typeof label === "string"
         ? config[label as keyof typeof config]?.label || label
@@ -183,7 +187,11 @@ function ChartTooltipContent({
           .filter((item) => item.type !== "none")
           .map((item, index) => {
             const key = `${nameKey || item.name || item.dataKey || "value"}`;
-            const itemConfig = getPayloadConfigFromPayload(config, item, key);
+            const itemConfig = getPayloadConfigFromPayload({
+              config,
+              payload: item,
+              key,
+            });
             const indicatorColor = color || item.payload.fill || item.color;
 
             return (
@@ -281,7 +289,11 @@ function ChartLegendContent({
         .filter((item) => item.type !== "none")
         .map((item) => {
           const key = `${nameKey || item.dataKey || "value"}`;
-          const itemConfig = getPayloadConfigFromPayload(config, item, key);
+          const itemConfig = getPayloadConfigFromPayload({
+            config,
+            payload: item,
+            key,
+          });
 
           return (
             <div
@@ -309,11 +321,15 @@ function ChartLegendContent({
 }
 
 // Helper to extract item config from a payload.
-function getPayloadConfigFromPayload(
-  config: ChartConfig,
-  payload: unknown,
-  key: string,
-) {
+function getPayloadConfigFromPayload({
+  config,
+  payload,
+  key,
+}: {
+  config: ChartConfig;
+  payload: unknown;
+  key: string;
+}) {
   if (typeof payload !== "object" || payload === null) {
     return undefined;
   }
