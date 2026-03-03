@@ -8,7 +8,7 @@ import type { Section } from "./types";
 const LINKS = [
   {
     key: "links.storybook",
-    href: "https://seismicscope.github.io/seismic-frontend/storybook/",
+    href: "https://seismicscope.github.io/seismic-frontend/storybook/?path=/docs/introduction--docs",
   },
   {
     key: "links.swagger",
