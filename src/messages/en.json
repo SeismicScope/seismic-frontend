@@ -269,7 +269,70 @@
       "beRepoLink": "NestJS API Source Code"
     },
     "engineeringFocusTitle": "Engineering Focus",
-    "engineeringFocusText": "The emphasis of this project is on system design, performance scaling, data-heavy architecture, and production-level code quality — not just UI development."
+    "engineeringFocusText": "The emphasis of this project is on system design, performance scaling, data-heavy architecture, and production-level code quality — not just UI development.",
+    "keyFeatures": {
+      "title": "Key Features & Engineering Highlights",
+      "performanceTitle": "Performance & Data",
+      "performance": {
+        "1": "800,000+ earthquake records with <2s p95 API latency",
+        "2": "Web Worker (Supercluster) for client-side clustering at 60fps",
+        "3": "Virtual scrolling (TanStack Virtual) for rendering massive data tables",
+        "4": "Cursor-based infinite pagination — no offset performance degradation",
+        "5": "Redis caching with TTL-based invalidation strategy",
+        "6": "k6 load testing — smoke, load, and spike scenarios with thresholds",
+        "7": "Node.js clustering for multi-core utilization"
+      },
+      "mapsTitle": "Maps & Geospatial",
+      "maps": {
+        "1": "Dual map architectures — GeoJSON + Supercluster and server-side MVT",
+        "2": "PostGIS with dual SRIDs (WGS 84 + Web Mercator), GIST spatial indexes",
+        "3": "Mapbox Vector Tiles served directly from PostGIS via ST_AsMVT",
+        "4": "Zoom-adaptive result limits (50k–200k) and coordinate-precision tuning",
+        "5": "Interactive map with popups, style selector, and stats overlay",
+        "6": "Static map on earthquake detail pages"
+      },
+      "frontendTitle": "Frontend Architecture",
+      "frontend": {
+        "1": "Feature-Sliced Design — isolated feature modules (api/hooks/components/types)",
+        "2": "Multi-layered state: Zustand (client) + TanStack Query (server) + nuqs (URL)",
+        "3": "React 19 with React Compiler for automatic memoization",
+        "4": "3-level theme system — light/dark mode + 3 accent color themes with FOUC prevention",
+        "5": "BroadcastChannel API for cross-tab theme and filter sync",
+        "6": "⌘K Command Palette (cmdk) with navigation and filter presets",
+        "7": "Internationalization — 3 locales (EN, DE, ES) via next-intl",
+        "8": "URL shortener + QR code generation for sharable views",
+        "9": "Parallel routes and intercepting routes for earthquake detail modals"
+      },
+      "backendTitle": "Backend Architecture",
+      "backend": {
+        "1": "NestJS 10 with modular architecture (8 domain modules)",
+        "2": "Prisma 7 ORM + raw SQL for complex aggregations and spatial queries",
+        "3": "BullMQ job queue for async CSV import with 5000-row batch processing",
+        "4": "JWT authentication with HttpOnly cookies, bcrypt hashing",
+        "5": "Tiered rate limiting — 500 req/min (general), 50 req/min (strict)",
+        "6": "Swagger auto-generated API documentation",
+        "7": "Prometheus metrics with custom business metric collectors"
+      },
+      "devopsTitle": "DevOps & Observability",
+      "devops": {
+        "1": "GitHub Actions CI/CD — tests, coverage, Storybook build, deploy",
+        "2": "Semantic Release with auto-changelog and versioning",
+        "3": "Docker multi-stage builds with PostGIS and Redis",
+        "4": "Sentry error tracking (frontend + backend + edge)",
+        "5": "Vercel Speed Insights + Web Vitals + Google Analytics 4",
+        "6": "Husky + lint-staged + commitlint for code quality gates",
+        "7": "Codecov coverage reporting"
+      },
+      "uiTitle": "UI & Accessibility",
+      "ui": {
+        "1": "shadcn/ui + Radix UI for accessible component primitives",
+        "2": "Storybook 10 with a11y addon, deployed to GitHub Pages",
+        "3": "Responsive design with mobile navigation and breakpoint hooks",
+        "4": "Skeleton loaders, error boundaries, and Suspense fallbacks",
+        "5": "Cookie consent banner (GDPR compliance)",
+        "6": "SEO — JSON-LD structured data, dynamic sitemap, robots.txt, Open Graph"
+      }
+    }
   },
   "metadata": {
     "defaultDescription": "High-performance earthquake analytics system (800k+ records)",

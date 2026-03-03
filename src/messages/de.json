@@ -269,7 +269,70 @@
       "beRepoLink": "NestJS API Quellcode"
     },
     "engineeringFocusTitle": "Engineering-Fokus",
-    "engineeringFocusText": "Der Schwerpunkt dieses Projekts liegt auf Systemdesign, Leistungsskalierung, datenintensiver Architektur und Codequalität auf Produktionsniveau – nicht nur auf der UI-Entwicklung."
+    "engineeringFocusText": "Der Schwerpunkt dieses Projekts liegt auf Systemdesign, Leistungsskalierung, datenintensiver Architektur und Codequalität auf Produktionsniveau – nicht nur auf der UI-Entwicklung.",
+    "keyFeatures": {
+      "title": "Wichtige Features & Engineering-Highlights",
+      "performanceTitle": "Performance & Daten",
+      "performance": {
+        "1": "800.000+ Erdbeben-Datensätze mit <2s p95 API-Latenz",
+        "2": "Web Worker (Supercluster) für clientseitiges Clustering bei 60fps",
+        "3": "Virtuelles Scrolling (TanStack Virtual) für massive Datentabellen",
+        "4": "Cursorbasierte Endlos-Paginierung — keine Offset-Performance-Verschlechterung",
+        "5": "Redis-Caching mit TTL-basierter Invalidierungsstrategie",
+        "6": "k6-Lasttests — Smoke-, Load- und Spike-Szenarien mit Schwellenwerten",
+        "7": "Node.js-Clustering für Multi-Core-Nutzung"
+      },
+      "mapsTitle": "Karten & Geospatial",
+      "maps": {
+        "1": "Zwei Karten-Architekturen — GeoJSON + Supercluster und serverseitige MVT",
+        "2": "PostGIS mit dualen SRIDs (WGS 84 + Web Mercator), GIST-Spatial-Indizes",
+        "3": "Mapbox Vector Tiles direkt aus PostGIS via ST_AsMVT",
+        "4": "Zoom-adaptive Ergebnislimits (50k–200k) und Koordinaten-Präzisionsoptimierung",
+        "5": "Interaktive Karte mit Popups, Stilauswahl und Statistik-Overlay",
+        "6": "Statische Karte auf Erdbeben-Detailseiten"
+      },
+      "frontendTitle": "Frontend-Architektur",
+      "frontend": {
+        "1": "Feature-Sliced Design — isolierte Feature-Module (api/hooks/components/types)",
+        "2": "Mehrschichtiger State: Zustand (Client) + TanStack Query (Server) + nuqs (URL)",
+        "3": "React 19 mit React Compiler für automatische Memoization",
+        "4": "3-stufiges Theme-System — Hell/Dunkel-Modus + 3 Akzentfarbthemen mit FOUC-Prävention",
+        "5": "BroadcastChannel API für tab-übergreifende Theme- und Filter-Synchronisation",
+        "6": "⌘K Command Palette (cmdk) mit Navigation und Filtervoreinstellungen",
+        "7": "Internationalisierung — 3 Sprachen (EN, DE, ES) via next-intl",
+        "8": "URL-Verkürzer + QR-Code-Generierung für teilbare Ansichten",
+        "9": "Parallele Routen und Intercepting Routes für Erdbeben-Detail-Modals"
+      },
+      "backendTitle": "Backend-Architektur",
+      "backend": {
+        "1": "NestJS 10 mit modularer Architektur (8 Domänen-Module)",
+        "2": "Prisma 7 ORM + Raw SQL für komplexe Aggregationen und Spatial-Queries",
+        "3": "BullMQ Job-Queue für asynchronen CSV-Import mit 5000-Zeilen-Batch-Verarbeitung",
+        "4": "JWT-Authentifizierung mit HttpOnly-Cookies, bcrypt-Hashing",
+        "5": "Gestaffelte Rate-Limits — 500 req/min (allgemein), 50 req/min (strikt)",
+        "6": "Swagger auto-generierte API-Dokumentation",
+        "7": "Prometheus-Metriken mit benutzerdefinierten Business-Metriken"
+      },
+      "devopsTitle": "DevOps & Observability",
+      "devops": {
+        "1": "GitHub Actions CI/CD — Tests, Coverage, Storybook-Build, Deploy",
+        "2": "Semantic Release mit Auto-Changelog und Versionierung",
+        "3": "Docker Multi-Stage-Builds mit PostGIS und Redis",
+        "4": "Sentry Error-Tracking (Frontend + Backend + Edge)",
+        "5": "Vercel Speed Insights + Web Vitals + Google Analytics 4",
+        "6": "Husky + lint-staged + commitlint für Code-Quality-Gates",
+        "7": "Codecov Coverage-Reporting"
+      },
+      "uiTitle": "UI & Barrierefreiheit",
+      "ui": {
+        "1": "shadcn/ui + Radix UI für barrierefreie Komponentengrundlagen",
+        "2": "Storybook 10 mit a11y-Addon, deployed auf GitHub Pages",
+        "3": "Responsives Design mit mobiler Navigation und Breakpoint-Hooks",
+        "4": "Skeleton-Loader, Error Boundaries und Suspense-Fallbacks",
+        "5": "Cookie-Consent-Banner (DSGVO-Konformität)",
+        "6": "SEO — JSON-LD Structured Data, dynamische Sitemap, robots.txt, Open Graph"
+      }
+    }
   },
   "metadata": {
     "defaultDescription": "Hochleistungs-System zur Erdbebenanalyse (800k+ Datensätze)",

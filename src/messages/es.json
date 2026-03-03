@@ -269,7 +269,70 @@
       "beRepoLink": "Código fuente de API NestJS"
     },
     "engineeringFocusTitle": "Enfoque de Ingeniería",
-    "engineeringFocusText": "El énfasis de este proyecto está en el diseño del sistema, la escalabilidad de rendimiento, la arquitectura orientada a datos y la calidad de código de nivel de producción, no solo el desarrollo de interfaz."
+    "engineeringFocusText": "El énfasis de este proyecto está en el diseño del sistema, la escalabilidad de rendimiento, la arquitectura orientada a datos y la calidad de código de nivel de producción, no solo el desarrollo de interfaz.",
+    "keyFeatures": {
+      "title": "Características Clave y Aspectos de Ingeniería",
+      "performanceTitle": "Rendimiento y Datos",
+      "performance": {
+        "1": "800,000+ registros de terremotos con latencia API p95 <2s",
+        "2": "Web Worker (Supercluster) para clustering del lado del cliente a 60fps",
+        "3": "Scroll virtual (TanStack Virtual) para renderizar tablas de datos masivas",
+        "4": "Paginación infinita basada en cursor — sin degradación por offset",
+        "5": "Caché Redis con estrategia de invalidación basada en TTL",
+        "6": "Pruebas de carga k6 — escenarios smoke, load y spike con umbrales",
+        "7": "Clustering Node.js para utilización multi-core"
+      },
+      "mapsTitle": "Mapas y Geoespacial",
+      "maps": {
+        "1": "Dos arquitecturas de mapas — GeoJSON + Supercluster y MVT del lado del servidor",
+        "2": "PostGIS con SRIDs duales (WGS 84 + Web Mercator), índices GIST espaciales",
+        "3": "Mapbox Vector Tiles servidos directamente desde PostGIS via ST_AsMVT",
+        "4": "Límites de resultados adaptativos al zoom (50k–200k) y ajuste de precisión de coordenadas",
+        "5": "Mapa interactivo con popups, selector de estilo y superposición de estadísticas",
+        "6": "Mapa estático en páginas de detalle de terremotos"
+      },
+      "frontendTitle": "Arquitectura Frontend",
+      "frontend": {
+        "1": "Feature-Sliced Design — módulos de funcionalidad aislados (api/hooks/components/types)",
+        "2": "Estado multicapa: Zustand (cliente) + TanStack Query (servidor) + nuqs (URL)",
+        "3": "React 19 con React Compiler para memoización automática",
+        "4": "Sistema de temas de 3 niveles — modo claro/oscuro + 3 temas de color con prevención FOUC",
+        "5": "API BroadcastChannel para sincronización de temas y filtros entre pestañas",
+        "6": "⌘K Command Palette (cmdk) con navegación y presets de filtros",
+        "7": "Internacionalización — 3 idiomas (EN, DE, ES) via next-intl",
+        "8": "Acortador de URLs + generación de códigos QR para vistas compartibles",
+        "9": "Rutas paralelas e intercepting routes para modales de detalle de terremotos"
+      },
+      "backendTitle": "Arquitectura Backend",
+      "backend": {
+        "1": "NestJS 10 con arquitectura modular (8 módulos de dominio)",
+        "2": "Prisma 7 ORM + SQL raw para agregaciones complejas y consultas espaciales",
+        "3": "Cola de tareas BullMQ para importación CSV asíncrona con procesamiento por lotes de 5000 filas",
+        "4": "Autenticación JWT con cookies HttpOnly, hashing bcrypt",
+        "5": "Rate limiting escalonado — 500 req/min (general), 50 req/min (estricto)",
+        "6": "Documentación API auto-generada con Swagger",
+        "7": "Métricas Prometheus con recolectores de métricas de negocio personalizados"
+      },
+      "devopsTitle": "DevOps y Observabilidad",
+      "devops": {
+        "1": "GitHub Actions CI/CD — tests, cobertura, build de Storybook, deploy",
+        "2": "Semantic Release con auto-changelog y versionado",
+        "3": "Docker multi-stage builds con PostGIS y Redis",
+        "4": "Sentry para seguimiento de errores (frontend + backend + edge)",
+        "5": "Vercel Speed Insights + Web Vitals + Google Analytics 4",
+        "6": "Husky + lint-staged + commitlint para gates de calidad de código",
+        "7": "Reportes de cobertura Codecov"
+      },
+      "uiTitle": "UI y Accesibilidad",
+      "ui": {
+        "1": "shadcn/ui + Radix UI para primitivos de componentes accesibles",
+        "2": "Storybook 10 con addon a11y, desplegado en GitHub Pages",
+        "3": "Diseño responsive con navegación móvil y hooks de breakpoints",
+        "4": "Skeleton loaders, error boundaries y fallbacks Suspense",
+        "5": "Banner de consentimiento de cookies (cumplimiento GDPR)",
+        "6": "SEO — JSON-LD structured data, sitemap dinámico, robots.txt, Open Graph"
+      }
+    }
   },
   "metadata": {
     "defaultDescription": "Sistema de análisis sísmico de alto rendimiento (+800k registros)",
