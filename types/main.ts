@@ -1,3 +1,5 @@
+import type { useTranslations } from "next-intl";
+
 export type TimeInterval = "day" | "week" | "month" | "year";
 
 export type ApiErrorResponse = { message?: string };
@@ -13,3 +15,5 @@ export type Earthquake = {
   location: string | null;
   createdAt: string;
 };
+
+export type TFunction = ReturnType<typeof useTranslations>;

@@ -332,6 +332,11 @@
         "5": "Cookie-Consent-Banner (DSGVO-Konformität)",
         "6": "SEO — JSON-LD Structured Data, dynamische Sitemap, robots.txt, Open Graph"
       }
+    },
+    "titles": {
+      "projectOverview": "Projektübersicht",
+      "generalArchitecture": "Allgemeine Architektur",
+      "keyFeatures": "Hauptmerkmale"
     }
   },
   "metadata": {

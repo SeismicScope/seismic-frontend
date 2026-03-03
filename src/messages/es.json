@@ -332,6 +332,11 @@
         "5": "Banner de consentimiento de cookies (cumplimiento GDPR)",
         "6": "SEO — JSON-LD structured data, sitemap dinámico, robots.txt, Open Graph"
       }
+    },
+    "titles": {
+      "projectOverview": "Descripción general del proyecto",
+      "generalArchitecture": "Arquitectura general",
+      "keyFeatures": "Características principales"
     }
   },
   "metadata": {

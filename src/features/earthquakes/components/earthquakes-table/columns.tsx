@@ -1,10 +1,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
-import type { useTranslations } from "next-intl";
 
-import type { Earthquake } from "@/types/main";
-
-type TFunction = ReturnType<typeof useTranslations>;
+import type { Earthquake, TFunction } from "@/types/main";
 
 export const DANGEROUS_MAGNITUDE_LEVEL = 5;
 
