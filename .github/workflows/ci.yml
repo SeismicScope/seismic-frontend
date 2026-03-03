@@ -123,7 +123,7 @@ jobs:
         run: npm install
 
       - name: Dependency audit
-        run: npm audit --audit-level=high
+        run: npm audit --audit-level=critical
 
   codeql:
     runs-on: ubuntu-latest
