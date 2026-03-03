@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.13.0...v1.14.0) (2026-03-03)
+
+### Features
+
+- **general:** update readme, about page and add more tests ([41ef2e8](https://github.com/SeismicScope/seismic-frontend/commit/41ef2e813f3919a74e381f28cf3648a9347e97b9))
+- **github:** add github PR template ([d6b4f44](https://github.com/SeismicScope/seismic-frontend/commit/d6b4f44e042af2c03883b97a582f8cfbedd60cef))
+
 # [1.13.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.12.0...v1.13.0) (2026-03-03)
 
 ### Features
