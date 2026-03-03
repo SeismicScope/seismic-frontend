@@ -331,6 +331,47 @@
         "4": "Skeleton loaders, error boundaries y fallbacks Suspense",
         "5": "Banner de consentimiento de cookies (cumplimiento GDPR)",
         "6": "SEO — JSON-LD structured data, sitemap dinámico, robots.txt, Open Graph"
+      },
+      "technicalDecisions": {
+        "title": "Decisiones técnicas y calidad",
+        "codeQualityTitle": "Estándares de calidad de código",
+        "codeQuality": {
+          "1": "Cero tipos 'any' explícitos en todo el código — aplicado por ESLint",
+          "2": "noUncheckedIndexedAccess habilitado en TypeScript para un acceso más seguro a arrays/objetos",
+          "3": "Límites de Feature-Sliced Design aplicados en tiempo de lint mediante eslint-plugin-boundaries",
+          "4": "Máximo 300 líneas por archivo — aplicado por ESLint para mantener la legibilidad",
+          "5": "Conventional Commits con commitlint + ganchos de pre-commit de Husky",
+          "6": "Semantic Release para versionado automático y generación de registros de cambios",
+          "7": "El generador de código Plop crea 7 archivos por funcionalidad para una estructura consistente"
+        },
+        "adrTitle": "Architecture Decision Records (ADR)",
+        "adrDescription": "Las elecciones arquitectónicas clave están documentadas como ADR en el repositorio. Cada registro captura el contexto, la decisión y las compensaciones consideradas:",
+        "adrs": {
+          "1": "ADR-001: Feature-Sliced Design — por qué FSD sobre atomic design o module-per-page",
+          "2": "ADR-002: Estado multicapa — URL (nuqs) + cliente (Zustand) + servidor (TanStack Query)",
+          "3": "ADR-003: Arquitectura de mapa dual — compensaciones entre GeoJSON + Supercluster vs PostGIS MVT",
+          "4": "ADR-004: Patrones seguros para hidratación — evitando errores de SSR en componentes exclusivos del cliente",
+          "5": "ADR-005: BroadcastChannel — sincronización entre pestañas sin la sobrecarga de WebSockets",
+          "6": "ADR-006: Paginación por cursor — por qué usar cursores en lugar de desplazamiento (offset) para grandes conjuntos de datos",
+          "7": "ADR-007: Patrón MapAdapter — encapsulando Mapbox GL como una abstracción reutilizable"
+        },
+        "testingTitle": "Estrategia de pruebas",
+        "testing": {
+          "1": "Vitest con JSDOM para pruebas unitarias y de componentes",
+          "2": "React Testing Library para pruebas de componentes centradas en el usuario",
+          "3": "vitest-axe para aserciones automáticas de accesibilidad (cumplimiento de WCAG)",
+          "4": "Simulación de API con vi.mock() — pruebas aisladas y deterministas",
+          "5": "Integración con Codecov con informes de cobertura en CI",
+          "6": "Pruebas de carga con k6 en el backend (escenarios de humo, carga y picos)"
+        },
+        "linksTitle": "Recursos y enlaces",
+        "links": {
+          "storybook": "Storybook — biblioteca de componentes interactiva con addon a11y",
+          "swagger": "Swagger — documentación de REST API generada automáticamente",
+          "backendRepo": "Repositorio Backend — código fuente de NestJS",
+          "healthCheck": "Health Check — estado del backend en vivo",
+          "metrics": "Prometheus Metrics — observabilidad del backend"
+        }
       }
     },
     "titles": {

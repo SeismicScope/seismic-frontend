@@ -333,10 +333,52 @@
         "6": "SEO — JSON-LD structured data, dynamic sitemap, robots.txt, Open Graph"
       }
     },
+    "technicalDecisions": {
+      "title": "Technical Decisions & Quality",
+      "codeQualityTitle": "Code Quality Standards",
+      "codeQuality": {
+        "1": "Zero explicit 'any' types across the entire codebase — enforced by ESLint",
+        "2": "noUncheckedIndexedAccess enabled in TypeScript for safer array/object access",
+        "3": "Feature-Sliced Design boundaries enforced at lint time via eslint-plugin-boundaries",
+        "4": "Max 300 lines per file — ESLint enforced to maintain readability",
+        "5": "Conventional Commits with commitlint + Husky pre-commit hooks",
+        "6": "Semantic Release for automated versioning and changelog generation",
+        "7": "Plop code generator scaffolds 7 files per feature for consistent structure"
+      },
+      "adrTitle": "Architecture Decision Records",
+      "adrDescription": "Key architectural choices are documented as ADRs in the repository. Each record captures the context, decision, and trade-offs considered:",
+      "adrs": {
+        "1": "ADR-001: Feature-Sliced Design — why FSD over atomic design or module-per-page",
+        "2": "ADR-002: Multi-layered state — URL (nuqs) + client (Zustand) + server (TanStack Query)",
+        "3": "ADR-003: Dual map architecture — GeoJSON + Supercluster vs PostGIS MVT trade-offs",
+        "4": "ADR-004: Hydration-safe patterns — preventing SSR mismatches for client-only components",
+        "5": "ADR-005: BroadcastChannel — cross-tab synchronization without WebSocket overhead",
+        "6": "ADR-006: Cursor pagination — why cursor-based over offset-based for large datasets",
+        "7": "ADR-007: MapAdapter pattern — encapsulating Mapbox GL as a reusable abstraction"
+      },
+      "testingTitle": "Testing Strategy",
+      "testing": {
+        "1": "Vitest with JSDOM for unit and component tests",
+        "2": "React Testing Library for user-centric component testing",
+        "3": "vitest-axe for automated accessibility assertions (WCAG compliance)",
+        "4": "API mocking with vi.mock() — isolated, deterministic tests",
+        "5": "Codecov integration with coverage reporting in CI",
+        "6": "k6 load testing on the backend (smoke, load, spike scenarios)"
+      },
+      "linksTitle": "Resources & Links",
+      "links": {
+        "storybook": "Storybook — interactive component library with a11y addon",
+        "swagger": "Swagger — auto-generated REST API documentation",
+        "backendRepo": "Backend Repository — NestJS source code",
+        "healthCheck": "Health Check — live backend status",
+        "metrics": "Prometheus Metrics — backend observability"
+      }
+    },
     "titles": {
       "projectOverview": "Project overview",
       "generalArchitecture": "General architecture",
-      "keyFeatures": "Key features"
+      "keyFeatures": "Key features",
+      "technicalDecisions": "Decisions & quality"
     }
   },
   "metadata": {

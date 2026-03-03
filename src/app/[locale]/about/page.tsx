@@ -10,6 +10,7 @@ import { generalArchitectureSection } from "./general-acrhitecture-section";
 import { keyFeaturesSection } from "./key-features-section";
 import { overviewSection } from "./overview-sections";
 import TabsView from "./tab-view";
+import { technicalDecisionsSection } from "./technical-decisions-section";
 
 export async function generateMetadata({
   params,
@@ -59,6 +60,12 @@ async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
       <div className="md:hidden">
         <div className="prose dark:prose-invert mx-auto max-w-3xl">
           <AccordionView sections={keyFeaturesSection} t={t} />
+        </div>
+      </div>
+
+      <div className="md:hidden">
+        <div className="prose dark:prose-invert mx-auto max-w-3xl">
+          <AccordionView sections={technicalDecisionsSection} t={t} />
         </div>
       </div>
 

@@ -12,7 +12,7 @@ vi.mock("next-themes", () => ({
   }),
 }));
 
-vi.mock("@/shared/providers/theme-provider", () => ({
+vi.mock("@/app/providers/theme-provider", () => ({
   useColorTheme: () => ({
     colorTheme: "teal",
     setColorTheme: mockSetColorTheme,

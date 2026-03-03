@@ -4,12 +4,14 @@ import type { TFunction } from "@/types/main";
 import { generalArchitectureSection } from "./general-acrhitecture-section";
 import { keyFeaturesSection } from "./key-features-section";
 import { overviewSection } from "./overview-sections";
+import { technicalDecisionsSection } from "./technical-decisions-section";
 
 function TabsView({ t }: { t: TFunction }) {
   const sections = [
     ...overviewSection,
     ...generalArchitectureSection,
     ...keyFeaturesSection,
+    ...technicalDecisionsSection,
   ];
 
   return (
