@@ -66,7 +66,6 @@ const eslintConfig = defineConfig([
       "boundaries/no-private": "error",
       "simple-import-sort/imports": "warn",
       "simple-import-sort/exports": "warn",
-      "@typescript-eslint/no-unused-vars": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": "error",
       "react/jsx-key": "error",
