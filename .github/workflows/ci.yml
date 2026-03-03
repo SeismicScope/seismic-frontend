@@ -71,6 +71,40 @@ jobs:
           name: storybook-static
           path: storybook-static
 
+  bundle-analysis:
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    env:
+      SENTRY_IGNORE_API_TOKEN: 1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Install npm
+        run: npm install -g npm@10.9.0
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build with Bundle Analyzer
+        run: ANALYZE=true npm run build
+
+      - name: Prepare reports
+        run: |
+          mkdir -p bundle-report
+          cp .next/analyze/*.html ./bundle-report/ || true
+
+      - name: Upload Bundle Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-report
+          path: bundle-report
+
   dependency-audit:
     runs-on: ubuntu-latest
     steps:
@@ -102,49 +136,36 @@ jobs:
         language: [javascript]
     steps:
       - uses: actions/checkout@v4
-
       - uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
-
       - uses: github/codeql-action/analyze@v3
 
   deploy-pages:
     runs-on: ubuntu-latest
-    needs: [storybook]
+    needs: [storybook, bundle-analysis]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Download Storybook artifact
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Storybook
         uses: actions/download-artifact@v4
         with:
           name: storybook-static
           path: ./public/storybook
 
+      - name: Download Bundle Report
+        uses: actions/download-artifact@v4
+        with:
+          name: bundle-report
+          path: ./public/bundle-analysis
+
       - name: Create index page
-        run: |
-          cat > ./public/index.html << 'HTML'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>SeismicScope Reports</title>
-            <style>
-              body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 80px auto; padding: 0 20px; }
-              h1 { font-size: 1.5rem; }
-              a { display: block; padding: 12px 16px; margin: 8px 0; border-radius: 8px; background: #f4f4f5; color: #18181b; text-decoration: none; font-weight: 500; }
-              a:hover { background: #e4e4e7; }
-            </style>
-          </head>
-          <body>
-            <h1>SeismicScope Reports</h1>
-            <a href="./storybook/">Storybook</a>
-          </body>
-          </html>
-          HTML
+        run: bash ./scripts/generate-reports-index.sh
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
