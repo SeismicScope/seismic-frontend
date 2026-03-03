@@ -26,12 +26,12 @@ describe("getApiErrorMessage", () => {
     expect(getApiErrorMessage(error)).toBe("Something broke");
   });
 
-  it("returns fallback for unknown error types", () => {
-    expect(getApiErrorMessage("string error")).toBe("Something went wrong");
+  it("returns the string itself if a string is passed", () => {
+    expect(getApiErrorMessage("string error")).toBe("string error");
   });
 
   it("returns fallback for null/undefined", () => {
-    expect(getApiErrorMessage(null)).toBe("Something went wrong");
-    expect(getApiErrorMessage(undefined)).toBe("Something went wrong");
+    expect(getApiErrorMessage(null)).toBe("Unknown error");
+    expect(getApiErrorMessage(undefined)).toBe("Unknown error");
   });
 });

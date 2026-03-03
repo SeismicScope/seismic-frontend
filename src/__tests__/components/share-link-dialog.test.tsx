@@ -24,7 +24,7 @@ vi.mock("@/features/share-link/hooks/use-short-url", () => ({
 }));
 
 vi.mock("@/features/share-link/hooks/use-short-url-qr", () => ({
-  useShortUrlQr: () => ({
+  useShortUrlQR: () => ({
     data: { qr: "data:image/png;base64,abc123" },
     isLoading: false,
   }),
@@ -42,13 +42,14 @@ describe("ShareLinkDialog", () => {
     const user = userEvent.setup();
     render(<ShareLinkDialog />);
     await user.click(screen.getByRole("button", { name: /share/i }));
-    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    const dialog = await screen.findByRole("dialog");
+    expect(dialog).toBeInTheDocument();
   });
 
   it("shows share title in dialog header", async () => {
     const user = userEvent.setup();
     render(<ShareLinkDialog />);
     await user.click(screen.getByRole("button", { name: /share/i }));
-    expect(screen.getByText("Share")).toBeInTheDocument();
+    expect(await screen.findByText("Share link")).toBeInTheDocument();
   });
 });
