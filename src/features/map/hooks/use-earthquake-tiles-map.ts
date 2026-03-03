@@ -1,9 +1,9 @@
 import mapboxgl from "mapbox-gl";
 import React, { useEffect, useRef, useState } from "react";
 
+import { useMapStatsStore } from "@/entities/map/model/use-map-stats";
 import { MapAdapter } from "@/shared/adapters/map-adapter";
 
-import { useMapStatsStore } from "../../../entities/map/model/use-map-stats";
 import MapPopup from "../components/map-popup";
 import { renderMapPopup } from "../lib/utils";
 

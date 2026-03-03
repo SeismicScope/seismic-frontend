@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
+import { useMapRequestParams } from "@/entities/map/model/use-map-request-params";
+import { useMapStatsStore } from "@/entities/map/model/use-map-stats";
 import { MapAdapter } from "@/shared/adapters/map-adapter";
 
-import { useMapRequestParams } from "../../../entities/map/model/use-map-request-params";
-import { useMapStatsStore } from "../../../entities/map/model/use-map-stats";
 import { SOURCE_ID } from "../constants";
 import { getBounds } from "../lib/utils";
 import { useMapData } from "./use-map-data";

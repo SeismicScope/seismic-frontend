@@ -2,11 +2,11 @@ import type { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import type { useTranslations } from "next-intl";
 
-import type { Earthquake } from "@/features/earthquakes/types";
-
-import { DANGEROUS_MAGNITUDE_LEVEL } from "../../constants";
+import type { Earthquake } from "@/types/main";
 
 type TFunction = ReturnType<typeof useTranslations>;
+
+export const DANGEROUS_MAGNITUDE_LEVEL = 5;
 
 export function getColumns(t: TFunction): ColumnDef<Earthquake>[] {
   return [

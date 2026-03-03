@@ -1,9 +1,9 @@
 import type { RefObject } from "react";
 import { useCallback, useEffect, useRef } from "react";
 
+import { useMapStatsStore } from "@/entities/map/model/use-map-stats";
 import type { MapAdapter } from "@/shared/adapters/map-adapter";
 
-import { useMapStatsStore } from "../../../entities/map/model/use-map-stats";
 import { SOURCE_ID } from "../constants";
 import { getBounds } from "../lib/utils";
 import type { MapPoint, WorkerOnMessageEvent } from "../types";
