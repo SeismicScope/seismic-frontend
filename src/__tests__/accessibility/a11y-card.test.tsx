@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import type { AxeResults } from "axe-core";
 import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 
@@ -9,6 +10,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card";
+
+function expectNoViolations(results: AxeResults) {
+  expect(results.violations).toEqual([]);
+}
 
 describe("Card accessibility", () => {
   it("has no a11y violations for basic card", async () => {
@@ -26,7 +31,7 @@ describe("Card accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has no a11y violations for KPI card pattern", async () => {
@@ -43,6 +48,6 @@ describe("Card accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 });

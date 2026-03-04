@@ -1,9 +1,14 @@
 import { render } from "@testing-library/react";
+import type { AxeResults } from "axe-core";
 import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 
 import { Field, FieldError, FieldLabel } from "@/shared/ui/field";
 import { Input } from "@/shared/ui/input";
+
+function expectNoViolations(results: AxeResults) {
+  expect(results.violations).toEqual([]);
+}
 
 describe("Input accessibility", () => {
   it("has no a11y violations when used standalone", async () => {
@@ -16,7 +21,7 @@ describe("Input accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has no a11y violations with Field wrapper", async () => {
@@ -29,7 +34,7 @@ describe("Input accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has no a11y violations in error state", async () => {
@@ -43,7 +48,7 @@ describe("Input accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has no a11y violations when disabled", async () => {
@@ -56,6 +61,6 @@ describe("Input accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 });

@@ -1,8 +1,13 @@
 import { render } from "@testing-library/react";
+import type { AxeResults } from "axe-core";
 import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 
 import { Button } from "@/shared/ui/button";
+
+function expectNoViolations(results: AxeResults) {
+  expect(results.violations).toEqual([]);
+}
 
 describe("Button accessibility", () => {
   it("has no a11y violations with text content", async () => {
@@ -10,7 +15,7 @@ describe("Button accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has no a11y violations for icon button with aria-label", async () => {
@@ -22,7 +27,7 @@ describe("Button accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has no a11y violations when disabled", async () => {
@@ -30,7 +35,7 @@ describe("Button accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has no a11y violations for destructive variant", async () => {
@@ -38,7 +43,7 @@ describe("Button accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has no a11y violations for outline variant", async () => {
@@ -46,6 +51,6 @@ describe("Button accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 });

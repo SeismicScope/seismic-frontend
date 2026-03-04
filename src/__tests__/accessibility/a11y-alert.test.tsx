@@ -1,8 +1,13 @@
 import { render } from "@testing-library/react";
+import type { AxeResults } from "axe-core";
 import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 
 import { Alert, AlertDescription, AlertTitle } from "@/shared/ui/alert";
+
+function expectNoViolations(results: AxeResults) {
+  expect(results.violations).toEqual([]);
+}
 
 describe("Alert accessibility", () => {
   it("has no a11y violations with default variant", async () => {
@@ -15,7 +20,7 @@ describe("Alert accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has no a11y violations with destructive variant", async () => {
@@ -28,7 +33,7 @@ describe("Alert accessibility", () => {
 
     const results = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expectNoViolations(results);
   });
 
   it("has role=alert for screen reader announcement", () => {
