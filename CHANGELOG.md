@@ -1,3 +1,13 @@
+## [1.14.1](https://github.com/SeismicScope/seismic-frontend/compare/v1.14.0...v1.14.1) (2026-03-05)
+
+### Bug Fixes
+
+- **earthquake:** link and metadata for earthquake ([4b42b1b](https://github.com/SeismicScope/seismic-frontend/commit/4b42b1bae4822d69330ff8e0e7cc2fe87e8a5dcd))
+- **earthquake:** link and metadata for earthquake ([c13b751](https://github.com/SeismicScope/seismic-frontend/commit/c13b75130715494651e6685dbee7c71d74f7dc57))
+- **earthquake:** link and metadata for earthquake ([090a747](https://github.com/SeismicScope/seismic-frontend/commit/090a74798027a2561e21b7640abf1a074b974088))
+- **earthquake:** link and metadata for earthquake ([b1a30b8](https://github.com/SeismicScope/seismic-frontend/commit/b1a30b803a645836882901a73935d8a1a15b2812))
+- **earthquake:** link and metadata for earthquake ([d9678b0](https://github.com/SeismicScope/seismic-frontend/commit/d9678b0c9e58cf0a96ea678be7b1079e4fde39cf))
+
 # [1.14.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.13.0...v1.14.0) (2026-03-03)
 
 ### Features
