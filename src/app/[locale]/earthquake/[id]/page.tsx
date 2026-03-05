@@ -16,7 +16,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, id } = await params;
 
-  const t = await getTranslations({ locale, namespace: "earthquake" });
+  const t = await getTranslations({ locale, namespace: "metadata" });
 
   const earthquake = await getEarthquakeById(id);
 
