@@ -1,5 +1,5 @@
 "use client";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { generateSkeletonItems } from "@/shared/lib/generate-skeleton-items";
 import { Skeleton } from "@/shared/ui/skeleton";
@@ -18,7 +18,8 @@ const SKELETON_ROWS = 7;
 
 function TableSkeleton() {
   const t = useTranslations();
-  const columns = getColumns(t);
+  const locale = useLocale();
+  const columns = getColumns(t, locale);
   const tableItems = generateSkeletonItems(SKELETON_ROWS, "row");
 
   return (
