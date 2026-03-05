@@ -1,7 +1,7 @@
 "use client";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef } from "react";
 
 import { useEarthquakes } from "@/features/earthquakes/hooks/use-earthquakes";
@@ -10,6 +10,7 @@ import { getColumns } from "./columns";
 
 export function useEarthquakesTable() {
   const t = useTranslations();
+  const locale = useLocale();
   const parentRef = useRef<HTMLDivElement>(null);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
@@ -23,7 +24,7 @@ export function useEarthquakesTable() {
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data: flatData,
-    columns: getColumns(t),
+    columns: getColumns(t, locale),
     getCoreRowModel: getCoreRowModel(),
     enableColumnResizing: true,
     columnResizeMode: "onChange",
