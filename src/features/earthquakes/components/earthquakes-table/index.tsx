@@ -1,7 +1,7 @@
 "use client";
 
 import { flexRender } from "@tanstack/react-table";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Skeleton } from "@/shared/ui/skeleton";
 import {
@@ -18,6 +18,7 @@ import { useEarthquakesTable } from "./use-earthquakes-table";
 
 export function EarthquakeTable() {
   const t = useTranslations();
+  const locale = useLocale();
   const {
     isLoading,
     isEmpty,
@@ -39,7 +40,7 @@ export function EarthquakeTable() {
       </div>
     );
 
-  const columns = getColumns(t);
+  const columns = getColumns(t, locale);
 
   return (
     <div ref={parentRef} className="relative h-[350px] overflow-auto">

@@ -5,7 +5,10 @@ import type { Earthquake, TFunction } from "@/types/main";
 
 export const DANGEROUS_MAGNITUDE_LEVEL = 5;
 
-export function getColumns(t: TFunction): ColumnDef<Earthquake>[] {
+export function getColumns(
+  t: TFunction,
+  locale: string,
+): ColumnDef<Earthquake>[] {
   return [
     {
       accessorKey: "occurredAt",
@@ -49,7 +52,7 @@ export function getColumns(t: TFunction): ColumnDef<Earthquake>[] {
       header: t("general.actions"),
       cell: (info) => (
         <Link
-          href={`/earthquake/${info.row.original.id}`}
+          href={`/${locale}/earthquake/${info.row.original.id}`}
           className="text-blue-500 hover:opacity-60"
         >
           {t("general.moreInfo")}

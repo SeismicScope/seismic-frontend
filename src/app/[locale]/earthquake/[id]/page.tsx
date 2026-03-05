@@ -21,11 +21,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const earthquake = await getEarthquakeById(id);
 
   return {
-    title: t("title", {
+    title: t("earthquakeTitle", {
       magnitude: earthquake.magnitude,
       depth: earthquake.depth,
     }),
-    description: t("description", {
+    description: t("earthquakeDescription", {
       location: earthquake?.location || "",
       depth: earthquake.depth,
     }),
