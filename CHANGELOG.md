@@ -1,3 +1,9 @@
+## [1.14.2](https://github.com/SeismicScope/seismic-frontend/compare/v1.14.1...v1.14.2) (2026-03-07)
+
+### Bug Fixes
+
+- **storybook:** update storybook ([2d1cc7f](https://github.com/SeismicScope/seismic-frontend/commit/2d1cc7f7376e10923c1d54f20d9ed4ef9dff6626))
+
 ## [1.14.1](https://github.com/SeismicScope/seismic-frontend/compare/v1.14.0...v1.14.1) (2026-03-05)
 
 ### Bug Fixes
