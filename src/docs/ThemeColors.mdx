@@ -4,13 +4,12 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 
 # Level 2: Theme Tokens
 
-Theme tokens are semantic colors that can be swapped based on the active theme. They reference Core Colors but provide a flexible abstraction layer.
+**Theme Tokens** are semantic abstractions designed for dynamic styling. While they map directly to Core Colors, they provide a flexible layer that automatically updates based on the active theme.
 
-**Key Concept**: These tokens are theme-aware, meaning their values change when switching themes (Teal, Mango, Tomato) via the `data-theme` attribute.
+**Key Concept**: These tokens are theme-aware, utilizing the `data-theme` attribute to swap values (e.g., Teal, Mango, Tomato) seamlessly across the interface.
 
 ## Primary
-
-The primary color represents the main brand or interface accent color.
+The Primary token defines the central brand identity and serves as the lead accent color for the user interface.
 
 <ColorPalette>
   <ColorItem
