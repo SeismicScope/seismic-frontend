@@ -13,41 +13,39 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 <section>
   <h2 className="mb-3 text-2xl font-semibold">🎨 What&apos;s inside?</h2>
-  <p className="mb-4 text-muted-foreground">
-    This Storybook contains all the reusable components used across the
-    SeismicScope platform
-  </p>
-  <p className="text-muted-foreground">
-    Our design system helps maintain consistency, improve development speed, and
-    create a unified user experience across all SeismicScope products.
-  </p>
+ <p className="mb-4 text-muted-foreground">
+  This Storybook serves as the central repository for all reusable components within the SeismicScope ecosystem.
+</p>
+<p className="text-muted-foreground">
+  Our design system ensures visual consistency and accelerates development, providing a seamless user experience across all SeismicScope products.
+</p>
 </section>
 
   <section>
     <h2 className="mb-3 text-2xl font-semibold">📂 Design System Structure</h2>
     <p className="mb-4 text-muted-foreground">
-     Core design tokens and visual foundations that define the look and feel of the SeismicScope platform.
-     This section documents the shared visual language used across all products to ensure consistency, accessibility, and scalability.
-    </p>
+  The fundamental design tokens and visual guidelines that establish the SeismicScope identity.
+  This section outlines our shared visual language, ensuring all products remain consistent, accessible, and highly scalable.
+</p>
     <div className="space-y-4">
       <div>
         <p className="mb-2 text-muted-foreground">
           Here you’ll find:
         </p>
         <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-          <li>
-            <strong>Color System Architecture</strong> – The design system uses a three-level color architecture for maximum flexibility and maintainability.
-          </li>
-          <li>
-            <strong>Level 1 - Core Colors</strong> – Core colors are the foundation of the design system. These are raw color palettes that don't change based on theme.
-          </li>
-          <li>
-           <strong>Level 2 - Theme Colors</strong> – Theme tokens are semantic colors that can be swapped based on the active theme. They reference Core Colors but provide a flexible abstraction layer.
-          </li>
-          <li>
-            <strong>Level 3 - Mode Colors</strong> – Mode tokens are usage-specific colors for different contexts and states. These are the tokens you should use most often in your components.
-          </li>
-        </ul>
+  <li>
+    <strong>Three-Tier Color Architecture</strong> – Our system is structured into three layers to ensure maximum scalability and ease of maintenance.
+  </li>
+  <li>
+    <strong>Level 1: Global Primitives</strong> – These represent the static, raw color palettes that remain consistent regardless of the active theme.
+  </li>
+  <li>
+    <strong>Level 2: Semantic Tokens</strong> – Abstracted theme-aware colors that map to Level 1. These allow for seamless switching between different visual themes.
+  </li>
+  <li>
+    <strong>Level 3: Contextual Tokens</strong> – Specific usage tokens designed for UI states and components. These are the primary tokens for day-to-day development.
+  </li>
+</ul>
       </div>
     </div>
 
@@ -86,33 +84,25 @@ import { Meta } from "@storybook/addon-docs/blocks";
 <section>
   <h2 className="mb-3 text-2xl font-semibold">🏷️Tags and Development Stages</h2>
   <p className="mb-4 text-muted-foreground">
-    In this Storybook, each component is assigned a stage or tag to indicate its
-    development status and alignment with the SeismicScope Design System. These
-    tags help the team understand which components are production-ready, in
-    progress, or legacy.
-  </p>
-  <ul className="list-inside list-disc space-y-2 text-muted-foreground">
-    <li>
-      <strong>Stage 0</strong> – Component exists in Storybook, but no stories
-      have been created yet.
-    </li>
-    <li>
-      <strong>Stage 1</strong> – Stories have been added, demonstrating usage
-      and props.
-    </li>
-    <li>
-      <strong>Stage 2</strong> – Component is fully aligned with the Design
-      System, including styles, tokens, and naming conventions.
-    </li>
-    <li>
-      <strong>In Progress</strong> – Component has been added or is under
-      redesign; it may not fully comply with the Design System yet.
-    </li>
-    <li>
-      <strong>Old / Legacy</strong> – Deprecated or legacy components that may
-      be replaced or removed in the future.
-    </li>
-  </ul>
+  Components in this Storybook are categorized by maturity levels to track their alignment with the SeismicScope Design System. These statuses provide clarity on which elements are stable, undergoing development, or slated for deprecation.
+</p>
+<ul className="list-inside list-disc space-y-2 text-muted-foreground">
+  <li>
+    <strong>Stage 0: Placeholder</strong> – The component is registered in Storybook, but documentation and stories are pending.
+  </li>
+  <li>
+    <strong>Stage 1: Documented</strong> – Interactive stories are available, showcasing core functionality and property configurations.
+  </li>
+  <li>
+    <strong>Stage 2: Standardized</strong> – Fully compliant with design tokens, naming conventions, and architectural standards.
+  </li>
+  <li>
+    <strong>In Progress</strong> – Currently being authored or refactored; may not yet meet all design system requirements.
+  </li>
+  <li>
+    <strong>Legacy</strong> – Outdated or deprecated components maintained for backward compatibility but scheduled for replacement.
+  </li>
+</ul>
 </section>
 
 <section>
