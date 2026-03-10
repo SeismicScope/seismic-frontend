@@ -35,7 +35,7 @@ export function useCommandPalette() {
     document.addEventListener("keydown", down);
 
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [open]);
 
   return {
     handleNavigate,

@@ -29,10 +29,11 @@ const eslintConfig = defineConfig([
 
     settings: {
       "boundaries/elements": [
-        { type: "app", pattern: "src/app/*" },
-        { type: "entities", pattern: "src/entities/*" },
-        { type: "features", pattern: "src/features/*" },
-        { type: "shared", pattern: "src/shared/*" },
+        { type: "app", pattern: "src/app/**/*" },
+        { type: "entities", pattern: "src/entities/**/*" },
+        { type: "features", pattern: "src/features/**/*" },
+        { type: "shared", pattern: "src/shared/**/*" },
+        { type: "widgets", pattern: "src/widgets/**/*" },
       ],
     },
 
@@ -44,7 +45,15 @@ const eslintConfig = defineConfig([
           rules: [
             {
               from: "app",
-              allow: ["app", "features", "entities", "shared"],
+              allow: ["pages", "widgets", "features", "entities", "shared"],
+            },
+            {
+              from: "pages",
+              allow: ["widgets", "features", "entities", "shared"],
+            },
+            {
+              from: "widgets",
+              allow: ["features", "entities", "shared"],
             },
             {
               from: "features",
