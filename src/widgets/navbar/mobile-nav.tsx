@@ -35,7 +35,7 @@ function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
     <div className="block lg:hidden">
       <div className="flex items-center justify-between">
         <Link href={logo.url} className="flex items-center gap-2">
-          <Logo className="max-h-8 dark:invert" alt={logo.alt} />
+          <Logo className="max-h-8 dark:invert" />
         </Link>
         <CommandPaletteTrigger />
         <CommandPalette />

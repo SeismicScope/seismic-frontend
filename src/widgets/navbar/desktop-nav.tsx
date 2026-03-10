@@ -30,7 +30,7 @@ function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
     <nav className="hidden items-center justify-between lg:flex">
       <div className="flex items-center gap-6">
         <Link href={logo.url} className="flex items-center gap-2">
-          <Logo className="max-h-8 dark:invert" alt={logo.alt} />
+          <Logo className="max-h-8 dark:invert" />
           <span className="text-lg font-semibold tracking-tighter">
             {logo.title}
           </span>
