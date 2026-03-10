@@ -1,3 +1,9 @@
+## [1.17.1](https://github.com/SeismicScope/seismic-frontend/compare/v1.17.0...v1.17.1) (2026-03-10)
+
+### Bug Fixes
+
+- **seo:** correct Open Graph image URL path by removing duplicate slash ([441822b](https://github.com/SeismicScope/seismic-frontend/commit/441822b7a37847499e4f66cfe14c2ad5c25a2b71))
+
 # [1.17.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.16.0...v1.17.0) (2026-03-10)
 
 ### Features
