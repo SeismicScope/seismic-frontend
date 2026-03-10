@@ -24,7 +24,7 @@ export function JsonLd() {
 
   return (
     <Script
-      id="json-jd-script"
+      id="json-ld-script"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
