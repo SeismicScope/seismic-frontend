@@ -25,7 +25,7 @@ export function DashboardContent() {
       <MotionDiv
         className="mb-2 flex items-center justify-between"
         {...SLIDE_UP}
-        transition={{ ...SLIDE_UP.transition, delay: 0 }}
+        transition={{ ...SLIDE_UP.transition, delay: 0.2 }}
       >
         <div className="flex items-center gap-3">
           <p className="text-lg font-bold">{t("general.earthquakes")}</p>
@@ -54,7 +54,7 @@ export function DashboardContent() {
       <MotionDiv
         className="flex items-start gap-3"
         {...FADE_IN}
-        transition={{ ...FADE_IN.transition, delay: 0.1 }}
+        transition={{ ...FADE_IN.transition, delay: 0.3 }}
       >
         {renderTable && (
           <div className="min-w-0 flex-1">

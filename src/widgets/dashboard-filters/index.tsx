@@ -4,13 +4,18 @@ import { useTranslations } from "next-intl";
 import { useFilters } from "@/entities/filter/hooks/use-filters";
 import Filters from "@/features/filters/components/filters";
 import { Button } from "@/shared/ui/button";
+import { MotionDiv, SLIDE_UP } from "@/shared/ui/motion";
 
-function DashbardFilters() {
+export function DashboardFilters() {
   const t = useTranslations();
   const { hasActiveFilters, resetFilters } = useFilters();
 
   return (
-    <div className="w-full lg:w-3/4">
+    <MotionDiv
+      className="w-full lg:w-3/4"
+      {...SLIDE_UP}
+      transition={{ ...SLIDE_UP.transition, delay: 0.1 }}
+    >
       <div className="flex items-center gap-3">
         <p className="text-lg font-bold">{t("filters.title")}</p>
         {hasActiveFilters && (
@@ -20,8 +25,6 @@ function DashbardFilters() {
         )}
       </div>
       <Filters />
-    </div>
+    </MotionDiv>
   );
 }
-
-export default DashbardFilters;
