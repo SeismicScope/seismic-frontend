@@ -1,6 +1,6 @@
 import { Menu } from "lucide-react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import Logo from "@/assets/logo.svg";
@@ -34,9 +34,9 @@ function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
   return (
     <div className="block lg:hidden">
       <div className="flex items-center justify-between">
-        <Link href={logo.url} className="flex items-center gap-2">
-          <Logo className="max-h-8 dark:invert" />
-        </Link>
+        <a href={logo.url} className="flex items-center gap-2">
+          <Image src={Logo} className="max-h-8 dark:invert" alt={logo.alt} />
+        </a>
         <CommandPaletteTrigger />
         <CommandPalette />
         <LanguageSwitcher />
@@ -49,9 +49,13 @@ function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
           <SheetContent className="overflow-y-auto">
             <SheetHeader>
               <SheetTitle>
-                <Link href={logo.url} className="flex items-center gap-2">
-                  <Logo className="max-h-8 dark:invert" />
-                </Link>
+                <a href={logo.url} className="flex items-center gap-2">
+                  <Image
+                    src={Logo}
+                    className="max-h-8 dark:invert"
+                    alt={logo.alt}
+                  />
+                </a>
               </SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-6 p-4">
