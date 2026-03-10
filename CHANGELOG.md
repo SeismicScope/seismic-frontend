@@ -1,3 +1,9 @@
+# [1.17.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.16.0...v1.17.0) (2026-03-10)
+
+### Features
+
+- **seo:** add comprehensive metadata with Open Graph, Twitter cards, and social image ([8f81585](https://github.com/SeismicScope/seismic-frontend/commit/8f81585c366faa3202aab4d9a902f43c2a1a4465))
+
 # [1.16.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.15.0...v1.16.0) (2026-03-10)
 
 ### Features
