@@ -26,14 +26,14 @@ function MapStats() {
       <p className="text-xs lg:text-sm">
         <span className="font-bold">{t("points")}:</span>{" "}
         <span className="text-primary">
-          {pointsCount && <span>{formatNumber(pointsCount)}</span>}
+          {pointsCount ? <span>{formatNumber(pointsCount)}</span> : "—"}
         </span>
       </p>
 
       <p className="text-xs lg:text-sm">
         <span className="font-bold">{t("buildTime")}:</span>{" "}
         <span className="text-primary">
-          {buildTime && buildTime.toFixed(2)} ms
+          {buildTime ? `${buildTime.toFixed(2)} ms` : "—"}
         </span>
       </p>
 

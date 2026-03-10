@@ -22,7 +22,7 @@ export default function CommandPalette() {
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Search pages, filters, actions..." />
+      <CommandInput placeholder={t("general.commandPalettePlaceholder")} />
       <CommandList>
         <CommandEmpty>{t("general.noResults")}</CommandEmpty>
 

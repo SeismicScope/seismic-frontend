@@ -53,7 +53,9 @@
     "locationOnMap": "Location on map",
     "showMap": "Show Map",
     "showList": "Show List",
-    "failedToRenderTable": "Failed to render table"
+    "failedToRenderTable": "Failed to render table",
+    "commandPalettePlaceholder": "Search pages, filters, actions...",
+    "cookieBannerText": "We use cookies to improve your experience, analyze site usage, and support our services. By continuing to use this site, you agree to our use of cookies."
   },
   "auth": {
     "credentialsForDemo": "Credentials for demo:",

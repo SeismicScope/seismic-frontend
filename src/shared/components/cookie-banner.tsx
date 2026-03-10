@@ -1,11 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { COOKIE_CONSENT_KEY } from "../constants";
 import { Button } from "../ui/button";
 
 export default function CookieBanner() {
+  const t = useTranslations();
   const [visible, setVisible] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
 
@@ -25,12 +27,10 @@ export default function CookieBanner() {
     <div className="fixed inset-x-0 bottom-6 z-50 mx-3 flex justify-center">
       <div className="bg-background/90 flex items-center gap-4 rounded-lg border px-5 py-3 shadow-lg backdrop-blur-sm">
         <p className="text-muted-foreground text-sm">
-          We use cookies to improve your experience, analyze site usage, and
-          support our services. By continuing to use this site, you agree to our
-          use of cookies.
+          {t("general.cookieBannerText")}
         </p>
         <Button size="sm" onClick={handleAcknowledge}>
-          Got it
+          {t("general.gotIt")}
         </Button>
       </div>
     </div>
