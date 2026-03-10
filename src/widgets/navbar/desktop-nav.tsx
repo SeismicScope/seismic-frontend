@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import Logo from "@/assets/logo.svg";
@@ -29,12 +29,12 @@ function DesktopNav({ logo, user, menuWithAdmin, logout }: NavProps) {
   return (
     <nav className="hidden items-center justify-between lg:flex">
       <div className="flex items-center gap-6">
-        <a href={logo.url} className="flex items-center gap-2">
-          <Image src={Logo} className="max-h-8 dark:invert" alt={logo.alt} />
+        <Link href={logo.url} className="flex items-center gap-2">
+          <Logo className="max-h-8 dark:invert" alt={logo.alt} />
           <span className="text-lg font-semibold tracking-tighter">
             {logo.title}
           </span>
-        </a>
+        </Link>
         <div className="flex items-center">
           <NavigationMenu>
             <NavigationMenuList>
