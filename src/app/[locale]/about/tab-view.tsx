@@ -1,7 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 import type { TFunction } from "@/types/main";
 
-import { generalArchitectureSection } from "./general-acrhitecture-section";
+import { generalArchitectureSection } from "./general-architecture-section";
 import { keyFeaturesSection } from "./key-features-section";
 import { overviewSection } from "./overview-sections";
 import { technicalDecisionsSection } from "./technical-decisions-section";

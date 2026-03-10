@@ -6,7 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/shared/ui/alert";
 import { Separator } from "@/shared/ui/separator";
 
 import AccordionView from "./accordion-view";
-import { generalArchitectureSection } from "./general-acrhitecture-section";
+import { generalArchitectureSection } from "./general-architecture-section";
 import { keyFeaturesSection } from "./key-features-section";
 import { overviewSection } from "./overview-sections";
 import TabsView from "./tab-view";
