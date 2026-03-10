@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { Separator } from "@/shared/ui/separator";
 import type { TFunction } from "@/types/main";
 
-import type { Section } from "./types";
+import type { Section } from "../types";
 
 const LINKS = [
   {
