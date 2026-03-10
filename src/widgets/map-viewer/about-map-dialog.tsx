@@ -15,7 +15,7 @@ import {
 } from "@/shared/ui/dialog";
 import { Separator } from "@/shared/ui/separator";
 
-function AboutThisMap() {
+export function AboutMapDialog() {
   const t = useTranslations("aboutGeoJsonAndSuperCluster");
   const tMap = useTranslations("map");
   const [open, setOpen] = useState(false);
@@ -131,5 +131,3 @@ function AboutThisMap() {
     </Dialog>
   );
 }
-
-export default AboutThisMap;

@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import EarthquakesStats from "@/features/analytics/components/earthquakes-stats";
-import type { Locale } from "@/shared/constants";
-import { Card, CardHeader, CardTitle } from "@/shared/ui/card";
-
-import { AnalyticsChartCard, AnalyticsHeader } from "./analytics-header";
-import TimeSeries from "./time-series";
+import { AnalyticsChart } from "@/widgets/analytics-chart";
+import { AnalyticsStats } from "@/widgets/analytics-stats";
 
 export async function generateMetadata({
   params,
@@ -22,28 +18,11 @@ export async function generateMetadata({
   };
 }
 
-async function AnalyticsPage({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale });
-
+function AnalyticsPage() {
   return (
     <div className="mt-5 w-full px-4 lg:px-10">
-      <AnalyticsHeader>
-        <EarthquakesStats />
-      </AnalyticsHeader>
-
-      <AnalyticsChartCard>
-        <Card>
-          <CardHeader>
-            <CardTitle>{t("general.seismicEventsOverTime")}</CardTitle>
-          </CardHeader>
-          <TimeSeries />
-        </Card>
-      </AnalyticsChartCard>
+      <AnalyticsStats />
+      <AnalyticsChart />
     </div>
   );
 }

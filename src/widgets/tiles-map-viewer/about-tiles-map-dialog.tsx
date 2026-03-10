@@ -15,7 +15,7 @@ import {
 } from "@/shared/ui/dialog";
 import { Separator } from "@/shared/ui/separator";
 
-function AboutVectorTiles() {
+export function AboutTilesMapDialog() {
   const t = useTranslations("aboutVectorTiles");
   const tMap = useTranslations("map");
   const [open, setOpen] = useState(false);
@@ -130,5 +130,3 @@ function AboutVectorTiles() {
     </Dialog>
   );
 }
-
-export default AboutVectorTiles;

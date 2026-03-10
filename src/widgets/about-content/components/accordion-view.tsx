@@ -6,7 +6,7 @@ import {
 } from "@/shared/ui/accordion";
 import type { TFunction } from "@/types/main";
 
-import type { Section } from "./types";
+import type { Section } from "../types";
 
 function AccordionView({ sections, t }: { sections: Section[]; t: TFunction }) {
   return (
