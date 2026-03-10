@@ -53,7 +53,9 @@
     "locationOnMap": "Ubicación en el mapa",
     "showMap": "Ver mapa",
     "showList": "Ver lista",
-    "failedToRenderTable": "Error al renderizar la tabla"
+    "failedToRenderTable": "Error al renderizar la tabla",
+    "commandPalettePlaceholder": "Buscar páginas, filtros, acciones...",
+    "cookieBannerText": "Utilizamos cookies para mejorar su experiencia, analizar el uso del sitio y dar soporte a nuestros servicios. Al continuar utilizando este sitio, usted acepta nuestro uso de cookies."
   },
   "auth": {
     "credentialsForDemo": "Credenciales para demo:",

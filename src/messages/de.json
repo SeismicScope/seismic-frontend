@@ -53,7 +53,9 @@
     "locationOnMap": "Standort auf der Karte",
     "showMap": "Karte anzeigen",
     "showList": "Liste anzeigen",
-    "failedToRenderTable": "Fehler beim Rendern der Tabelle"
+    "failedToRenderTable": "Fehler beim Rendern der Tabelle",
+    "commandPalettePlaceholder": "Seiten, Filter, Aktionen suchen...",
+    "cookieBannerText": "Wir verwenden Cookies, um Ihre Nutzererfahrung zu verbessern, die Websitenutzung zu analysieren und unsere Dienste zu unterstützen. Durch die weitere Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies einverstanden."
   },
   "auth": {
     "credentialsForDemo": "Zugangsdaten für Demo:",
