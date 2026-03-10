@@ -333,53 +333,54 @@
         "4": "Skeleton-Loader, Error Boundaries und Suspense-Fallbacks",
         "5": "Cookie-Consent-Banner (DSGVO-Konformität)",
         "6": "SEO — JSON-LD Structured Data, dynamische Sitemap, robots.txt, Open Graph"
+      }
+    },
+    "technicalDecisions": {
+      "title": "Technische Entscheidungen & Qualität",
+      "codeQualityTitle": "Code-Qualitätsstandards",
+      "codeQuality": {
+        "1": "Keine expliziten 'any'-Typen in der gesamten Codebasis — erzwungen durch ESLint",
+        "2": "noUncheckedIndexedAccess in TypeScript aktiviert für sichereren Array-/Objektzugriff",
+        "3": "Feature-Sliced Design Grenzen werden zur Lint-Zeit über eslint-plugin-boundaries erzwungen",
+        "4": "Maximal 300 Zeilen pro Datei — durch ESLint erzwungen, um die Lesbarkeit zu erhalten",
+        "5": "Conventional Commits mit commitlint + Husky Pre-Commit-Hooks",
+        "6": "Semantic Release für automatisierte Versionierung und Changelog-Erstellung",
+        "7": "Plop-Codegenerator erstellt 7 Dateien pro Feature für eine konsistente Struktur"
       },
-      "technicalDecisions": {
-        "title": "Technische Entscheidungen & Qualität",
-        "codeQualityTitle": "Code-Qualitätsstandards",
-        "codeQuality": {
-          "1": "Keine expliziten 'any'-Typen in der gesamten Codebasis — erzwungen durch ESLint",
-          "2": "noUncheckedIndexedAccess in TypeScript aktiviert für sichereren Array-/Objektzugriff",
-          "3": "Feature-Sliced Design Grenzen werden zur Lint-Zeit über eslint-plugin-boundaries erzwungen",
-          "4": "Maximal 300 Zeilen pro Datei — durch ESLint erzwungen, um die Lesbarkeit zu erhalten",
-          "5": "Conventional Commits mit commitlint + Husky Pre-Commit-Hooks",
-          "6": "Semantic Release für automatisierte Versionierung und Changelog-Erstellung",
-          "7": "Plop-Codegenerator erstellt 7 Dateien pro Feature für eine konsistente Struktur"
-        },
-        "adrTitle": "Architecture Decision Records (ADR)",
-        "adrDescription": "Wichtige architektonische Entscheidungen sind als ADRs im Repository dokumentiert. Jeder Datensatz erfasst den Kontext, die Entscheidung und die abgewogenen Kompromisse:",
-        "adrs": {
-          "1": "ADR-001: Feature-Sliced Design — warum FSD statt Atomic Design oder Module-per-Page",
-          "2": "ADR-002: Mehrschichtiger State — URL (nuqs) + Client (Zustand) + Server (TanStack Query)",
-          "3": "ADR-003: Duale Kartenarchitektur — GeoJSON + Supercluster vs. PostGIS MVT Kompromisse",
-          "4": "ADR-004: Hydrierungs-sichere Muster — Vermeidung von SSR-Fehlern bei Client-only Komponenten",
-          "5": "ADR-005: BroadcastChannel — Tab-übergreifende Synchronisation ohne WebSocket-Overhead",
-          "6": "ADR-006: Cursor-Paginierung — warum Cursor-basiert statt Offset-basiert bei großen Datensätzen",
-          "7": "ADR-007: MapAdapter-Pattern — Kapselung von Mapbox GL als wiederverwendbare Abstraktion"
-        },
-        "testingTitle": "Teststrategie",
-        "testing": {
-          "1": "Vitest mit JSDOM für Unit- und Komponententests",
-          "2": "React Testing Library für benutzerzentrierte Komponententests",
-          "3": "vitest-axe für automatisierte Barrierefreiheits-Prüfungen (WCAG-Konformität)",
-          "4": "API-Mocking mit vi.mock() — isolierte, deterministische Tests",
-          "5": "Codecov-Integration mit Coverage-Berichten in der CI",
-          "6": "k6 Lasttests im Backend (Smoke-, Load-, Spike-Szenarien)"
-        },
-        "linksTitle": "Ressourcen & Links",
-        "links": {
-          "storybook": "Storybook — interaktive Komponentenbibliothek mit a11y-Addon",
-          "swagger": "Swagger — automatisch generierte REST-API-Dokumentation",
-          "backendRepo": "Backend Repository — NestJS Quellcode",
-          "healthCheck": "Health Check — Live-Backend-Status",
-          "metrics": "Prometheus Metrics — Backend-Observability"
-        }
+      "adrTitle": "Architecture Decision Records (ADR)",
+      "adrDescription": "Wichtige architektonische Entscheidungen sind als ADRs im Repository dokumentiert. Jeder Datensatz erfasst den Kontext, die Entscheidung und die abgewogenen Kompromisse:",
+      "adrs": {
+        "1": "ADR-001: Feature-Sliced Design — warum FSD statt Atomic Design oder Module-per-Page",
+        "2": "ADR-002: Mehrschichtiger State — URL (nuqs) + Client (Zustand) + Server (TanStack Query)",
+        "3": "ADR-003: Duale Kartenarchitektur — GeoJSON + Supercluster vs. PostGIS MVT Kompromisse",
+        "4": "ADR-004: Hydrierungs-sichere Muster — Vermeidung von SSR-Fehlern bei Client-only Komponenten",
+        "5": "ADR-005: BroadcastChannel — Tab-übergreifende Synchronisation ohne WebSocket-Overhead",
+        "6": "ADR-006: Cursor-Paginierung — warum Cursor-basiert statt Offset-basiert bei großen Datensätzen",
+        "7": "ADR-007: MapAdapter-Pattern — Kapselung von Mapbox GL als wiederverwendbare Abstraktion"
+      },
+      "testingTitle": "Teststrategie",
+      "testing": {
+        "1": "Vitest mit JSDOM für Unit- und Komponententests",
+        "2": "React Testing Library für benutzerzentrierte Komponententests",
+        "3": "vitest-axe für automatisierte Barrierefreiheits-Prüfungen (WCAG-Konformität)",
+        "4": "API-Mocking mit vi.mock() — isolierte, deterministische Tests",
+        "5": "Codecov-Integration mit Coverage-Berichten in der CI",
+        "6": "k6 Lasttests im Backend (Smoke-, Load-, Spike-Szenarien)"
+      },
+      "linksTitle": "Ressourcen & Links",
+      "links": {
+        "storybook": "Storybook — interaktive Komponentenbibliothek mit a11y-Addon",
+        "swagger": "Swagger — automatisch generierte REST-API-Dokumentation",
+        "backendRepo": "Backend Repository — NestJS Quellcode",
+        "healthCheck": "Health Check — Live-Backend-Status",
+        "metrics": "Prometheus Metrics — Backend-Observability"
       }
     },
     "titles": {
       "projectOverview": "Projektübersicht",
       "generalArchitecture": "Allgemeine Architektur",
-      "keyFeatures": "Hauptmerkmale"
+      "keyFeatures": "Hauptmerkmale",
+      "technicalDecisions": "Entscheidungen & Qualität"
     }
   },
   "metadata": {
