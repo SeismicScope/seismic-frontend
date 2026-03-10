@@ -42,7 +42,7 @@ export async function generateMetadata({
   const title = "SeismicScope Platform";
   const description = t("defaultDescription");
   const siteUrl = "https://seismic-scope.vercel.app/";
-  const ogImage = `${siteUrl}/seismic-scope.png`;
+  const ogImage = `${siteUrl}seismic-scope.png`;
 
   return {
     title: {
