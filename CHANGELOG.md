@@ -1,3 +1,9 @@
+# [1.16.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.15.0...v1.16.0) (2026-03-10)
+
+### Features
+
+- **ui:** add framer-motion animations to analytics, dashboard, and earthquake pages ([051c7e6](https://github.com/SeismicScope/seismic-frontend/commit/051c7e6c2323fea0587dba2787b592b36c3428ee))
+
 # [1.15.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.14.2...v1.15.0) (2026-03-10)
 
 ### Bug Fixes
