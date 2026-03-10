@@ -50,7 +50,7 @@ function MobileNav({ logo, user, menuWithAdmin, logout }: NavProps) {
             <SheetHeader>
               <SheetTitle>
                 <Link href={logo.url} className="flex items-center gap-2">
-                  <Logo className="max-h-8 dark:invert" alt={logo.alt} />
+                  <Logo className="max-h-8 dark:invert" />
                 </Link>
               </SheetTitle>
             </SheetHeader>
