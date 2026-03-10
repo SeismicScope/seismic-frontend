@@ -10,6 +10,7 @@ import EarthquakeMap from "@/features/map/components/lazy-map";
 import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 import { Button } from "@/shared/ui/button";
+import { FADE_IN, MotionDiv, SLIDE_UP } from "@/shared/ui/motion";
 
 export function DashboardContent() {
   const [showMap, setShowMap] = useState(false);
@@ -21,7 +22,11 @@ export function DashboardContent() {
 
   return (
     <>
-      <div className="mb-2 flex items-center justify-between">
+      <MotionDiv
+        className="mb-2 flex items-center justify-between"
+        {...SLIDE_UP}
+        transition={{ ...SLIDE_UP.transition, delay: 0 }}
+      >
         <div className="flex items-center gap-3">
           <p className="text-lg font-bold">{t("general.earthquakes")}</p>
           <Button
@@ -44,9 +49,13 @@ export function DashboardContent() {
           </Button>
         </div>
         <SortSelect />
-      </div>
+      </MotionDiv>
 
-      <div className="flex items-start gap-3">
+      <MotionDiv
+        className="flex items-start gap-3"
+        {...FADE_IN}
+        transition={{ ...FADE_IN.transition, delay: 0.1 }}
+      >
         {renderTable && (
           <div className="min-w-0 flex-1">
             <ErrorBoundary
@@ -71,7 +80,7 @@ export function DashboardContent() {
             <EarthquakeMap isDashboard />
           </ErrorBoundary>
         )}
-      </div>
+      </MotionDiv>
     </>
   );
 }

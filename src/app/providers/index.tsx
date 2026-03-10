@@ -97,12 +97,13 @@ export function Providers({
               timeZone="UTC"
             >
               {children}
+              <CookieBanner />
             </NextIntlClientProvider>
           </QueryClientProvider>
           <Toaster richColors position="top-right" />
           <WebVitals />
           <GoogleAnalytics />
-          <CookieBanner />
+
           <Suspense>
             <ThemeSync />
             <FiltersSync />

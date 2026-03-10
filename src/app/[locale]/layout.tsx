@@ -74,7 +74,7 @@ export default async function LocaleLayout({
       <body className={`${inter.variable} antialiased`}>
         <Providers messages={messages} locale={locale}>
           <Navbar />
-          <main className="pt-20">{children}</main>
+          <main className="page-enter pt-20">{children}</main>
           {modal}
         </Providers>
       </body>

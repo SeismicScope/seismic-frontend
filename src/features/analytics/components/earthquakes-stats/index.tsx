@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useEarthquakesStats } from "@/features/analytics/hooks/use-earthquakes-stats";
 import { formatNumber } from "@/shared/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
+import { CARD, MotionDiv, staggerDelay } from "@/shared/ui/motion";
 
 import EarthquakesStatsSkeleton from "./earthquakes-stats-skeleton";
 
@@ -22,48 +23,34 @@ function EarthquakesStats() {
       </div>
     );
 
+  const cards = [
+    {
+      label: t("analytics.totalEvents"),
+      value: formatNumber(stats?.totalEvents || 0),
+    },
+    { label: t("analytics.maxMagnitude"), value: stats?.maxMagnitude },
+    { label: t("analytics.avgMagnitude"), value: stats?.avgMagnitude },
+    { label: t("analytics.avgDepth"), value: stats?.avgDepth },
+  ];
+
   return (
     <div className="grid w-full grid-cols-2 gap-4 py-4">
-      <Card className="h-24 w-full gap-2 p-3">
-        <CardHeader className="px-3">
-          <CardTitle className="text-center">
-            {t("analytics.totalEvents")}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="text-primary px-3 text-center text-2xl font-bold">
-          {formatNumber(stats?.totalEvents || 0)}
-        </CardContent>
-      </Card>
-      <Card className="h-24 w-full gap-2 p-3">
-        <CardHeader className="px-3">
-          <CardTitle className="text-center">
-            {t("analytics.maxMagnitude")}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="text-primary px-3 text-center text-2xl font-bold">
-          {stats?.maxMagnitude}
-        </CardContent>
-      </Card>
-      <Card className="h-24 w-full gap-2 p-3">
-        <CardHeader className="px-3">
-          <CardTitle className="text-center">
-            {t("analytics.avgMagnitude")}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="text-primary px-3 text-center text-2xl font-bold">
-          {stats?.avgMagnitude}
-        </CardContent>
-      </Card>
-      <Card className="h-24 w-full gap-2 p-3">
-        <CardHeader className="px-3">
-          <CardTitle className="text-center">
-            {t("analytics.avgDepth")}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="text-primary px-3 text-center text-2xl font-bold">
-          {stats?.avgDepth}
-        </CardContent>
-      </Card>
+      {cards.map((card, i) => (
+        <MotionDiv
+          key={card.label}
+          {...CARD}
+          transition={{ ...CARD.transition, ...staggerDelay(i, 0.07) }}
+        >
+          <Card className="h-24 w-full gap-2 p-3">
+            <CardHeader className="px-3">
+              <CardTitle className="text-center">{card.label}</CardTitle>
+            </CardHeader>
+            <CardContent className="text-primary px-3 text-center text-2xl font-bold">
+              {card.value}
+            </CardContent>
+          </Card>
+        </MotionDiv>
+      ))}
     </div>
   );
 }

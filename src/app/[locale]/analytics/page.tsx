@@ -5,6 +5,7 @@ import EarthquakesStats from "@/features/analytics/components/earthquakes-stats"
 import type { Locale } from "@/shared/constants";
 import { Card, CardHeader, CardTitle } from "@/shared/ui/card";
 
+import { AnalyticsChartCard, AnalyticsHeader } from "./analytics-header";
 import TimeSeries from "./time-series";
 
 export async function generateMetadata({
@@ -31,14 +32,18 @@ async function AnalyticsPage({
 
   return (
     <div className="mt-5 w-full px-4 lg:px-10">
-      <EarthquakesStats />
+      <AnalyticsHeader>
+        <EarthquakesStats />
+      </AnalyticsHeader>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("general.seismicEventsOverTime")}</CardTitle>
-        </CardHeader>
-        <TimeSeries />
-      </Card>
+      <AnalyticsChartCard>
+        <Card>
+          <CardHeader>
+            <CardTitle>{t("general.seismicEventsOverTime")}</CardTitle>
+          </CardHeader>
+          <TimeSeries />
+        </Card>
+      </AnalyticsChartCard>
     </div>
   );
 }

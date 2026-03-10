@@ -29,11 +29,10 @@ const eslintConfig = defineConfig([
 
     settings: {
       "boundaries/elements": [
-        { type: "app", pattern: "src/app/**/*" },
-        { type: "entities", pattern: "src/entities/**/*" },
-        { type: "features", pattern: "src/features/**/*" },
-        { type: "shared", pattern: "src/shared/**/*" },
-        { type: "widgets", pattern: "src/widgets/**/*" },
+        { type: "app", pattern: "src/app/**" },
+        { type: "entities", pattern: "src/entities/**" },
+        { type: "features", pattern: "src/features/**" },
+        { type: "shared", pattern: "src/shared/**" },
       ],
     },
 

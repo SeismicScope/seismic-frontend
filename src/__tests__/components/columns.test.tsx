@@ -21,7 +21,7 @@ const mockT = ((key: string) => {
 }) as unknown as TFunction;
 
 describe("getColumns", () => {
-  const columns = getColumns(mockT);
+  const columns = getColumns(mockT, "en");
 
   it("returns 6 columns", () => {
     expect(columns).toHaveLength(6);

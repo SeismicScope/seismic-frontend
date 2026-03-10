@@ -7,6 +7,7 @@ import { useEarthquakesTimeSeries } from "@/features/analytics/hooks/use-earthqu
 import { ErrorBoundary } from "@/shared/boundaries/error-boundary";
 import { PERIOD_INTERVALS } from "@/shared/constants";
 import { CardContent } from "@/shared/ui/card";
+import { FADE_IN, MotionDiv } from "@/shared/ui/motion";
 import {
   Select,
   SelectContent,
@@ -38,32 +39,34 @@ function TimeSeries() {
   } = useEarthquakesTimeSeries();
 
   return (
-    <CardContent>
-      <Select
-        value={interval}
-        onValueChange={(value) => setInterval(value as TimeInterval)}
-      >
-        <SelectTrigger className="mb-2">
-          <SelectValue placeholder={t("general.selectInterval")} />
-        </SelectTrigger>
-        <SelectContent>
-          {PERIOD_INTERVALS.map((interval) => (
-            <SelectItem key={interval.value} value={interval.value}>
-              {t(interval.label)}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-      <ErrorBoundary
-        fallback={
-          <div className="text-muted-foreground flex h-[300px] items-center justify-center text-sm">
-            {t("analytics.failedToRenderChart")}
-          </div>
-        }
-      >
-        <TimeSeriesChart data={timeSeries ?? []} isLoading={isLoading} />
-      </ErrorBoundary>
-    </CardContent>
+    <MotionDiv {...FADE_IN} transition={{ ...FADE_IN.transition, delay: 0.15 }}>
+      <CardContent>
+        <Select
+          value={interval}
+          onValueChange={(value) => setInterval(value as TimeInterval)}
+        >
+          <SelectTrigger className="mb-2">
+            <SelectValue placeholder={t("general.selectInterval")} />
+          </SelectTrigger>
+          <SelectContent>
+            {PERIOD_INTERVALS.map((interval) => (
+              <SelectItem key={interval.value} value={interval.value}>
+                {t(interval.label)}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <ErrorBoundary
+          fallback={
+            <div className="text-muted-foreground flex h-[300px] items-center justify-center text-sm">
+              {t("analytics.failedToRenderChart")}
+            </div>
+          }
+        >
+          <TimeSeriesChart data={timeSeries ?? []} isLoading={isLoading} />
+        </ErrorBoundary>
+      </CardContent>
+    </MotionDiv>
   );
 }
 
