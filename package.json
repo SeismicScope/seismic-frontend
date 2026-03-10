@@ -18,7 +18,8 @@
     "analyze": "ANALYZE=true next build --webpack",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "generate": "plop"
+    "generate": "plop",
+    "typecheck": "tsc --noEmit"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
