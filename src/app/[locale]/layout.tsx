@@ -42,7 +42,6 @@ export async function generateMetadata({
   const title = "SeismicScope Platform";
   const description = t("defaultDescription");
   const siteUrl = "https://seismic-scope.vercel.app/";
-  const ogImage = `${siteUrl}seismic-scope.png`;
 
   return {
     title: {
@@ -68,9 +67,9 @@ export async function generateMetadata({
       siteName: title,
       images: [
         {
-          url: ogImage,
-          width: 1200,
-          height: 630,
+          url: "/seismic-scope.png",
+          width: 1024,
+          height: 1024,
           alt: "SeismicScope Platform - Earthquake Analytics",
         },
       ],
@@ -79,7 +78,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
+      images: ["/seismic-scope.png"],
       creator: "@seismicscope",
       site: "@seismicscope",
     },
