@@ -1,3 +1,17 @@
+# [1.15.0](https://github.com/SeismicScope/seismic-frontend/compare/v1.14.2...v1.15.0) (2026-03-10)
+
+### Bug Fixes
+
+- **about:** correct typo in general-architecture-section filename ([db682b2](https://github.com/SeismicScope/seismic-frontend/commit/db682b261c01d0233e2270fd473166c58c72063c))
+- **eslint:** update boundaries config and fix command palette dependency ([61c27f5](https://github.com/SeismicScope/seismic-frontend/commit/61c27f59f29727767667f0cba356af77e9707aa9))
+
+### Features
+
+- **ci:** add quality-check job with lint and typecheck ([4c859ec](https://github.com/SeismicScope/seismic-frontend/commit/4c859ec5f5737c6f0d4b7b1111973a561356e8ad))
+- **i18n:** add German and Spanish translations for command palette and cookie banner ([6189c4e](https://github.com/SeismicScope/seismic-frontend/commit/6189c4e5045b98fd4dea3d3c3e8449e2e2af0351))
+- **i18n:** internationalize command palette and cookie banner text ([12c7f76](https://github.com/SeismicScope/seismic-frontend/commit/12c7f76702fd907bc1e662b025e4ebd53ac436ec))
+- **seo:** add locale-specific sitemap URLs and fix JSON-LD script ID ([3c922d5](https://github.com/SeismicScope/seismic-frontend/commit/3c922d5a297d7a3a61b82db0e8da9a35cf140870))
+
 ## [1.14.2](https://github.com/SeismicScope/seismic-frontend/compare/v1.14.1...v1.14.2) (2026-03-07)
 
 ### Bug Fixes
