@@ -39,12 +39,61 @@ export async function generateMetadata({
     namespace: "metadata",
   });
 
+  const title = "SeismicScope Platform";
+  const description = t("defaultDescription");
+  const siteUrl = "https://seismic-scope.vercel.app/";
+  const ogImage = `${siteUrl}/seismic-scope.png`;
+
   return {
     title: {
-      default: "SeismicScope Platform",
-      template: `%s | SeismicScope Platform`,
+      default: title,
+      template: `%s | ${title}`,
     },
-    description: t("defaultDescription"),
+    description,
+    metadataBase: new URL(siteUrl),
+    alternates: {
+      canonical: "/",
+      languages: {
+        en: "/en",
+        de: "/de",
+        es: "/es",
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: locale,
+      url: siteUrl,
+      title,
+      description,
+      siteName: title,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "SeismicScope Platform - Earthquake Analytics",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+      creator: "@seismicscope",
+      site: "@seismicscope",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
   };
 }
 
